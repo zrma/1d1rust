@@ -1,6 +1,8 @@
 mod sum;
+mod list_practice;
 
 use sum::plus;
+use list_practice::filter;
 
 fn main() {
     let mut tot = 0;
@@ -28,4 +30,8 @@ fn main() {
 
     println!("Hello, world!");
     println!("{}", plus(3, 5));
+
+    for x in filter(std::vec![1,2,3,4,5]) {
+        println!("{}", x)
+    }
 }
