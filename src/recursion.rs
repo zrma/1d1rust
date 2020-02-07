@@ -1,10 +1,16 @@
-use std::ops::{Add, Sub};
-
 extern crate num;
 
 use num::FromPrimitive;
+use std::ops::{Add, Sub};
 
-pub fn fib<T: Add<Output = T> + Sub<Output = T> + Copy + PartialEq + FromPrimitive>(n: T) -> T {
+pub fn recursion() {
+    println!("{}", fib(15));
+
+    let num: i64 = 64;
+    println!("{}", fib(num));
+}
+
+fn fib<T: Add<Output = T> + Sub<Output = T> + Copy + PartialEq + FromPrimitive>(n: T) -> T {
     fib_recur(
         n,
         FromPrimitive::from_i64(0).expect("0 must be convertible to type of n"),

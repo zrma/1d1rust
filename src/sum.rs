@@ -1,5 +1,9 @@
-pub fn plus(a: i32, b: i32) -> i32 {
-    return a + b;
+pub fn sum() {
+    println!("{}", plus(3, 5));
+}
+
+fn plus(a: i32, b: i32) -> i32 {
+    a + b
 }
 
 #[test]
