@@ -1,38 +1,34 @@
 extern crate num;
 
-use num::FromPrimitive;
-use std::ops::{Add, Sub};
+use num::PrimInt;
 
 pub fn recursion() {
     println!("{}", fib(15));
+
+    // 64 is i32, overflow have occurred
+    // println!("{}", fib(64));
 
     let num: i64 = 64;
     println!("{}", fib(num));
 }
 
-fn fib<T: Add<Output = T> + Sub<Output = T> + Copy + PartialEq + FromPrimitive>(n: T) -> T {
-    fib_recur(
-        n,
-        FromPrimitive::from_i64(0).expect("0 must be convertible to type of n"),
-        FromPrimitive::from_i64(1).expect("1 must be convertible to type of n"),
-    )
+fn fib<T>(n: T) -> T
+where
+    T: PrimInt,
+{
+    fib_recur(n, T::zero(), T::one())
 }
 
-fn fib_recur<T: Add<Output = T> + Sub<Output = T> + Copy + PartialEq + FromPrimitive>(
-    n: T,
-    a: T,
-    b: T,
-) -> T {
-    if n == FromPrimitive::from_i64(0).expect("0 must be convertible to type of n") {
+fn fib_recur<T>(n: T, a: T, b: T) -> T
+where
+    T: PrimInt,
+{
+    if n == T::zero() {
         a
-    } else if n == FromPrimitive::from_i64(1).expect("1 must be convertible to type of n") {
+    } else if n == T::one() {
         b
     } else {
-        fib_recur(
-            n - FromPrimitive::from_i64(1).expect("1 must be convertible to type of n"),
-            b,
-            a + b,
-        )
+        fib_recur(n - T::one(), b, a + b)
     }
 }
 
@@ -45,4 +41,8 @@ fn test_fib() {
     assert_eq!(fib(4), 3);
     assert_eq!(fib(5), 5);
     assert_eq!(fib(6), 8);
+
+    let num: i64 = 64;
+    let expected = 10_610_209_857_723;
+    assert_eq!(fib(num), expected);
 }
