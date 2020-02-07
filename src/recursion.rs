@@ -1,8 +1,3 @@
-pub fn filter(mut v: Vec<i32>) -> Vec<i32> {
-    v.retain(|&x| x % 2 != 0);
-    v
-}
-
 use std::ops::{Add, Sub};
 
 extern crate num;
@@ -33,11 +28,6 @@ fn fib_recur<T: Add<Output = T> + Sub<Output = T> + Copy + PartialEq + FromPrimi
             a + b,
         )
     }
-}
-
-#[test]
-fn test_filter() {
-    assert_eq!(filter(std::vec![1, 2, 3, 4, 5]), std::vec![1, 3, 5])
 }
 
 #[test]

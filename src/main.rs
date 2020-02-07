@@ -1,7 +1,9 @@
-mod list_practice;
+mod filter;
+mod recursion;
 mod sum;
 
-use crate::list_practice::{fib, filter};
+use filter::filter;
+use recursion::fib;
 use sum::plus;
 
 fn main() {
