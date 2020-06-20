@@ -1,3 +1,4 @@
+mod hacker_rank;
 mod practice;
 
 fn main() {
