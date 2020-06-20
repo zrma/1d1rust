@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 fn birthday_cake_candles(arr: Vec<i32>) -> i32 {
     let mut cnt = 0;
     let mut max = std::i32::MIN;
