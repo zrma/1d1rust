@@ -1,8 +1,8 @@
 #[allow(dead_code)]
 fn mini_max_sum(arr: Vec<i64>) -> (i64, i64) {
-    let mut min: i64 = std::i64::MAX;
-    let mut max: i64 = std::i64::MIN;
-    let mut sum: i64 = 0;
+    let mut min = std::i64::MAX;
+    let mut max = std::i64::MIN;
+    let mut sum = 0;
 
     for n in arr {
         if min > n {
