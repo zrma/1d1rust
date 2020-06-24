@@ -6,11 +6,11 @@ fn time_conversion(mut s: String) -> String {
     let token: Vec<&str> = s.split(':').collect();
     let (hour, minute, second) = (token[0], token[1], token[2]);
 
-    let hour_num = hour.parse::<i32>();
-    match hour_num {
-        Ok(n) => format!("{:02}:{}:{}", n % 12 + offset, minute, second),
-        _ => format!("00:{}:{}", minute, second),
-    }
+    let hour_num = match hour.parse::<i32>() {
+        Ok(n) => n % 12 + offset,
+        _ => 0,
+    };
+    format!("{:02}:{}:{}", hour_num, minute, second)
 }
 
 // https://www.hackerrank.com/challenges/time-conversion/problem
