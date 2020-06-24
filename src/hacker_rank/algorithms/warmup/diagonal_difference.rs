@@ -1,7 +1,6 @@
 #[allow(dead_code)]
 fn diagonal_difference(arr: Vec<Vec<i32>>) -> i32 {
-    let mut val1: i32 = 0;
-    let mut val2: i32 = 0;
+    let (mut val1, mut val2) = (0, 0);
     let tot_len = arr[0].len() - 1 as usize;
 
     for (pos, row) in arr.into_iter().enumerate() {

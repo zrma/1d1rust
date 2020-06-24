@@ -1,9 +1,6 @@
 #[allow(dead_code)]
 fn plus_minus(arr: Vec<i32>) -> (f64, f64, f64) {
-    let mut pos = 0;
-    let mut nag = 0;
-    let mut zero = 0;
-
+    let (mut pos, mut nag, mut zero) = (0, 0, 0);
     arr.iter().for_each(|x| match *x {
         n if n > 0 => pos += 1,
         n if n < 0 => nag += 1,
