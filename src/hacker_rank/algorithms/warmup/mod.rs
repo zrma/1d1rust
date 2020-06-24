@@ -4,3 +4,4 @@ mod mini_max_sum;
 mod plus_minus;
 mod simple_array_sum;
 mod solve_me_first;
+mod staircase;
