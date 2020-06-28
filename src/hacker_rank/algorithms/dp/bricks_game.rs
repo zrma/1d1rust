@@ -66,10 +66,7 @@ fn play_sub_game(arr: &[i32], begin: usize, end: usize, cache: &mut Cache) -> i6
     let range = end as i32 - begin as i32;
     if range <= 3 {
         let mut sum: i64 = 0;
-        for i in 0..(range + 1) {
-            if i == 3 {
-                break;
-            }
+        for i in 0..min!(range + 1, 3) {
             sum += arr[begin + i as usize] as i64;
         }
         set_cache(cache, begin, end, sum);
