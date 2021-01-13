@@ -1,27 +1,33 @@
+use num::PrimInt;
+
 #[allow(dead_code)]
 fn substrings(input_str: String) -> i64 {
     const MODULO: i64 = 1000000007;
 
     let length = input_str.len() as i64;
     let mut chars = input_str.chars();
-    let mut b = match chars.next() {
-        Some(c) => match c.to_string().parse::<i64>() {
-            Ok(n) => n,
-            Err(_) => return 0,
-        },
-        _ => return 0,
-    };
 
+    let mut b = c_to_i(chars.next());
     let mut a = b;
+
     for i in 1..length {
-        let cur = match chars.next() {
-            Some(c) => c.to_string().parse::<i64>().unwrap_or(0),
-            _ => 0,
-        };
+        let cur: i64 = c_to_i(chars.next());
+
         a = (a * 10 + (i + 1) * cur) % MODULO;
         b = (a + b) % MODULO;
     }
     b
+}
+
+fn c_to_i<T>(c: Option<char>) -> T
+where
+    T: std::str::FromStr,
+    T: PrimInt,
+{
+    c.unwrap_or_default()
+        .to_string()
+        .parse::<T>()
+        .unwrap_or_else(|_| T::zero())
 }
 
 // https://www.hackerrank.com/challenges/sam-and-substrings/problem
