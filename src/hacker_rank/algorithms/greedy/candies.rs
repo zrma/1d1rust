@@ -42,7 +42,6 @@ fn backward<'a>(result: &'a mut Vec<i32>, arr: &[i32]) -> &'a mut Vec<i32> {
     result
 }
 
-//noinspection SpellCheckingInspection
 // https://www.hackerrank.com/challenges/candies/problem
 #[test]
 fn test_candies() {
