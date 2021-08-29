@@ -9,6 +9,7 @@ macro_rules! min {
 }
 
 #[test]
+#[allow(clippy::eq_op)]
 fn test_min() {
     assert_eq!(min!(1), 1);
     assert_eq!(min!(2, 1, 3), 1);
