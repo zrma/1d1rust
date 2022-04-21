@@ -1,3 +1,4 @@
+mod boj;
 mod hacker_rank;
 mod practice;
 
