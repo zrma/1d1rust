@@ -12,8 +12,8 @@ fn common_child(s1: String, s2: String) -> i32 {
         arr[i][0] = 0;
     }
 
-    for (i, c1) in s1.chars().into_iter().enumerate() {
-        for (j, c2) in s2.chars().into_iter().enumerate() {
+    for (i, c1) in s1.chars().enumerate() {
+        for (j, c2) in s2.chars().enumerate() {
             if c1 == c2 {
                 arr[i + 1][j + 1] = arr[i][j] + 1
             } else {

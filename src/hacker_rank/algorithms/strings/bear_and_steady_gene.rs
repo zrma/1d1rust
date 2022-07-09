@@ -11,7 +11,7 @@ fn steady_gene(s: &str) -> i32 {
 
     let mut begin: i32 = 0;
     let mut end: i32 = 0;
-    let mut min = std::i32::MAX;
+    let mut min = i32::MAX;
     while end < length - 1 {
         arr = decrease(arr, gene[end as usize] as char);
         end += 1;

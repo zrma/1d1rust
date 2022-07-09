@@ -194,9 +194,8 @@ fn test_highest_value_palindrome() {
 
 #[allow(dead_code)]
 fn read_extremely_long_test_data() -> (String, String) {
-    let path = std::path::Path::new(
-        "./src/hacker_rank/algorithms/strings/test_data/highest_value_palindrome.csv",
-    );
+    let path =
+        Path::new("./src/hacker_rank/algorithms/strings/test_data/highest_value_palindrome.csv");
     let mut lines = read_lines(path).unwrap();
     (
         lines.next().unwrap().unwrap(),

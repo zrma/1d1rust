@@ -23,7 +23,7 @@ fn bricks_game(arr: Vec<i32>) -> i64 {
         return arr.iter().sum::<i32>() as i64;
     }
 
-    let mut res = vec![0; size as usize];
+    let mut res = vec![0; size];
     let mut tot: i64 = 0;
 
     let last_idx = size - 1;
@@ -40,7 +40,7 @@ fn bricks_game(arr: Vec<i32>) -> i64 {
                 res[last_idx - i + 1],
                 res[last_idx - i + 2],
                 res[last_idx - i + 3]
-            ) as i64;
+            );
     }
     res[0]
 }
@@ -91,7 +91,7 @@ fn read_csv(file_name: &str) -> Vec<Vec<i32>> {
 
     let mut res = vec![];
     let mut reader = csv::Reader::from_path(path).unwrap();
-    for row in reader.headers().iter() {
+    if let Ok(row) = reader.headers() {
         let mut curr = vec![];
         for col in row.iter() {
             let v: i32 = col.parse().unwrap();
@@ -99,15 +99,13 @@ fn read_csv(file_name: &str) -> Vec<Vec<i32>> {
         }
         res.push(curr);
     }
-    for record in reader.records() {
-        for row in record.iter() {
-            let mut curr = vec![];
-            for col in row.iter() {
-                let v: i32 = col.parse().unwrap();
-                curr.push(v);
-            }
-            res.push(curr);
+    for row in reader.records().flatten() {
+        let mut curr = vec![];
+        for col in row.iter() {
+            let v: i32 = col.parse().unwrap();
+            curr.push(v);
         }
+        res.push(curr);
     }
     res
 }
