@@ -17,7 +17,6 @@ fn parse_str_to_arr(mut lines: Lines<&mut impl BufRead>) -> Vec<i32> {
         .next()
         .unwrap()
         .unwrap()
-        .trim()
         .split_whitespace()
         .map(|s| s.parse().unwrap())
         .collect();
@@ -26,7 +25,6 @@ fn parse_str_to_arr(mut lines: Lines<&mut impl BufRead>) -> Vec<i32> {
             .next()
             .unwrap()
             .unwrap()
-            .trim()
             .split_whitespace()
             .map(|s| s.parse().unwrap())
             .collect()

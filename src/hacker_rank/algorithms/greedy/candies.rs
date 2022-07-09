@@ -1,12 +1,11 @@
-use std::borrow::BorrowMut;
 use std::cmp::max;
 
 #[allow(dead_code)]
 fn candies(n: usize, arr: Vec<i32>) -> i64 {
     let mut result = &mut vec![0; n];
 
-    result = forward(result.borrow_mut(), &arr);
-    result = backward(result.borrow_mut(), &arr);
+    result = forward(result, &arr);
+    result = backward(result, &arr);
 
     let mut sum: i64 = 0;
     for &i in result.iter() {
