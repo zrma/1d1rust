@@ -1,4 +1,5 @@
-use std::io::{BufRead, Lines, Write};
+use crate::utils::parse;
+use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 pub fn solve2437(reader: &mut impl BufRead, writer: &mut impl Write) {
@@ -6,31 +7,10 @@ pub fn solve2437(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     lines.next().unwrap().unwrap().parse::<i32>().unwrap();
 
-    let mut arr = parse_str_to_arr(lines);
+    let mut arr = parse::str_to_arr(lines);
 
     let res = get_unavailable_sum(&mut arr);
     write!(writer, "{}", res).unwrap();
-}
-
-fn parse_str_to_arr(mut lines: Lines<&mut impl BufRead>) -> Vec<i32> {
-    let res: Vec<i32> = lines
-        .next()
-        .unwrap()
-        .unwrap()
-        .split_whitespace()
-        .map(|s| s.parse().unwrap())
-        .collect();
-    if res.is_empty() {
-        lines
-            .next()
-            .unwrap()
-            .unwrap()
-            .split_whitespace()
-            .map(|s| s.parse().unwrap())
-            .collect()
-    } else {
-        res
-    }
 }
 
 fn get_unavailable_sum(arr: &mut Vec<i32>) -> i32 {
