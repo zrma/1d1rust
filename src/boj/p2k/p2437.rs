@@ -38,51 +38,75 @@ fn test_solve2437() {
     }
     for data in std::vec![
         TestData {
-            s: "7\n3 1 6 2 7 30 1".to_string(),
+            s: "7
+3 1 6 2 7 30 1"
+                .to_string(),
             want: "21".to_string(),
         },
         TestData {
-            s: "7\n1 1 2 3 6 7 30".to_string(),
+            s: "7
+1 1 2 3 6 7 30"
+                .to_string(),
             want: "21".to_string(),
         },
         TestData {
-            s: "1\n1".to_string(),
+            s: "1
+1"
+            .to_string(),
             want: "2".to_string(),
         },
         TestData {
-            s: "1\n2".to_string(),
+            s: "1
+2"
+            .to_string(),
             want: "1".to_string(),
         },
         TestData {
-            s: "1\n3".to_string(),
+            s: "1
+3"
+            .to_string(),
             want: "1".to_string(),
         },
         TestData {
-            s: "2\n1 1".to_string(),
+            s: "2
+1 1"
+            .to_string(),
             want: "3".to_string(),
         },
         TestData {
-            s: "2\n1 2".to_string(),
+            s: "2
+1 2"
+            .to_string(),
             want: "4".to_string(),
         },
         TestData {
-            s: "2\n1 3".to_string(),
+            s: "2
+1 3"
+            .to_string(),
             want: "2".to_string(),
         },
         TestData {
-            s: "2\n1 4".to_string(),
+            s: "2
+1 4"
+            .to_string(),
             want: "2".to_string(),
         },
         TestData {
-            s: "2\n2 4".to_string(),
+            s: "2
+2 4"
+            .to_string(),
             want: "1".to_string(),
         },
         TestData {
-            s: "3\n1 2 4".to_string(),
+            s: "3
+1 2 4"
+                .to_string(),
             want: "8".to_string(),
         },
         TestData {
-            s: "3\n1 2 5".to_string(),
+            s: "3
+1 2 5"
+                .to_string(),
             want: "4".to_string(),
         },
     ] {

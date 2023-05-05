@@ -24,7 +24,13 @@ async fn call_body() -> Result<(), reqwest::Error> {
     Ok(())
 }
 
-#[test]
-fn test_call_body() {
-    let _ = call_body();
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn test_call_body() {
+        let res = call_body().await;
+        assert!(res.is_ok());
+    }
 }
