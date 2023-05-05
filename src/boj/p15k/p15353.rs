@@ -1,0 +1,64 @@
+use std::io::{BufRead, Write};
+
+#[allow(dead_code)]
+fn solve15353(reader: &mut impl BufRead, writer: &mut impl Write) {
+    let mut line = String::new();
+    reader.read_line(&mut line).unwrap();
+
+    let (a, b) = {
+        let mut iter = line.split_whitespace();
+        (iter.next().unwrap(), iter.next().unwrap())
+    };
+
+    let mut res = String::new();
+    let mut carry = 0;
+    let mut a_iter = a.chars().rev();
+    let mut b_iter = b.chars().rev();
+
+    loop {
+        let a_char = a_iter.next();
+        let b_char = b_iter.next();
+
+        if a_char.is_none() && b_char.is_none() {
+            break;
+        }
+
+        let a = a_char.unwrap_or('0').to_digit(10).unwrap();
+        let b = b_char.unwrap_or('0').to_digit(10).unwrap();
+
+        let sum = a + b + carry;
+        carry = sum / 10;
+        res.push_str(&format!("{}", sum % 10));
+    }
+
+    if carry > 0 {
+        res.push_str(&format!("{}", carry));
+    }
+
+    res = res.chars().rev().collect();
+    write!(writer, "{}", res).unwrap();
+}
+
+// https://www.acmicpc.net/problem/15353
+#[test]
+fn test_solve15353() {
+    struct TestData {
+        s: String,
+        want: String,
+    }
+    for data in std::vec![
+        TestData {
+            s: "9223372036854775807 9223372036854775808".to_string(),
+            want: "18446744073709551615".to_string(),
+        },
+        TestData {
+            s: "19223372036854775807 9223372036854775808".to_string(),
+            want: "28446744073709551615".to_string(),
+        },
+    ] {
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
+        solve15353(&mut reader, &mut writer);
+        assert_eq!(data.want, String::from_utf8(writer).unwrap());
+    }
+}
