@@ -2,7 +2,7 @@ extern crate num;
 
 use num::PrimInt;
 
-pub fn recursion() {
+pub(crate) fn recursion() {
     println!("{}", fib(15));
 
     // 64 is i32, overflow have occurred

@@ -1,4 +1,4 @@
-pub fn filter() {
+pub(crate) fn filter() {
     for x in filter_vec(std::vec![1, 2, 3, 4, 5]) {
         println!("{}", x)
     }
