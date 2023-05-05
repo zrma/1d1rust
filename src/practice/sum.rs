@@ -1,4 +1,4 @@
-pub fn sum() {
+pub(crate) fn sum() {
     println!("{}", plus(3, 5));
     println!("{}", agg(0, 100));
 }

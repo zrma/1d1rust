@@ -9,7 +9,7 @@ use recursion::recursion;
 use scope::scope;
 use sum::sum;
 
-pub fn practice() {
+pub(crate) fn practice() {
     println!("Hello, world!");
 
     sum();

@@ -1,15 +1,17 @@
-use crate::utils::parse;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
-fn solve1000(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let lines = reader.lines();
+pub(crate) fn solve1000(reader: &mut impl BufRead, writer: &mut impl Write) {
+    let mut line = String::new();
+    reader.read_line(&mut line).unwrap();
 
-    let arr = parse::str_to_arr(lines);
-    let a = arr[0];
-    let b = arr[1];
+    let nums: Vec<i32> = line
+        .split_whitespace()
+        .map(|num_str| num_str.parse::<i32>().unwrap())
+        .collect();
 
-    let res = a + b;
+    let res = nums[0] + nums[1];
+
     write!(writer, "{}", res).unwrap();
 }
 

@@ -1,1 +1,1 @@
-mod p1000;
+pub(crate) mod p1000;

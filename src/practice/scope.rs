@@ -1,4 +1,4 @@
-pub fn scope() {
+pub(crate) fn scope() {
     let mut tot = 0;
 
     // NOTE - if borrow pointer is initialized here, compile failure has occurred
