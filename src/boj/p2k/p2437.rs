@@ -30,6 +30,7 @@ fn get_unavailable_sum(mut arr: Vec<i32>) -> i32 {
 }
 
 // https://www.acmicpc.net/problem/2437
+// 저울
 #[test]
 fn test_solve2437() {
     struct TestData {

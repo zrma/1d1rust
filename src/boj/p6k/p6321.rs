@@ -22,6 +22,7 @@ pub fn solve6321(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 // https://www.acmicpc.net/problem/6321
+// IBM 빼기 1
 //noinspection SpellCheckingInspection
 #[test]
 fn test_solve6321() {

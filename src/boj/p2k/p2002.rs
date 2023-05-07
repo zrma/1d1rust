@@ -54,6 +54,7 @@ fn count_mismatched_order(in_cars: &[String], out_cars: &[String]) -> usize {
 }
 
 // https://www.acmicpc.net/problem/2002
+// 추월
 #[test]
 fn test_solve2002() {
     struct TestData {

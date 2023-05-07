@@ -23,6 +23,7 @@ fn solve2998(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 // https://www.acmicpc.net/problem/2998
+// 8진수
 #[test]
 fn test_solve2998() {
     struct TestData {

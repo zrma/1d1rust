@@ -40,6 +40,7 @@ fn solve15353(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 // https://www.acmicpc.net/problem/15353
+// 큰 수 A+B (2)
 #[test]
 fn test_solve15353() {
     struct TestData {

@@ -75,6 +75,7 @@ fn turn(d: Direction) -> Direction {
 }
 
 // https://www.acmicpc.net/problem/10157
+// 자리배정
 #[test]
 fn test_solve10157() {
     struct TestData {

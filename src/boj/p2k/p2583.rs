@@ -105,6 +105,7 @@ fn bfs(table: &mut [Vec<bool>], x: i32, y: i32) -> i32 {
 }
 
 // https://www.acmicpc.net/problem/2583
+// 영역 구하기
 #[test]
 fn test_solve2583() {
     struct TestData {

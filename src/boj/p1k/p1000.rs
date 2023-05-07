@@ -16,6 +16,7 @@ pub(crate) fn solve1000(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 // https://www.acmicpc.net/problem/1000
+// A+B
 #[test]
 fn test_solve1000() {
     struct TestData {
