@@ -36,7 +36,7 @@ fn test_solve2437() {
         s: String,
         want: String,
     }
-    for data in std::vec![
+    for data in vec![
         TestData {
             s: "7
 3 1 6 2 7 30 1"

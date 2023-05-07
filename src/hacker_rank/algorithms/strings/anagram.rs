@@ -44,7 +44,7 @@ fn test_anagram() {
         input: String,
         expected: i32,
     }
-    for data in std::vec![
+    for data in vec![
         TestData { input: "".to_string(), expected: -1 },
         TestData { input: "aaabbb".to_string(), expected: 3 },
         TestData { input: "ab".to_string(), expected: 1 },

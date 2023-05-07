@@ -83,108 +83,108 @@ fn test_highest_value_palindrome() {
         k: i32,
         expected: String,
     }
-    for data in std::vec![
+    for data in vec![
         TestData {
             s: "3943".to_string(),
             n: 4,
             k: 1,
-            expected: "3993".to_string()
+            expected: "3993".to_string(),
         },
         TestData {
             s: "092282".to_string(),
             n: 6,
             k: 3,
-            expected: "992299".to_string()
+            expected: "992299".to_string(),
         },
         TestData {
             s: "0011".to_string(),
             n: 4,
             k: 1,
-            expected: "-1".to_string()
+            expected: "-1".to_string(),
         },
         TestData {
             s: "1100".to_string(),
             n: 4,
             k: 1,
-            expected: "-1".to_string()
+            expected: "-1".to_string(),
         },
         TestData {
             s: "".to_string(),
             n: 0,
             k: 0,
-            expected: "-1".to_string()
+            expected: "-1".to_string(),
         },
         TestData {
             s: "1".to_string(),
             n: 1,
             k: 0,
-            expected: "1".to_string()
+            expected: "1".to_string(),
         },
         TestData {
             s: "1".to_string(),
             n: 1,
             k: 1,
-            expected: "9".to_string()
+            expected: "9".to_string(),
         },
         TestData {
             s: "01".to_string(),
             n: 2,
             k: 1,
-            expected: "11".to_string()
+            expected: "11".to_string(),
         },
         TestData {
             s: "00".to_string(),
             n: 2,
             k: 2,
-            expected: "99".to_string()
+            expected: "99".to_string(),
         },
         TestData {
             s: "102".to_string(),
             n: 3,
             k: 2,
-            expected: "909".to_string()
+            expected: "909".to_string(),
         },
         TestData {
             s: "12321".to_string(),
             n: 5,
             k: 1,
-            expected: "12921".to_string()
+            expected: "12921".to_string(),
         },
         TestData {
             s: "11111111".to_string(),
             n: 8,
             k: 4,
-            expected: "99111199".to_string()
+            expected: "99111199".to_string(),
         },
         TestData {
             s: "11111111".to_string(),
             n: 8,
             k: 5,
-            expected: "99111199".to_string()
+            expected: "99111199".to_string(),
         },
         TestData {
             s: "1111111".to_string(),
             n: 7,
             k: 5,
-            expected: "9919199".to_string()
+            expected: "9919199".to_string(),
         },
         TestData {
             s: "11111111".to_string(),
             n: 8,
             k: 1,
-            expected: "11111111".to_string()
+            expected: "11111111".to_string(),
         },
         TestData {
             s: "1111111".to_string(),
             n: 7,
             k: 1,
-            expected: "1119111".to_string()
+            expected: "1119111".to_string(),
         },
         TestData {
             s: extremely_long_given,
             n: 77543,
             k: 58343,
-            expected: extremely_long_expected
+            expected: extremely_long_expected,
         },
     ] {
         let actual = highest_value_palindrome(data.s, data.n, data.k);

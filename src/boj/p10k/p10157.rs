@@ -85,14 +85,14 @@ fn test_solve10157() {
         want_x: i32,
         want_y: i32,
     }
-    for data in std::vec![
+    for data in vec![
         TestData {
             col: 7,
             row: 6,
             k: 1,
             want_ok: true,
             want_x: 1,
-            want_y: 1
+            want_y: 1,
         },
         TestData {
             col: 7,
@@ -100,7 +100,7 @@ fn test_solve10157() {
             k: 6,
             want_ok: true,
             want_x: 1,
-            want_y: 6
+            want_y: 6,
         },
         TestData {
             col: 7,
@@ -108,7 +108,7 @@ fn test_solve10157() {
             k: 7,
             want_ok: true,
             want_x: 2,
-            want_y: 6
+            want_y: 6,
         },
         TestData {
             col: 7,
@@ -116,7 +116,7 @@ fn test_solve10157() {
             k: 11,
             want_ok: true,
             want_x: 6,
-            want_y: 6
+            want_y: 6,
         },
         TestData {
             col: 7,
@@ -124,7 +124,7 @@ fn test_solve10157() {
             k: 12,
             want_ok: true,
             want_x: 7,
-            want_y: 6
+            want_y: 6,
         },
         TestData {
             col: 7,
@@ -132,7 +132,7 @@ fn test_solve10157() {
             k: 13,
             want_ok: true,
             want_x: 7,
-            want_y: 5
+            want_y: 5,
         },
         TestData {
             col: 7,
@@ -140,7 +140,7 @@ fn test_solve10157() {
             k: 17,
             want_ok: true,
             want_x: 7,
-            want_y: 1
+            want_y: 1,
         },
         TestData {
             col: 7,
@@ -148,7 +148,7 @@ fn test_solve10157() {
             k: 87,
             want_ok: false,
             want_x: 0,
-            want_y: 0
+            want_y: 0,
         },
         TestData {
             col: 100,
@@ -156,7 +156,7 @@ fn test_solve10157() {
             k: 3000,
             want_ok: true,
             want_x: 9,
-            want_y: 64
+            want_y: 64,
         },
         TestData {
             col: 10000,
@@ -164,7 +164,7 @@ fn test_solve10157() {
             k: 99999999,
             want_ok: true,
             want_x: 5001,
-            want_y: 5001
+            want_y: 5001,
         },
     ] {
         let (got_x, got_y, got_ok) = solve10157(data.col, data.row, data.k);

@@ -1,5 +1,5 @@
 pub(crate) fn filter() {
-    for x in filter_vec(std::vec![1, 2, 3, 4, 5]) {
+    for x in filter_vec(vec![1, 2, 3, 4, 5]) {
         println!("{}", x)
     }
 }
@@ -11,5 +11,5 @@ fn filter_vec(mut v: Vec<i32>) -> Vec<i32> {
 
 #[test]
 fn test_filter() {
-    assert_eq!(filter_vec(std::vec![1, 2, 3, 4, 5]), std::vec![1, 3, 5])
+    assert_eq!(filter_vec(vec![1, 2, 3, 4, 5]), vec![1, 3, 5])
 }

@@ -14,20 +14,12 @@ fn diagonal_difference(arr: Vec<Vec<i32>>) -> i32 {
 // https://www.hackerrank.com/challenges/diagonal-difference/problem
 #[test]
 fn test_diagonal_difference() {
-    let arr = std::vec![
-        std::vec![11, 2, 4],
-        std::vec![4, 5, 6],
-        std::vec![10, 8, -12],
-    ];
+    let arr = vec![vec![11, 2, 4], vec![4, 5, 6], vec![10, 8, -12]];
     let actual = diagonal_difference(arr);
     let expected: i32 = 15;
     assert_eq!(actual, expected);
 
-    let arr = std::vec![
-        std::vec![4, 2, 11],
-        std::vec![4, 5, 6],
-        std::vec![-12, 8, 10],
-    ];
+    let arr = vec![vec![4, 2, 11], vec![4, 5, 6], vec![-12, 8, 10]];
     let actual = diagonal_difference(arr);
     let expected: i32 = 15;
     assert_eq!(actual, expected);

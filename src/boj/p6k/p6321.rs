@@ -29,7 +29,7 @@ fn test_solve6321() {
         s: String,
         want: String,
     }
-    for data in std::vec![TestData {
+    for data in vec![TestData {
         s: "2
 HAL
 SWERCZ"
@@ -42,8 +42,7 @@ TXFSDA
 
 "
         .to_string(),
-    },]
-    {
+    }] {
         use std::io::Cursor;
         let mut reader = Cursor::new(data.s);
         let mut writer = Cursor::new(Vec::new());
