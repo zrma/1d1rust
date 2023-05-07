@@ -36,6 +36,7 @@ fn solve1871(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 // https://www.acmicpc.net/problem/1871
+// 좋은 자동차 번호판
 #[test]
 fn test_solve1871() {
     struct TestData {
