@@ -28,7 +28,7 @@ fn test_lotto_ranking_min_max() {
         win_numbers: Vec<i32>,
         want: Vec<i32>,
     }
-    for data in std::vec![
+    for data in vec![
         TestData {
             lotto_numbers: vec![44, 1, 0, 0, 31, 25],
             win_numbers: vec![31, 10, 45, 1, 6, 19],

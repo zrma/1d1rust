@@ -25,16 +25,13 @@ use std::borrow::BorrowMut;
 #[test]
 fn test_get_total_x() {
     {
-        let actual = get_total_x(
-            std::vec![2, 4].borrow_mut(),
-            std::vec![16, 32, 96].borrow_mut(),
-        );
+        let actual = get_total_x(vec![2, 4].borrow_mut(), vec![16, 32, 96].borrow_mut());
         let expected: i32 = 3;
         assert_eq!(actual, expected);
     }
 
     {
-        let actual = get_total_x(std::vec![3, 4].borrow_mut(), std::vec![24, 48].borrow_mut());
+        let actual = get_total_x(vec![3, 4].borrow_mut(), vec![24, 48].borrow_mut());
         let expected: i32 = 2;
         assert_eq!(actual, expected);
     }

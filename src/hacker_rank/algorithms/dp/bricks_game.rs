@@ -52,30 +52,30 @@ fn test_bricks_game() {
         arr: Vec<i32>,
         expected: i64,
     }
-    for data in std::vec![
+    for data in vec![
         TestData {
             arr: vec![1, 2, 3],
-            expected: 6
+            expected: 6,
         },
         TestData {
             arr: vec![1, 2, 3, 4],
-            expected: 6
+            expected: 6,
         },
         TestData {
             arr: vec![1, 2, 3, 4, 5],
-            expected: 6
+            expected: 6,
         },
         TestData {
             arr: vec![999, 1, 1, 1, 0],
-            expected: 1001
+            expected: 1001,
         },
         TestData {
             arr: vec![0, 1, 1, 1, 999],
-            expected: 999
+            expected: 999,
         },
         TestData {
             arr: vec![0, 1, 1, 1, 999, 999],
-            expected: 1001
+            expected: 1001,
         },
     ] {
         let actual = bricks_game(data.arr);
@@ -142,7 +142,7 @@ fn test_bricks_game_bench() {
         l: usize,
         e: i64,
     }
-    let expected = std::vec![
+    let expected = vec![
         TestData { l: 1000, e: 249147 },
         TestData { l: 1000, e: 251633 },
         TestData { l: 1000, e: 249302 },
@@ -150,15 +150,15 @@ fn test_bricks_game_bench() {
         TestData { l: 1000, e: 253105 },
         TestData {
             l: 100000,
-            e: 249791261588
+            e: 249791261588,
         },
         TestData {
             l: 100000,
-            e: 249894676936
+            e: 249894676936,
         },
         TestData {
             l: 100000,
-            e: 250224672758
+            e: 250224672758,
         },
     ];
     assert_eq!(arr.len(), expected.len());

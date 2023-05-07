@@ -37,7 +37,7 @@ fn test_substrings() {
         input: String,
         expected: i64,
     }
-    for data in std::vec![
+    for data in vec![
         TestData {
             input: "16".to_string(),
             expected: 23,

@@ -48,7 +48,7 @@ fn test_candies() {
         arr: Vec<i32>,
         expected: i64,
     }
-    for data in std::vec![
+    for data in vec![
         TestData {
             arr: vec![1, 2, 2],
             expected: 4,

@@ -6,7 +6,7 @@ fn simple_array_sum(arr: Vec<i32>) -> i32 {
 // https://www.hackerrank.com/challenges/simple-array-sum/problem
 #[test]
 fn test_simple_array_sum() {
-    let arr = std::vec![1, 2, 3, 4, 10, 11];
+    let arr = vec![1, 2, 3, 4, 10, 11];
     let expected = 31;
     let actual = simple_array_sum(arr);
     assert_eq!(actual, expected);

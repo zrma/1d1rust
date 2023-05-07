@@ -60,7 +60,7 @@ fn test_solve2002() {
         s: String,
         want: String,
     }
-    for (i, data) in std::vec![
+    for (i, data) in vec![
         TestData {
             s: "5
 1

@@ -17,7 +17,7 @@ fn mini_max_sum(arr: Vec<i64>) -> (i64, i64) {
 // https://www.hackerrank.com/challenges/mini-max-sum/problem
 #[test]
 fn test_mini_max_sum() {
-    let arr = std::vec![1, 2, 3, 4, 5];
+    let arr = vec![1, 2, 3, 4, 5];
     let (exclude_max, exclude_min) = mini_max_sum(arr);
     assert_eq!(exclude_max, 10);
     assert_eq!(exclude_min, 14);

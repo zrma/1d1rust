@@ -22,7 +22,7 @@ fn test_solve1000() {
         s: String,
         want: String,
     }
-    for data in std::vec![
+    for data in vec![
         TestData {
             s: "1 2".to_string(),
             want: "3".to_string(),

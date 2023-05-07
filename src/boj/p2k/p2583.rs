@@ -111,7 +111,7 @@ fn test_solve2583() {
         s: String,
         want: String,
     }
-    for data in std::vec![
+    for data in vec![
         TestData {
             s: "5 7 3
 0 2 4 4
