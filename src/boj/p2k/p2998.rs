@@ -1,11 +1,9 @@
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2998(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut line = String::new();
-    reader.read_line(&mut line).unwrap();
-
-    let line = line.trim_end();
+    let line = read_line(reader);
 
     let padding = (3 - (line.len() % 3)) % 3;
     let padded_line = format!("{:0>width$}", line, width = line.len() + padding);

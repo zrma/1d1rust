@@ -1,11 +1,10 @@
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 pub(crate) fn solve2437(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut line = String::new();
-    reader.read_line(&mut line).unwrap();
-    line.clear();
-    reader.read_line(&mut line).unwrap();
+    read_line(reader);
+    let line = read_line(reader);
 
     let arr = line
         .split_whitespace()

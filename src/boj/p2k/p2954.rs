@@ -1,17 +1,16 @@
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2954(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut line = String::new();
-    reader.read_line(&mut line).unwrap();
-    let line = line.trim();
+    let line = read_line(reader);
 
-    let res = replace_vowels(&line);
+    let res = replace_vowels(line);
 
     write!(writer, "{}", res).unwrap();
 }
 
-fn replace_vowels(input: &str) -> String {
+fn replace_vowels(input: String) -> String {
     let mut res = String::new();
     let mut chars = input.chars().peekable();
 
