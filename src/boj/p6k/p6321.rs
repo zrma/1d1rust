@@ -1,9 +1,9 @@
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 pub fn solve6321(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut line = String::new();
-    reader.read_line(&mut line).unwrap();
+    let mut line = read_line(reader);
 
     let n = line.trim().parse::<usize>().unwrap();
 

@@ -1,3 +1,4 @@
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -10,21 +11,15 @@ fn solve2002(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn read_input(reader: &mut impl BufRead) -> (Vec<String>, Vec<String>) {
-    let n = read_line_to_string(reader).parse::<usize>().unwrap();
+    let n = read_line(reader).parse::<usize>().unwrap();
     let in_cars = read_cars(reader, n);
     let out_cars = read_cars(reader, n);
 
     (in_cars, out_cars)
 }
 
-fn read_line_to_string(reader: &mut impl BufRead) -> String {
-    let mut line = String::new();
-    reader.read_line(&mut line).unwrap();
-    line.trim().to_string()
-}
-
 fn read_cars(reader: &mut impl BufRead, n: usize) -> Vec<String> {
-    (0..n).map(|_| read_line_to_string(reader)).collect()
+    (0..n).map(|_| read_line(reader)).collect()
 }
 
 fn count_mismatched_order(in_cars: &[String], out_cars: &[String]) -> usize {

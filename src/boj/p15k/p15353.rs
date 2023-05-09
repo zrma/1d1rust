@@ -1,9 +1,9 @@
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve15353(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut line = String::new();
-    reader.read_line(&mut line).unwrap();
+    let line = read_line(reader);
 
     let (a, b) = {
         let mut iter = line.split_whitespace();
