@@ -2,7 +2,7 @@ use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
-pub(crate) fn solve2437(reader: &mut impl BufRead, writer: &mut impl Write) {
+fn solve2437(reader: &mut impl BufRead, writer: &mut impl Write) {
     read_line(reader);
     let line = read_line(reader);
 
