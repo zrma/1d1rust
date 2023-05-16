@@ -1,4 +1,4 @@
-//noinspection SpellCheckingInspection
+// noinspection SpellCheckingInspection
 extern crate reqwest;
 
 use std::collections::HashMap;
