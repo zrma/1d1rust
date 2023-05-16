@@ -27,7 +27,7 @@ fn can_convert(s: &str, t: &str) -> bool {
 
 // https://www.acmicpc.net/problem/12919
 // A와 B 2
-//noinspection SpellCheckingInspection
+// noinspection SpellCheckingInspection
 #[test]
 fn test_solve12919() {
     struct TestData {

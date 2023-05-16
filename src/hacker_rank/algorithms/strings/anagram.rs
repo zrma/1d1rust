@@ -36,7 +36,7 @@ fn anagram(s: String) -> i32 {
     length - eq
 }
 
-//noinspection SpellCheckingInspection
+// noinspection SpellCheckingInspection
 // https://www.hackerrank.com/challenges/anagram/problem
 #[test]
 fn test_anagram() {

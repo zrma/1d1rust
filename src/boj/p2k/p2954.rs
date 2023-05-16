@@ -32,7 +32,7 @@ fn is_vowel(c: char) -> bool {
 
 // https://www.acmicpc.net/problem/2954
 // 창영이의 일기장
-//noinspection SpellCheckingInspection
+// noinspection SpellCheckingInspection
 #[test]
 fn test_solve2954() {
     struct TestData {

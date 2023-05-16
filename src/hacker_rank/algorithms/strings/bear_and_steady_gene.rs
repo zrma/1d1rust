@@ -43,19 +43,19 @@ fn acc(mut arr: Vec<i32>, c: char, step: i32) -> Vec<i32> {
     arr
 }
 
-//noinspection SpellCheckingInspection
+// noinspection SpellCheckingInspection
 // https://www.hackerrank.com/challenges/bear-and-steady-gene/problem
 #[test]
 fn test_steady_gene() {
     {
-        //noinspection SpellCheckingInspection
+        // noinspection SpellCheckingInspection
         let actual = steady_gene("GAAATAAA");
         let expected: i32 = 5;
         assert_eq!(actual, expected);
     }
 
     {
-        //noinspection SpellCheckingInspection
+        // noinspection SpellCheckingInspection
         let actual = steady_gene("TGATGCCGTCCCCTCAACTTGAGTGCTCCTAATGCGTTGC");
         let expected: i32 = 5;
         assert_eq!(actual, expected);

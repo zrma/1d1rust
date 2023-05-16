@@ -15,7 +15,7 @@ fn disguise(clothes: Vec<Vec<String>>) -> i32 {
     result - 1
 }
 
-//noinspection SpellCheckingInspection
+// noinspection SpellCheckingInspection
 // https://programmers.co.kr/learn/courses/30/lessons/42578?language=go
 #[test]
 fn test_disguise() {
