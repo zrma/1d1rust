@@ -5,6 +5,7 @@ mod p15k;
 mod p16k;
 pub(crate) mod p1k;
 mod p2k;
+mod p4k;
 mod p5k;
 mod p6k;
 mod p7k;
