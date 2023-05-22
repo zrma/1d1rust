@@ -42,7 +42,7 @@ x 0
     .enumerate()
     {
         use std::io::Cursor;
-        let mut reader = Cursor::new(data.s.as_bytes());
+        let mut reader = Cursor::new(&data.s);
         let mut writer = Cursor::new(Vec::new());
         solve2386(&mut reader, &mut writer);
 

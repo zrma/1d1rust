@@ -52,7 +52,7 @@ fn test_solve2954() {
 
     for (i, data) in tests.iter().enumerate() {
         use std::io::Cursor;
-        let mut reader = Cursor::new(data.s.clone());
+        let mut reader = Cursor::new(&data.s);
         let mut writer = Cursor::new(Vec::new());
         solve2954(&mut reader, &mut writer);
 

@@ -107,7 +107,7 @@ wallet
     .enumerate()
     {
         use std::io::Cursor;
-        let mut reader = Cursor::new(data.s.clone());
+        let mut reader = Cursor::new(&data.s);
         let mut writer = Cursor::new(Vec::new());
         solve20920(&mut reader, &mut writer);
 
