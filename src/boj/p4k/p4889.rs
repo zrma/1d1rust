@@ -55,7 +55,7 @@ fn test_4889() {
     .enumerate()
     {
         use std::io::Cursor;
-        let mut reader = Cursor::new(data.s.clone());
+        let mut reader = Cursor::new(&data.s);
         let mut writer = Cursor::new(Vec::new());
         solve4889(&mut reader, &mut writer);
 
