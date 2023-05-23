@@ -112,7 +112,7 @@ fn test_solve2583() {
         s: String,
         want: String,
     }
-    for data in vec![
+    for (i, data) in vec![
         TestData {
             s: "5 7 3
 0 2 4 4
@@ -145,13 +145,15 @@ fn test_solve2583() {
 100 9800 "
                 .to_string(),
         },
-    ] {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(data.s);
-        let mut writer = Cursor::new(Vec::new());
+    ]
+    .iter()
+    .enumerate()
+    {
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve2583(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(data.want, got);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

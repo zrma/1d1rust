@@ -23,7 +23,7 @@ fn test_solve1000() {
         s: String,
         want: String,
     }
-    for data in vec![
+    for (i, data) in vec![
         TestData {
             s: "1 2".to_string(),
             want: "3".to_string(),
@@ -52,13 +52,15 @@ fn test_solve1000() {
             s: "9 1".to_string(),
             want: "10".to_string(),
         },
-    ] {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(data.s);
-        let mut writer = Cursor::new(Vec::new());
+    ]
+    .iter()
+    .enumerate()
+    {
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve1000(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(data.want, got);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

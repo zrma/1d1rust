@@ -78,7 +78,7 @@ fn test_solve7490() {
         s: String,
         want: String,
     }
-    for data in vec![TestData {
+    for (i, data) in vec![TestData {
         s: "2
 3
 7"
@@ -94,13 +94,15 @@ fn test_solve7490() {
 
 "
         .to_string(),
-    }] {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(data.s);
-        let mut writer = Cursor::new(Vec::new());
+    }]
+    .iter()
+    .enumerate()
+    {
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve7490(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(data.want, got);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

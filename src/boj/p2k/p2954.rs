@@ -39,7 +39,7 @@ fn test_solve2954() {
         s: String,
         want: String,
     }
-    let tests = vec![
+    for (i, data) in vec![
         TestData {
             s: "zepelepenapa papapripikapa".to_string(),
             want: "zelena paprika".to_string(),
@@ -48,15 +48,15 @@ fn test_solve2954() {
             s: "bapas jepe doposapadnapa opovapa kepemipijapa ".to_string(),
             want: "bas je dosadna ova kemija".to_string(),
         },
-    ];
-
-    for (i, data) in tests.iter().enumerate() {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(&data.s);
-        let mut writer = Cursor::new(Vec::new());
+    ]
+    .iter()
+    .enumerate()
+    {
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve2954(&mut reader, &mut writer);
 
-        let res = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(res, data.want, "case {} failed", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

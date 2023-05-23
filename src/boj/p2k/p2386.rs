@@ -21,7 +21,7 @@ fn solve2386(reader: &mut impl BufRead, writer: &mut impl Write) {
 // https://www.acmicpc.net/problem/2386
 // 도비의 영어 공부
 #[test]
-fn test_2386() {
+fn test_solve2386() {
     struct TestData {
         s: String,
         want: String,
@@ -41,12 +41,11 @@ x 0
     .iter()
     .enumerate()
     {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(&data.s);
-        let mut writer = Cursor::new(Vec::new());
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve2386(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(got, data.want, "case {}", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

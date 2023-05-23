@@ -23,7 +23,7 @@ fn solve3449(reader: &mut impl BufRead, writer: &mut impl Write) {
 // https://www.acmicpc.net/problem/3449
 // 해밍 거리
 #[test]
-fn test_3449() {
+fn test_solve3449() {
     struct TestData {
         s: String,
         want: String,
@@ -49,12 +49,11 @@ Hamming distance is 2.
     .iter()
     .enumerate()
     {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(&data.s);
-        let mut writer = Cursor::new(vec![]);
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve3449(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(got, data.want, "case {}", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }
