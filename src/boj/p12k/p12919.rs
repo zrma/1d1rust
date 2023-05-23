@@ -57,12 +57,11 @@ ABBA"
     .iter()
     .enumerate()
     {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(&data.s);
-        let mut writer = Cursor::new(Vec::new());
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve12919(&mut reader, &mut writer);
 
-        let res = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(res, data.want, "failed at {}th try", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

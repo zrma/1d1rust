@@ -56,12 +56,11 @@ fn test_solve12813() {
     .into_iter()
     .enumerate()
     {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(data.s);
-        let mut writer = Cursor::new(Vec::new());
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve12813(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(got, data.want, "case {}", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

@@ -56,7 +56,7 @@ fn sort_words(counts: BTreeMap<String, i32>) -> Vec<(String, i32)> {
 // https://www.acmicpc.net/problem/20920
 // 영단어 암기는 괴로워
 #[test]
-fn test_20920() {
+fn test_solve20920() {
     struct TestData {
         s: String,
         want: String,
@@ -106,12 +106,11 @@ wallet
     .iter()
     .enumerate()
     {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(&data.s);
-        let mut writer = Cursor::new(Vec::new());
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve20920(&mut reader, &mut writer);
 
-        let res = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(res, data.want, "case: {}", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

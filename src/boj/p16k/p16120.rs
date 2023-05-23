@@ -28,7 +28,7 @@ fn solve16120(reader: &mut impl BufRead, writer: &mut impl Write) {
 // noinspection SpellCheckingInspection
 // PPAP
 #[test]
-fn test_16120() {
+fn test_solve16120() {
     struct TestData {
         s: String,
         want: String,
@@ -50,12 +50,11 @@ fn test_16120() {
     .iter()
     .enumerate()
     {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(&data.s);
-        let mut writer = Cursor::new(Vec::new());
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve16120(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(data.want, got, "case {}", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

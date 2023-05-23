@@ -34,7 +34,7 @@ fn solve4889(reader: &mut impl BufRead, writer: &mut impl Write) {
 // https://www.acmicpc.net/problem/4889
 // 안정적인 문자열
 #[test]
-fn test_4889() {
+fn test_solve4889() {
     struct TestData {
         s: String,
         want: String,
@@ -54,12 +54,11 @@ fn test_4889() {
     .iter()
     .enumerate()
     {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(&data.s);
-        let mut writer = Cursor::new(Vec::new());
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve4889(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(data.want, got, "case {}", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

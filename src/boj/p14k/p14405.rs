@@ -24,7 +24,7 @@ fn solve14405(reader: &mut impl BufRead, writer: &mut impl Write) {
 // 피카츄
 // noinspection SpellCheckingInspection
 #[test]
-fn test_14405() {
+fn test_solve14405() {
     struct TestData {
         s: String,
         want: String,
@@ -78,12 +78,11 @@ fn test_14405() {
     .iter()
     .enumerate()
     {
-        use std::io::Cursor;
-        let mut reader = Cursor::new(&data.s);
-        let mut writer = Cursor::new(Vec::new());
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
         solve14405(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer.into_inner()).unwrap();
-        assert_eq!(got, data.want, "case {}", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

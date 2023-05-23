@@ -36,7 +36,7 @@ fn test_solve2437() {
         s: String,
         want: String,
     }
-    for data in vec![
+    for (i, data) in vec![
         TestData {
             s: "7
 3 1 6 2 7 30 1"
@@ -109,13 +109,15 @@ fn test_solve2437() {
                 .to_string(),
             want: "4".to_string(),
         },
-    ] {
-        use std::io::Cursor;
-        let mut cursor = Cursor::new(data.s);
-        let mut output: Vec<u8> = Vec::new();
-        solve2437(&mut cursor, &mut output);
+    ]
+    .iter()
+    .enumerate()
+    {
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
+        solve2437(&mut reader, &mut writer);
 
-        let got = String::from_utf8(output).unwrap();
-        assert_eq!(data.want, got);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

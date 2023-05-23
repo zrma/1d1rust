@@ -23,7 +23,7 @@ fn test_solve5789() {
         s: String,
         want: String,
     }
-    for data in vec![TestData {
+    for (i, data) in vec![TestData {
         s: "3
 00100010
 01010101
@@ -34,13 +34,15 @@ Do-it-Not
 Do-it
 "
         .to_string(),
-    }] {
-        use std::io::Cursor;
-        let mut cursor = Cursor::new(data.s);
-        let mut output: Vec<u8> = Vec::new();
-        solve5789(&mut cursor, &mut output);
+    }]
+    .iter()
+    .enumerate()
+    {
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
+        solve5789(&mut reader, &mut writer);
 
-        let got = String::from_utf8(output).unwrap();
-        assert_eq!(data.want, got);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }
