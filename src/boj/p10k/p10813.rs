@@ -2,7 +2,7 @@ use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
-fn solve10810(reader: &mut impl BufRead, writer: &mut impl Write) {
+fn solve10813(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (n, m) = {
         let s = read_line(reader);
         let mut iter = s.split_whitespace();
@@ -12,26 +12,22 @@ fn solve10810(reader: &mut impl BufRead, writer: &mut impl Write) {
         )
     };
 
-    let mut baskets = vec![0; n];
+    let mut balls = (1..=n).collect::<Vec<_>>();
 
     for _ in 0..m {
-        let s = read_line(reader);
-
-        let (i, j, k) = {
+        let (i, j) = {
+            let s = read_line(reader);
             let mut iter = s.split_whitespace();
             (
-                iter.next().unwrap().parse::<usize>().unwrap(),
                 iter.next().unwrap().parse::<usize>().unwrap(),
                 iter.next().unwrap().parse::<usize>().unwrap(),
             )
         };
 
-        for idx in baskets.iter_mut().take(j).skip(i - 1) {
-            *idx = k;
-        }
+        balls.swap(i - 1, j - 1);
     }
 
-    let output = baskets
+    let output = balls
         .iter()
         .map(|&num| num.to_string())
         .collect::<Vec<String>>()
@@ -40,29 +36,29 @@ fn solve10810(reader: &mut impl BufRead, writer: &mut impl Write) {
     write!(writer, "{}", output).unwrap();
 }
 
-// https://www.acmicpc.net/problem/10810
-// 공 넣기
+// https://www.acmicpc.net/problem/10813
+// 공 바꾸기
 #[test]
-fn test_solve10810() {
+fn test_solve10813() {
     struct TestData {
         s: String,
         want: String,
     }
     for (i, data) in vec![TestData {
         s: "5 4
-1 2 3
-3 4 4
-1 4 1
-2 2 2"
-            .to_string(),
-        want: "1 2 1 1 0".to_string(),
+1 2
+3 4
+1 4
+2 2"
+        .to_string(),
+        want: "3 1 4 2 5".to_string(),
     }]
     .iter()
     .enumerate()
     {
         let mut reader = data.s.as_bytes();
         let mut writer = vec![];
-        solve10810(&mut reader, &mut writer);
+        solve10813(&mut reader, &mut writer);
 
         let got = String::from_utf8(writer).unwrap();
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
