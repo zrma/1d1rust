@@ -9,6 +9,7 @@ mod p17k;
 pub(crate) mod p1k;
 mod p20k;
 mod p25k;
+mod p27k;
 mod p2k;
 mod p3k;
 mod p4k;
