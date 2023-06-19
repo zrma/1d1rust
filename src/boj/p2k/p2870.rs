@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2870(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n = read_line(reader).parse::<i64>().unwrap();
 
     let mut nums = Vec::new();
     for _ in 0..n {

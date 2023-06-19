@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 fn solve2720(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
     reader.read_line(&mut line).unwrap();
-    let t = line.trim().parse::<usize>().unwrap();
+    let t = line.trim().parse::<i64>().unwrap();
 
     for _ in 0..t {
         let mut line = String::new();

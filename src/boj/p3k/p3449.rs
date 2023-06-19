@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve3449(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_line(reader).parse::<usize>().unwrap();
+    let t = read_line(reader).parse::<i64>().unwrap();
 
     for _ in 0..t {
         let s1 = read_line(reader);

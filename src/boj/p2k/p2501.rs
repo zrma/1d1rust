@@ -5,8 +5,8 @@ use std::io::{BufRead, Write};
 fn solve2501(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
     let mut iter = s.split_whitespace();
-    let n = iter.next().unwrap().parse::<usize>().unwrap();
-    let k = iter.next().unwrap().parse::<usize>().unwrap();
+    let n = iter.next().unwrap().parse::<i64>().unwrap();
+    let k = iter.next().unwrap().parse::<i64>().unwrap();
 
     let mut cnt = 0;
     for i in 1..=n {

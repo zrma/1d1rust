@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve1871(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = read_line(reader);
 
-    let n = line.trim().parse::<usize>().unwrap();
+    let n = line.trim().parse::<i64>().unwrap();
     for _ in 0..n {
         line.clear();
         reader.read_line(&mut line).unwrap();
@@ -22,7 +22,7 @@ fn solve1871(reader: &mut impl BufRead, writer: &mut impl Write) {
             .map(|(i, c)| ((c as u8 - b'A') as usize) * 26usize.pow(i as u32))
             .sum::<usize>();
 
-        let right_value = right.trim().parse::<usize>().unwrap();
+        let right_value = right.trim().parse::<i64>().unwrap();
 
         let diff = left_value as i32 - right_value as i32;
         let result = if (-100..=100).contains(&diff) {
