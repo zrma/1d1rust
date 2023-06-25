@@ -1,4 +1,3 @@
-use num::integer::lcm;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -14,6 +13,21 @@ fn solve13241(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = lcm(a, b);
     write!(writer, "{}", res).unwrap();
+}
+
+fn lcm(a: i64, b: i64) -> i64 {
+    a * b / gcd(a, b)
+}
+
+fn gcd(a: i64, b: i64) -> i64 {
+    let mut a = a;
+    let mut b = b;
+    while b != 0 {
+        let r = a % b;
+        a = b;
+        b = r;
+    }
+    a
 }
 
 // https://www.acmicpc.net/problem/13241
