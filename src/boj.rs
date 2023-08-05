@@ -6,6 +6,7 @@ mod p14k;
 mod p15k;
 mod p16k;
 mod p17k;
+mod p18k;
 mod p19k;
 pub(crate) mod p1k;
 mod p20k;
