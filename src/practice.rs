@@ -9,6 +9,7 @@ use recursion::recursion;
 use scope::scope;
 use sum::sum;
 
+#[allow(dead_code)]
 pub(crate) fn practice() {
     println!("Hello, world!");
 
