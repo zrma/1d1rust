@@ -14,4 +14,5 @@ mod p2852;
 mod p2870;
 mod p2903;
 mod p2954;
+mod p2992;
 mod p2998;
