@@ -28,7 +28,7 @@ fn solve3023(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 }
 
-fn read_coord(reader: &mut impl BufRead) -> (usize, usize) {
+pub fn read_coord(reader: &mut impl BufRead) -> (usize, usize) {
     let s = read_line(reader);
     let mut iter = s.split_whitespace();
     let a = iter.next().unwrap().parse::<usize>().unwrap();
