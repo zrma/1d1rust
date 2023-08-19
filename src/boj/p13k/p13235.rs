@@ -1,13 +1,15 @@
+use crate::utils::functions::check_palindrome_nth;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve13235(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
+    let chars = s.chars().collect::<Vec<_>>();
 
     let mut ans = true;
     for i in 0..s.len() / 2 {
-        if s.chars().nth(i).unwrap() != s.chars().nth(s.len() - 1 - i).unwrap() {
+        if !check_palindrome_nth(&chars, i) {
             ans = false;
             break;
         }
