@@ -6,18 +6,22 @@ fn solve17202(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
     let t = read_line(reader);
 
+    let arr_s = s.as_bytes();
+    let arr_t = t.as_bytes();
+
     let mut ans = String::new();
     for i in 0..8 {
-        ans.push(s.chars().nth(i).unwrap());
-        ans.push(t.chars().nth(i).unwrap());
+        ans.push(arr_s[i] as char);
+        ans.push(arr_t[i] as char);
     }
 
     while ans.len() > 2 {
+        let arr_ans = ans.as_bytes();
         let mut tmp = String::new();
         for i in 0..ans.len() - 1 {
-            let a = ans.chars().nth(i).unwrap();
-            let b = ans.chars().nth(i + 1).unwrap();
-            tmp.push_str(&((a as u8 + b as u8 - 2 * b'0') % 10).to_string());
+            let a = arr_ans[i];
+            let b = arr_ans[i + 1];
+            tmp.push_str(&((a + b - 2 * b'0') % 10).to_string());
         }
         ans = tmp;
     }

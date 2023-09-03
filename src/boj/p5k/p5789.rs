@@ -5,7 +5,8 @@ use std::io::{BufRead, Write};
 pub(crate) fn solve5789(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t: usize = read_line(reader).parse().unwrap();
     for _ in 0..t {
-        let line_chars: Vec<char> = read_line(reader).chars().collect();
+        let s = read_line(reader);
+        let line_chars = s.as_bytes();
         let len = line_chars.len();
         let mid = len / 2;
         let left = line_chars[mid - 1];

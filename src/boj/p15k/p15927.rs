@@ -5,15 +5,15 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve15927(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
-    let chars = s.chars().collect::<Vec<_>>();
+    let chars = s.as_bytes();
 
     let mut is_palindrome = true;
     let mut is_all_same = true;
 
-    let first = s.chars().next().unwrap();
+    let first = chars[0];
 
     for i in 0..s.len() / 2 + 1 {
-        if !check_palindrome_nth(&chars, i) {
+        if !check_palindrome_nth(chars, i) {
             is_palindrome = false;
         }
         if chars[i] != first {
