@@ -10,13 +10,13 @@ fn solve9324(reader: &mut impl BufRead, writer: &mut impl Write) {
         let mut cnt = vec![0; 26];
         let mut is_fake = false;
 
-        let chars = s.chars().collect::<Vec<_>>();
+        let chars = s.as_bytes();
         let len = chars.len();
 
         let mut idx = 0;
         while idx < len {
             let ch = chars[idx];
-            let ch_idx = (ch as u8 - b'A') as usize;
+            let ch_idx = (ch - b'A') as usize;
             cnt[ch_idx] += 1;
 
             if cnt[ch_idx] % 3 == 0 {

@@ -20,7 +20,7 @@ fn solve3035(reader: &mut impl BufRead, writer: &mut impl Write) {
         (0..zr).for_each(|_| {
             (0..c).for_each(|j| {
                 (0..zc).for_each(|_| {
-                    write!(writer, "{}", image[i].chars().nth(j).unwrap()).unwrap();
+                    write!(writer, "{}", image[i].as_bytes()[j] as char).unwrap();
                 });
             });
             writeln!(writer).unwrap();

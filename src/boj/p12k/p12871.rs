@@ -20,8 +20,10 @@ fn solve12871(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let mut ans = 1;
 
+    let arr1 = s1.as_bytes();
+    let arr2 = s2.as_bytes();
     for i in 0..lcm {
-        if s1.chars().nth(i % len1).unwrap() != s2.chars().nth(i % len2).unwrap() {
+        if arr1[i % len1] != arr2[i % len2] {
             ans = 0;
             break;
         }

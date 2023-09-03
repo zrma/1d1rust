@@ -1,39 +1,32 @@
 use crate::utils::functions::check_palindrome_nth;
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve8892(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut s = String::new();
-    reader.read_line(&mut s).unwrap();
-
-    let t = s.trim().parse::<usize>().unwrap();
+    let t = read_line(reader).parse::<usize>().unwrap();
 
     for _ in 0..t {
-        s.clear();
-        reader.read_line(&mut s).unwrap();
-        let n = s.trim().parse::<usize>().unwrap();
-
-        let mut words = vec![];
-        for _ in 0..n {
-            s.clear();
-            reader.read_line(&mut s).unwrap();
-            words.push(s.trim().to_string());
-        }
+        let n = read_line(reader).parse::<usize>().unwrap();
+        let words = (0..n)
+            .map(|_| read_line(reader).as_bytes().to_vec())
+            .collect::<Vec<Vec<u8>>>();
 
         let mut ans = String::new();
         for i in 0..n {
             for j in i + 1..n {
-                let mut word = words[i].chars().collect::<Vec<_>>();
-                word.append(&mut words[j].chars().collect::<Vec<_>>());
+                let mut word = vec![];
+                word.extend_from_slice(&words[i]);
+                word.extend_from_slice(&words[j]);
                 if is_palindrome(&word) {
-                    ans = word.iter().collect::<String>();
+                    ans = String::from_utf8(word).unwrap();
                     break;
                 }
-
-                word = words[j].chars().collect::<Vec<_>>();
-                word.append(&mut words[i].chars().collect::<Vec<_>>());
+                word.clear();
+                word.extend_from_slice(&words[j]);
+                word.extend_from_slice(&words[i]);
                 if is_palindrome(&word) {
-                    ans = word.iter().collect::<String>();
+                    ans = String::from_utf8(word).unwrap();
                     break;
                 }
             }
@@ -50,7 +43,7 @@ fn solve8892(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 }
 
-fn is_palindrome(s: &Vec<char>) -> bool {
+fn is_palindrome(s: &[u8]) -> bool {
     for i in 0..s.len() / 2 {
         if !check_palindrome_nth(s, i) {
             return false;

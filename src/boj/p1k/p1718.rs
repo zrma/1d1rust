@@ -12,7 +12,7 @@ fn solve1718(reader: &mut impl BufRead, writer: &mut impl Write) {
             continue;
         }
 
-        let key_char = key.chars().nth(i % key.len()).unwrap();
+        let key_char = key.as_bytes()[i % key.len()] as char;
         let key_num = key_char as i8 - 'a' as i8 + 1;
         let c_num = c as i8 - 'a' as i8 + 1;
 
