@@ -12,14 +12,14 @@ fn highest_value_palindrome(s: String, n: i32, k: i32) -> String {
         return "9".to_string();
     }
 
-    let (b, k, ok) = make_simple_palindrome(s.chars().collect(), n, k);
+    let (b, k, ok) = make_simple_palindrome(s.as_bytes().to_vec(), n, k);
     if !ok {
         return "-1".to_string();
     }
-    make_highest_value_palindrome(s.chars().collect(), b, n, k)
+    make_highest_value_palindrome(s.as_bytes().to_vec(), b, n, k)
 }
 
-fn make_simple_palindrome(mut result: Vec<char>, n: i32, mut k: i32) -> (Vec<char>, i32, bool) {
+fn make_simple_palindrome(mut result: Vec<u8>, n: i32, mut k: i32) -> (Vec<u8>, i32, bool) {
     let mut i1: usize = 0;
     let mut i2: usize = (n - 1) as usize;
     while i1 < i2 {
@@ -48,28 +48,28 @@ fn make_simple_palindrome(mut result: Vec<char>, n: i32, mut k: i32) -> (Vec<cha
     (result, k, true)
 }
 
-fn make_highest_value_palindrome(s: Vec<char>, mut b: Vec<char>, n: i32, mut k: i32) -> String {
+fn make_highest_value_palindrome(s: Vec<u8>, mut b: Vec<u8>, n: i32, mut k: i32) -> String {
     let mut i1: usize = 0;
     let mut i2: usize = (n - 1) as usize;
     while i1 <= i2 {
         if i1 == i2 && k > 0 {
-            b[i1] = '9';
+            b[i1] = b'9';
         }
-        if b[i1] != '9' {
+        if b[i1] != b'9' {
             if (b[i1] == s[i1] && b[i2] == s[i2]) && k >= 2 {
-                b[i1] = '9';
-                b[i2] = '9';
+                b[i1] = b'9';
+                b[i2] = b'9';
                 k -= 2;
             } else if (b[i1] != s[i1] || b[i2] != s[i2]) && k >= 1 {
-                b[i1] = '9';
-                b[i2] = '9';
+                b[i1] = b'9';
+                b[i2] = b'9';
                 k -= 1;
             }
         }
         i1 += 1;
         i2 -= 1;
     }
-    b.iter().collect()
+    String::from_utf8(b).unwrap()
 }
 
 // https://www.hackerrank.com/challenges/richie-rich/problem

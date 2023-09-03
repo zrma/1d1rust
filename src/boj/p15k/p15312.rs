@@ -10,10 +10,13 @@ fn solve15312(reader: &mut impl BufRead, writer: &mut impl Write) {
         3, 2, 1, 2, 3, 3, 2, 3, 3, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1,
     ];
 
+    let arr1 = s1.as_bytes();
+    let arr2 = s2.as_bytes();
+
     let mut ans = vec![];
     for i in 0..s1.len() {
-        ans.push(scores[s1.chars().nth(i).unwrap() as usize - 'A' as usize]);
-        ans.push(scores[s2.chars().nth(i).unwrap() as usize - 'A' as usize]);
+        ans.push(scores[(arr1[i] - b'A') as usize]);
+        ans.push(scores[(arr2[i] - b'A') as usize]);
     }
 
     while ans.len() > 2 {

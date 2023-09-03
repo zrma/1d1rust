@@ -7,12 +7,11 @@ fn solve10174(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for _ in 0..n {
         let s = read_line(reader);
+        let arr = s.as_bytes();
 
         let mut ans = true;
         for i in 0..s.len() / 2 {
-            if s.chars().nth(i).unwrap().to_ascii_lowercase()
-                != s.chars().nth(s.len() - 1 - i).unwrap().to_ascii_lowercase()
-            {
+            if arr[i].to_ascii_lowercase() != arr[s.len() - 1 - i].to_ascii_lowercase() {
                 ans = false;
                 break;
             }

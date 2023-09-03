@@ -4,13 +4,13 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve20365(reader: &mut impl BufRead, writer: &mut impl Write) {
     read_line(reader);
-    let chars = read_line(reader).chars().collect::<Vec<_>>();
+    let s = read_line(reader);
 
     let mut r_count = 0;
     let mut b_count = 0;
     let mut prev = ' ';
 
-    chars.iter().for_each(|&ch| {
+    s.chars().for_each(|ch| {
         if ch != prev {
             if ch == 'R' {
                 r_count += 1;

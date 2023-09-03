@@ -4,6 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve3613(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
+    let arr = s.as_bytes();
     let mut ans = String::new();
     let mut is_java = false;
     let mut is_cpp = false;
@@ -19,7 +20,7 @@ fn solve3613(reader: &mut impl BufRead, writer: &mut impl Write) {
             ans.push('_');
             ans.push(c.to_ascii_lowercase());
         } else if c == '_' {
-            if is_java || i == 0 || i == s.len() - 1 || s.chars().nth(i + 1).unwrap() == '_' {
+            if is_java || i == 0 || i == s.len() - 1 || arr[i + 1] == b'_' {
                 is_error = true;
                 break;
             }
@@ -33,7 +34,7 @@ fn solve3613(reader: &mut impl BufRead, writer: &mut impl Write) {
             ans.push(c);
         }
     }
-    if is_error || is_java && s.chars().next().unwrap().is_ascii_uppercase() {
+    if is_error || is_java && arr[0].is_ascii_uppercase() {
         write!(writer, "Error!").unwrap();
     } else {
         write!(writer, "{}", ans).unwrap();

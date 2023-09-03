@@ -5,11 +5,11 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve13235(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
-    let chars = s.chars().collect::<Vec<_>>();
+    let chars = s.as_bytes();
 
     let mut ans = true;
     for i in 0..s.len() / 2 {
-        if !check_palindrome_nth(&chars, i) {
+        if !check_palindrome_nth(chars, i) {
             ans = false;
             break;
         }

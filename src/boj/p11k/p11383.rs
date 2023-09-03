@@ -26,11 +26,13 @@ fn solve11383(reader: &mut impl BufRead, writer: &mut impl Write) {
     const NG: &str = "Not Eyfa";
 
     for s in src.iter() {
+        let arr = s.as_bytes();
+
         let cur = read_line(reader);
         let mut iter = cur.chars();
 
         for (j, c) in iter.by_ref().enumerate() {
-            if c != s.chars().nth(j / 2).unwrap() {
+            if c != arr[j / 2] as char {
                 write!(writer, "{}", NG).unwrap();
                 return;
             }

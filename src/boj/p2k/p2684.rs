@@ -7,21 +7,18 @@ fn solve2684(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for _ in 0..n {
         let s = read_line(reader);
-        let mut arr = vec![0; 8];
+        let arr = s.as_bytes();
+        let mut ans = vec![0; 8];
         for i in 0..s.len() - 2 {
             let mut num = 0;
             for j in 0..3 {
                 num <<= 1;
-                num += if s.chars().nth(i + j).unwrap() == 'H' {
-                    1
-                } else {
-                    0
-                };
+                num += if arr[i + j] == b'H' { 1 } else { 0 };
             }
-            arr[num] += 1;
+            ans[num] += 1;
         }
 
-        let res = arr
+        let res = ans
             .iter()
             .map(|&num| num.to_string())
             .collect::<Vec<_>>()

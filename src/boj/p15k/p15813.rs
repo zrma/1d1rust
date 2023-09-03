@@ -5,11 +5,9 @@ use std::io::{BufRead, Write};
 fn solve15813(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<usize>().unwrap();
     let s = read_line(reader);
+    let arr = &s.as_bytes()[0..n];
 
-    let mut ans = 0;
-    for i in 0..n {
-        ans += s.chars().nth(i).unwrap() as usize - 'A' as usize + 1;
-    }
+    let ans = arr.iter().fold(0, |acc, &x| acc + (x - b'A' + 1));
 
     write!(writer, "{}", ans).unwrap();
 }
