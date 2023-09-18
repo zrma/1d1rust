@@ -6,6 +6,7 @@ mod p2437;
 mod p2444;
 mod p2485;
 mod p2501;
+mod p2527;
 mod p2583;
 mod p2596;
 mod p2671;
