@@ -1,0 +1,88 @@
+use crate::utils::io::read_line;
+use std::io::{BufRead, Write};
+
+#[allow(dead_code)]
+fn solve22938(reader: &mut impl BufRead, writer: &mut impl Write) {
+    let (ax, ay, ar) = {
+        let s = read_line(reader);
+        let mut iter = s.split_whitespace();
+        (
+            iter.next().unwrap().parse::<i64>().unwrap(),
+            iter.next().unwrap().parse::<i64>().unwrap(),
+            iter.next().unwrap().parse::<i64>().unwrap(),
+        )
+    };
+
+    let (bx, by, br) = {
+        let s = read_line(reader);
+        let mut iter = s.split_whitespace();
+        (
+            iter.next().unwrap().parse::<i64>().unwrap(),
+            iter.next().unwrap().parse::<i64>().unwrap(),
+            iter.next().unwrap().parse::<i64>().unwrap(),
+        )
+    };
+
+    let res = is_intersect((ax, ay, ar), (bx, by, br));
+    write!(writer, "{}", res).unwrap();
+}
+
+type Circle = (i64, i64, i64);
+
+fn is_intersect(circle1: Circle, circle2: Circle) -> &'static str {
+    const DISJOINT: &str = "NO";
+    const INTERSECT: &str = "YES";
+
+    let (ax, ay, ar) = circle1;
+    let (bx, by, br) = circle2;
+
+    let dx = ax - bx;
+    let dy = ay - by;
+    let d = dx.pow(2) + dy.pow(2);
+
+    if d >= (ar + br).pow(2) {
+        return DISJOINT;
+    }
+
+    INTERSECT
+}
+
+// https://www.acmicpc.net/problem/22938
+// 백발백준하는 명사수
+#[test]
+fn test_solve22938() {
+    struct TestData {
+        s: String,
+        want: String,
+    }
+    for (i, data) in vec![
+        TestData {
+            s: "0 0 1
+1 1 2"
+                .to_string(),
+            want: "YES".to_string(),
+        },
+        TestData {
+            s: "0 0 1
+2 0 1"
+                .to_string(),
+            want: "NO".to_string(),
+        },
+        TestData {
+            s: "0 0 1
+10 10 1"
+                .to_string(),
+            want: "NO".to_string(),
+        },
+    ]
+    .iter()
+    .enumerate()
+    {
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
+        solve22938(&mut reader, &mut writer);
+
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "Failed test case {}", i);
+    }
+}
