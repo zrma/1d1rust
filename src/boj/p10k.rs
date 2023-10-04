@@ -3,6 +3,7 @@ mod p10157;
 mod p10173;
 mod p10174;
 mod p10569;
+mod p10655;
 mod p10810;
 mod p10811;
 mod p10813;
