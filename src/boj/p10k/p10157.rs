@@ -1,7 +1,21 @@
+use crate::utils::io::read_line;
+use std::io::{BufRead, Write};
+
 #[allow(dead_code)]
-fn solve10157(col: i32, row: i32, k: i32) -> (i32, i32, bool) {
+fn solve10157(reader: &mut impl BufRead, writer: &mut impl Write) {
+    let (col, row) = {
+        let s = read_line(reader);
+        let mut iter = s.split_whitespace();
+        let col = iter.next().unwrap().parse::<i32>().unwrap();
+        let row = iter.next().unwrap().parse::<i32>().unwrap();
+        (col, row)
+    };
+
+    let k = read_line(reader).parse::<i32>().unwrap();
+
     if row * col < k {
-        return (0, 0, false);
+        write!(writer, "0").unwrap();
+        return;
     }
 
     let mut x = 1;
@@ -15,7 +29,8 @@ fn solve10157(col: i32, row: i32, k: i32) -> (i32, i32, bool) {
         match dir {
             Direction::Up => {
                 if k0 < row0 {
-                    return (x, y + k0, true);
+                    write!(writer, "{} {}", x, y + k0).unwrap();
+                    return;
                 }
                 x += 1;
                 y += row0 - 1;
@@ -25,7 +40,8 @@ fn solve10157(col: i32, row: i32, k: i32) -> (i32, i32, bool) {
             }
             Direction::Right => {
                 if k0 < col0 {
-                    return (x + k0, y, true);
+                    write!(writer, "{} {}", x + k0, y).unwrap();
+                    return;
                 }
                 x += col0 - 1;
                 y -= 1;
@@ -35,7 +51,8 @@ fn solve10157(col: i32, row: i32, k: i32) -> (i32, i32, bool) {
             }
             Direction::Down => {
                 if k0 < row0 {
-                    return (x, y - k0, true);
+                    write!(writer, "{} {}", x, y - k0).unwrap();
+                    return;
                 }
                 x -= 1;
                 y -= row0 - 1;
@@ -45,7 +62,8 @@ fn solve10157(col: i32, row: i32, k: i32) -> (i32, i32, bool) {
             }
             Direction::Left => {
                 if k0 < col0 {
-                    return (x - k0, y, true);
+                    write!(writer, "{} {}", x - k0, y).unwrap();
+                    return;
                 }
                 x -= col0 - 1;
                 y += 1;
@@ -57,7 +75,6 @@ fn solve10157(col: i32, row: i32, k: i32) -> (i32, i32, bool) {
     }
 }
 
-#[derive(Clone, Copy)]
 enum Direction {
     Up = 0,
     Right,
@@ -79,100 +96,85 @@ fn turn(d: Direction) -> Direction {
 #[test]
 fn test_solve10157() {
     struct TestData {
-        col: i32,
-        row: i32,
-        k: i32,
-        want_ok: bool,
-        want_x: i32,
-        want_y: i32,
+        s: String,
+        want: String,
     }
-    for data in vec![
+    for (i, data) in vec![
         TestData {
-            col: 7,
-            row: 6,
-            k: 1,
-            want_ok: true,
-            want_x: 1,
-            want_y: 1,
+            s: "7 6
+11"
+            .to_string(),
+            want: "6 6".to_string(),
         },
         TestData {
-            col: 7,
-            row: 6,
-            k: 6,
-            want_ok: true,
-            want_x: 1,
-            want_y: 6,
+            s: "7 6
+87"
+            .to_string(),
+            want: "0".to_string(),
         },
         TestData {
-            col: 7,
-            row: 6,
-            k: 7,
-            want_ok: true,
-            want_x: 2,
-            want_y: 6,
+            s: "100 100
+3000"
+                .to_string(),
+            want: "9 64".to_string(),
         },
         TestData {
-            col: 7,
-            row: 6,
-            k: 11,
-            want_ok: true,
-            want_x: 6,
-            want_y: 6,
+            s: "7 6
+1"
+            .to_string(),
+            want: "1 1".to_string(),
         },
         TestData {
-            col: 7,
-            row: 6,
-            k: 12,
-            want_ok: true,
-            want_x: 7,
-            want_y: 6,
+            s: "7 6
+6"
+            .to_string(),
+            want: "1 6".to_string(),
         },
         TestData {
-            col: 7,
-            row: 6,
-            k: 13,
-            want_ok: true,
-            want_x: 7,
-            want_y: 5,
+            s: "7 6
+7"
+            .to_string(),
+            want: "2 6".to_string(),
         },
         TestData {
-            col: 7,
-            row: 6,
-            k: 17,
-            want_ok: true,
-            want_x: 7,
-            want_y: 1,
+            s: "7 6
+12"
+            .to_string(),
+            want: "7 6".to_string(),
         },
         TestData {
-            col: 7,
-            row: 6,
-            k: 87,
-            want_ok: false,
-            want_x: 0,
-            want_y: 0,
+            s: "7 6
+13"
+            .to_string(),
+            want: "7 5".to_string(),
         },
         TestData {
-            col: 100,
-            row: 100,
-            k: 3000,
-            want_ok: true,
-            want_x: 9,
-            want_y: 64,
+            s: "7 6
+17"
+            .to_string(),
+            want: "7 1".to_string(),
         },
         TestData {
-            col: 10000,
-            row: 10000,
-            k: 99999999,
-            want_ok: true,
-            want_x: 5001,
-            want_y: 5001,
+            s: "7 6
+18"
+            .to_string(),
+            want: "6 1".to_string(),
         },
-    ] {
-        let (got_x, got_y, got_ok) = solve10157(data.col, data.row, data.k);
-        assert_eq!(got_ok, data.want_ok);
-        if got_ok {
-            assert_eq!(got_x, data.want_x);
-            assert_eq!(got_y, data.want_y);
-        }
+        TestData {
+            s: "10000 10000
+99999999"
+                .to_string(),
+            want: "5001 5001".to_string(),
+        },
+    ]
+    .iter()
+    .enumerate()
+    {
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
+        solve10157(&mut reader, &mut writer);
+
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "case {}", i);
     }
 }
