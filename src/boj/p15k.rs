@@ -5,6 +5,7 @@ mod p15439;
 mod p15610;
 mod p15813;
 mod p15894;
+mod p15923;
 mod p15927;
 mod p15947;
 mod p15973;
