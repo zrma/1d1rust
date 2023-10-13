@@ -43,7 +43,7 @@ fn test_solve9506() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "6
 12
 28

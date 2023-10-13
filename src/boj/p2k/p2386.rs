@@ -26,7 +26,7 @@ fn test_solve2386() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "g Programming Contest
 n New Zealand
 x This is quite a simple problem.

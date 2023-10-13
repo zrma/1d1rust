@@ -29,7 +29,7 @@ fn test_solve5704() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "jackdawf loves my big quartz sphinx
 abcdefghijklmnopqrstuvwxyz
 hello world

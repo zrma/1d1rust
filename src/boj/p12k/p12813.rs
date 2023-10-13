@@ -41,19 +41,33 @@ fn test_solve12813() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
-        s: "0001011000
+    for (i, data) in [
+        TestData {
+            s: "0001011000
 0000101111"
-            .to_string(),
-        want: "0000001000
+                .to_string(),
+            want: "0000001000
 0001111111
 0001110111
 1110100111
 1111010000
 "
-        .to_string(),
-    }]
-    .into_iter()
+            .to_string(),
+        },
+        TestData {
+            s: "0001011000
+0000101110"
+                .to_string(),
+            want: "0000001000
+0001111110
+0001110110
+1110100111
+1111010001
+"
+            .to_string(),
+        },
+    ]
+    .iter()
     .enumerate()
     {
         let mut reader = data.s.as_bytes();

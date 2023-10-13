@@ -6,7 +6,7 @@ fn solve15312(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s1 = read_line(reader);
     let s2 = read_line(reader);
 
-    let scores = vec![
+    let scores = [
         3, 2, 1, 2, 3, 3, 2, 3, 3, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1,
     ];
 
@@ -38,7 +38,7 @@ fn test_solve15312() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "CJM
 HER"
         .to_string(),

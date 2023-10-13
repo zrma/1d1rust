@@ -29,7 +29,7 @@ fn test_solve14405() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "pi".to_string(),
             want: "YES".to_string(),

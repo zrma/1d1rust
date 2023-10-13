@@ -16,7 +16,7 @@ fn test_solve14264() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "5".to_string(),
             want: "10.825317547305485".to_string(),

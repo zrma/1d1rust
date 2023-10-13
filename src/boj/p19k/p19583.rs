@@ -68,7 +68,7 @@ fn test_solve19583() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "22:00 23:00 23:30
 21:30 malkoring

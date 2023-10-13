@@ -49,7 +49,7 @@ fn test_solve3613() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "long_and_mnemonic_identifier".to_string(),
             want: "longAndMnemonicIdentifier".to_string(),

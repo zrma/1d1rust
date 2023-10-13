@@ -30,7 +30,7 @@ fn test_solve6321() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "2
 HAL
 SWERCZ"

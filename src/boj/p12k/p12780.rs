@@ -25,7 +25,7 @@ fn test_solve12780() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "INHAUNIVERSITYISONEOFTHEBESTUNIVERSITYINTHEWORLD
 UNIVERSITY"
