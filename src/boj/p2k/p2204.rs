@@ -29,7 +29,7 @@ fn test_solve2204() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "3
 Cat
 fat

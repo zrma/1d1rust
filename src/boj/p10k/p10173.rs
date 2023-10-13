@@ -29,7 +29,7 @@ fn test_solve10173() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "Marlin names this last egg Nemo, a name that Coral liked.
 While attempting to save nemo, Marlin meets Dory,
 a good-hearted and optimistic regal blue tang with short-term memory loss.

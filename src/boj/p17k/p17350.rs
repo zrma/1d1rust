@@ -29,7 +29,7 @@ fn test_solve17350() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "3
 snrn

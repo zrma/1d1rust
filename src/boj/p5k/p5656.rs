@@ -38,7 +38,7 @@ fn test_solve5656() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "3 != 3
 4 < 4
 4 <= 5

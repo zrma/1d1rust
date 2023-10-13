@@ -30,7 +30,7 @@ fn test_solve11899() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: ")))()".to_string(),
             want: "3".to_string(),

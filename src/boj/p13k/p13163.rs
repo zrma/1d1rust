@@ -27,23 +27,39 @@ fn test_solve13163() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
-        s: "5
+    for (i, data) in [
+        TestData {
+            s: "5
 baek joon
 koo sa ga
 ac ka
 yu ka ri ko
 ke sa ki yo"
-            .to_string(),
-        want: "godjoon
+                .to_string(),
+            want: "godjoon
 godsaga
 godka
 godkariko
 godsakiyo
 "
-        .to_string(),
-    }]
-    .into_iter()
+            .to_string(),
+        },
+        TestData {
+            s: "4
+baek joon
+koo sa ga
+ac ka
+yu ka ri ko"
+                .to_string(),
+            want: "godjoon
+godsaga
+godka
+godkariko
+"
+            .to_string(),
+        },
+    ]
+    .iter()
     .enumerate()
     {
         let mut reader = data.s.as_bytes();

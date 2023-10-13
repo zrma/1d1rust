@@ -40,7 +40,7 @@ fn test_solve3568() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "int& a*[]&, b, c*;".to_string(),
         want: "int&&[]* a;
 int& b;

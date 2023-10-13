@@ -52,7 +52,7 @@ fn test_bricks_game() {
         arr: Vec<i32>,
         expected: i64,
     }
-    for data in vec![
+    for data in [
         TestData {
             arr: vec![1, 2, 3],
             expected: 6,

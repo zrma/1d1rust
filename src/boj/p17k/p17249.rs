@@ -32,7 +32,7 @@ fn test_solve17249() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "@===@==@=@==(^0^)==@=@===@".to_string(),
         want: "4 3".to_string(),
     }]
