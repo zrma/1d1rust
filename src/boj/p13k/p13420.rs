@@ -33,7 +33,7 @@ fn test_solve13420() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "4
 3 * 2 = 6
 11 + 11 = 11

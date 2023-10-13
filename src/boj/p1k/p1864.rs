@@ -39,7 +39,7 @@ fn test_solve1864() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "(@&
 ?/--
 /(\\

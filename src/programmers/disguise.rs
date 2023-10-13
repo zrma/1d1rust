@@ -23,7 +23,7 @@ fn test_disguise() {
         given: Vec<Vec<String>>,
         want: i32,
     }
-    for data in vec![
+    for data in [
         TestData {
             given: vec![
                 vec!["yellow_hat".to_string(), "headgear".to_string()],

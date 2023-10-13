@@ -31,7 +31,7 @@ fn test_solve9536() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![TestData {
+    for (i, data) in [TestData {
         s: "1
 toot woof wa ow ow ow pa blub blub pa toot pa blub pa pa ow pow toot
 dog goes woof

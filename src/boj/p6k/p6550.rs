@@ -51,7 +51,7 @@ fn test_solve6550() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "sequence subsequence".to_string(),
             want: "Yes

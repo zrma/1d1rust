@@ -43,7 +43,7 @@ fn test_solve1871() {
         s: String,
         want: String,
     }
-    for data in vec![
+    for data in [
         TestData {
             s: "2
 ABC-0123

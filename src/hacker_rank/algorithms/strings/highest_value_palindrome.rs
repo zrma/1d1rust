@@ -83,7 +83,7 @@ fn test_highest_value_palindrome() {
         k: i32,
         expected: String,
     }
-    for data in vec![
+    for data in [
         TestData {
             s: "3943".to_string(),
             n: 4,

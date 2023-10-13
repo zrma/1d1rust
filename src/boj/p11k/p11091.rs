@@ -41,7 +41,7 @@ fn test_solve11091() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "3
 The quick brown fox jumps over the lazy dog.

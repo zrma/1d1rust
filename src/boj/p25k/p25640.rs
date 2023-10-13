@@ -26,7 +26,7 @@ fn test_solve25640() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "ESTJ
 5

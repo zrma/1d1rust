@@ -23,7 +23,7 @@ fn test_solve16171() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "1q2w3e4r5t6y
 qwerty"

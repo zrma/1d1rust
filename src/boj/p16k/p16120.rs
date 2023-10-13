@@ -33,7 +33,7 @@ fn test_solve16120() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestData {
             s: "PPAP".to_string(),
             want: "PPAP".to_string(),

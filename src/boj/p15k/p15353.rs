@@ -47,7 +47,7 @@ fn test_solve15353() {
         s: String,
         want: String,
     }
-    for data in vec![
+    for data in [
         TestData {
             s: "9223372036854775807 9223372036854775808".to_string(),
             want: "18446744073709551615".to_string(),
