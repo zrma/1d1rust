@@ -1,0 +1,46 @@
+use crate::utils::io::read_line;
+use std::io::{BufRead, Write};
+
+#[allow(dead_code)]
+fn solve16480(reader: &mut impl BufRead, writer: &mut impl Write) {
+    let (r0, r1) = {
+        let s = read_line(reader);
+        let mut iter = s.split_whitespace();
+        (
+            iter.next().unwrap().parse::<i64>().unwrap(),
+            iter.next().unwrap().parse::<i64>().unwrap(),
+        )
+    };
+
+    write!(writer, "{}", r0 * (r0 - 2 * r1)).unwrap();
+}
+
+// https://www.acmicpc.net/problem/16480
+// 외심과 내심은 사랑입니다
+#[test]
+fn test_solve16480() {
+    struct TestData {
+        s: String,
+        want: String,
+    }
+    for (i, data) in [
+        TestData {
+            s: "4 1".to_string(),
+            want: "8".to_string(),
+        },
+        TestData {
+            s: "13 5".to_string(),
+            want: "39".to_string(),
+        },
+    ]
+    .iter()
+    .enumerate()
+    {
+        let mut reader = data.s.as_bytes();
+        let mut writer = vec![];
+        solve16480(&mut reader, &mut writer);
+
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "case {}", i);
+    }
+}
