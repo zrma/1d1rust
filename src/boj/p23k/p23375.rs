@@ -68,6 +68,6 @@ fn test_solve23375() {
         solve23375(&mut reader, &mut writer);
 
         let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "case {}", i);
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }
