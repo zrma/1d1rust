@@ -1,17 +1,11 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve15803(reader: &mut impl BufRead, writer: &mut impl Write) {
     let points = (0..3)
-        .map(|_| {
-            let s = read_line(reader);
-            let mut iter = s.split_whitespace();
-            (
-                iter.next().unwrap().parse::<i32>().unwrap(),
-                iter.next().unwrap().parse::<i32>().unwrap(),
-            )
-        })
+        .map(|_| read_values!(read_line(reader), i32, i32))
         .collect::<Vec<_>>();
 
     let (x1, y1) = points[0];

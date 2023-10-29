@@ -1,16 +1,10 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve11466(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (mut h, mut w) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<f64>().unwrap(),
-            iter.next().unwrap().parse::<f64>().unwrap(),
-        )
-    };
+    let (mut h, mut w) = read_values!(read_line(reader), f64, f64);
 
     if h < w {
         std::mem::swap(&mut h, &mut w);

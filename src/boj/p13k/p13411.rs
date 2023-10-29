@@ -1,3 +1,4 @@
+use crate::read_values;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -17,12 +18,8 @@ fn solve13411(reader: &mut impl BufRead, writer: &mut impl Write) {
         s.clear();
         reader.read_line(&mut s).unwrap();
 
-        let mut iter = s.split_whitespace();
-        let (x, y, v) = (
-            iter.next().unwrap().parse::<f64>().unwrap(),
-            iter.next().unwrap().parse::<f64>().unwrap(),
-            iter.next().unwrap().parse::<f64>().unwrap(),
-        );
+        let (x, y, v) = read_values!(&s, f64, f64, f64);
+
         let time = (x * x + y * y) / (v * v);
         entries.push(Entry { id: i + 1, time });
     }

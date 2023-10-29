@@ -1,17 +1,11 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve16479(reader: &mut impl BufRead, writer: &mut impl Write) {
     let k = read_line(reader).parse::<i32>().unwrap();
-    let (d1, d2) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-        )
-    };
+    let (d1, d2) = read_values!(read_line(reader), i32, i32);
 
     let res = match d1.cmp(&d2) {
         std::cmp::Ordering::Equal => k.pow(2) as f64,

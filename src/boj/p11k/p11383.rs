@@ -1,28 +1,22 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve11383(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, _) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        let n = iter.next().unwrap().parse::<usize>().unwrap();
-        let m = iter.next().unwrap().parse::<usize>().unwrap();
-        (n, m)
-    };
+    let (n, _) = read_values!(read_line(reader), usize, usize);
 
     let src = {
         let mut src = vec![];
         for _ in 0..n {
-            let s = read_line(reader);
-            src.push(s);
+            src.push(read_line(reader));
         }
         src
     };
 
-    //noinspection SpellCheckingInspection
+    // noinspection SpellCheckingInspection
     const OK: &str = "Eyfa";
-    //noinspection SpellCheckingInspection
+    // noinspection SpellCheckingInspection
     const NG: &str = "Not Eyfa";
 
     for s in src.iter() {

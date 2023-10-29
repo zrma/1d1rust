@@ -1,3 +1,4 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -5,29 +6,16 @@ use std::io::{BufRead, Write};
 fn solve1198(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<usize>().unwrap();
 
-    let mut points = vec![];
+    let mut points = Vec::with_capacity(n);
     for _ in 0..n {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        let (x, y) = (
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-        );
-        points.push((x, y));
+        points.push(read_values!(read_line(reader), i32, i32));
     }
 
     let mut max_area = 0;
     for i in 0..n {
         for j in i + 1..n {
             for k in j + 1..n {
-                let area = calc_area(
-                    points[i].0,
-                    points[i].1,
-                    points[j].0,
-                    points[j].1,
-                    points[k].0,
-                    points[k].1,
-                );
+                let area = calc_area(points[i], points[j], points[k]);
                 max_area = max_area.max(area);
             }
         }
@@ -36,8 +24,12 @@ fn solve1198(reader: &mut impl BufRead, writer: &mut impl Write) {
     write!(writer, "{}", max_area as f64 / 2.0).unwrap();
 }
 
-fn calc_area(x0: i32, y0: i32, x1: i32, y1: i32, x2: i32, y2: i32) -> i32 {
-    // https://en.wikipedia.org/wiki/Shoelace_formula
+fn calc_area(p0: (i32, i32), p1: (i32, i32), p2: (i32, i32)) -> i32 {
+    let (x0, y0) = p0;
+    let (x1, y1) = p1;
+    let (x2, y2) = p2;
+
+    // Shoelace formula
     (x0 * y1 + x1 * y2 + x2 * y0 - x1 * y0 - x2 * y1 - x0 * y2).abs()
 }
 

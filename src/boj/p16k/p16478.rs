@@ -1,17 +1,10 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve16478(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (pab, pbc, pcd) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<f64>().unwrap(),
-            iter.next().unwrap().parse::<f64>().unwrap(),
-            iter.next().unwrap().parse::<f64>().unwrap(),
-        )
-    };
+    let (pab, pbc, pcd) = read_values!(read_line(reader), f64, f64, f64);
 
     let ans = pab * pcd / pbc;
     write!(writer, "{}", ans).unwrap();

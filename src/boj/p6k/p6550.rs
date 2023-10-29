@@ -1,3 +1,4 @@
+use crate::read_values;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -13,9 +14,7 @@ fn solve6550(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let mut iter = line.split_whitespace();
-        let s = iter.next().unwrap();
-        let t = iter.next().unwrap();
+        let (s, t) = read_values!(line, String, String);
 
         let s_iter = s.char_indices();
         let mut t_iter = t.char_indices();

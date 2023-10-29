@@ -1,29 +1,11 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve15973(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (ax, ay, ap, aq) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-        )
-    };
-
-    let (bx, by, bp, bq) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-        )
-    };
+    let (ax, ay, ap, aq) = read_values!(read_line(reader), i32, i32, i32, i32);
+    let (bx, by, bp, bq) = read_values!(read_line(reader), i32, i32, i32, i32);
 
     let res = common_point_code((ax, ay, ap, aq), (bx, by, bp, bq));
     write!(writer, "{}", res).unwrap();

@@ -7,16 +7,17 @@ fn solve5363(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for _ in 0..n {
         let s = read_line(reader);
+        let mut words: Vec<&str> = s.split_whitespace().collect();
 
-        let mut iter = s.split_whitespace();
-        let a = iter.next().unwrap();
-        let b = iter.next().unwrap();
-        let mut ans = iter.collect::<Vec<&str>>();
-        ans.push(a);
-        ans.push(b);
+        rotate_first_two_words(&mut words);
 
-        writeln!(writer, "{}", ans.join(" ")).unwrap();
+        writeln!(writer, "{}", words.join(" ")).unwrap();
     }
+}
+
+fn rotate_first_two_words(words: &mut Vec<&str>) {
+    let first_two = words.drain(..2).collect::<Vec<_>>();
+    words.extend(first_two);
 }
 
 // https://www.acmicpc.net/problem/5363

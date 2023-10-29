@@ -1,19 +1,12 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve8723(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (a, b, c) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-        )
-    };
+    let (a, b, c) = read_values!(read_line(reader), i32, i32, i32);
 
-    let mut v = vec![a, b, c];
+    let mut v = [a, b, c];
     v.sort();
 
     if v[0] == v[1] && v[1] == v[2] {

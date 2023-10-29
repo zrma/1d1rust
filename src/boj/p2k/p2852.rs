@@ -1,3 +1,4 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -11,10 +12,9 @@ fn solve2852(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..n {
         let mut line = String::new();
         reader.read_line(&mut line).unwrap();
-        let mut iter = line.split_whitespace();
-        let team = iter.next().unwrap().parse::<usize>().unwrap();
 
-        let time = iter.next().unwrap();
+        let (team, time) = read_values!(line, usize, String);
+
         let time_sec =
             time[0..2].parse::<usize>().unwrap() * 60 + time[3..5].parse::<usize>().unwrap();
 
