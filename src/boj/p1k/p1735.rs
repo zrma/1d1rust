@@ -1,30 +1,26 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use num::integer::gcd;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1735(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (a, b) = read_two_numbers(reader);
-    let (c, d) = read_two_numbers(reader);
+    let (a, b) = read_values!(read_line(reader), i64, i64);
+    let (c, d) = read_values!(read_line(reader), i64, i64);
 
-    let (mut x, mut y) = (a * d + b * c, b * d);
-    let mut gcd_val = gcd(x, y);
-    while gcd_val != 1 {
-        x /= gcd_val;
-        y /= gcd_val;
-        gcd_val = gcd(x, y);
-    }
-
+    let (x, y) = sum_and_reduce_fractions(a, b, c, d);
     write!(writer, "{} {}", x, y).unwrap();
 }
 
-fn read_two_numbers(reader: &mut impl BufRead) -> (i64, i64) {
-    let line = read_line(reader);
-    let mut iter = line.split_whitespace();
-    (
-        iter.next().unwrap().parse::<i64>().unwrap(),
-        iter.next().unwrap().parse::<i64>().unwrap(),
-    )
+fn sum_and_reduce_fractions(a: i64, b: i64, c: i64, d: i64) -> (i64, i64) {
+    let (mut numerator, mut denominator) = (a * d + b * c, b * d);
+    let mut gcd_val = gcd(numerator, denominator);
+    while gcd_val != 1 {
+        numerator /= gcd_val;
+        denominator /= gcd_val;
+        gcd_val = gcd(numerator, denominator);
+    }
+    (numerator, denominator)
 }
 
 // https://www.acmicpc.net/problem/1735

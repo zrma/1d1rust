@@ -1,10 +1,11 @@
-use crate::boj::p3k::p3023::read_coord;
+use crate::read_values;
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve3076(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (r, c) = read_coord(reader);
-    let (a, b) = read_coord(reader);
+    let (r, c) = read_values!(read_line(reader), usize, usize);
+    let (a, b) = read_values!(read_line(reader), usize, usize);
 
     for i in 0..r * a {
         for j in 0..c * b {

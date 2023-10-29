@@ -1,3 +1,4 @@
+use crate::read_values;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -12,12 +13,7 @@ fn solve11880(reader: &mut impl BufRead, writer: &mut impl Write) {
         input.clear();
         reader.read_line(&mut input).unwrap();
 
-        let mut iter = input.split_whitespace();
-        let (a, b, c) = (
-            iter.next().unwrap().parse::<i64>().unwrap(),
-            iter.next().unwrap().parse::<i64>().unwrap(),
-            iter.next().unwrap().parse::<i64>().unwrap(),
-        );
+        let (a, b, c) = read_values!(&input, i64, i64, i64);
 
         let sum = a + b + c;
         let max = a.max(b).max(c);

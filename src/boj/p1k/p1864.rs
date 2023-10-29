@@ -3,30 +3,29 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1864(reader: &mut impl BufRead, writer: &mut impl Write) {
+    let char_to_num = |c| match c {
+        '-' => 0,
+        '\\' => 1,
+        '(' => 2,
+        '@' => 3,
+        '?' => 4,
+        '>' => 5,
+        '&' => 6,
+        '%' => 7,
+        '/' => -1,
+        _ => unreachable!(),
+    };
+
     loop {
         let s = read_line(reader);
         if s == "#" {
             break;
         }
 
-        let mut ans = 0;
-        let mut mul = 1;
-        for c in s.chars().rev() {
-            let n = match c {
-                '-' => 0,
-                '\\' => 1,
-                '(' => 2,
-                '@' => 3,
-                '?' => 4,
-                '>' => 5,
-                '&' => 6,
-                '%' => 7,
-                '/' => -1,
-                _ => unreachable!(),
-            };
-            ans += n * mul;
-            mul *= 8;
-        }
+        let ans = s.chars().rev().enumerate().fold(0, |acc, (i, c)| {
+            acc + char_to_num(c) * 8_isize.pow(i as u32)
+        });
+
         writeln!(writer, "{}", ans).unwrap();
     }
 }

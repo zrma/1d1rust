@@ -4,14 +4,15 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve1235(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<usize>().unwrap();
-    let mut a = vec![];
+
+    let mut a = Vec::with_capacity(n);
     for _ in 0..n {
         a.push(read_line(reader));
     }
 
     let mut ans = 1;
     for i in 1..=a[0].len() {
-        let mut set = std::collections::HashSet::new();
+        let mut set = std::collections::HashSet::with_capacity(n);
         for s in &a {
             set.insert(&s[s.len() - i..]);
         }

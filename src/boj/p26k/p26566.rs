@@ -1,3 +1,4 @@
+use crate::read_values;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -12,15 +13,12 @@ fn solve26566(reader: &mut impl BufRead, writer: &mut impl Write) {
         s.clear();
         reader.read_line(&mut s).unwrap();
 
-        let mut iter = s.split_whitespace();
-        let a1 = iter.next().unwrap().parse::<f64>().unwrap();
-        let p1 = iter.next().unwrap().parse::<f64>().unwrap();
+        let (a1, p1) = read_values!(&s, f64, f64);
 
         s.clear();
         reader.read_line(&mut s).unwrap();
-        let mut iter = s.split_whitespace();
-        let r1 = iter.next().unwrap().parse::<f64>().unwrap();
-        let p2 = iter.next().unwrap().parse::<f64>().unwrap();
+
+        let (r1, p2) = read_values!(&s, f64, f64);
 
         let slice = a1 / p1;
         let whole = std::f64::consts::PI * r1 * r1 / p2;

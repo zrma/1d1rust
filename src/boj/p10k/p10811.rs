@@ -1,30 +1,15 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve10811(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let s = read_line(reader);
-
-    let (n, m) = {
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<usize>().unwrap(),
-            iter.next().unwrap().parse::<usize>().unwrap(),
-        )
-    };
+    let (n, m) = read_values!(read_line(reader), usize, usize);
 
     let mut arr = (1..=n).collect::<Vec<_>>();
 
     for _ in 0..m {
-        let s = read_line(reader);
-
-        let (i, j) = {
-            let mut iter = s.split_whitespace();
-            (
-                iter.next().unwrap().parse::<usize>().unwrap(),
-                iter.next().unwrap().parse::<usize>().unwrap(),
-            )
-        };
+        let (i, j) = read_values!(read_line(reader), usize, usize);
 
         arr[i - 1..j].reverse();
     }

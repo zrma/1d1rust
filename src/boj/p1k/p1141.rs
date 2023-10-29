@@ -19,8 +19,7 @@ fn solve1141(reader: &mut impl BufRead, writer: &mut impl Write) {
 
 fn count_unique_prefixes(words: &[String]) -> usize {
     let mut unique_prefixes = 0;
-
-    let mut prev_prefix: Option<&String> = None;
+    let mut prev_prefix: Option<&str> = None;
 
     for word in words {
         if let Some(prefix) = prev_prefix {
@@ -38,6 +37,7 @@ fn count_unique_prefixes(words: &[String]) -> usize {
 }
 
 // https://www.acmicpc.net/problem/1141
+// noinspection SpellCheckingInspection
 // 접두사
 #[test]
 fn test_solve1141() {

@@ -1,30 +1,15 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve10810(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, m) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<usize>().unwrap(),
-            iter.next().unwrap().parse::<usize>().unwrap(),
-        )
-    };
+    let (n, m) = read_values!(read_line(reader), usize, usize);
 
     let mut baskets = vec![0; n];
 
     for _ in 0..m {
-        let s = read_line(reader);
-
-        let (i, j, k) = {
-            let mut iter = s.split_whitespace();
-            (
-                iter.next().unwrap().parse::<usize>().unwrap(),
-                iter.next().unwrap().parse::<usize>().unwrap(),
-                iter.next().unwrap().parse::<usize>().unwrap(),
-            )
-        };
+        let (i, j, k) = read_values!(read_line(reader), usize, usize, usize);
 
         for idx in baskets.iter_mut().take(j).skip(i - 1) {
             *idx = k;

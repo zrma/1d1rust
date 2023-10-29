@@ -1,35 +1,35 @@
 use crate::utils::io::read_line;
+use std::cmp::Reverse;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1296(reader: &mut impl BufRead, writer: &mut impl Write) {
     let name = read_line(reader);
-    let l = count(&name, 'L');
-    let o = count(&name, 'O');
-    let v = count(&name, 'V');
-    let e = count(&name, 'E');
-
-    let mut max = 0;
-    let mut ans = String::new();
+    let (l, o, v, e) = initial_count(&name);
 
     let n = read_line(reader).parse::<usize>().unwrap();
-    for _ in 0..n {
-        let name = read_line(reader);
-        let l = count(&name, 'L') + l;
-        let o = count(&name, 'O') + o;
-        let v = count(&name, 'V') + v;
-        let e = count(&name, 'E') + e;
-
-        let score = calc(l, o, v, e);
-        if score > max {
-            max = score;
-            ans = name;
-        } else if score == max && (ans.is_empty() || name < ans) {
-            ans = name;
-        }
-    }
+    let ans = (0..n)
+        .map(|_| read_line(reader))
+        .max_by_key(|name| {
+            let (l, o, v, e) = update_count(name, l, o, v, e);
+            (calc(l, o, v, e), Reverse(name.clone()))
+        })
+        .unwrap();
 
     write!(writer, "{}", ans).unwrap();
+}
+
+fn initial_count(s: &str) -> (usize, usize, usize, usize) {
+    (count(s, 'L'), count(s, 'O'), count(s, 'V'), count(s, 'E'))
+}
+
+fn update_count(s: &str, l: usize, o: usize, v: usize, e: usize) -> (usize, usize, usize, usize) {
+    (
+        count(s, 'L') + l,
+        count(s, 'O') + o,
+        count(s, 'V') + v,
+        count(s, 'E') + e,
+    )
 }
 
 fn count(s: &str, c: char) -> usize {

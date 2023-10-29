@@ -1,3 +1,4 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -5,35 +6,31 @@ use std::io::{BufRead, Write};
 fn solve1485(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t = read_line(reader).parse::<usize>().unwrap();
     for _ in 0..t {
-        let mut points = vec![];
-        for _ in 0..4 {
-            let s = read_line(reader);
-            let mut iter = s.split_whitespace();
-            let x = iter.next().unwrap().parse::<i32>().unwrap();
-            let y = iter.next().unwrap().parse::<i32>().unwrap();
-            points.push((x, y));
-        }
+        let points = (0..4)
+            .map(|_| read_values!(read_line(reader), i32, i32))
+            .collect::<Vec<_>>();
 
-        points.sort();
-
-        let is_square = {
-            let d1 = dist(points[0], points[1]);
-            let d2 = dist(points[0], points[2]);
-            let d3 = dist(points[1], points[3]);
-            let d4 = dist(points[2], points[3]);
-
-            let d5 = dist(points[0], points[3]);
-            let d6 = dist(points[1], points[2]);
-
-            d1 == d2 && d2 == d3 && d3 == d4 && d4 == d1 && d5 == d6
-        };
-
-        if is_square {
+        if is_square(&points) {
             writeln!(writer, "1").unwrap();
         } else {
             writeln!(writer, "0").unwrap();
         }
     }
+}
+
+fn is_square(points: &[(i32, i32)]) -> bool {
+    let mut sorted_points = points.to_vec();
+    sorted_points.sort();
+
+    let d1 = dist(sorted_points[0], sorted_points[1]);
+    let d2 = dist(sorted_points[0], sorted_points[2]);
+    let d3 = dist(sorted_points[1], sorted_points[3]);
+    let d4 = dist(sorted_points[2], sorted_points[3]);
+
+    let d5 = dist(sorted_points[0], sorted_points[3]);
+    let d6 = dist(sorted_points[1], sorted_points[2]);
+
+    d1 == d2 && d2 == d3 && d3 == d4 && d4 == d1 && d5 == d6
 }
 
 fn dist(p1: (i32, i32), p2: (i32, i32)) -> i32 {

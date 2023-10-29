@@ -1,16 +1,10 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve16931(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, m) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<usize>().unwrap(),
-            iter.next().unwrap().parse::<usize>().unwrap(),
-        )
-    };
+    let (n, m) = read_values!(read_line(reader), usize, usize);
 
     let mut board = [[0; 102]; 102];
     for i in 1..=n {
