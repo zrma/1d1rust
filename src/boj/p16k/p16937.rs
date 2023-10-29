@@ -1,27 +1,16 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve16937(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (h, w) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-        )
-    };
+    let (h, w) = read_values!(read_line(reader), i32, i32);
 
     let n = read_line(reader).parse::<i32>().unwrap();
 
     let mut stickers = Vec::new();
     for _ in 0..n {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        stickers.push((
-            iter.next().unwrap().parse::<i32>().unwrap(),
-            iter.next().unwrap().parse::<i32>().unwrap(),
-        ));
+        stickers.push(read_values!(read_line(reader), i32, i32));
     }
 
     let res = max_area(h, w, stickers);

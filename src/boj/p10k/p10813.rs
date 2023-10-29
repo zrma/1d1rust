@@ -1,28 +1,15 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve10813(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, m) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        (
-            iter.next().unwrap().parse::<usize>().unwrap(),
-            iter.next().unwrap().parse::<usize>().unwrap(),
-        )
-    };
+    let (n, m) = read_values!(read_line(reader), usize, usize);
 
     let mut balls = (1..=n).collect::<Vec<_>>();
 
     for _ in 0..m {
-        let (i, j) = {
-            let s = read_line(reader);
-            let mut iter = s.split_whitespace();
-            (
-                iter.next().unwrap().parse::<usize>().unwrap(),
-                iter.next().unwrap().parse::<usize>().unwrap(),
-            )
-        };
+        let (i, j) = read_values!(read_line(reader), usize, usize);
 
         balls.swap(i - 1, j - 1);
     }

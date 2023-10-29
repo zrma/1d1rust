@@ -3,17 +3,11 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1871(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut line = read_line(reader);
-
-    let n = line.trim().parse::<i64>().unwrap();
+    let n = read_line(reader).trim().parse::<i64>().unwrap();
     for _ in 0..n {
-        line.clear();
-        reader.read_line(&mut line).unwrap();
-
-        let (left, right) = {
-            let mut iter = line.split('-');
-            (iter.next().unwrap(), iter.next().unwrap())
-        };
+        let line = read_line(reader);
+        let mut iter = line.split('-');
+        let (left, right) = (iter.next().unwrap(), iter.next().unwrap().trim());
 
         let left_value = left
             .chars()
@@ -22,14 +16,10 @@ fn solve1871(reader: &mut impl BufRead, writer: &mut impl Write) {
             .map(|(i, c)| ((c as u8 - b'A') as usize) * 26usize.pow(i as u32))
             .sum::<usize>();
 
-        let right_value = right.trim().parse::<i64>().unwrap();
+        let right_value = right.parse::<i64>().unwrap();
 
-        let diff = left_value as i32 - right_value as i32;
-        let result = if (-100..=100).contains(&diff) {
-            "nice"
-        } else {
-            "not nice"
-        };
+        let diff = (left_value as i64 - right_value).abs();
+        let result = if diff <= 100 { "nice" } else { "not nice" };
 
         writeln!(writer, "{}", result).unwrap();
     }

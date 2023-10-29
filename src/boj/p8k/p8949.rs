@@ -1,15 +1,10 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve8949(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (a, b) = {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        let a = iter.next().unwrap().to_string();
-        let b = iter.next().unwrap().to_string();
-        (a, b)
-    };
+    let (a, b) = read_values!(read_line(reader), String, String);
 
     let mut ans = vec![];
     let mut a_iter = a.chars().rev().peekable();

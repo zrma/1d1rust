@@ -1,17 +1,11 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve9772(reader: &mut impl BufRead, writer: &mut impl Write) {
     loop {
-        let (x, y) = {
-            let s = read_line(reader);
-            let mut iter = s.split_whitespace();
-            (
-                iter.next().unwrap().parse::<f64>().unwrap(),
-                iter.next().unwrap().parse::<f64>().unwrap(),
-            )
-        };
+        let (x, y) = read_values!(read_line(reader), f64, f64);
 
         let ans = get_quadrants(x, y);
         writeln!(writer, "{}", ans).unwrap();

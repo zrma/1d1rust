@@ -1,19 +1,6 @@
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
-macro_rules! count_slope {
-    ($iter:expr, $i:expr, $heights:expr, $sign:expr, $cnt:expr) => {{
-        let mut max_slope = -1e100;
-        for j in $iter {
-            let slope = calc_slope($i, $heights[$i], j, $heights[j]) * $sign;
-            if slope > max_slope {
-                $cnt += 1;
-                max_slope = slope;
-            }
-        }
-    }};
-}
-
 #[allow(dead_code)]
 fn solve1027(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<usize>().unwrap();
@@ -26,14 +13,26 @@ fn solve1027(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn count_visible(i: usize, heights: &[i32]) -> usize {
+    let cnt1 = count_slope((0..i).rev(), i, heights, -1.0);
+    let cnt2 = count_slope(i + 1..heights.len(), i, heights, 1.0);
+    cnt1 + cnt2
+}
+
+fn count_slope(iter: impl Iterator<Item = usize>, i: usize, heights: &[i32], sign: f64) -> usize {
     let mut cnt = 0;
-    count_slope!((0..i).rev(), i, heights, -1.0, cnt);
-    count_slope!(i + 1..heights.len(), i, heights, 1.0, cnt);
+    let mut max_slope = f64::NEG_INFINITY;
+    for j in iter {
+        let slope = calc_slope(i as f64, heights[i] as f64, j as f64, heights[j] as f64) * sign;
+        if slope > max_slope {
+            cnt += 1;
+            max_slope = slope;
+        }
+    }
     cnt
 }
 
-fn calc_slope(x1: usize, y1: i32, x2: usize, y2: i32) -> f64 {
-    (y1 - y2) as f64 / (x1 as f64 - x2 as f64)
+fn calc_slope(x1: f64, y1: f64, x2: f64, y2: f64) -> f64 {
+    (y1 - y2) / (x1 - x2)
 }
 
 // https://www.acmicpc.net/problem/1027

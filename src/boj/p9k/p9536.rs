@@ -1,3 +1,4 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -12,10 +13,8 @@ fn solve9536(reader: &mut impl BufRead, writer: &mut impl Write) {
             if s == "what does the fox say?" {
                 break;
             }
-            let mut iter = s.split_whitespace();
-            iter.next();
-            iter.next();
-            let sound = iter.next().unwrap();
+
+            let (_, _, sound) = read_values!(s, String, String, String);
             sounds.retain(|&s| s != sound);
         }
 

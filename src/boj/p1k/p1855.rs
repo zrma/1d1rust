@@ -5,9 +5,13 @@ use std::io::{BufRead, Write};
 fn solve1855(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<usize>().unwrap();
     let s = read_line(reader);
-    let vec = s.as_bytes();
+    decrypt_cipher(n, &s, writer);
+}
 
+fn decrypt_cipher(n: usize, s: &str, writer: &mut impl Write) {
+    let vec = s.as_bytes();
     let div = s.len() / n;
+
     for i in 0..n {
         for j in 0..div {
             let idx = if j % 2 == 0 {

@@ -1,21 +1,13 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1297(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let s = read_line(reader);
-    let mut iter = s.split_whitespace();
-    let d = iter.next().unwrap().parse::<f64>().unwrap();
-    let h = iter.next().unwrap().parse::<f64>().unwrap();
-    let w = iter.next().unwrap().parse::<f64>().unwrap();
+    let (d, h, w) = read_values!(read_line(reader), f64, f64, f64);
 
-    let d2 = d * d;
-    let h2 = h * h;
-    let w2 = w * w;
-
-    let x = (d2 / (h2 + w2)).sqrt();
-    let y = x * h;
-    let z = x * w;
+    let x = (d * d / (h * h + w * w)).sqrt();
+    let (y, z) = (x * h, x * w);
 
     write!(writer, "{} {}", y as i64, z as i64).unwrap();
 }

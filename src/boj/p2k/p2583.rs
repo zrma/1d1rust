@@ -1,3 +1,5 @@
+use crate::read_values;
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -33,19 +35,12 @@ fn find_areas(table: &mut [Vec<bool>]) -> Vec<i32> {
 }
 
 fn read_input(reader: &mut impl BufRead) -> (i32, i32, Vec<Vec<i32>>) {
-    let mut line = String::new();
-    reader.read_line(&mut line).unwrap();
-
-    let mut iter = line.split_whitespace();
-    let row = iter.next().unwrap().parse::<i32>().unwrap();
-    let col = iter.next().unwrap().parse::<i32>().unwrap();
-    let n = iter.next().unwrap().parse::<i32>().unwrap();
+    let (row, col, n) = read_values!(read_line(reader), i32, i32, i32);
 
     let rects = (0..n)
         .map(|_| {
-            line.clear();
-            reader.read_line(&mut line).unwrap();
-            line.split_whitespace()
+            read_line(reader)
+                .split_whitespace()
                 .map(|num_str| num_str.parse::<i32>().unwrap())
                 .collect()
         })

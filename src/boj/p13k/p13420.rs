@@ -1,3 +1,4 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -5,15 +6,9 @@ use std::io::{BufRead, Write};
 fn solve13420(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<usize>().unwrap();
     for _ in 0..n {
-        let s = read_line(reader);
-        let mut iter = s.split_whitespace();
-        let a = iter.next().unwrap().parse::<i64>().unwrap();
-        let op = iter.next().unwrap();
-        let b = iter.next().unwrap().parse::<i64>().unwrap();
-        iter.next();
-        let c = iter.next().unwrap().parse::<i64>().unwrap();
+        let (a, op, b, _, c) = read_values!(read_line(reader), i64, String, i64, String, i64);
 
-        let ans = match op {
+        let ans = match op.as_str() {
             "+" => a + b == c,
             "-" => a - b == c,
             "*" => a * b == c,

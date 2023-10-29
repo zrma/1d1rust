@@ -1,3 +1,4 @@
+use crate::read_values;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -5,15 +6,7 @@ use std::io::{BufRead, Write};
 fn solve9366(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t = read_line(reader).parse::<usize>().unwrap();
     for i in 0..t {
-        let (a, b, c) = {
-            let s = read_line(reader);
-            let mut iter = s.split_whitespace();
-            (
-                iter.next().unwrap().parse::<i32>().unwrap(),
-                iter.next().unwrap().parse::<i32>().unwrap(),
-                iter.next().unwrap().parse::<i32>().unwrap(),
-            )
-        };
+        let (a, b, c) = read_values!(read_line(reader), i32, i32, i32);
 
         let res = triangle_type(a, b, c);
         writeln!(writer, "Case #{}: {}", i + 1, res).unwrap();
@@ -21,7 +14,7 @@ fn solve9366(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn triangle_type(p0: i32, p1: i32, p2: i32) -> String {
-    let mut v = vec![p0, p1, p2];
+    let mut v = [p0, p1, p2];
     v.sort();
     let (a, b, c) = (v[0], v[1], v[2]);
 
