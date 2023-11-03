@@ -8,6 +8,7 @@ mod p1296;
 mod p1297;
 mod p1485;
 mod p1672;
+mod p1708;
 mod p1718;
 mod p1735;
 mod p1855;
