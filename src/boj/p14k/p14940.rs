@@ -1,5 +1,5 @@
 use crate::read_values;
-use crate::utils::io::read_line;
+use crate::utils::io::{matrix_to_str, read_line};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -49,11 +49,7 @@ fn solve14940(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let result = map
-        .iter()
-        .map(|row| row.iter().map(i32::to_string).collect::<Vec<_>>().join(" "))
-        .collect::<Vec<_>>()
-        .join("\n");
+    let result = matrix_to_str(&map);
 
     write!(writer, "{}", result).expect("Failed to write");
 }

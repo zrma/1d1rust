@@ -18,3 +18,15 @@ macro_rules! read_values {
         )
     }};
 }
+
+pub fn matrix_to_str<T: ToString + std::fmt::Display>(mat: &[Vec<T>]) -> String {
+    mat.iter()
+        .map(|row| {
+            row.iter()
+                .map(ToString::to_string)
+                .collect::<Vec<_>>()
+                .join(" ")
+        })
+        .collect::<Vec<_>>()
+        .join("\n")
+}
