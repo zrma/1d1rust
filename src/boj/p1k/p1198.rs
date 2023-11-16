@@ -1,10 +1,10 @@
 use crate::read_values;
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1198(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n = read_value(read_line(reader));
 
     let mut points = Vec::with_capacity(n);
     for _ in 0..n {
@@ -92,7 +92,7 @@ fn test_solve1198() {
         let mut writer = vec![];
         solve1198(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap().parse::<f64>().unwrap();
+        let got: f64 = read_value(String::from_utf8(writer).unwrap());
         let want = data.want.parse::<f64>().unwrap();
 
         const EPSILON: f64 = 1e-6;

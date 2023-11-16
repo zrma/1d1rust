@@ -1,9 +1,9 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve17103(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n = read_value(read_line(reader));
 
     let mut is_prime = vec![true; 1_000_001];
     is_prime[0] = false;
@@ -24,7 +24,7 @@ fn solve17103(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     for _ in 0..n {
-        let x = read_line(reader).parse::<usize>().unwrap();
+        let x: usize = read_value(read_line(reader));
         let mut count = 0;
         for &p in &primes {
             if p > x / 2 {

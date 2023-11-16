@@ -1,5 +1,5 @@
 use crate::read_values;
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -14,7 +14,7 @@ fn solve17247(reader: &mut impl BufRead, writer: &mut impl Write) {
         let s = read_line(reader);
         let mut iter = s.split_whitespace();
         for j in 0..m {
-            let v = iter.next().unwrap().parse::<i32>().unwrap();
+            let v: i32 = read_value(iter.next().unwrap().to_string());
             if v == 1 {
                 if !found {
                     x1 = i;

@@ -1,9 +1,9 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve16483(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_line(reader).parse::<f64>().unwrap();
+    let t: f64 = read_value(read_line(reader));
     let res = (t / 2.0).powi(2).round() as i32;
     write!(writer, "{}", res).unwrap();
 }

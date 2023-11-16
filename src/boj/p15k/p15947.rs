@@ -1,9 +1,9 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve15947(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_value(read_line(reader));
 
     let lyrics = vec![
         "baby", "sukhwan", "tururu", "turu", "very", "cute", "tururu", "turu", "in", "bed",

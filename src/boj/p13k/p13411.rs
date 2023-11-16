@@ -1,18 +1,17 @@
 use crate::read_values;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve13411(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut s = String::new();
-    reader.read_line(&mut s).unwrap();
-
-    let n = s.trim().parse::<usize>().unwrap();
+    let n = read_value(read_line(reader));
 
     struct Entry {
         id: usize,
         time: f64,
     }
 
+    let mut s = String::new();
     let mut entries = Vec::with_capacity(n);
     for i in 0..n {
         s.clear();

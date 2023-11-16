@@ -1,12 +1,12 @@
 use crate::read_values;
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve10157(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (col, row) = read_values!(read_line(reader), i32, i32);
 
-    let k = read_line(reader).parse::<i32>().unwrap();
+    let k = read_value(read_line(reader));
 
     if row * col < k {
         write!(writer, "0").unwrap();

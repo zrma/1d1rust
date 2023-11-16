@@ -1,12 +1,11 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve11179(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<i32>().unwrap();
+    let mut n: i32 = read_value(read_line(reader));
 
     let mut ans = 0;
-    let mut n = n;
     while n > 0 {
         ans = ans * 2 + n % 2;
         n /= 2;

@@ -1,9 +1,9 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve14726(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_line(reader).parse::<usize>().unwrap();
+    let t = read_value(read_line(reader));
     for _ in 0..t {
         let s = read_line(reader);
         let res = s.chars().enumerate().fold(0, |acc, (i, c)| {

@@ -1,9 +1,9 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1871(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).trim().parse::<i64>().unwrap();
+    let n = read_value(read_line(reader));
     for _ in 0..n {
         let line = read_line(reader);
         let mut iter = line.split('-');

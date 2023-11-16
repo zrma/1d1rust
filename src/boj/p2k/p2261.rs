@@ -1,13 +1,13 @@
 use crate::read_values;
+use crate::utils::io::{read_line, read_value};
 use std::cmp::Ordering;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2261(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut s = String::new();
-    reader.read_line(&mut s).unwrap();
-    let n: usize = s.trim().parse().unwrap();
+    let n = read_value(read_line(reader));
 
+    let mut s = String::new();
     let mut points = Vec::new();
     for _ in 0..n {
         s.clear();
