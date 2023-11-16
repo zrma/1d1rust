@@ -1,9 +1,9 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1027(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n = read_value(read_line(reader));
     let heights: Vec<i32> = read_line(reader)
         .split_whitespace()
         .map(|s| s.parse().unwrap())

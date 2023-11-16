@@ -1,11 +1,11 @@
 use crate::read_values;
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use num::integer::gcd;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve29197(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n = read_value(read_line(reader));
 
     let mut set = std::collections::HashSet::new();
 

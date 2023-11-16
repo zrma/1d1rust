@@ -1,10 +1,10 @@
 use crate::read_values;
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1485(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_line(reader).parse::<usize>().unwrap();
+    let t = read_value(read_line(reader));
     for _ in 0..t {
         let points = (0..4)
             .map(|_| read_values!(read_line(reader), i32, i32))

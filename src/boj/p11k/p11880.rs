@@ -1,14 +1,13 @@
 use crate::read_values;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve11880(reader: &mut impl BufRead, writer: &mut impl Write) {
+    let t = read_value(read_line(reader));
+
     let mut input = String::new();
-    reader.read_line(&mut input).unwrap();
-
     let mut output = String::new();
-
-    let t = input.trim().parse::<usize>().unwrap();
     for _ in 0..t {
         input.clear();
         reader.read_line(&mut input).unwrap();

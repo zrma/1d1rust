@@ -1,12 +1,12 @@
 use crate::read_values;
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve16937(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (h, w) = read_values!(read_line(reader), i32, i32);
 
-    let n = read_line(reader).parse::<i32>().unwrap();
+    let n = read_value(read_line(reader));
 
     let mut stickers = Vec::new();
     for _ in 0..n {

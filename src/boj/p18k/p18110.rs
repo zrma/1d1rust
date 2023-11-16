@@ -1,9 +1,9 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve18110(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n = read_value(read_line(reader));
 
     if n == 0 {
         write!(writer, "0").expect("Failed to write");
@@ -12,7 +12,7 @@ fn solve18110(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let round_target = (n as f32 * 0.15).round() as usize;
     let mut nums = (0..n)
-        .map(|_| read_line(reader).parse::<f32>().unwrap())
+        .map(|_| read_value::<f32>(read_line(reader)))
         .collect::<Vec<_>>();
 
     nums.sort_unstable_by(|a, b| a.partial_cmp(b).unwrap());

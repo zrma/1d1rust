@@ -52,7 +52,7 @@ fn test_solve11466() {
         let mut writer = vec![];
         solve11466(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap().parse::<f64>().unwrap();
+        let got: f64 = crate::utils::io::read_value(String::from_utf8(writer).unwrap());
         let want = data.want.parse::<f64>().unwrap();
 
         const EPSILON: f64 = 1e-6;
