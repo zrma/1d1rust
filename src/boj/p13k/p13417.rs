@@ -1,11 +1,11 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve13417(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_line(reader).parse::<usize>().unwrap();
+    let t = read_value(read_line(reader));
     for _ in 0..t {
-        let n = read_line(reader).parse::<usize>().unwrap();
+        let n = read_value(read_line(reader));
         let line = read_line(reader);
         let cards = line.splitn(n, ' ').collect::<Vec<_>>();
 

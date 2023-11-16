@@ -1,9 +1,9 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve14264(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let f = read_line(reader).parse::<f64>().unwrap();
+    let f: f64 = read_value(read_line(reader));
     let ans = 3f64.sqrt() / 4.0 * f * f;
     write!(writer, "{:e}", ans).unwrap();
 }
@@ -37,7 +37,7 @@ fn test_solve14264() {
         let mut writer = vec![];
         solve14264(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap().parse::<f64>().unwrap();
+        let got: f64 = crate::utils::io::read_value(String::from_utf8(writer).unwrap());
         let want = data.want.parse::<f64>().unwrap();
 
         const EPSILON: f64 = 1e-9;

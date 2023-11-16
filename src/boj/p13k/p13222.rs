@@ -1,5 +1,5 @@
 use crate::read_values;
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -8,7 +8,7 @@ fn solve13222(reader: &mut impl BufRead, writer: &mut impl Write) {
     let area_limit = w * w + h * h;
 
     for _ in 0..n {
-        let curr = read_line(reader).parse::<u32>().unwrap().pow(2);
+        let curr = read_value::<u32>(read_line(reader)).pow(2);
         let ans = if curr <= area_limit { "YES" } else { "NO" };
         writeln!(writer, "{}", ans).unwrap();
     }

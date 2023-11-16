@@ -1,9 +1,9 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve13909(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<u64>().unwrap();
+    let n: i64 = read_value(read_line(reader));
     let mut ans = 0;
     for i in 1..=n {
         if i * i > n {
