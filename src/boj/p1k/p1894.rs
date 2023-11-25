@@ -4,13 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve1894(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
-    loop {
-        line.clear();
-        let res = reader.read_line(&mut line);
-        if res.is_err() || line.is_empty() {
-            break;
-        }
-
+    while reader.read_line(&mut line).is_ok() && !line.is_empty() {
         let (x1, y1, x2, y2, x3, y3, x4, y4) =
             read_values!(&line, f64, f64, f64, f64, f64, f64, f64, f64);
 
@@ -21,6 +15,7 @@ fn solve1894(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         let ans = find_point(p1, p2, p3, p4);
         writeln!(writer, "{:.3} {:.3}", ans.x, ans.y).unwrap();
+        line.clear();
     }
 }
 
