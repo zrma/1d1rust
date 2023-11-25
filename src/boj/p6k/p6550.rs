@@ -3,18 +3,9 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve6550(reader: &mut impl BufRead, writer: &mut impl Write) {
-    loop {
-        let mut line = String::new();
-        let res = reader.read_line(&mut line);
-        if res.is_err() {
-            break;
-        }
-
-        if line.is_empty() {
-            break;
-        }
-
-        let (s, t) = read_values!(line, String, String);
+    let mut line = String::new();
+    while reader.read_line(&mut line).is_ok() && !line.is_empty() {
+        let (s, t) = read_values!(&line, String, String);
 
         let s_iter = s.char_indices();
         let mut t_iter = t.char_indices();
@@ -39,6 +30,7 @@ fn solve6550(reader: &mut impl BufRead, writer: &mut impl Write) {
         } else {
             writeln!(writer, "No").unwrap();
         }
+        line.clear();
     }
 }
 

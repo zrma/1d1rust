@@ -19,16 +19,7 @@ fn solve19583(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let mut line = String::new(); // Move the line variable outside the loop
 
-    loop {
-        let res = reader.read_line(&mut line);
-        if res.is_err() {
-            break;
-        }
-
-        if line.is_empty() {
-            break;
-        }
-
+    while reader.read_line(&mut line).is_ok() && !line.is_empty() {
         let (t, name) = {
             let (t, name) = read_values!(line.as_str(), String, String);
             (str_to_time(t.as_str()), name)
@@ -44,8 +35,7 @@ fn solve19583(reader: &mut impl BufRead, writer: &mut impl Write) {
             ans += 1;
             exited.insert(name.to_string());
         }
-
-        line.clear(); // Clear the line at the end of each iteration
+        line.clear();
     }
 
     write!(writer, "{}", ans).unwrap();
