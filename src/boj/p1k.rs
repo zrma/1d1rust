@@ -16,5 +16,6 @@ mod p1864;
 mod p1871;
 mod p1894;
 mod p1916;
+mod p1924;
 mod p1925;
 mod p1987;
