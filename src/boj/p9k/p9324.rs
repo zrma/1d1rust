@@ -7,7 +7,7 @@ fn solve9324(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for _ in 0..n {
         let s = read_line(reader);
-        let mut cnt = vec![0; 26];
+        let mut cnt = [0; 26];
         let mut is_fake = false;
 
         let chars = s.as_bytes();

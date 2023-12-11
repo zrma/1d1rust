@@ -7,13 +7,13 @@ fn solve16931(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (n, m) = read_values!(read_line(reader), usize, usize);
 
     let mut board = [[0; 102]; 102];
-    for i in 1..=n {
+    board.iter_mut().skip(1).take(n).for_each(|row| {
         let s = read_line(reader);
         let mut iter = s.split_whitespace();
-        for j in 1..=m {
-            board[i][j] = read_value(iter.next().unwrap().to_string());
-        }
-    }
+        row.iter_mut().skip(1).take(m).for_each(|col| {
+            *col = read_value(iter.next().unwrap().to_string());
+        });
+    });
 
     let res = surface_area(board, n, m);
 
