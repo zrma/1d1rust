@@ -4,12 +4,8 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve1141(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<usize>().unwrap();
-    let mut strings = vec![];
-    strings.reserve(n);
-    for _ in 0..n {
-        strings.push(read_line(reader));
-    }
 
+    let mut strings = (0..n).map(|_| read_line(reader)).collect::<Vec<String>>();
     strings.sort();
 
     let ans = count_unique_prefixes(&strings);
