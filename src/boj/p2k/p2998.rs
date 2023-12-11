@@ -11,11 +11,11 @@ fn solve2998(reader: &mut impl BufRead, writer: &mut impl Write) {
     let res = padded_line
         .as_bytes()
         .chunks(3)
-        .map(|chunk| {
+        .fold(String::new(), |mut acc, chunk| {
             let n = u8::from_str_radix(std::str::from_utf8(chunk).unwrap(), 2).unwrap();
-            format!("{}", n)
-        })
-        .collect::<String>();
+            acc.push_str(&format!("{}", n));
+            acc
+        });
 
     write!(writer, "{}", res).unwrap();
 }

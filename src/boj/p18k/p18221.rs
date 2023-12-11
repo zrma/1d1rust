@@ -4,17 +4,17 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve18221(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<usize>().unwrap();
-    let mut a = vec![vec![0; n]; n];
+    let mut arr = vec![vec![0; n]; n];
 
     let (mut x0, mut y0) = (0, 0);
     let (mut x1, mut y1) = (0, 0);
 
-    for y in 0..n {
+    arr.iter_mut().enumerate().for_each(|(y, row)| {
         let s = read_line(reader);
         let mut iter = s.split_whitespace();
-        for x in 0..n {
+        row.iter_mut().enumerate().for_each(|(x, col)| {
             let v = iter.next().unwrap().parse::<i32>().unwrap();
-            a[y][x] = v;
+            *col = v;
 
             if v == 2 {
                 x0 = x;
@@ -23,8 +23,8 @@ fn solve18221(reader: &mut impl BufRead, writer: &mut impl Write) {
                 x1 = x;
                 y1 = y;
             }
-        }
-    }
+        });
+    });
 
     if (x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1) < 25 {
         write!(writer, "0").unwrap();
@@ -32,11 +32,10 @@ fn solve18221(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let mut cnt = 0;
-    for y in y0.min(y1)..=y0.max(y1) {
-        for x in x0.min(x1)..=x0.max(x1) {
-            if a[y][x] == 1 {
+    for row in arr.iter().take(y0.max(y1) + 1).skip(y0.min(y1)) {
+        for &val in row.iter().take(x0.max(x1) + 1).skip(x0.min(x1)) {
+            if val == 1 {
                 cnt += 1;
-
                 if cnt > 2 {
                     write!(writer, "1").unwrap();
                     return;

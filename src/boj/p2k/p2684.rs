@@ -8,7 +8,7 @@ fn solve2684(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..n {
         let s = read_line(reader);
         let arr = s.as_bytes();
-        let mut ans = vec![0; 8];
+        let mut ans = [0; 8];
         for i in 0..s.len() - 2 {
             let mut num = 0;
             for j in 0..3 {

@@ -9,7 +9,7 @@ fn solve5704(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let mut check = vec![false; 26];
+        let mut check = [false; 26];
         for c in s.chars() {
             if c != ' ' {
                 check[c as usize - 'a' as usize] = true;
