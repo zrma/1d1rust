@@ -1,18 +1,14 @@
+use crate::boj::p2k::p2747::fibonacci;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2748(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n: usize = read_value(read_line(reader));
+    let n: u128 = read_value(read_line(reader));
 
-    let (mut prev, mut curr) = (0u128, 1u128);
-    for _ in 1..n {
-        let next = prev + curr;
-        prev = curr;
-        curr = next;
-    }
+    let ans = fibonacci(n);
 
-    write!(writer, "{}", curr).unwrap();
+    write!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2748
