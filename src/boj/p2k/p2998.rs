@@ -28,7 +28,7 @@ fn test_solve2998() {
         s: String,
         want: String,
     }
-    for data in [
+    for (i, data) in [
         TestData {
             s: "1010".to_string(),
             want: "12".to_string(),
@@ -45,10 +45,15 @@ fn test_solve2998() {
             s: "0".to_string(),
             want: "0".to_string(),
         },
-    ] {
+    ]
+    .iter()
+    .enumerate()
+    {
         let mut reader = data.s.as_bytes();
         let mut writer = vec![];
         solve2998(&mut reader, &mut writer);
-        assert_eq!(data.want, String::from_utf8(writer).unwrap());
+
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

@@ -45,7 +45,7 @@ fn test_solve15353() {
         s: String,
         want: String,
     }
-    for data in [
+    for (i, data) in [
         TestData {
             s: "9223372036854775807 9223372036854775808".to_string(),
             want: "18446744073709551615".to_string(),
@@ -54,10 +54,15 @@ fn test_solve15353() {
             s: "19223372036854775807 9223372036854775808".to_string(),
             want: "28446744073709551615".to_string(),
         },
-    ] {
+    ]
+    .iter()
+    .enumerate()
+    {
         let mut reader = data.s.as_bytes();
         let mut writer = vec![];
         solve15353(&mut reader, &mut writer);
-        assert_eq!(data.want, String::from_utf8(writer).unwrap());
+
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }
