@@ -1,16 +1,16 @@
 use std::io::BufRead;
 
-pub fn read_line(reader: &mut impl BufRead) -> String {
-    let mut line = String::new();
-    reader.read_line(&mut line).expect("Failed to read line");
-    line.trim().to_string()
-}
-
 pub fn read_value<T: std::str::FromStr>(line: String) -> T
 where
     <T as std::str::FromStr>::Err: std::fmt::Debug,
 {
     line.trim().parse::<T>().unwrap()
+}
+
+pub fn read_line(reader: &mut impl BufRead) -> String {
+    let mut line = String::new();
+    reader.read_line(&mut line).expect("Failed to read line");
+    line.trim().to_string()
 }
 
 #[macro_export]
