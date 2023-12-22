@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "cargo",
+            "name": "clippy",
+            "cargoArgs": ["clippy"],
+        },
+        {
+            "type": "cargo",
+            "name": "test",
+            "cargoArgs": ["test"],
+        }
+    ]
+}
