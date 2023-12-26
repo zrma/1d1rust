@@ -15,10 +15,10 @@ fn solve4963(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
         let mut map = vec![vec![false; w]; h];
-        for y in 0..h {
+        for m in map.iter_mut() {
             line.clear();
             reader.read_line(&mut line).unwrap();
-            map[y] = line.split_whitespace().map(|v| v == "1").collect();
+            *m = line.split_whitespace().map(|v| v == "1").collect();
         }
         ans.push_str(&format!("{}\n", count_islands(&map, w, h)));
     }
