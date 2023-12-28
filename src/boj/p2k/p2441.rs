@@ -50,7 +50,7 @@ fn test_solve2441() {
         let mut writer = vec![];
         solve2441(&mut reader, &mut writer);
 
-        let result = String::from_utf8(writer).unwrap();
-        assert_eq!(result, data.want, "failed at {}th case", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }
