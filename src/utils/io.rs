@@ -37,3 +37,22 @@ pub fn matrix_to_str<T: ToString + std::fmt::Display>(mat: &[Vec<T>]) -> String 
         .collect::<Vec<_>>()
         .join("\n")
 }
+
+pub fn read_map<T: std::str::FromStr>(
+    reader: &mut impl BufRead,
+    rows: usize,
+    cols: usize,
+) -> Vec<Vec<T>>
+where
+    <T as std::str::FromStr>::Err: std::fmt::Debug,
+{
+    (0..rows)
+        .map(|_| {
+            read_line(reader)
+                .split_whitespace()
+                .take(cols)
+                .map(|s| s.parse::<T>().unwrap())
+                .collect::<Vec<T>>()
+        })
+        .collect::<Vec<_>>()
+}

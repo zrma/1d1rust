@@ -1,5 +1,5 @@
 use crate::read_values;
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_map};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -7,15 +7,7 @@ fn solve14503(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (rows, cols) = read_values!(read_line(reader), usize, usize);
     let (start_row, start_col, start_dir) = read_values!(read_line(reader), usize, usize, usize);
 
-    let mut map = (0..rows)
-        .map(|_| {
-            read_line(reader)
-                .split_whitespace()
-                .take(cols)
-                .map(|s| s.parse::<usize>().unwrap())
-                .collect::<Vec<usize>>()
-        })
-        .collect::<Vec<_>>();
+    let mut map = read_map(reader, rows, cols);
 
     let mut cleaner = Cleaner::new(start_col, start_row, start_dir, &mut map);
     cleaner.clean();
