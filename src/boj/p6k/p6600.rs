@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve6600(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
-    while reader.read_line(&mut line).is_ok() && !line.is_empty() {
+    while reader.read_line(&mut line).unwrap_or(0) > 0 {
         let (x1, y1, x2, y2, x3, y3) = read_values!(&line, f64, f64, f64, f64, f64, f64);
         let circumference = 2.0 * std::f64::consts::PI * calc_radius(x1, y1, x2, y2, x3, y3);
         writeln!(writer, "{:.2}", circumference).unwrap();
