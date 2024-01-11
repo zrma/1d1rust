@@ -8,7 +8,7 @@ fn solve4963(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     while {
         line.clear();
-        reader.read_line(&mut line).is_ok() && !line.is_empty()
+        reader.read_line(&mut line).unwrap_or(0) > 0
     } {
         let (w, h) = read_values!(line.as_str(), usize, usize);
         if w == 0 && h == 0 {
