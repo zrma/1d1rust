@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve4779(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
-    while reader.read_line(&mut line).is_ok() && !line.is_empty() {
+    while reader.read_line(&mut line).unwrap_or(0) > 0 {
         if let Ok(n) = line.trim().parse::<usize>() {
             let p = usize::pow(3, n as u32);
             let mut ans = vec!['-'; p];

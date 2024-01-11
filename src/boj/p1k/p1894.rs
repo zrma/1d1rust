@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve1894(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
-    while reader.read_line(&mut line).is_ok() && !line.is_empty() {
+    while reader.read_line(&mut line).unwrap_or(0) > 0 {
         let (x1, y1, x2, y2, x3, y3, x4, y4) =
             read_values!(&line, f64, f64, f64, f64, f64, f64, f64, f64);
 
