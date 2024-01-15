@@ -48,7 +48,7 @@ fn find_max_index(grid: &[Vec<String>], n: usize, m: usize, is_row: bool) -> (us
     (max_idx, max_count)
 }
 
-fn clear_row(grid: &mut Vec<Vec<String>>, row_idx: usize) {
+fn clear_row(grid: &mut [Vec<String>], row_idx: usize) {
     for cell in &mut grid[row_idx] {
         cell.clear();
     }
