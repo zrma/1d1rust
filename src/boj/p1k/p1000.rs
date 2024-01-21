@@ -3,16 +3,15 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 pub(crate) fn solve1000(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
-
     reader.read_line(&mut line).unwrap();
-    let nums: Vec<i32> = line
+
+    let sum = line
         .split_whitespace()
+        .take(2)
         .map(|num_str| num_str.parse::<i32>().unwrap())
-        .collect();
+        .sum::<i32>();
 
-    let res = nums[0] + nums[1];
-
-    write!(writer, "{}", res).unwrap();
+    write!(writer, "{}", sum).unwrap();
 }
 
 // https://www.acmicpc.net/problem/1000
