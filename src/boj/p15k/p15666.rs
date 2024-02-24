@@ -14,37 +14,37 @@ fn solve15666(reader: &mut impl BufRead, writer: &mut impl Write) {
     write!(writer, "{}", result_str).expect("Failed to write");
 }
 
-fn extract_unique_numbers(reader: &mut impl BufRead, n: usize) -> Vec<i32> {
+fn extract_unique_numbers(reader: &mut impl BufRead, n: usize) -> Vec<usize> {
     let mut set = std::collections::HashSet::new();
     read_line(reader)
         .split_whitespace()
         .take(n)
-        .filter_map(|s| s.parse::<i32>().ok())
+        .filter_map(|s| s.parse::<usize>().ok())
         .filter(|&num| set.insert(num))
         .collect()
 }
 
-fn generate_combinations(nums: &Vec<i32>, m: usize) -> Vec<Vec<i32>> {
+fn generate_combinations(nums: &Vec<usize>, m: usize) -> Vec<Vec<usize>> {
     let mut result = vec![];
     generate_combinations_helper(nums, &mut vec![], &mut result, m, 0);
     result
 }
 
 fn generate_combinations_helper(
-    nums: &Vec<i32>,
-    picked: &mut Vec<i32>,
-    result: &mut Vec<Vec<i32>>,
+    nums: &Vec<usize>,
+    picked: &mut Vec<usize>,
+    result: &mut Vec<Vec<usize>>,
     m: usize,
-    idx: i32,
+    idx: usize,
 ) {
     if picked.len() == m {
         result.push(picked.clone());
         return;
     }
 
-    for i in idx as usize..nums.len() {
+    for i in idx..nums.len() {
         picked.push(nums[i]);
-        generate_combinations_helper(nums, picked, result, m, i as i32);
+        generate_combinations_helper(nums, picked, result, m, i);
         picked.pop();
     }
 }

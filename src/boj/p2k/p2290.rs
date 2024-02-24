@@ -11,7 +11,7 @@ fn solve2290(reader: &mut impl BufRead, writer: &mut impl Write) {
             .next()
             .unwrap()
             .chars()
-            .map(|ch| ch.to_digit(10).unwrap() as i32)
+            .map(|ch| ch.to_digit(10).unwrap() as usize)
             .collect::<Vec<_>>();
         (s, arr)
     };
@@ -30,7 +30,7 @@ fn solve2290(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 }
 
-fn draw_number(number: i32, index: usize, size: usize, board: &mut [Vec<char>]) {
+fn draw_number(number: usize, index: usize, size: usize, board: &mut [Vec<char>]) {
     struct Digit {
         top: bool,
         top_left: bool,
@@ -134,7 +134,7 @@ fn draw_number(number: i32, index: usize, size: usize, board: &mut [Vec<char>]) 
         }, // 9
     ];
 
-    let digit = &digits[number as usize];
+    let digit = &digits[number];
 
     if digit.top {
         for i in 0..size {

@@ -1,8 +1,8 @@
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
-const MAX_SIZE: i64 = 1_000_001;
-const ARR: [[i64; 16]; 7] = [
+const MAX_SIZE: usize = 1_000_001;
+const ARR: [[usize; 16]; 7] = [
     [0; 16],                                          // K = 0 (placeholder)
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0], // K = 1
     [1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // K = 2
@@ -23,13 +23,13 @@ const ARR: [[i64; 16]; 7] = [
 
 #[allow(dead_code)]
 fn solve1131(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (a, b, k) = read_values!(read_line(reader), i64, i64, i64);
-    let mut dp = vec![0; MAX_SIZE as usize];
-    for &val in ARR[k as usize].iter().take_while(|&&x| x != 0) {
+    let (a, b, k) = read_values!(read_line(reader), usize, usize, usize);
+    let mut dp = vec![0; MAX_SIZE];
+    for &val in ARR[k].iter().take_while(|&&x| x != 0) {
         let mut n = val;
         loop {
             if n < MAX_SIZE {
-                dp[n as usize] = val;
+                dp[n] = val;
             }
             n = calc_s(k, n);
             if n == val {
@@ -38,11 +38,11 @@ fn solve1131(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let sum: i64 = (a..=b).map(|n| calc_min(k, n, &mut dp)).sum();
+    let sum: usize = (a..=b).map(|n| calc_min(k, n, &mut dp)).sum();
     write!(writer, "{}", sum).unwrap();
 }
 
-fn calc_s(k: i64, n: i64) -> i64 {
+fn calc_s(k: usize, n: usize) -> usize {
     let mut res = 0;
     let mut n = n;
     while n > 0 {
@@ -56,15 +56,15 @@ fn calc_s(k: i64, n: i64) -> i64 {
     res
 }
 
-fn calc_min(k: i64, n: i64, dp: &mut [i64]) -> i64 {
+fn calc_min(k: usize, n: usize, dp: &mut [usize]) -> usize {
     if n >= MAX_SIZE {
         return calc_min(k, calc_s(k, n), dp);
     }
-    if dp[n as usize] > 0 {
-        return dp[n as usize];
+    if dp[n] > 0 {
+        return dp[n];
     }
-    dp[n as usize] = calc_min(k, calc_s(k, n), dp).min(n);
-    dp[n as usize]
+    dp[n] = calc_min(k, calc_s(k, n), dp).min(n);
+    dp[n]
 }
 
 // https://www.acmicpc.net/problem/1131
@@ -111,13 +111,13 @@ use rayon::prelude::*;
 use std::collections::{HashMap, HashSet};
 use std::sync::Mutex;
 
-fn find_cycle_min(k: i64, n: i64, memo: &mut HashMap<i64, i64>) -> i64 {
+fn find_cycle_min(k: usize, n: usize, memo: &mut HashMap<usize, usize>) -> usize {
     if let Some(&result) = memo.get(&n) {
         return result;
     }
 
-    let mut seen: HashMap<i64, i64> = HashMap::new();
-    let mut sequence: Vec<i64> = Vec::new();
+    let mut seen: HashMap<usize, usize> = HashMap::new();
+    let mut sequence: Vec<usize> = Vec::new();
     let mut x = n;
     let mut step = 0;
 
@@ -127,11 +127,7 @@ fn find_cycle_min(k: i64, n: i64, memo: &mut HashMap<i64, i64>) -> i64 {
         }
 
         if let Some(prev_step) = seen.get(&x) {
-            let min_cycle = sequence[*prev_step as usize..]
-                .iter()
-                .min()
-                .unwrap()
-                .to_owned();
+            let min_cycle = sequence[*prev_step..].iter().min().unwrap().to_owned();
             memo.insert(n, min_cycle);
             return min_cycle;
         }
@@ -143,7 +139,7 @@ fn find_cycle_min(k: i64, n: i64, memo: &mut HashMap<i64, i64>) -> i64 {
 }
 
 #[allow(dead_code)]
-fn find_min_values(k: i64, n: i64) -> Vec<i64> {
+fn find_min_values(k: usize, n: usize) -> Vec<usize> {
     let unique_cycle_min_set = Mutex::new(HashSet::new());
 
     (1..=n).into_par_iter().for_each(|i| {
@@ -153,7 +149,7 @@ fn find_min_values(k: i64, n: i64) -> Vec<i64> {
         unique_minimums.insert(cycle_min);
     });
 
-    let mut sorted_unique_minimums: Vec<i64> = unique_cycle_min_set
+    let mut sorted_unique_minimums: Vec<usize> = unique_cycle_min_set
         .lock()
         .unwrap()
         .iter()
@@ -181,10 +177,10 @@ fn test_find_circle() {
     // [1, 244, 4150, 4151, 8294, 8299, 9044, 9045, 10933, 24584, 54748, 58618, 89883, 92727, 93084, 194979]
     // [1, 17148, 63804, 93531, 239459, 282595, 548834]
 
-    let k_values: Vec<i64> = vec![1, 2, 3, 4, 5, 6];
-    let n: i64 = 1_000_000;
+    let k_values: Vec<usize> = vec![1, 2, 3, 4, 5, 6];
+    let n: usize = 1_000_000;
 
-    let results: Vec<Vec<i64>> = k_values
+    let results: Vec<Vec<usize>> = k_values
         .par_iter()
         .map(|&k| find_min_values(k, n))
         .collect();

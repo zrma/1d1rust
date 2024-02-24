@@ -33,7 +33,7 @@ fn deduplicate(s: &str) -> String {
 // noinspection SpellCheckingInspection
 // Dedupe
 #[test]
-fn test1_5357() {
+fn test_solve5357() {
     struct TestData {
         s: String,
         want: String,

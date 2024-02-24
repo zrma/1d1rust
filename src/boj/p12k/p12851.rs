@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve12851(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (start, end) = read_values!(read_line(reader), i32, i32);
+    let (start, end) = read_values!(read_line(reader), usize, usize);
     let mut way = vec![0; 100001];
     let mut current_level = Vec::new();
     let mut min_time = 0;
@@ -18,14 +18,23 @@ fn solve12851(reader: &mut impl BufRead, writer: &mut impl Write) {
                 num_ways += 1;
             }
 
-            for &next in [current - 1, current + 1, current * 2].iter() {
-                if !(0..=100000).contains(&next)
-                    || way[next as usize] != 0 && way[next as usize] != way[current as usize] + 1
+            for &next in [
+                current.checked_sub(1),
+                current.checked_add(1),
+                current.checked_mul(2),
+            ]
+            .iter()
+            {
+                let next = match next {
+                    Some(v) => v,
+                    None => continue,
+                };
+                if !(0..=100000).contains(&next) || way[next] != 0 && way[next] != way[current] + 1
                 {
                     continue;
                 }
 
-                way[next as usize] = way[current as usize] + 1;
+                way[next] = way[current] + 1;
                 next_level.push(next);
             }
         }
@@ -44,7 +53,7 @@ fn solve12851(reader: &mut impl BufRead, writer: &mut impl Write) {
 // https://www.acmicpc.net/problem/12851
 // 숨바꼭질 2
 #[test]
-fn test1_12851() {
+fn test_solve12851() {
     struct TestData {
         s: String,
         want: String,

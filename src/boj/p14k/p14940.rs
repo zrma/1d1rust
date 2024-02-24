@@ -33,13 +33,18 @@ fn solve14940(reader: &mut impl BufRead, writer: &mut impl Write) {
     while let Some((x, y)) = queue.pop_front() {
         let dist = map[x][y];
         for (dx, dy) in [(0, 1), (0, -1), (1, 0), (-1, 0)].iter() {
-            let nx = x as i32 + dx;
-            let ny = y as i32 + dy;
-            if nx < 0 || nx >= n as i32 || ny < 0 || ny >= m as i32 {
+            let nx = match x.checked_add_signed(*dx) {
+                Some(v) => v,
+                None => continue,
+            };
+            let ny = match y.checked_add_signed(*dy) {
+                Some(v) => v,
+                None => continue,
+            };
+            if nx >= n || ny >= m {
                 continue;
             }
 
-            let (nx, ny) = (nx as usize, ny as usize);
             if map[nx][ny] >= 0 {
                 continue;
             }

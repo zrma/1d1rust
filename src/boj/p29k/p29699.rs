@@ -15,7 +15,7 @@ fn solve29699(reader: &mut impl BufRead, writer: &mut impl Write) {
 // https://www.acmicpc.net/problem/29699
 // Welcome to SMUPC!
 #[test]
-fn test1_29699() {
+fn test_solve29699() {
     struct TestData {
         s: String,
         want: String,

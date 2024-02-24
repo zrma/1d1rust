@@ -46,13 +46,18 @@ fn solve21736(reader: &mut impl BufRead, writer: &mut impl Write) {
         map[y][x] = Block::Wall;
 
         for (dx, dy) in [(0, 1), (0, -1), (1, 0), (-1, 0)].iter() {
-            let nx = x as i32 + dx;
-            let ny = y as i32 + dy;
-            if ny < 0 || ny >= n as i32 || nx < 0 || nx >= m as i32 {
+            let nx = match x.checked_add_signed(*dx) {
+                Some(v) => v,
+                None => continue,
+            };
+            let ny = match y.checked_add_signed(*dy) {
+                Some(v) => v,
+                None => continue,
+            };
+            if nx >= m || ny >= n {
                 continue;
             }
 
-            let (nx, ny) = (nx as usize, ny as usize);
             if map[ny][nx] == Block::Wall {
                 continue;
             }

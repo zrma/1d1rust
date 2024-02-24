@@ -56,7 +56,7 @@ fn char_to_index(c: char) -> i32 {
 // noinspection SpellCheckingInspection
 // 오리
 #[test]
-fn test1_12933() {
+fn test_solve12933() {
     struct TestData {
         s: String,
         want: String,

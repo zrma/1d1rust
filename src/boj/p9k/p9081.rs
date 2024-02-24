@@ -31,7 +31,7 @@ fn find_decreasing_point(word: &[char]) -> Option<usize> {
 // noinspection SpellCheckingInspection
 // 단어 맞추기
 #[test]
-fn test1_9081() {
+fn test_solve9081() {
     struct TestData {
         s: String,
         want: String,

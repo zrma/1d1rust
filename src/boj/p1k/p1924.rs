@@ -4,13 +4,13 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1924(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (month, day) = read_values!(read_line(reader), i32, i32);
+    let (month, day) = read_values!(read_line(reader), usize, usize);
 
     let days_per_month = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    let total_days = days_per_month.iter().take(month as usize).sum::<i32>() + day;
+    let total_days = days_per_month.iter().take(month).sum::<usize>() + day;
 
     let weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-    let weekday = weekdays[total_days as usize % 7];
+    let weekday = weekdays[total_days % 7];
 
     write!(writer, "{}", weekday).unwrap();
 }

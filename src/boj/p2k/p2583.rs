@@ -1,4 +1,5 @@
 use crate::read_values;
+use crate::utils::functions::try_next_pos;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -6,7 +7,7 @@ use std::io::{BufRead, Write};
 fn solve2583(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (row, col, rects) = read_input(reader);
 
-    let mut table = vec![vec![false; col as usize]; row as usize];
+    let mut table = vec![vec![false; col]; row];
     fill_table(&mut table, &rects);
 
     let res = find_areas(&mut table);
@@ -17,13 +18,13 @@ fn solve2583(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 }
 
-fn find_areas(table: &mut [Vec<bool>]) -> Vec<i32> {
-    let (row, col) = (table.len() as i32, table[0].len() as i32);
-    let mut res: Vec<i32> = vec![];
+fn find_areas(table: &mut [Vec<bool>]) -> Vec<usize> {
+    let (row, col) = (table.len(), table[0].len());
+    let mut res = vec![];
 
     for y in 0..row {
         for x in 0..col {
-            if !table[y as usize][x as usize] {
+            if !table[y][x] {
                 let cnt = bfs(table, x, y);
                 res.push(cnt);
             }
@@ -34,14 +35,14 @@ fn find_areas(table: &mut [Vec<bool>]) -> Vec<i32> {
     res
 }
 
-fn read_input(reader: &mut impl BufRead) -> (i32, i32, Vec<Vec<i32>>) {
-    let (row, col, n) = read_values!(read_line(reader), i32, i32, i32);
+fn read_input(reader: &mut impl BufRead) -> (usize, usize, Vec<Vec<usize>>) {
+    let (row, col, n) = read_values!(read_line(reader), usize, usize, usize);
 
     let rects = (0..n)
         .map(|_| {
             read_line(reader)
                 .split_whitespace()
-                .map(|num_str| num_str.parse::<i32>().unwrap())
+                .map(|num_str| num_str.parse::<usize>().unwrap())
                 .collect()
         })
         .collect();
@@ -49,50 +50,40 @@ fn read_input(reader: &mut impl BufRead) -> (i32, i32, Vec<Vec<i32>>) {
     (row, col, rects)
 }
 
-fn fill_table(table: &mut [Vec<bool>], rects: &[Vec<i32>]) {
+fn fill_table(table: &mut [Vec<bool>], rects: &[Vec<usize>]) {
     for rect in rects {
-        for y in rect[1]..rect[3] {
-            for x in rect[0]..rect[2] {
-                table[y as usize][x as usize] = true;
-            }
-        }
+        (rect[1]..rect[3]).for_each(|y| {
+            (rect[0]..rect[2]).for_each(|x| {
+                table[y][x] = true;
+            })
+        });
     }
 }
 
-fn bfs(table: &mut [Vec<bool>], x: i32, y: i32) -> i32 {
+fn bfs(table: &mut [Vec<bool>], x: usize, y: usize) -> usize {
     struct Pos {
-        x: i32,
-        y: i32,
+        x: usize,
+        y: usize,
     }
 
     let mut cnt = 0;
     let mut queue = vec![Pos { x, y }];
 
     while let Some(pos) = queue.pop() {
-        if table[pos.y as usize][pos.x as usize] {
+        if table[pos.y][pos.x] {
             continue;
         }
         cnt += 1;
-        table[pos.y as usize][pos.x as usize] = true;
+        table[pos.y][pos.x] = true;
 
-        let moves = [
-            (pos.x - 1, pos.y),
-            (pos.x + 1, pos.y),
-            (pos.x, pos.y - 1),
-            (pos.x, pos.y + 1),
-        ];
+        let deltas = [(0, -1), (0, 1), (-1, 0), (1, 0)];
+        for (dx, dy) in deltas.iter() {
+            let (nx, ny) = match try_next_pos(table[0].len(), table.len(), pos.x, pos.y, *dx, *dy) {
+                Some(v) => v,
+                None => continue,
+            };
 
-        for (next_x, next_y) in moves.iter() {
-            if *next_x >= 0
-                && *next_x < table[0].len() as i32
-                && *next_y >= 0
-                && *next_y < table.len() as i32
-            {
-                queue.push(Pos {
-                    x: *next_x,
-                    y: *next_y,
-                });
-            }
+            queue.push(Pos { x: nx, y: ny });
         }
     }
 

@@ -24,7 +24,7 @@ fn distance_between_chars(from: char, to: char) -> i32 {
 // noinspection SpellCheckingInspection
 // ZOAC 2
 #[test]
-fn test1_18238() {
+fn test_solve18238() {
     struct TestData {
         s: String,
         want: String,
