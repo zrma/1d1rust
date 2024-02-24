@@ -73,7 +73,7 @@ fn count_birds(grid: &[Vec<String>]) -> usize {
 // https://www.acmicpc.net/problem/14647
 // 준오는 조류혐오야!!
 #[test]
-fn test1_14647() {
+fn test_solve14647() {
     struct TestData {
         s: String,
         want: String,

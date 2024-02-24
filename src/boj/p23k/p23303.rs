@@ -20,7 +20,7 @@ fn solve23303(reader: &mut impl BufRead, writer: &mut impl Write) {
 // noinspection SpellCheckingInspection
 // 이 문제는 D2 입니다.
 #[test]
-fn test1_23303() {
+fn test_solve23303() {
     struct TestData {
         s: String,
         want: String,

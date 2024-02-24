@@ -6,9 +6,9 @@ use std::io::{BufRead, Write};
 fn solve20920(reader: &mut impl BufRead, writer: &mut impl Write) {
     let line = read_line(reader);
 
-    let nums: Vec<i32> = line
+    let nums: Vec<usize> = line
         .split_whitespace()
-        .map(|num_str| num_str.parse::<i32>().unwrap())
+        .map(|num_str| num_str.parse::<usize>().unwrap())
         .collect();
 
     let n = nums[0];
@@ -24,12 +24,12 @@ fn solve20920(reader: &mut impl BufRead, writer: &mut impl Write) {
     writer.write_all(output.as_bytes()).unwrap();
 }
 
-fn count_words(reader: &mut impl BufRead, n: i32, m: i32) -> BTreeMap<String, i32> {
+fn count_words(reader: &mut impl BufRead, n: usize, m: usize) -> BTreeMap<String, i32> {
     let mut counts = BTreeMap::new();
 
     for _ in 0..n {
         let word = read_line(reader);
-        if word.len() < m as usize {
+        if word.len() < m {
             continue;
         }
 

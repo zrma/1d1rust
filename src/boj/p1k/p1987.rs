@@ -30,20 +30,16 @@ fn dfs(visited: &mut Vec<bool>, board: &[Vec<char>], x: usize, y: usize, dist: i
 
     let directions = [(-1isize, 0isize), (1, 0), (0, -1), (0, 1)];
     for (dx, dy) in directions {
-        let new_x = x as isize + dx;
-        let new_y = y as isize + dy;
-        if new_x >= 0
-            && new_x < board.len() as isize
-            && new_y >= 0
-            && new_y < board[0].len() as isize
-        {
-            max_dist = max_dist.max(dfs(
-                visited,
-                board,
-                new_x as usize,
-                new_y as usize,
-                dist + 1,
-            ));
+        let nx = match x.checked_add_signed(dx) {
+            Some(v) => v,
+            None => continue,
+        };
+        let ny = match y.checked_add_signed(dy) {
+            Some(v) => v,
+            None => continue,
+        };
+        if nx < board.len() && ny < board[0].len() {
+            max_dist = max_dist.max(dfs(visited, board, nx, ny, dist + 1));
         }
     }
 

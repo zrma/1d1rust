@@ -42,7 +42,7 @@ fn solve20310(reader: &mut impl BufRead, writer: &mut impl Write) {
 // https://www.acmicpc.net/problem/20310
 // 타노스
 #[test]
-fn test1_20310() {
+fn test_solve20310() {
     struct TestData {
         s: String,
         want: String,
