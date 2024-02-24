@@ -14,14 +14,14 @@ fn solve21734(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn repeat_char_based_on_ascii_value(c: char) -> String {
-    let mut n = c as u32;
+    let mut n = c as usize;
     let mut repeat_cnt = 0;
     while n > 0 {
         repeat_cnt += n % 10;
         n /= 10;
     }
 
-    c.to_string().repeat(repeat_cnt as usize)
+    c.to_string().repeat(repeat_cnt)
 }
 
 // https://www.acmicpc.net/problem/21734

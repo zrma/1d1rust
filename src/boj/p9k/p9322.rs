@@ -44,7 +44,7 @@ fn solve9322(reader: &mut impl BufRead, writer: &mut impl Write) {
 // noinspection SpellCheckingInspection
 // 철벽 보안 알고리즘
 #[test]
-fn test1_9322() {
+fn test_solve9322() {
     struct TestData {
         s: String,
         want: String,

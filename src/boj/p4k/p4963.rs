@@ -1,4 +1,5 @@
 use crate::read_values;
+use crate::utils::functions::try_next_pos;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -56,21 +57,17 @@ fn visit(
 
     visited[y][x] = true;
 
-    let is_in_map = |ny: i32, nx: i32| ny >= 0 && ny < h as i32 && nx >= 0 && nx < w as i32;
-
     for dy in -1..=1 {
         for dx in -1..=1 {
             if dy == 0 && dx == 0 {
                 continue;
             }
 
-            if !is_in_map(y as i32 + dy, x as i32 + dx) {
-                continue;
-            }
-
-            let ny = y as i32 + dy;
-            let nx = x as i32 + dx;
-            visit(map, visited, nx as usize, ny as usize, w, h);
+            let (nx, ny) = match try_next_pos(w, h, x, y, dx, dy) {
+                Some(v) => v,
+                None => continue,
+            };
+            visit(map, visited, nx, ny, w, h);
         }
     }
 }

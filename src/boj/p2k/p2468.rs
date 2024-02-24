@@ -1,3 +1,4 @@
+use crate::utils::functions::try_next_pos;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -56,24 +57,13 @@ fn flood_fill(
     visited[y][x] = true;
 
     let adjacent_positions = [(-1, 0), (1, 0), (0, -1), (0, 1)];
-
-    let is_in_map =
-        |y: isize, x: isize| y >= 0 && y < map_size as isize && x >= 0 && x < map_size as isize;
-
     for &(dy, dx) in adjacent_positions.iter() {
-        let new_y = y as isize + dy;
-        let new_x = x as isize + dx;
+        let (nx, ny) = match try_next_pos(map_size, map_size, x, y, dx, dy) {
+            Some(v) => v,
+            None => continue,
+        };
 
-        if is_in_map(new_y, new_x) {
-            flood_fill(
-                heights_map,
-                visited,
-                water_level,
-                new_y as usize,
-                new_x as usize,
-                map_size,
-            );
-        }
+        flood_fill(heights_map, visited, water_level, ny, nx, map_size);
     }
 }
 

@@ -1,4 +1,5 @@
 use crate::read_values;
+use crate::utils::functions::try_next_pos;
 use crate::utils::io::{read_line, read_map};
 use std::io::{BufRead, Write};
 
@@ -30,12 +31,15 @@ fn solve2638(reader: &mut impl BufRead, writer: &mut impl Write) {
     write!(writer, "{}", ans).unwrap();
 }
 
-fn fill_air(map: &mut Vec<Vec<usize>>, air: &mut Vec<(usize, usize)>) {
+fn fill_air(map: &mut [Vec<usize>], air: &mut Vec<(usize, usize)>) {
     while let Some((x, y)) = air.pop() {
         map[y][x] = 2;
         for (dx, dy) in DIRECTIONS.iter() {
-            let (nx, ny) = ((x as i32 + dx) as usize, (y as i32 + dy) as usize);
-            if is_valid(map, nx, ny) && map[ny][nx] == 0 {
+            let (nx, ny) = match try_next_pos(map[0].len(), map.len(), x, y, *dx, *dy) {
+                Some(v) => v,
+                None => continue,
+            };
+            if map[ny][nx] == 0 {
                 air.push((nx, ny));
             }
         }
@@ -43,7 +47,7 @@ fn fill_air(map: &mut Vec<Vec<usize>>, air: &mut Vec<(usize, usize)>) {
 }
 
 fn melt_cheese(
-    map: &mut Vec<Vec<usize>>,
+    map: &mut [Vec<usize>],
     cheese: &mut Vec<(usize, usize)>,
     air: &mut Vec<(usize, usize)>,
 ) {
@@ -59,21 +63,19 @@ fn melt_cheese(
     *cheese = new_cheese;
 }
 
-fn count_adjacent_air(map: &Vec<Vec<usize>>, x: usize, y: usize) -> usize {
+fn count_adjacent_air(map: &[Vec<usize>], x: usize, y: usize) -> usize {
     DIRECTIONS
         .iter()
-        .filter(|&&(dx, dy)| {
-            let (nx, ny) = ((x as i32 + dx) as usize, (y as i32 + dy) as usize);
-            is_valid(map, nx, ny) && map[ny][nx] == 2
-        })
+        .filter(
+            |&&(dx, dy)| match try_next_pos(map[0].len(), map.len(), x, y, dx, dy) {
+                Some((nx, ny)) => map[ny][nx] == 2,
+                None => false,
+            },
+        )
         .count()
 }
 
-fn is_valid(map: &Vec<Vec<usize>>, x: usize, y: usize) -> bool {
-    x < map[0].len() && y < map.len()
-}
-
-const DIRECTIONS: [(i32, i32); 4] = [(0, 1), (0, -1), (1, 0), (-1, 0)];
+const DIRECTIONS: [(isize, isize); 4] = [(0, 1), (0, -1), (1, 0), (-1, 0)];
 
 // https://www.acmicpc.net/problem/2638
 // 치즈

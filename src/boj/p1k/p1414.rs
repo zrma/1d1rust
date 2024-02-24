@@ -88,7 +88,7 @@ impl PartialOrd for Node {
 // noinspection SpellCheckingInspection
 // 불우이웃돕기
 #[test]
-fn test1_1414() {
+fn test_solve1414() {
     struct TestData {
         s: String,
         want: String,

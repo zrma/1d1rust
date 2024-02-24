@@ -8,13 +8,13 @@ fn solve14501(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut schedules = vec![(0, 0); n + 1];
 
     for schedule in schedules.iter_mut().skip(1) {
-        *schedule = read_values!(read_line(reader), i32, i32);
+        *schedule = read_values!(read_line(reader), usize, usize);
     }
 
     let mut dp = vec![0; n + 2];
     for i in (1..=n).rev() {
         let (duration, profit) = schedules[i];
-        let completion_day = i + duration as usize;
+        let completion_day = i + duration;
 
         dp[i] = if completion_day <= n + 1 {
             std::cmp::max(dp[i + 1], profit + dp[completion_day])

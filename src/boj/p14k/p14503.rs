@@ -55,7 +55,7 @@ impl Direction {
         }
     }
 
-    fn delta(self) -> (i32, i32) {
+    fn delta(self) -> (isize, isize) {
         use Direction::*;
         match self {
             North => (0, -1),
@@ -120,9 +120,7 @@ impl<'a> Cleaner<'a> {
         .iter()
         .any(|&d| {
             let (dx, dy) = d.delta();
-            let nx = self.x as i32 + dx;
-            let ny = self.y as i32 + dy;
-            self.is_cleanable(nx, ny)
+            self.is_cleanable(self.x, self.y, dx, dy)
         })
     }
 
@@ -132,39 +130,44 @@ impl<'a> Cleaner<'a> {
 
     fn go_forward(&mut self) {
         let (dx, dy) = self.direction.delta();
-        let nx = self.x as i32 + dx;
-        let ny = self.y as i32 + dy;
-
-        if self.is_cleanable(nx, ny) {
-            self.x = nx as usize;
-            self.y = ny as usize;
+        if self.is_cleanable(self.x, self.y, dx, dy) {
+            self.x = self.x.checked_add_signed(dx).unwrap();
+            self.y = self.y.checked_add_signed(dy).unwrap();
         }
     }
 
     fn try_to_rewind(&mut self) -> bool {
         let (dx, dy) = self.direction.back().delta();
-        let nx = self.x as i32 + dx;
-        let ny = self.y as i32 + dy;
-
-        if self.is_rewindable(nx, ny) {
-            self.x = nx as usize;
-            self.y = ny as usize;
+        if self.is_rewindable(self.x, self.y, dx, dy) {
+            self.x = self.x.checked_add_signed(dx).unwrap();
+            self.y = self.y.checked_add_signed(dy).unwrap();
             true
         } else {
             false
         }
     }
 
-    fn is_in_bounds(&self, nx: i32, ny: i32) -> bool {
-        ny >= 0 && ny < self.map.len() as i32 && nx >= 0 && nx < self.map[0].len() as i32
+    fn try_next_pos(&self, x: usize, y: usize, dx: isize, dy: isize) -> Option<(usize, usize)> {
+        let nx = x.checked_add_signed(dx)?;
+        let ny = y.checked_add_signed(dy)?;
+
+        if nx < self.map[0].len() && ny < self.map.len() {
+            Some((nx, ny))
+        } else {
+            None
+        }
     }
 
-    fn is_cleanable(&self, x: i32, y: i32) -> bool {
-        self.is_in_bounds(x, y) && self.map[y as usize][x as usize] == 0
+    fn is_cleanable(&self, x: usize, y: usize, dx: isize, dy: isize) -> bool {
+        self.try_next_pos(x, y, dx, dy)
+            .map(|(nx, ny)| self.map[ny][nx] == 0)
+            .unwrap_or(false)
     }
 
-    fn is_rewindable(&self, x: i32, y: i32) -> bool {
-        self.is_in_bounds(x, y) && self.map[y as usize][x as usize] != 1
+    fn is_rewindable(&self, x: usize, y: usize, dx: isize, dy: isize) -> bool {
+        self.try_next_pos(x, y, dx, dy)
+            .map(|(nx, ny)| self.map[ny][nx] != 1)
+            .unwrap_or(false)
     }
 }
 

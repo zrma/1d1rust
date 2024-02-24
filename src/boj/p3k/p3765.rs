@@ -14,7 +14,7 @@ fn solve3765(reader: &mut impl BufRead, writer: &mut impl Write) {
 // noinspection SpellCheckingInspection
 // Celebrity jeopardy
 #[test]
-fn test1_3765() {
+fn test_solve3765() {
     struct TestData {
         s: String,
         want: String,

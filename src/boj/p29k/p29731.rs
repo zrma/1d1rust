@@ -27,7 +27,7 @@ fn solve29731(reader: &mut impl BufRead, writer: &mut impl Write) {
 // noinspection SpellCheckingInspection
 // 2033년 밈 투표
 #[test]
-fn test1_29731() {
+fn test_solve29731() {
     struct TestData {
         s: String,
         want: String,
