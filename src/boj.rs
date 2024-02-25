@@ -20,6 +20,7 @@ mod p27k;
 mod p28k;
 mod p29k;
 mod p2k;
+mod p30k;
 mod p3k;
 mod p4k;
 mod p5k;
