@@ -1,11 +1,11 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve22938(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (ax, ay, ar) = read_values!(read_line(reader), i64, i64, i64);
-    let (bx, by, br) = read_values!(read_line(reader), i64, i64, i64);
+    let (ax, ay, ar) = read_values_as!(read_line(reader), i64, i64, i64);
+    let (bx, by, br) = read_values_as!(read_line(reader), i64, i64, i64);
 
     let res = is_intersect((ax, ay, ar), (bx, by, br));
     write!(writer, "{}", res).unwrap();

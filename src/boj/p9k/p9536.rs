@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -14,7 +14,7 @@ fn solve9536(reader: &mut impl BufRead, writer: &mut impl Write) {
                 break;
             }
 
-            let (_, _, sound) = read_values!(s, String, String, String);
+            let (_, _, sound) = read_values_as!(s, String, String, String);
             sounds.retain(|&s| s != sound);
         }
 

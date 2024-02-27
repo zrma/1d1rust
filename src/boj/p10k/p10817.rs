@@ -1,11 +1,11 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::cmp::Ordering::Less;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve10817(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (a, b, c) = read_values!(read_line(reader), i32, i32, i32);
+    let (a, b, c) = read_values_as!(read_line(reader), i32, i32, i32);
 
     let mid = match (a.cmp(&b), b.cmp(&c), c.cmp(&a)) {
         (Less, Less, _) => b,

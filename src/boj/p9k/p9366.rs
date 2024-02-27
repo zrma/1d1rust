@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve9366(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t = read_line(reader).parse::<usize>().unwrap();
     for i in 0..t {
-        let (a, b, c) = read_values!(read_line(reader), i32, i32, i32);
+        let (a, b, c) = read_values_as!(read_line(reader), i32, i32, i32);
 
         let res = triangle_type(a, b, c);
         writeln!(writer, "Case #{}: {}", i + 1, res).unwrap();

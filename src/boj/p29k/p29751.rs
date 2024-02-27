@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve29751(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (w, h) = read_values!(read_line(reader), f64, f64);
+    let (w, h) = read_values_as!(read_line(reader), f64, f64);
 
     let ans = (w * h) / 2.0;
     write!(writer, "{:.1}", ans).unwrap();

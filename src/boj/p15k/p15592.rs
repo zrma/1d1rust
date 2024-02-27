@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -63,7 +63,7 @@ fn is_within(val: i32, min: i32, max: i32) -> bool {
 }
 
 fn read_rect(reader: &mut impl BufRead) -> Rect {
-    let (left, bottom, right, top) = read_values!(read_line(reader), i32, i32, i32, i32);
+    let (left, bottom, right, top) = read_values_as!(read_line(reader), i32, i32, i32, i32);
     Rect {
         left,
         bottom,

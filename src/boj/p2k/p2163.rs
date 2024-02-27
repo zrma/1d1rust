@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2163(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, m) = read_values!(read_line(reader), usize, usize);
+    let (n, m) = read_values_as!(read_line(reader), usize, usize);
 
     // 가로로 n 크기이므로 n - 1번 자르기. (n조각)
     // 세로로 m 크기이므로 m - 1번 자르기. (m조각) 이걸 n 조각 반복

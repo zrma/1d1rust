@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -6,7 +6,7 @@ fn solve1894(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
     while reader.read_line(&mut line).unwrap_or(0) > 0 {
         let (x1, y1, x2, y2, x3, y3, x4, y4) =
-            read_values!(&line, f64, f64, f64, f64, f64, f64, f64, f64);
+            read_values_as!(&line, f64, f64, f64, f64, f64, f64, f64, f64);
 
         let p1 = Point { x: x1, y: y1 };
         let p2 = Point { x: x2, y: y2 };

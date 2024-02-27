@@ -1,11 +1,11 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_map};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve14503(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (rows, cols) = read_values!(read_line(reader), usize, usize);
-    let (start_row, start_col, start_dir) = read_values!(read_line(reader), usize, usize, usize);
+    let (rows, cols) = read_values_as!(read_line(reader), usize, usize);
+    let (start_row, start_col, start_dir) = read_values_as!(read_line(reader), usize, usize, usize);
 
     let mut map = read_map(reader, rows, cols);
 

@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -12,12 +12,12 @@ fn solve26566(reader: &mut impl BufRead, writer: &mut impl Write) {
         s.clear();
         reader.read_line(&mut s).unwrap();
 
-        let (a1, p1) = read_values!(&s, f64, f64);
+        let (a1, p1) = read_values_as!(&s, f64, f64);
 
         s.clear();
         reader.read_line(&mut s).unwrap();
 
-        let (r1, p2) = read_values!(&s, f64, f64);
+        let (r1, p2) = read_values_as!(&s, f64, f64);
 
         let slice = a1 / p1;
         let whole = std::f64::consts::PI * r1 * r1 / p2;

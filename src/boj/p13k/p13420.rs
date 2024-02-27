@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve13420(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
     for _ in 0..n {
-        let (a, op, b, _, c) = read_values!(read_line(reader), i64, String, i64, String, i64);
+        let (a, op, b, _, c) = read_values_as!(read_line(reader), i64, String, i64, String, i64);
 
         let ans = match op.as_str() {
             "+" => a + b == c,

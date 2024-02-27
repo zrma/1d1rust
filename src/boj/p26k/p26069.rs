@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -8,7 +8,7 @@ fn solve26069(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let mut set = std::collections::HashSet::new();
     for _ in 0..n {
-        let (name0, name1) = read_values!(read_line(reader), String, String);
+        let (name0, name1) = read_values_as!(read_line(reader), String, String);
 
         // noinspection SpellCheckingInspection
         const TARGET: &str = "ChongChong";

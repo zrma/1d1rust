@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -17,7 +17,7 @@ fn solve13411(reader: &mut impl BufRead, writer: &mut impl Write) {
         s.clear();
         reader.read_line(&mut s).unwrap();
 
-        let (x, y, v) = read_values!(&s, f64, f64, f64);
+        let (x, y, v) = read_values_as!(&s, f64, f64, f64);
 
         let time = (x * x + y * y) / (v * v);
         entries.push(Entry { id: i + 1, time });

@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -12,7 +12,7 @@ fn solve11880(reader: &mut impl BufRead, writer: &mut impl Write) {
         input.clear();
         reader.read_line(&mut input).unwrap();
 
-        let (a, b, c) = read_values!(&input, i64, i64, i64);
+        let (a, b, c) = read_values_as!(&input, i64, i64, i64);
 
         let sum = a + b + c;
         let max = a.max(b).max(c);

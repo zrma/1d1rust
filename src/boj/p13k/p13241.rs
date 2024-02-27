@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve13241(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (a, b) = read_values!(read_line(reader), i64, i64);
+    let (a, b) = read_values_as!(read_line(reader), i64, i64);
 
     let res = lcm(a, b);
     write!(writer, "{}", res).unwrap();

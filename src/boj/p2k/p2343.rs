@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2343(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (num_lessons, num_bluerays) = read_values!(read_line(reader), usize, usize);
+    let (num_lessons, num_bluerays) = read_values_as!(read_line(reader), usize, usize);
     let lesson_durations = {
         let mut s = String::new();
         reader.read_line(&mut s).unwrap();

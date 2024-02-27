@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -30,7 +30,7 @@ impl Point {
 }
 
 fn read_point(reader: &mut impl BufRead) -> Point {
-    let (x, y) = read_values!(read_line(reader), i32, i32);
+    let (x, y) = read_values_as!(read_line(reader), i32, i32);
     Point { x, y }
 }
 

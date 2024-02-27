@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_n_values, read_value};
 use std::io::{BufRead, Write};
 
@@ -8,7 +8,7 @@ fn solve7795(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut ans = Vec::with_capacity(num_cases);
 
     for _ in 0..num_cases {
-        let (n, m) = read_values!(read_line(reader), usize, usize);
+        let (n, m) = read_values_as!(read_line(reader), usize, usize);
 
         let mut a = read_n_values::<i32>(reader, n);
         let mut b = read_n_values::<i32>(reader, m);
