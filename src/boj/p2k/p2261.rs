@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::cmp::Ordering;
 use std::io::{BufRead, Write};
@@ -13,7 +13,7 @@ fn solve2261(reader: &mut impl BufRead, writer: &mut impl Write) {
         s.clear();
         reader.read_line(&mut s).unwrap();
 
-        let (x, y) = read_values!(&s, i32, i32);
+        let (x, y) = read_values_as!(&s, i32, i32);
         points.push(Point::new(x, y));
     }
 

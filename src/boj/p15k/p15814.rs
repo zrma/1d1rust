@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -9,7 +9,7 @@ fn solve15814(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
 
     for _ in 0..n {
-        let (i, j) = read_values!(read_line(reader), usize, usize);
+        let (i, j) = read_values_as!(read_line(reader), usize, usize);
         ans.swap(i, j);
     }
 

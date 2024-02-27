@@ -1,16 +1,11 @@
-use crate::utils::io::read_line;
+use crate::utils::io::read_values;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 // noinspection SpellCheckingInspection
 fn solve30402(reader: &mut impl BufRead, writer: &mut impl Write) {
     let input = (0..15)
-        .map(|_| {
-            read_line(reader)
-                .split_whitespace()
-                .collect::<Vec<&str>>()
-                .join("")
-        })
+        .map(|_| read_values::<String>(reader).join(""))
         .collect::<Vec<String>>()
         .join("");
 

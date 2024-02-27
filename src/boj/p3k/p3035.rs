@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve3035(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (r, c, zr, zc) = read_values!(read_line(reader), usize, usize, usize, usize);
+    let (r, c, zr, zc) = read_values_as!(read_line(reader), usize, usize, usize, usize);
 
     let mut image = vec![];
     for _ in 0..r {

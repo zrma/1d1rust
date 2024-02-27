@@ -1,11 +1,11 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve19583(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (s, e, q) = {
-        let (s, e, q) = read_values!(read_line(reader), String, String, String);
+        let (s, e, q) = read_values_as!(read_line(reader), String, String, String);
         (
             str_to_time(s.as_str()),
             str_to_time(e.as_str()),
@@ -21,7 +21,7 @@ fn solve19583(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     while reader.read_line(&mut line).unwrap_or(0) > 0 {
         let (t, name) = {
-            let (t, name) = read_values!(line.as_str(), String, String);
+            let (t, name) = read_values_as!(line.as_str(), String, String);
             (str_to_time(t.as_str()), name)
         };
 

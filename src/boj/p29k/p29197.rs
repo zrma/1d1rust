@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use num::integer::gcd;
 use std::io::{BufRead, Write};
@@ -10,7 +10,7 @@ fn solve29197(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut set = std::collections::HashSet::new();
 
     for _ in 0..n {
-        let (x, y) = read_values!(read_line(reader), i64, i64);
+        let (x, y) = read_values_as!(read_line(reader), i64, i64);
 
         let r = Rational::new(y, x);
         set.insert(r);

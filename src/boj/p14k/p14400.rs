@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -8,7 +8,7 @@ fn solve14400(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let mut points = vec![];
     for _ in 0..n {
-        points.push(read_values!(read_line(reader), i64, i64));
+        points.push(read_values_as!(read_line(reader), i64, i64));
     }
 
     points.sort_by(|a, b| a.0.cmp(&b.0));

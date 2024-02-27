@@ -1,16 +1,10 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_values};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2437(reader: &mut impl BufRead, writer: &mut impl Write) {
     read_line(reader);
-    let line = read_line(reader);
-
-    let arr = line
-        .split_whitespace()
-        .map(|num_str| num_str.parse::<i32>().unwrap())
-        .collect();
-
+    let arr = read_values::<i32>(reader);
     let res = get_unavailable_sum(arr);
     write!(writer, "{}", res).unwrap();
 }

@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::collections::HashMap;
 use std::io::{BufRead, Write};
@@ -9,7 +9,7 @@ fn solve27160(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let mut counts = HashMap::new();
     for _ in 0..n {
-        let (name, count) = read_values!(read_line(reader), String, u32);
+        let (name, count) = read_values_as!(read_line(reader), String, u32);
         *counts.entry(name).or_insert(0) += count;
     }
 

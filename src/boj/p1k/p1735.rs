@@ -1,12 +1,12 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use num::integer::gcd;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1735(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (a, b) = read_values!(read_line(reader), i64, i64);
-    let (c, d) = read_values!(read_line(reader), i64, i64);
+    let (a, b) = read_values_as!(read_line(reader), i64, i64);
+    let (c, d) = read_values_as!(read_line(reader), i64, i64);
 
     let (x, y) = sum_and_reduce_fractions(a, b, c, d);
     write!(writer, "{} {}", x, y).unwrap();

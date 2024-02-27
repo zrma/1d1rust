@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -9,7 +9,7 @@ fn solve1916(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let graph = read_graph(reader, n, m);
 
-    let (start, end) = read_values!(read_line(reader), usize, usize);
+    let (start, end) = read_values_as!(read_line(reader), usize, usize);
 
     let result = find_shortest_path(&graph, n, start, end);
     write!(writer, "{}", result).expect("Failed to write");
@@ -18,7 +18,7 @@ fn solve1916(reader: &mut impl BufRead, writer: &mut impl Write) {
 fn read_graph(reader: &mut impl BufRead, n: usize, m: usize) -> Vec<Vec<Way>> {
     let mut graph = vec![vec![]; n];
     for _ in 0..m {
-        let (from, to, cost) = read_values!(read_line(reader), usize, usize, i32);
+        let (from, to, cost) = read_values_as!(read_line(reader), usize, usize, i32);
         graph[from - 1].push(Way {
             from: from - 1,
             to: to - 1,

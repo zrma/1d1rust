@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve11383(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, _) = read_values!(read_line(reader), usize, usize);
+    let (n, _) = read_values_as!(read_line(reader), usize, usize);
 
     let src = {
         let mut src = vec![];

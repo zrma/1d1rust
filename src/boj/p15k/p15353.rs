@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve15353(reader: &mut impl BufRead, writer: &mut impl Write) {
     let line = read_line(reader);
 
-    let (a, b) = read_values!(line, String, String);
+    let (a, b) = read_values_as!(line, String, String);
 
     let mut res = String::new();
     let mut carry = 0;

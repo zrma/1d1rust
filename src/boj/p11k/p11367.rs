@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -8,7 +8,7 @@ fn solve11367(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = (0..n)
         .map(|_| {
-            let (name, score) = read_values!(read_line(reader), String, u32);
+            let (name, score) = read_values_as!(read_line(reader), String, u32);
             let grade = match score {
                 97..=100 => "A+",
                 90..=96 => "A",

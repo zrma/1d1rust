@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use std::collections::HashSet;
 use std::io::{BufRead, Write};
 
@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve22233(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
     reader.read_line(&mut line).unwrap();
-    let (n, m) = read_values!(&line, usize, usize);
+    let (n, m) = read_values_as!(&line, usize, usize);
 
     let mut keywords = (0..n)
         .map(|_| {

@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve17247(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, m) = read_values!(read_line(reader), i32, i32);
+    let (n, m) = read_values_as!(read_line(reader), i32, i32);
 
     let (mut x1, mut y1, mut x2, mut y2) = (0, 0, 0, 0);
 

@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1987(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (r, c) = read_values!(read_line(reader), usize, usize);
+    let (r, c) = read_values_as!(read_line(reader), usize, usize);
     let board = read_board(reader, r, c);
 
     let mut visited = vec![false; 26];

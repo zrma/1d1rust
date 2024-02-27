@@ -1,4 +1,4 @@
-use crate::utils::io::read_line;
+use crate::utils::io::{read_line, read_values};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -6,8 +6,7 @@ fn solve5363(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<usize>().unwrap();
 
     for _ in 0..n {
-        let s = read_line(reader);
-        let mut words: Vec<&str> = s.split_whitespace().collect();
+        let mut words = read_values::<String>(reader);
 
         rotate_first_two_words(&mut words);
 
@@ -15,7 +14,7 @@ fn solve5363(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 }
 
-fn rotate_first_two_words(words: &mut Vec<&str>) {
+fn rotate_first_two_words(words: &mut Vec<String>) {
     let first_two = words.drain(..2).collect::<Vec<_>>();
     words.extend(first_two);
 }

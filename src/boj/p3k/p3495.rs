@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve3495(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (h, w) = read_values!(read_line(reader), usize, usize);
+    let (h, w) = read_values_as!(read_line(reader), usize, usize);
 
     let mut cnt = 0;
     for _ in 0..h {

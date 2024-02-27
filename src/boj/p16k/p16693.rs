@@ -1,11 +1,11 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve16693(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (a1, p1) = read_values!(read_line(reader), f64, f64);
-    let (r1, p2) = read_values!(read_line(reader), f64, f64);
+    let (a1, p1) = read_values_as!(read_line(reader), f64, f64);
+    let (r1, p2) = read_values_as!(read_line(reader), f64, f64);
 
     let ratio1 = a1 / p1;
     let ratio2 = std::f64::consts::PI * r1 * r1 / p2;
