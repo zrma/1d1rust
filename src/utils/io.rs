@@ -26,6 +26,17 @@ macro_rules! read_values {
     }};
 }
 
+pub fn read_n_values<T: std::str::FromStr>(reader: &mut impl BufRead, n: usize) -> Vec<T>
+where
+    <T as std::str::FromStr>::Err: std::fmt::Debug,
+{
+    read_line(reader)
+        .split_whitespace()
+        .take(n)
+        .map(|s| s.parse::<T>().unwrap())
+        .collect::<Vec<T>>()
+}
+
 pub fn matrix_to_str<T: ToString + std::fmt::Display>(mat: &[Vec<T>]) -> String {
     mat.iter()
         .map(|row| {
