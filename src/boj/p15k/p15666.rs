@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{matrix_to_str, read_line};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve15666(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, m) = read_values!(read_line(reader), usize, usize);
+    let (n, m) = read_values_as!(read_line(reader), usize, usize);
     let mut unique_nums = extract_unique_numbers(reader, n);
     unique_nums.sort_unstable();
 

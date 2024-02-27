@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve8574(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, radius, center_x, center_y) = read_values!(read_line(reader), usize, f32, f32, f32);
+    let (n, radius, center_x, center_y) = read_values_as!(read_line(reader), usize, f32, f32, f32);
 
     let is_outside_circle = |(x, y): (f32, f32)| {
         let dx = center_x - x;
@@ -14,7 +14,7 @@ fn solve8574(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let mut count_outside = 0;
     for _ in 0..n {
-        let point = read_values!(read_line(reader), f32, f32);
+        let point = read_values_as!(read_line(reader), f32, f32);
         if is_outside_circle(point) {
             count_outside += 1;
         }

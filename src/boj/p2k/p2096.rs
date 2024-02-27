@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -23,7 +23,7 @@ fn solve2096(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn update_dp(max_dp: &mut [i32; 3], min_dp: &mut [i32; 3], line: &str) {
-    let (a, b, c) = read_values!(line, i32, i32, i32);
+    let (a, b, c) = read_values_as!(line, i32, i32, i32);
 
     let new_max = [
         a + max_dp[0].max(max_dp[1]),

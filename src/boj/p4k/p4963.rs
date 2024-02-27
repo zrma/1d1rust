@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::functions::try_next_pos;
 use std::io::{BufRead, Write};
 
@@ -11,7 +11,7 @@ fn solve4963(reader: &mut impl BufRead, writer: &mut impl Write) {
         line.clear();
         reader.read_line(&mut line).unwrap_or(0) > 0
     } {
-        let (w, h) = read_values!(line.as_str(), usize, usize);
+        let (w, h) = read_values_as!(line.as_str(), usize, usize);
         if w == 0 && h == 0 {
             break;
         }

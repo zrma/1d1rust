@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve14647(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, m) = read_values!(read_line(reader), usize, usize);
+    let (n, m) = read_values_as!(read_line(reader), usize, usize);
     let mut grid = (0..n)
         .map(|_| {
             read_line(reader)

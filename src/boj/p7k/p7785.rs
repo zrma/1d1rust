@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -9,7 +9,7 @@ fn solve7785(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut set = std::collections::HashSet::new();
 
     for _ in 0..n {
-        let (name, status) = read_values!(read_line(reader), String, String);
+        let (name, status) = read_values_as!(read_line(reader), String, String);
 
         if status == "enter" {
             set.insert(name);

@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -17,7 +17,7 @@ fn solve1380(reader: &mut impl BufRead, writer: &mut impl Write) {
         let numbers = (0..2 * n - 1)
             .map(|_| {
                 let line = read_line(reader);
-                read_values!(line, usize, String).0
+                read_values_as!(line, usize, String).0
             })
             .collect::<Vec<_>>();
 

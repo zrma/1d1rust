@@ -1,11 +1,11 @@
-use crate::utils::io::{read_line, read_value};
+use crate::utils::io::{read_line, read_n_values, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1026(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: usize = read_value(read_line(reader));
-    let mut a_values = parse_line_to_vec(reader, n);
-    let mut b_values = parse_line_to_vec(reader, n);
+    let mut a_values = read_n_values::<i32>(reader, n);
+    let mut b_values = read_n_values::<i32>(reader, n);
 
     a_values.sort_unstable();
     b_values.sort_unstable_by(|a, b| b.cmp(a));
@@ -16,14 +16,6 @@ fn solve1026(reader: &mut impl BufRead, writer: &mut impl Write) {
         .map(|(a, b)| a * b)
         .sum::<i32>();
     write!(writer, "{}", sum_product).unwrap();
-}
-
-fn parse_line_to_vec(reader: &mut impl BufRead, n: usize) -> Vec<i32> {
-    read_line(reader)
-        .split_whitespace()
-        .take(n)
-        .map(|s| s.parse::<i32>().unwrap())
-        .collect()
 }
 
 // https://www.acmicpc.net/problem/1026

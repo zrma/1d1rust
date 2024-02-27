@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1924(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (month, day) = read_values!(read_line(reader), usize, usize);
+    let (month, day) = read_values_as!(read_line(reader), usize, usize);
 
     let days_per_month = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     let total_days = days_per_month.iter().take(month).sum::<usize>() + day;

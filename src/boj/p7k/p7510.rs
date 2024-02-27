@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::cmp::Ordering::Less;
 use std::io::{BufRead, Write};
@@ -8,7 +8,7 @@ fn solve7510(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t = read_line(reader).parse::<usize>().unwrap();
     for i in 1..=t {
         let (a, b, c) = {
-            let (a, b, c) = read_values!(read_line(reader), i32, i32, i32);
+            let (a, b, c) = read_values_as!(read_line(reader), i32, i32, i32);
 
             match (a.cmp(&b), b.cmp(&c), c.cmp(&a)) {
                 (Less, Less, _) => (a, b, c),

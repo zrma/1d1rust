@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -8,7 +8,7 @@ fn solve14501(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut schedules = vec![(0, 0); n + 1];
 
     for schedule in schedules.iter_mut().skip(1) {
-        *schedule = read_values!(read_line(reader), usize, usize);
+        *schedule = read_values_as!(read_line(reader), usize, usize);
     }
 
     let mut dp = vec![0; n + 2];

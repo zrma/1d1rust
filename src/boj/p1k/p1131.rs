@@ -23,7 +23,7 @@ const ARR: [[usize; 16]; 7] = [
 
 #[allow(dead_code)]
 fn solve1131(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (a, b, k) = read_values!(read_line(reader), usize, usize, usize);
+    let (a, b, k) = read_values_as!(read_line(reader), usize, usize, usize);
     let mut dp = vec![0; MAX_SIZE];
     for &val in ARR[k].iter().take_while(|&&x| x != 0) {
         let mut n = val;
@@ -106,7 +106,7 @@ fn test_solve1131() {
 }
 
 extern crate rayon;
-use crate::read_values;
+use crate::read_values_as;
 use rayon::prelude::*;
 use std::collections::{HashMap, HashSet};
 use std::sync::Mutex;

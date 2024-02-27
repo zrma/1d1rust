@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::functions::try_next_pos;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
@@ -36,7 +36,7 @@ fn find_areas(table: &mut [Vec<bool>]) -> Vec<usize> {
 }
 
 fn read_input(reader: &mut impl BufRead) -> (usize, usize, Vec<Vec<usize>>) {
-    let (row, col, n) = read_values!(read_line(reader), usize, usize, usize);
+    let (row, col, n) = read_values_as!(read_line(reader), usize, usize, usize);
 
     let rects = (0..n)
         .map(|_| {

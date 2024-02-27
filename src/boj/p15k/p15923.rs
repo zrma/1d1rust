@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -7,7 +7,7 @@ fn solve15923(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
     let mut points = vec![];
     for _ in 0..n {
-        points.push(read_values!(read_line(reader), i32, i32));
+        points.push(read_values_as!(read_line(reader), i32, i32));
     }
 
     let ans = points

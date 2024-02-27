@@ -1,11 +1,11 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2121(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<usize>().unwrap();
-    let (want_w, want_h) = read_values!(read_line(reader), i32, i32);
+    let (want_w, want_h) = read_values_as!(read_line(reader), i32, i32);
     let mut points_set = std::collections::HashSet::new();
 
     for _ in 0..n {
@@ -25,7 +25,7 @@ fn solve2121(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn read_point(reader: &mut impl BufRead) -> (i32, i32) {
-    read_values!(read_line(reader), i32, i32)
+    read_values_as!(read_line(reader), i32, i32)
 }
 
 // https://www.acmicpc.net/problem/2121

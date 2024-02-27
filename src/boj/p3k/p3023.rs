@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve3023(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (r, c) = read_values!(read_line(reader), usize, usize);
+    let (r, c) = read_values_as!(read_line(reader), usize, usize);
 
     let mut board = vec![vec!['.'; 2 * c]; 2 * r];
     for i in 0..r {
@@ -17,7 +17,7 @@ fn solve3023(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let (a, b) = read_values!(read_line(reader), usize, usize);
+    let (a, b) = read_values_as!(read_line(reader), usize, usize);
 
     board[a - 1][b - 1] = if board[a - 1][b - 1] == '.' { '#' } else { '.' };
 

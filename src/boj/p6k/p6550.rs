@@ -1,11 +1,11 @@
-use crate::read_values;
+use crate::read_values_as;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve6550(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
     while reader.read_line(&mut line).unwrap_or(0) > 0 {
-        let (s, t) = read_values!(&line, String, String);
+        let (s, t) = read_values_as!(&line, String, String);
 
         let s_iter = s.char_indices();
         let mut t_iter = t.char_indices();

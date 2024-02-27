@@ -14,7 +14,7 @@ pub fn read_line(reader: &mut impl BufRead) -> String {
 }
 
 #[macro_export]
-macro_rules! read_values {
+macro_rules! read_values_as {
     ($line:expr, $( $t:ty ),+ ) => {{
         let line = $line;
         let mut iter = line.split_whitespace();
@@ -24,6 +24,16 @@ macro_rules! read_values {
             )+
         )
     }};
+}
+
+pub fn read_values<T: std::str::FromStr>(reader: &mut impl BufRead) -> Vec<T>
+where
+    <T as std::str::FromStr>::Err: std::fmt::Debug,
+{
+    read_line(reader)
+        .split_whitespace()
+        .map(|s| s.parse::<T>().unwrap())
+        .collect::<Vec<T>>()
 }
 
 pub fn read_n_values<T: std::str::FromStr>(reader: &mut impl BufRead, n: usize) -> Vec<T>

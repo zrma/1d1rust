@@ -1,11 +1,11 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve8716(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (x1, y1, x2, y2) = read_values!(read_line(reader), i64, i64, i64, i64);
-    let (x3, y3, x4, y4) = read_values!(read_line(reader), i64, i64, i64, i64);
+    let (x1, y1, x2, y2) = read_values_as!(read_line(reader), i64, i64, i64, i64);
+    let (x3, y3, x4, y4) = read_values_as!(read_line(reader), i64, i64, i64, i64);
 
     let horizontal_line1 = Line::new(x1, x2);
     let horizontal_line2 = Line::new(x3, x4);

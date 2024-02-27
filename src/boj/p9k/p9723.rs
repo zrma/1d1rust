@@ -1,4 +1,4 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve9723(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t = read_value(read_line(reader));
     for i in 0..t {
-        let (a, b, c) = read_values!(read_line(reader), i32, i32, i32);
+        let (a, b, c) = read_values_as!(read_line(reader), i32, i32, i32);
         let res = if is_pythagorean_triplet(a, b, c) {
             "YES"
         } else {

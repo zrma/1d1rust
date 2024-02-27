@@ -1,10 +1,10 @@
-use crate::read_values;
+use crate::read_values_as;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1072(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (num_games, num_wins) = read_values!(read_line(reader), i64, i64);
+    let (num_games, num_wins) = read_values_as!(read_line(reader), i64, i64);
     let win_ratio = (num_wins * 100) / num_games;
     if win_ratio >= 99 {
         write!(writer, "-1").expect("Failed to write to output");
