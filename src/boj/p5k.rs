@@ -3,6 +3,7 @@ mod p5073;
 mod p5357;
 mod p5358;
 mod p5363;
+mod p5426;
 mod p5543;
 mod p5656;
 mod p5704;
