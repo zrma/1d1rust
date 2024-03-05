@@ -19,7 +19,7 @@ fn solve2096(reader: &mut impl BufRead, writer: &mut impl Write) {
     let max_score = *max_dp.iter().max().unwrap();
     let min_score = *min_dp.iter().min().unwrap();
 
-    write!(writer, "{} {}", max_score, min_score).unwrap();
+    write!(writer, "{} {}", max_score, min_score).expect("Failed to write");
 }
 
 fn update_dp(max_dp: &mut [i32; 3], min_dp: &mut [i32; 3], line: &str) {
@@ -91,7 +91,7 @@ fn test_solve2096() {
         let mut writer = vec![];
         solve2096(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

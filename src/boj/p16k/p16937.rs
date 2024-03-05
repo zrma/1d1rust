@@ -14,7 +14,7 @@ fn solve16937(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let res = max_area(h, w, stickers);
-    write!(writer, "{}", res).unwrap();
+    write!(writer, "{}", res).expect("Failed to write");
 }
 
 fn max_area(h: i32, w: i32, stickers: Vec<(i32, i32)>) -> i32 {
@@ -94,7 +94,7 @@ fn test_solve16937() {
         let mut writer = vec![];
         solve16937(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

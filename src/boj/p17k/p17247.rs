@@ -29,7 +29,7 @@ fn solve17247(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let ans = (x1 - x2).abs() + (y1 - y2).abs();
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/17247
@@ -66,7 +66,7 @@ fn test_solve17247() {
         let mut writer = vec![];
         solve17247(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

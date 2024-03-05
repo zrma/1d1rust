@@ -41,7 +41,9 @@ fn test_solve20353() {
         let mut writer = vec![];
         solve20353(&mut reader, &mut writer);
 
-        let got: f64 = crate::utils::io::read_value(String::from_utf8(writer).unwrap());
+        let got: f64 = crate::utils::io::read_value(
+            String::from_utf8(writer).expect("Failed to convert writer to string"),
+        );
         let want = data.want.parse::<f64>().unwrap();
 
         assert!((got - want).abs() < 1e-6, "case {}", i);

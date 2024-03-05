@@ -26,7 +26,7 @@ fn solve1864(reader: &mut impl BufRead, writer: &mut impl Write) {
             acc + char_to_num(c) * 8_isize.pow(i as u32)
         });
 
-        writeln!(writer, "{}", ans).unwrap();
+        writeln!(writer, "{}", ans).expect("Failed to write");
     }
 }
 
@@ -59,7 +59,7 @@ fn test_solve1864() {
         let mut writer = vec![];
         solve1864(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

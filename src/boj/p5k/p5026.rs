@@ -9,12 +9,12 @@ fn solve5026(reader: &mut impl BufRead, writer: &mut impl Write) {
         let s = read_line(reader);
 
         if s == "P=NP" {
-            writeln!(writer, "skipped").unwrap();
+            writeln!(writer, "skipped").expect("Failed to write");
         } else {
             let mut iter = s.split('+');
             let a = iter.next().unwrap().parse::<i32>().unwrap();
             let b = iter.next().unwrap().parse::<i32>().unwrap();
-            writeln!(writer, "{}", a + b).unwrap();
+            writeln!(writer, "{}", a + b).expect("Failed to write");
         }
     }
 }
@@ -66,7 +66,7 @@ P=NP"
         let mut writer = vec![];
         solve5026(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

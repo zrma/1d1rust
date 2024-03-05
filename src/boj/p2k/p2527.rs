@@ -18,7 +18,7 @@ fn solve2527(reader: &mut impl BufRead, writer: &mut impl Write) {
         );
 
         let res = common_point_code((ax, ay, ap, aq), (bx, by, bp, bq));
-        writeln!(writer, "{}", res).unwrap();
+        writeln!(writer, "{}", res).expect("Failed to write");
     }
 }
 
@@ -130,7 +130,7 @@ b
         let mut writer = vec![];
         solve2527(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

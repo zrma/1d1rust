@@ -13,7 +13,7 @@ fn solve15916(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let initial_cmp = arr[0].cmp(&k);
     if initial_cmp == std::cmp::Ordering::Equal {
-        write!(writer, "T").unwrap();
+        write!(writer, "T").expect("Failed to write");
         return;
     }
 
@@ -24,11 +24,11 @@ fn solve15916(reader: &mut impl BufRead, writer: &mut impl Write) {
             continue;
         }
 
-        write!(writer, "T").unwrap();
+        write!(writer, "T").expect("Failed to write");
         return;
     }
 
-    write!(writer, "F").unwrap();
+    write!(writer, "F").expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/15916
@@ -76,7 +76,7 @@ fn test_solve15916() {
         let mut writer = vec![];
         solve15916(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

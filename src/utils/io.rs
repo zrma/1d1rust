@@ -4,7 +4,7 @@ pub fn read_value<T: std::str::FromStr>(line: String) -> T
 where
     <T as std::str::FromStr>::Err: std::fmt::Debug,
 {
-    line.trim().parse::<T>().unwrap()
+    line.trim().parse::<T>().expect("Failed to parse value")
 }
 
 pub fn read_line(reader: &mut impl BufRead) -> String {
@@ -20,7 +20,7 @@ macro_rules! read_values_as {
         let mut iter = line.split_whitespace();
         (
             $(
-                iter.next().unwrap().parse::<$t>().unwrap(),
+                iter.next().expect("Fail to iterate").parse::<$t>().expect("Failed to parse value"),
             )+
         )
     }};
@@ -32,7 +32,7 @@ where
 {
     read_line(reader)
         .split_whitespace()
-        .map(|s| s.parse::<T>().unwrap())
+        .map(|s| s.parse::<T>().expect("Failed to parse value"))
         .collect::<Vec<T>>()
 }
 
@@ -43,7 +43,7 @@ where
     read_line(reader)
         .split_whitespace()
         .take(n)
-        .map(|s| s.parse::<T>().unwrap())
+        .map(|s| s.parse::<T>().expect("Failed to parse value"))
         .collect::<Vec<T>>()
 }
 
@@ -68,12 +68,6 @@ where
     <T as std::str::FromStr>::Err: std::fmt::Debug,
 {
     (0..rows)
-        .map(|_| {
-            read_line(reader)
-                .split_whitespace()
-                .take(cols)
-                .map(|s| s.parse::<T>().unwrap())
-                .collect::<Vec<T>>()
-        })
+        .map(|_| read_n_values(reader, cols))
         .collect::<Vec<_>>()
 }

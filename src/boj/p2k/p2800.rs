@@ -39,7 +39,7 @@ fn solve2800(reader: &mut impl BufRead, writer: &mut impl Write) {
     ans.dedup();
 
     for a in ans {
-        writeln!(writer, "{}", a).unwrap();
+        writeln!(writer, "{}", a).expect("Failed to write");
     }
 }
 
@@ -100,7 +100,7 @@ fn test_solve2800() {
         let mut writer = vec![];
         solve2800(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

@@ -12,7 +12,7 @@ fn solve14503(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut cleaner = Cleaner::new(start_col, start_row, start_dir, &mut map);
     cleaner.clean();
 
-    write!(writer, "{}", cleaner.count).unwrap();
+    write!(writer, "{}", cleaner.count).expect("Failed to write");
 }
 
 #[derive(Copy, Clone)]
@@ -214,7 +214,7 @@ fn test_solve14503() {
         let mut writer = vec![];
         solve14503(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

@@ -16,7 +16,7 @@ fn solve11466(reader: &mut impl BufRead, writer: &mut impl Write) {
         w / 2.0
     };
 
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn min(a: f64, b: f64) -> f64 {
@@ -52,7 +52,9 @@ fn test_solve11466() {
         let mut writer = vec![];
         solve11466(&mut reader, &mut writer);
 
-        let got: f64 = crate::utils::io::read_value(String::from_utf8(writer).unwrap());
+        let got: f64 = crate::utils::io::read_value(
+            String::from_utf8(writer).expect("Failed to convert writer to string"),
+        );
         let want = data.want.parse::<f64>().unwrap();
 
         const EPSILON: f64 = 1e-6;

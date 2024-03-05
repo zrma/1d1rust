@@ -22,7 +22,7 @@ fn solve14400(reader: &mut impl BufRead, writer: &mut impl Write) {
         ans += (x - median_x).abs() + (y - median_y).abs();
     }
 
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/14400
@@ -58,7 +58,7 @@ fn test_solve14400() {
         let mut writer = vec![];
         solve14400(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

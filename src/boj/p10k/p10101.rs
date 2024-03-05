@@ -7,7 +7,7 @@ fn solve10101(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = classify_triangle(&angles);
 
-    write!(writer, "{}", res).unwrap();
+    write!(writer, "{}", res).expect("Failed to write");
 }
 
 fn classify_triangle(angles: &(u32, u32, u32)) -> String {
@@ -77,7 +77,7 @@ fn test_solve10101() {
         let mut writer = vec![];
         solve10101(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

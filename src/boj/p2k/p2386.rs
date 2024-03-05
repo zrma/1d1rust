@@ -14,7 +14,7 @@ fn solve2386(reader: &mut impl BufRead, writer: &mut impl Write) {
         let s = parts.next().unwrap_or("");
 
         let count = s.chars().filter(|&ch| ch == c).count();
-        writeln!(writer, "{} {}", c, count).unwrap();
+        writeln!(writer, "{} {}", c, count).expect("Failed to write");
     }
 }
 
@@ -45,7 +45,7 @@ x 0
         let mut writer = vec![];
         solve2386(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

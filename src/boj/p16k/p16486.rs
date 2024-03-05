@@ -7,7 +7,7 @@ fn solve16486(reader: &mut impl BufRead, writer: &mut impl Write) {
     let d2: f64 = read_value(read_line(reader));
 
     let ans = 2.0 * d1 + 2.0 * std::f64::consts::PI * d2;
-    write!(writer, "{:.6}", ans).unwrap();
+    write!(writer, "{:.6}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/16486
@@ -39,7 +39,8 @@ fn test_solve16486() {
         let mut writer = vec![];
         solve16486(&mut reader, &mut writer);
 
-        let got: f64 = read_value(String::from_utf8(writer).unwrap());
+        let got: f64 =
+            read_value(String::from_utf8(writer).expect("Failed to convert writer to string"));
         let want = data.want.parse::<f64>().unwrap();
 
         const EPSILON: f64 = 1e-6;

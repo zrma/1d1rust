@@ -21,7 +21,7 @@ fn solve4447(reader: &mut impl BufRead, writer: &mut impl Write) {
             std::cmp::Ordering::Less => " is A BADDY",
             std::cmp::Ordering::Equal => " is NEUTRAL",
         };
-        writeln!(writer, "{}{}", s, ans).unwrap();
+        writeln!(writer, "{}{}", s, ans).expect("Failed to write");
     }
 }
 
@@ -73,7 +73,7 @@ Algorithm Crunching Man"
         let mut writer = vec![];
         solve4447(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

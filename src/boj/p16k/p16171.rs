@@ -12,7 +12,7 @@ fn solve16171(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<String>();
     let ans = if s.contains(&k) { 1 } else { 0 };
 
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/16171
@@ -44,7 +44,7 @@ veS"
         let mut writer = vec![];
         solve16171(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

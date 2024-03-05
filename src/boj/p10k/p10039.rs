@@ -8,7 +8,7 @@ fn solve10039(reader: &mut impl BufRead, writer: &mut impl Write) {
         let score: i32 = read_value(read_line(reader));
         sum += std::cmp::max(40, score);
     }
-    write!(writer, "{}", sum / 5).unwrap();
+    write!(writer, "{}", sum / 5).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/10039
@@ -64,7 +64,7 @@ fn test_solve10039() {
         let mut writer = vec![];
         solve10039(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

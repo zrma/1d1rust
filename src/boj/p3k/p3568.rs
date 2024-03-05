@@ -23,12 +23,12 @@ fn solve3568(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         let others = var.chars().skip(var_name.len()).collect::<String>();
         if others.is_empty() {
-            writeln!(writer, "{} {};", default_type, var_name).unwrap();
+            writeln!(writer, "{} {};", default_type, var_name).expect("Failed to write");
             continue;
         }
 
         let others = others.replace("[]", "][").chars().rev().collect::<String>();
-        writeln!(writer, "{}{} {};", default_type, others, var_name).unwrap();
+        writeln!(writer, "{}{} {};", default_type, others, var_name).expect("Failed to write");
     }
 }
 
@@ -55,7 +55,7 @@ int&* c;
         let mut writer = vec![];
         solve3568(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

@@ -20,7 +20,7 @@ fn solve4613(reader: &mut impl BufRead, writer: &mut impl Write) {
         results.push(sum.to_string());
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write to output");
+    write!(writer, "{}", results.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/4613
@@ -82,7 +82,7 @@ AAA
         let mut writer = vec![];
         solve4613(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

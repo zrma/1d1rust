@@ -10,7 +10,7 @@ fn solve2442(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<String>>()
         .join("\n");
 
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/2442
@@ -49,7 +49,7 @@ fn test_solve2442() {
         let mut writer = vec![];
         solve2442(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

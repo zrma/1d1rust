@@ -10,12 +10,12 @@ fn solve3076(reader: &mut impl BufRead, writer: &mut impl Write) {
     for i in 0..r * a {
         for j in 0..c * b {
             if (i / a + j / b) % 2 == 0 {
-                write!(writer, "X").unwrap();
+                write!(writer, "X").expect("Failed to write");
             } else {
-                write!(writer, ".").unwrap();
+                write!(writer, ".").expect("Failed to write");
             }
         }
-        writeln!(writer).unwrap();
+        writeln!(writer).expect("Failed to write");
     }
 }
 
@@ -64,7 +64,7 @@ XXX...XXX...XXX
         let mut writer = vec![];
         solve3076(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

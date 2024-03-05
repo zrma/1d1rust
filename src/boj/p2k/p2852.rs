@@ -27,8 +27,8 @@ fn solve2852(reader: &mut impl BufRead, writer: &mut impl Write) {
     let time_sec = 48 * 60;
     calc_durations(&mut durations, &scores, time_sec, prev_score_time);
 
-    writeln!(writer, "{:02}:{:02}", durations[0] / 60, durations[0] % 60).unwrap();
-    write!(writer, "{:02}:{:02}", durations[1] / 60, durations[1] % 60).unwrap();
+    writeln!(writer, "{:02}:{:02}", durations[0] / 60, durations[0] % 60).expect("Failed to write");
+    write!(writer, "{:02}:{:02}", durations[1] / 60, durations[1] % 60).expect("Failed to write");
 }
 
 fn calc_durations(
@@ -95,7 +95,7 @@ fn test_solve2852() {
         let mut writer = vec![];
         solve2852(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

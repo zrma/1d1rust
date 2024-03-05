@@ -13,7 +13,7 @@ fn solve9723(reader: &mut impl BufRead, writer: &mut impl Write) {
             "NO"
         };
 
-        writeln!(writer, "Case #{}: {}", i + 1, res).unwrap();
+        writeln!(writer, "Case #{}: {}", i + 1, res).expect("Failed to write");
     }
 }
 
@@ -75,7 +75,7 @@ Case #10: YES
         let mut writer = vec![];
         solve9723(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

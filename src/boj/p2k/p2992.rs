@@ -24,7 +24,7 @@ fn solve2992(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn solve2992_rec(numbers: &[u32], used: &mut [bool], buf: &mut Vec<u32>, answers: &mut Vec<u32>) {
@@ -86,7 +86,7 @@ fn test_solve2992() {
         let mut writer = vec![];
         solve2992(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

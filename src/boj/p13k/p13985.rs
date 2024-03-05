@@ -15,7 +15,7 @@ fn solve13985(reader: &mut impl BufRead, writer: &mut impl Write) {
         "NO"
     };
 
-    write!(writer, "{}", res).unwrap();
+    write!(writer, "{}", res).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/13985
@@ -43,7 +43,7 @@ fn test_solve13985() {
         let mut writer = vec![];
         solve13985(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

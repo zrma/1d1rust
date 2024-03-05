@@ -44,9 +44,9 @@ fn find_optimal_withdrawal_amount(
     left
 }
 
-#[test]
 // https://www.acmicpc.net/problem/6236
 // 용돈 관리
+#[test]
 fn test_solve6236() {
     struct TestData {
         s: String,
@@ -82,7 +82,7 @@ fn test_solve6236() {
         let mut writer = vec![];
         solve6236(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

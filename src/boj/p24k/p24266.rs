@@ -5,8 +5,8 @@ use std::io::{BufRead, Write};
 fn solve24266(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_line(reader).parse::<i64>().unwrap();
 
-    writeln!(writer, "{}", n * n * n).unwrap();
-    writeln!(writer, "3").unwrap();
+    writeln!(writer, "{}", n * n * n).expect("Failed to write");
+    writeln!(writer, "3").expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/24266
@@ -34,7 +34,7 @@ fn test_solve24266() {
         let mut writer = vec![];
         solve24266(reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }
