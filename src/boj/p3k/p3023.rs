@@ -23,9 +23,9 @@ fn solve3023(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for row in board {
         for ch in row {
-            write!(writer, "{}", ch).unwrap();
+            write!(writer, "{}", ch).expect("Failed to write");
         }
-        writeln!(writer).unwrap();
+        writeln!(writer).expect("Failed to write");
     }
 }
 
@@ -97,7 +97,7 @@ fn test_solve3023() {
         let mut writer = vec![];
         solve3023(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

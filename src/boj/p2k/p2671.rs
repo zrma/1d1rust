@@ -8,7 +8,7 @@ fn solve2671(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = is_submarine(&line);
 
-    write!(writer, "{}", if res { "SUBMARINE" } else { "NOISE" }).unwrap();
+    write!(writer, "{}", if res { "SUBMARINE" } else { "NOISE" }).expect("Failed to write");
 }
 
 fn build_state_machine() -> HashMap<&'static str, (&'static str, &'static str)> {
@@ -75,6 +75,8 @@ fn test_solve2671() {
         let mut reader = data.s.as_bytes();
         let mut writer = vec![];
         solve2671(&mut reader, &mut writer);
-        assert_eq!(String::from_utf8(writer).unwrap(), data.want, "case {}", i);
+
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

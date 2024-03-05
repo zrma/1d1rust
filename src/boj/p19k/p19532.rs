@@ -22,7 +22,7 @@ fn solve19532(reader: &mut impl BufRead, writer: &mut impl Write) {
     let x = (c * e - b * f) / (a * e - b * d);
     let y = (c * d - a * f) / (b * d - a * e);
 
-    write!(writer, "{} {}", x, y).unwrap();
+    write!(writer, "{} {}", x, y).expect("Failed to write");
 }
 
 #[allow(dead_code)]
@@ -65,7 +65,7 @@ fn test_solve19532() {
             let mut writer = vec![];
             solve19532(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).unwrap();
+            let got = String::from_utf8(writer).expect("Failed to convert writer to string");
             assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
         }
 
@@ -74,7 +74,7 @@ fn test_solve19532() {
             let mut writer = vec![];
             solve19532_brute_force(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).unwrap();
+            let got = String::from_utf8(writer).expect("Failed to convert writer to string");
             assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
         }
     }

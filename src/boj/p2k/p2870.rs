@@ -21,7 +21,7 @@ fn solve2870(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     for num in nums {
-        writeln!(writer, "{}", num).unwrap();
+        writeln!(writer, "{}", num).expect("Failed to write");
     }
 }
 
@@ -130,7 +130,7 @@ le2sim
         let mut writer = vec![];
         solve2870(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

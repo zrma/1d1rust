@@ -31,7 +31,7 @@ fn solve9046(reader: &mut impl BufRead, writer: &mut impl Write) {
         };
         results.push(result_char.to_string());
     }
-    write!(writer, "{}", results.join("\n")).expect("Writing failed");
+    write!(writer, "{}", results.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/9046
@@ -72,7 +72,7 @@ a"
         let mut writer = vec![];
         solve9046(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

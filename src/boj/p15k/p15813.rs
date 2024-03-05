@@ -9,7 +9,7 @@ fn solve15813(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = arr.iter().fold(0, |acc, &x| acc + (x - b'A' + 1));
 
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/15813
@@ -41,7 +41,7 @@ SOYOON"
         let mut writer = vec![];
         solve15813(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

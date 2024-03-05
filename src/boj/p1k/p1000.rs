@@ -11,7 +11,7 @@ pub(crate) fn solve1000(reader: &mut impl BufRead, writer: &mut impl Write) {
         .map(|num_str| num_str.parse::<i32>().unwrap())
         .sum::<i32>();
 
-    write!(writer, "{}", sum).unwrap();
+    write!(writer, "{}", sum).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1000
@@ -59,7 +59,7 @@ fn test_solve1000() {
         let mut writer = vec![];
         solve1000(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

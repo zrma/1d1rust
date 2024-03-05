@@ -14,7 +14,7 @@ fn solve14426(reader: &mut impl BufRead, writer: &mut impl Write) {
         .filter(|word| is_prefix(word, &trie))
         .count();
 
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 type Trie = Vec<Vec<usize>>;
@@ -111,7 +111,7 @@ worr"
         let mut writer = vec![];
         solve14426(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

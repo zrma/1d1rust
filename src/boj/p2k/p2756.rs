@@ -12,7 +12,7 @@ fn solve2756(reader: &mut impl BufRead, writer: &mut impl Write) {
         let (score1, score2) = scores.split_at(3);
         let result = compare_scores(score1.iter().sum(), score2.iter().sum());
 
-        writeln!(writer, "{}", result).unwrap();
+        writeln!(writer, "{}", result).expect("Failed to write");
     }
 }
 
@@ -88,7 +88,7 @@ SCORE: 200 to 140, PLAYER 1 WINS.
         let mut writer = vec![];
         solve2756(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

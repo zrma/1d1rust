@@ -21,15 +21,15 @@ fn solve7510(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         };
 
-        writeln!(writer, "Scenario #{}:", i).unwrap();
+        writeln!(writer, "Scenario #{}:", i).expect("Failed to write");
         if a * a + b * b == c * c {
-            writeln!(writer, "yes").unwrap();
+            writeln!(writer, "yes").expect("Failed to write");
         } else {
-            writeln!(writer, "no").unwrap();
+            writeln!(writer, "no").expect("Failed to write");
         }
 
         if i != t {
-            writeln!(writer).unwrap();
+            writeln!(writer).expect("Failed to write");
         }
     }
 }
@@ -73,7 +73,7 @@ no
         let mut writer = vec![];
         solve7510(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

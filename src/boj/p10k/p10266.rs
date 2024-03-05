@@ -9,7 +9,7 @@ fn solve10266(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = is_gear_match_possible(&mut gear_a, &mut gear_b);
 
-    write!(writer, "{}", if ans { "possible" } else { "impossible" }).unwrap();
+    write!(writer, "{}", if ans { "possible" } else { "impossible" }).expect("Failed to write");
 }
 
 fn is_gear_match_possible(gear_a: &mut [bool], gear_b: &mut [bool]) -> bool {
@@ -107,7 +107,7 @@ fn test_solve10266() {
         let mut writer = vec![];
         solve10266(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

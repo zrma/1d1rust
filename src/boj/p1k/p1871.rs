@@ -21,7 +21,7 @@ fn solve1871(reader: &mut impl BufRead, writer: &mut impl Write) {
         let diff = (left_value as i64 - right_value).abs();
         let result = if diff <= 100 { "nice" } else { "not nice" };
 
-        writeln!(writer, "{}", result).unwrap();
+        writeln!(writer, "{}", result).expect("Failed to write");
     }
 }
 
@@ -33,7 +33,7 @@ fn test_solve1871() {
         s: String,
         want: String,
     }
-    for data in [
+    for (i, data) in [
         TestData {
             s: "2
 ABC-0123
@@ -60,10 +60,15 @@ AAA-9999"
 "
             .to_string(),
         },
-    ] {
+    ]
+    .iter()
+    .enumerate()
+    {
         let mut reader = data.s.as_bytes();
         let mut writer = vec![];
         solve1871(&mut reader, &mut writer);
-        assert_eq!(String::from_utf8(writer).unwrap(), data.want);
+
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

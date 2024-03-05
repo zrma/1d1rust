@@ -29,7 +29,7 @@ fn solve11091(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         };
 
-        writeln!(writer, "{}", ans).unwrap();
+        writeln!(writer, "{}", ans).expect("Failed to write");
     }
 }
 
@@ -70,7 +70,7 @@ The quick brown fox jumps over the lazy dog."
         let mut writer = vec![];
         solve11091(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

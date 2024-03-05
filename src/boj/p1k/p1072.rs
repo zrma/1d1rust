@@ -7,7 +7,7 @@ fn solve1072(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (num_games, num_wins) = read_values_as!(read_line(reader), i64, i64);
     let win_ratio = (num_wins * 100) / num_games;
     if win_ratio >= 99 {
-        write!(writer, "-1").expect("Failed to write to output");
+        write!(writer, "-1").expect("Failed to write");
         return;
     }
     let mut lower_bound = 1;
@@ -21,7 +21,7 @@ fn solve1072(reader: &mut impl BufRead, writer: &mut impl Write) {
             lower_bound = mid + 1;
         }
     }
-    write!(writer, "{}", lower_bound).expect("Failed to write to output");
+    write!(writer, "{}", lower_bound).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1072
@@ -69,7 +69,7 @@ fn test_solve1072() {
         let mut writer = vec![];
         solve1072(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

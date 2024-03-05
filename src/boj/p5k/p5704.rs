@@ -17,7 +17,7 @@ fn solve5704(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         let ans = check.iter().all(|&x| x);
-        writeln!(writer, "{}", if ans { "Y" } else { "N" }).unwrap();
+        writeln!(writer, "{}", if ans { "Y" } else { "N" }).expect("Failed to write");
     }
 }
 
@@ -48,7 +48,7 @@ N
         let mut writer = vec![];
         solve5704(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

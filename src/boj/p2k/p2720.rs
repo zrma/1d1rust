@@ -16,7 +16,7 @@ fn solve2720(reader: &mut impl BufRead, writer: &mut impl Write) {
         res.push_str(&format!("{} ", (c % 25) / 10));
         res.push_str(&format!("{} ", ((c % 25) % 10) / 5));
         res.push_str(&format!("{}", ((c % 25) % 10) % 5));
-        writeln!(writer, "{}", res).unwrap();
+        writeln!(writer, "{}", res).expect("Failed to write");
     }
 }
 
@@ -47,7 +47,7 @@ fn test_solve2720() {
         let mut writer = vec![];
         solve2720(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

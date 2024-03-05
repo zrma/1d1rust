@@ -31,7 +31,7 @@ fn solve15686(reader: &mut impl BufRead, writer: &mut impl Write) {
         &mut min_city_distance,
     );
 
-    write!(writer, "{}", min_city_distance).unwrap();
+    write!(writer, "{}", min_city_distance).expect("Failed to write");
 }
 
 fn choose_chickens(
@@ -141,7 +141,7 @@ fn test_solve15686() {
         let mut writer = vec![];
         solve15686(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

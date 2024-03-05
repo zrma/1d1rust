@@ -17,7 +17,7 @@ fn solve10174(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         }
 
-        writeln!(writer, "{}", if ans { "Yes" } else { "No" }).unwrap();
+        writeln!(writer, "{}", if ans { "Yes" } else { "No" }).expect("Failed to write");
     }
 }
 
@@ -64,7 +64,7 @@ Nat tan"
         let mut writer = vec![];
         solve10174(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

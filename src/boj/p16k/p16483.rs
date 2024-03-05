@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve16483(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t: f64 = read_value(read_line(reader));
     let res = (t / 2.0).powi(2).round() as i32;
-    write!(writer, "{}", res).unwrap();
+    write!(writer, "{}", res).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/16483
@@ -33,7 +33,7 @@ fn test_solve16483() {
         let mut writer = vec![];
         solve16483(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

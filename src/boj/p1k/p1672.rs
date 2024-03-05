@@ -33,7 +33,7 @@ fn solve1672(reader: &mut impl BufRead, writer: &mut impl Write) {
             _ => unreachable!(),
         };
     }
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1672
@@ -66,7 +66,7 @@ AAGT"
         let mut writer = vec![];
         solve1672(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

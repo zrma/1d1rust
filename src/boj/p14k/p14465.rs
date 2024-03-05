@@ -23,7 +23,7 @@ fn solve14465(reader: &mut impl BufRead, writer: &mut impl Write) {
         min_broken = min_broken.min(current_broken);
     }
 
-    write!(writer, "{}", min_broken).expect("Failed to write to output");
+    write!(writer, "{}", min_broken).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/14465
@@ -93,7 +93,7 @@ fn test_solve14465() {
         let mut writer = vec![];
         solve14465(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

@@ -21,7 +21,7 @@ fn solve1198(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", max_area as f64 / 2.0).unwrap();
+    write!(writer, "{}", max_area as f64 / 2.0).expect("Failed to write");
 }
 
 fn calc_area(p0: (i32, i32), p1: (i32, i32), p2: (i32, i32)) -> i32 {
@@ -92,7 +92,8 @@ fn test_solve1198() {
         let mut writer = vec![];
         solve1198(&mut reader, &mut writer);
 
-        let got: f64 = read_value(String::from_utf8(writer).unwrap());
+        let got: f64 =
+            read_value(String::from_utf8(writer).expect("Failed to convert writer to string"));
         let want = data.want.parse::<f64>().unwrap();
 
         const EPSILON: f64 = 1e-6;

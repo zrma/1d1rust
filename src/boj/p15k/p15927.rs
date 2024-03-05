@@ -23,12 +23,12 @@ fn solve15927(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     if is_palindrome {
         if is_all_same {
-            write!(writer, "-1").unwrap();
+            write!(writer, "-1").expect("Failed to write");
         } else {
-            write!(writer, "{}", s.len() - 1).unwrap();
+            write!(writer, "{}", s.len() - 1).expect("Failed to write");
         }
     } else {
-        write!(writer, "{}", s.len()).unwrap();
+        write!(writer, "{}", s.len()).expect("Failed to write");
     }
 }
 
@@ -74,7 +74,7 @@ fn test_solve15927() {
         let mut writer = vec![];
         solve15927(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

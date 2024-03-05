@@ -15,7 +15,7 @@ fn solve1026(reader: &mut impl BufRead, writer: &mut impl Write) {
         .zip(b_values.iter())
         .map(|(a, b)| a * b)
         .sum::<i32>();
-    write!(writer, "{}", sum_product).unwrap();
+    write!(writer, "{}", sum_product).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1026
@@ -56,7 +56,7 @@ fn test_solve1026() {
         let mut writer = vec![];
         solve1026(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

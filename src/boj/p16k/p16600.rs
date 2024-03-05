@@ -40,7 +40,8 @@ fn test_solve16600() {
         let mut writer = vec![];
         solve16600(&mut reader, &mut writer);
 
-        let got: f64 = crate::utils::io::read_value(String::from_utf8(writer).unwrap());
+        let got: f64 =
+            read_value(String::from_utf8(writer).expect("Failed to convert writer to string"));
         let want = data.want.parse::<f64>().unwrap();
 
         const EPSILON: f64 = 1e-6;

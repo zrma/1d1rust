@@ -20,7 +20,7 @@ fn solve2485(reader: &mut impl BufRead, writer: &mut impl Write) {
         ans += (v[i] - v[i - 1]) / gcd_val - 1;
     }
 
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/2485
@@ -58,7 +58,7 @@ fn test_solve2485() {
         let mut writer = vec![];
         solve2485(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

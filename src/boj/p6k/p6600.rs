@@ -7,7 +7,7 @@ fn solve6600(reader: &mut impl BufRead, writer: &mut impl Write) {
     while reader.read_line(&mut line).unwrap_or(0) > 0 {
         let (x1, y1, x2, y2, x3, y3) = read_values_as!(&line, f64, f64, f64, f64, f64, f64);
         let circumference = 2.0 * std::f64::consts::PI * calc_radius(x1, y1, x2, y2, x3, y3);
-        writeln!(writer, "{:.2}", circumference).unwrap();
+        writeln!(writer, "{:.2}", circumference).expect("Failed to write");
         line.clear();
     }
 }
@@ -68,7 +68,7 @@ fn test_solve6600() {
         let mut writer = vec![];
         solve6600(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         let want = data.want.split_whitespace();
 
         for (j, (got, want)) in got.split_whitespace().zip(want).enumerate() {

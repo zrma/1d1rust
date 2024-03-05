@@ -7,7 +7,7 @@ fn solve16488(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (n, k) = read_values_as!(read_line(reader), i64, i64);
 
     let res = n * n * k;
-    write!(writer, "{}", res).unwrap();
+    write!(writer, "{}", res).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/16488
@@ -35,7 +35,7 @@ fn test_solve16488() {
         let mut writer = vec![];
         solve16488(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }
