@@ -8,13 +8,13 @@ fn solve4134(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..n {
         let mut x = read_line(reader).parse::<u64>().unwrap();
         if x <= 1 {
-            writeln!(writer, "2").unwrap();
+            writeln!(writer, "2").expect("Failed to write");
             continue;
         }
         while !is_prime(x) {
             x += 1;
         }
-        writeln!(writer, "{}", x).unwrap();
+        writeln!(writer, "{}", x).expect("Failed to write");
     }
 }
 
@@ -99,7 +99,7 @@ fn test_solve4134() {
         let mut writer = vec![];
         solve4134(reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

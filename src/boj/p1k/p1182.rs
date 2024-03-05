@@ -14,7 +14,7 @@ fn solve1182(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut count = 0;
     choose_nums(&nums, 0, 0, s, &mut count, false);
 
-    write!(writer, "{}", count).unwrap();
+    write!(writer, "{}", count).expect("Failed to write");
 }
 
 fn choose_nums(nums: &[i64], sum: i64, i: usize, s: i64, count: &mut i64, is_non_empty: bool) {
@@ -58,7 +58,7 @@ fn test_solve1182() {
         let mut writer = vec![];
         solve1182(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

@@ -17,7 +17,7 @@ fn solve16931(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = surface_area(board, n, m);
 
-    write!(writer, "{}", res).unwrap();
+    write!(writer, "{}", res).expect("Failed to write");
 }
 
 fn surface_area(board: [[i32; 102]; 102], n: usize, m: usize) -> i32 {
@@ -68,7 +68,7 @@ fn test_solve16931() {
         let mut writer = vec![];
         solve16931(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

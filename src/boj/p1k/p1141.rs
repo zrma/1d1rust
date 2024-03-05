@@ -10,7 +10,7 @@ fn solve1141(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = count_unique_prefixes(&strings);
 
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn count_unique_prefixes(words: &[String]) -> usize {
@@ -91,7 +91,7 @@ topcoding"
         let mut writer = vec![];
         solve1141(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

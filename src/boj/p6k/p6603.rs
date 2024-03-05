@@ -112,7 +112,7 @@ fn test_solve6603() {
         let mut reader = data.s.as_bytes();
         let mut writer = vec![];
         solve6603(&mut reader, &mut writer);
-        let ans = String::from_utf8(writer).unwrap();
+        let ans = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(ans, data.want, "case: {}", i);
     }
 }

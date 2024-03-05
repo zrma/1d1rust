@@ -11,7 +11,7 @@ fn solve2501(reader: &mut impl BufRead, writer: &mut impl Write) {
         if n % i == 0 {
             cnt += 1;
             if cnt == k {
-                write!(writer, "{}", i).unwrap();
+                write!(writer, "{}", i).expect("Failed to write");
                 return;
             }
         }
@@ -47,7 +47,7 @@ fn test_solve2501() {
         let mut reader = data.s.as_bytes();
         let mut writer = vec![];
         solve2501(&mut reader, &mut writer);
-        let output = String::from_utf8(writer).unwrap();
+        let output = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(output, data.want, "failed at {}th", i);
     }
 }

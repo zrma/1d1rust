@@ -18,9 +18,9 @@ fn solve16120(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     if stack == ['P'] {
-        write!(writer, "PPAP").unwrap();
+        write!(writer, "PPAP").expect("Failed to write");
     } else {
-        write!(writer, "NP").unwrap();
+        write!(writer, "NP").expect("Failed to write");
     }
 }
 
@@ -54,7 +54,7 @@ fn test_solve16120() {
         let mut writer = vec![];
         solve16120(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

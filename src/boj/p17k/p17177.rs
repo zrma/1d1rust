@@ -33,12 +33,12 @@ fn solve17177(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for x in 1..a {
         if check(a, b, c, x) {
-            write!(writer, "{}", x).unwrap();
+            write!(writer, "{}", x).expect("Failed to write");
             return;
         }
     }
 
-    write!(writer, "-1").unwrap();
+    write!(writer, "-1").expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/17177
@@ -74,7 +74,7 @@ fn test_solve17177() {
         let mut writer = vec![];
         solve17177(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

@@ -8,15 +8,15 @@ fn solve12933(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for c in s.chars() {
         if !process_char(&mut quack, c) {
-            write!(writer, "-1").unwrap();
+            write!(writer, "-1").expect("Failed to write");
             return;
         }
     }
 
     if is_quack_sequence_incomplete(&quack) {
-        write!(writer, "-1").unwrap();
+        write!(writer, "-1").expect("Failed to write");
     } else {
-        write!(writer, "{}", quack.len()).unwrap();
+        write!(writer, "{}", quack.len()).expect("Failed to write");
     }
 }
 
@@ -94,7 +94,7 @@ fn test_solve12933() {
         let mut writer = vec![];
         solve12933(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

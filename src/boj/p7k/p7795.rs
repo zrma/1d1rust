@@ -36,9 +36,9 @@ fn solve7795(reader: &mut impl BufRead, writer: &mut impl Write) {
     write!(writer, "{}", output).unwrap();
 }
 
-#[test]
 // https://www.acmicpc.net/problem/7795
 // 먹을 것인가 먹힐 것인가
+#[test]
 fn test_solve7795() {
     struct TestData {
         s: String,
@@ -82,7 +82,7 @@ fn test_solve7795() {
         let mut writer = vec![];
         solve7795(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

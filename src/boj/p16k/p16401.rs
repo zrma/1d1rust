@@ -9,7 +9,7 @@ fn solve16401(reader: &mut impl BufRead, writer: &mut impl Write) {
     snack_lengths.sort_unstable();
 
     let optimal_length = find_optimal_length(&snack_lengths, required_amount);
-    write!(writer, "{}", optimal_length).unwrap();
+    write!(writer, "{}", optimal_length).expect("Failed to write");
 }
 
 fn find_optimal_length(snack_lengths: &[u32], required_amount: u32) -> u32 {
@@ -64,7 +64,7 @@ fn test_solve16401() {
         let mut writer = vec![];
         solve16401(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

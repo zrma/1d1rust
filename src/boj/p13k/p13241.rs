@@ -7,7 +7,7 @@ fn solve13241(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (a, b) = read_values_as!(read_line(reader), i64, i64);
 
     let res = lcm(a, b);
-    write!(writer, "{}", res).unwrap();
+    write!(writer, "{}", res).expect("Failed to write");
 }
 
 fn lcm(a: i64, b: i64) -> i64 {
@@ -58,7 +58,7 @@ fn test_solve13241() {
         let mut writer = vec![];
         solve13241(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

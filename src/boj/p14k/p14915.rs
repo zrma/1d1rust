@@ -7,7 +7,7 @@ fn solve14915(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (n, base) = read_values_as!(read_line(reader), usize, usize);
 
     if n == 0 {
-        write!(writer, "0").unwrap();
+        write!(writer, "0").expect("Failed to write");
         return;
     }
 
@@ -26,12 +26,12 @@ fn solve14915(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     res.reverse();
     let output = res.into_iter().collect::<String>();
-    write!(writer, "{}", output).unwrap();
+    write!(writer, "{}", output).expect("Failed to write");
 }
 
-#[test]
 // https://www.acmicpc.net/problem/14915
 // 진수 변환기
+#[test]
 fn test_solve14915() {
     struct TestData {
         s: String,
@@ -70,7 +70,7 @@ fn test_solve14915() {
         let mut writer = vec![];
         solve14915(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

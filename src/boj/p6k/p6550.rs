@@ -26,9 +26,9 @@ fn solve6550(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         if ans {
-            writeln!(writer, "Yes").unwrap();
+            writeln!(writer, "Yes").expect("Failed to write");
         } else {
-            writeln!(writer, "No").unwrap();
+            writeln!(writer, "No").expect("Failed to write");
         }
         line.clear();
     }
@@ -70,7 +70,7 @@ No
         let mut writer = vec![];
         solve6550(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

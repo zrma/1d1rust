@@ -14,9 +14,9 @@ fn solve17350(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     if found {
-        write!(writer, "뭐야;").unwrap();
+        write!(writer, "뭐야;").expect("Failed to write");
     } else {
-        write!(writer, "뭐야?").unwrap();
+        write!(writer, "뭐야?").expect("Failed to write");
     }
 }
 
@@ -55,7 +55,7 @@ QWERTOP"
         let mut writer = vec![];
         solve17350(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

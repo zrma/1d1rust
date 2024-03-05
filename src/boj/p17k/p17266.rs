@@ -9,7 +9,7 @@ fn solve17266(reader: &mut impl BufRead, writer: &mut impl Write) {
     light_positions.sort_unstable();
 
     let min_height = find_min_height(&light_positions, bridge_length);
-    write!(writer, "{}", min_height).unwrap();
+    write!(writer, "{}", min_height).expect("Failed to write");
 }
 
 fn find_min_height(light_positions: &[usize], bridge_length: usize) -> usize {
@@ -42,9 +42,9 @@ fn is_light_coverage_sufficient(
     last_covered >= bridge_length
 }
 
-#[test]
 // https://www.acmicpc.net/problem/17266
 // 어두운 굴다리
+#[test]
 fn test_solve17266() {
     struct TestData {
         s: String,
@@ -108,7 +108,7 @@ fn test_solve17266() {
         let mut writer = vec![];
         solve17266(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

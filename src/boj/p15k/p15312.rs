@@ -27,7 +27,7 @@ fn solve15312(reader: &mut impl BufRead, writer: &mut impl Write) {
         ans = tmp;
     }
 
-    write!(writer, "{}{}", ans[0], ans[1]).unwrap();
+    write!(writer, "{}{}", ans[0], ans[1]).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/15312
@@ -51,7 +51,7 @@ HER"
         let mut writer = vec![];
         solve15312(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

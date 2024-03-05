@@ -7,7 +7,7 @@ fn solve16486(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (c, b) = read_values_as!(read_line(reader), f64, f64);
 
     let ans = c / b;
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/16486
@@ -35,7 +35,9 @@ fn test_solve16486() {
         let mut writer = vec![];
         solve16486(&mut reader, &mut writer);
 
-        let got: f64 = crate::utils::io::read_value(String::from_utf8(writer).unwrap());
+        let got: f64 = crate::utils::io::read_value(
+            String::from_utf8(writer).expect("Failed to convert writer to string"),
+        );
         let want = data.want.parse::<f64>().unwrap();
 
         const EPSILON: f64 = 1e-6;

@@ -49,7 +49,7 @@ fn solve2261(reader: &mut impl BufRead, writer: &mut impl Write) {
         set.insert(p.clone());
     }
 
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 #[derive(Clone, Eq, PartialEq)]
@@ -142,7 +142,7 @@ fn test_solve2261() {
         let mut writer = vec![];
         solve2261(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

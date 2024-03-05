@@ -19,7 +19,7 @@ fn solve13417(reader: &mut impl BufRead, writer: &mut impl Write) {
                 ans.push_str(card);
             }
         });
-        writeln!(writer, "{}", ans).unwrap();
+        writeln!(writer, "{}", ans).expect("Failed to write");
     }
 }
 
@@ -54,7 +54,7 @@ AAABCBC
         let mut writer = vec![];
         solve13417(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

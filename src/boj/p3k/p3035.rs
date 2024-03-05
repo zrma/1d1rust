@@ -16,10 +16,10 @@ fn solve3035(reader: &mut impl BufRead, writer: &mut impl Write) {
         (0..zr).for_each(|_| {
             (0..c).for_each(|j| {
                 (0..zc).for_each(|_| {
-                    write!(writer, "{}", image[i].as_bytes()[j] as char).unwrap();
+                    write!(writer, "{}", image[i].as_bytes()[j] as char).expect("Failed to write");
                 });
             });
-            writeln!(writer).unwrap();
+            writeln!(writer).expect("Failed to write");
         });
     });
 }
@@ -68,7 +68,7 @@ x.x
         let mut writer = vec![];
         solve3035(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

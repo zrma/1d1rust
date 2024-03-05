@@ -24,7 +24,7 @@ fn solve1380(reader: &mut impl BufRead, writer: &mut impl Write) {
         let unique_number = numbers.iter().fold(0, |acc, &i| acc ^ i);
         let lost_name = &names[unique_number - 1];
 
-        writeln!(writer, "{} {}", cnt, lost_name).unwrap();
+        writeln!(writer, "{} {}", cnt, lost_name).expect("Failed to write");
     }
 }
 
@@ -82,7 +82,7 @@ Margaret Thatcher
         let mut writer = vec![];
         solve1380(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

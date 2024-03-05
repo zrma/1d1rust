@@ -6,7 +6,8 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve14466(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (fields_size, num_cows, num_roads) = read_values!(read_line(reader), usize, usize, usize);
+    let (fields_size, num_cows, num_roads) =
+        read_values_as!(read_line(reader), usize, usize, usize);
     let blocked_paths = (0..num_roads)
         .map(|_| {
             let (r1, c1, r2, c2) = read_values_as!(read_line(reader), usize, usize, usize, usize);
@@ -31,7 +32,7 @@ fn solve14466(reader: &mut impl BufRead, writer: &mut impl Write) {
             .count();
     }
 
-    write!(writer, "{}", ans).expect("Failed to write to output");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn dfs(
@@ -115,7 +116,7 @@ fn test_solve14466() {
         let mut writer = vec![];
         solve14466(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

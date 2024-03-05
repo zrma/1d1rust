@@ -17,7 +17,7 @@ fn solve2204(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         words.sort_by_key(|a| a.to_lowercase());
 
-        writeln!(writer, "{}", &words[0]).unwrap();
+        writeln!(writer, "{}", &words[0]).expect("Failed to write");
     }
 }
 
@@ -53,7 +53,7 @@ All
         let mut writer = vec![];
         solve2204(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

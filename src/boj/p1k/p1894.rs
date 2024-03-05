@@ -14,7 +14,7 @@ fn solve1894(reader: &mut impl BufRead, writer: &mut impl Write) {
         let p4 = Point { x: x4, y: y4 };
 
         let ans = find_point(p1, p2, p3, p4);
-        writeln!(writer, "{:.3} {:.3}", ans.x, ans.y).unwrap();
+        writeln!(writer, "{:.3} {:.3}", ans.x, ans.y).expect("Failed to write");
         line.clear();
     }
 }
@@ -102,7 +102,7 @@ fn test_solve1894() {
         let mut writer = vec![];
         solve1894(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

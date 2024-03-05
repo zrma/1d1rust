@@ -31,7 +31,7 @@ fn solve14464(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", total_crossings).expect("Failed to write to output");
+    write!(writer, "{}", total_crossings).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/14464
@@ -110,7 +110,7 @@ fn test_solve14464() {
         let mut writer = vec![];
         solve14464(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

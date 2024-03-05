@@ -7,7 +7,7 @@ fn solve2954(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = replace_vowels(line);
 
-    write!(writer, "{}", res).unwrap();
+    write!(writer, "{}", res).expect("Failed to write");
 }
 
 fn replace_vowels(input: String) -> String {
@@ -56,7 +56,7 @@ fn test_solve2954() {
         let mut writer = vec![];
         solve2954(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

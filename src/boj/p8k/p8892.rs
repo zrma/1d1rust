@@ -36,9 +36,9 @@ fn solve8892(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         if ans.is_empty() {
-            writeln!(writer, "0").unwrap();
+            writeln!(writer, "0").expect("Failed to write");
         } else {
-            writeln!(writer, "{}", ans).unwrap();
+            writeln!(writer, "{}", ans).expect("Failed to write");
         }
     }
 }
@@ -112,7 +112,7 @@ cde"
         let mut writer = vec![];
         solve8892(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "Failed test case {}", i);
+        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }
