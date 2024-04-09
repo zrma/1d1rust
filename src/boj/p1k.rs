@@ -19,6 +19,7 @@ mod p1485;
 mod p1515;
 mod p1544;
 mod p1672;
+mod p1706;
 mod p1708;
 mod p1718;
 mod p1735;
