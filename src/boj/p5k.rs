@@ -5,6 +5,7 @@ mod p5358;
 mod p5363;
 mod p5426;
 mod p5543;
+mod p5637;
 mod p5656;
 mod p5704;
 mod p5789;
