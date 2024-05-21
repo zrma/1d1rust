@@ -1,11 +1,11 @@
-use std::io::Write;
-use std::io::{self, BufWriter};
-
 mod boj;
 mod hacker_rank;
 mod practice;
 mod programmers;
 mod utils;
+
+use std::io::Write;
+use std::io::{self, BufWriter};
 
 fn main() {
     let stdin = io::stdin();
