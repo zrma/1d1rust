@@ -5,11 +5,10 @@ use num::PrimInt;
 pub(crate) fn recursion() {
     println!("{}", fib(15));
 
-    // 64 is i32, overflow have occurred
+    // 64 is i32; overflow has occurred
     // println!("{}", fib(64));
 
-    let num: i64 = 64;
-    println!("{}", fib(num));
+    println!("{}", fib(64i64));
 }
 
 fn fib<T>(n: T) -> T
@@ -42,7 +41,5 @@ fn test_fib() {
     assert_eq!(fib(5), 5);
     assert_eq!(fib(6), 8);
 
-    let num: i64 = 64;
-    let expected = 10_610_209_857_723;
-    assert_eq!(fib(num), expected);
+    assert_eq!(fib(64i64), 10_610_209_857_723i64);
 }
