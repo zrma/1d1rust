@@ -7,13 +7,13 @@ mod sum;
 use filter::filter;
 use recursion::recursion;
 use scope::scope;
-use sum::sum;
+use sum::accumulate;
 
 #[allow(dead_code)]
 pub(crate) fn practice() {
     println!("Hello, world!");
 
-    sum();
+    accumulate();
     scope();
     recursion();
     filter();

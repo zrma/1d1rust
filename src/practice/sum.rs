@@ -1,22 +1,12 @@
-pub(crate) fn sum() {
-    println!("{}", plus(3, 5));
-    println!("{}", agg(0, 100));
+pub(crate) fn accumulate() {
+    println!("{}", range_sum(0, 100));
 }
 
-fn plus(a: i32, b: i32) -> i32 {
-    a + b
-}
-
-fn agg(from: i32, to: i32) -> i32 {
+fn range_sum(from: i32, to: i32) -> i32 {
     (from..to).sum()
 }
 
 #[test]
-fn test_plus() {
-    assert_eq!(plus(3, 5), 3 + 5)
-}
-
-#[test]
-fn test_agg() {
-    assert_eq!(agg(0, 11), 55)
+fn test_range_sum() {
+    assert_eq!(range_sum(0, 11), 55)
 }
