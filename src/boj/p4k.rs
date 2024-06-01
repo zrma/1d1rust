@@ -8,6 +8,7 @@ mod p4504;
 mod p4597;
 mod p4613;
 mod p4740;
+mod p4766;
 mod p4779;
 mod p4889;
 mod p4963;
