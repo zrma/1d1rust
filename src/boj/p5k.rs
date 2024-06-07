@@ -8,6 +8,7 @@ mod p5363;
 mod p5426;
 mod p5532;
 mod p5543;
+mod p5565;
 mod p5575;
 mod p5612;
 mod p5637;
