@@ -5,6 +5,7 @@ mod p9081;
 mod p9085;
 mod p9226;
 mod p9243;
+mod p9295;
 mod p9322;
 mod p9324;
 mod p9366;
