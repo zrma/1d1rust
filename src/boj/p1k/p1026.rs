@@ -4,18 +4,23 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve1026(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: usize = read_value(read_line(reader));
-    let mut a_values = read_n_values::<i32>(reader, n);
-    let mut b_values = read_n_values::<i32>(reader, n);
+    let a_values = {
+        let mut values = read_n_values::<i32>(reader, n);
+        values.sort_unstable();
+        values
+    };
+    let b_values = {
+        let mut values = read_n_values::<i32>(reader, n);
+        values.sort_unstable_by(|a, b| b.cmp(a));
+        values
+    };
 
-    a_values.sort_unstable();
-    b_values.sort_unstable_by(|a, b| b.cmp(a));
-
-    let sum_product = a_values
+    let ans = a_values
         .iter()
         .zip(b_values.iter())
         .map(|(a, b)| a * b)
         .sum::<i32>();
-    write!(writer, "{}", sum_product).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1026

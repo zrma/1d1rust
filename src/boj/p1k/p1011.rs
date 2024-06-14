@@ -4,16 +4,17 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1011(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_value(read_line(reader));
-    let mut ans = Vec::with_capacity(t);
+    let num_cases = read_value(read_line(reader));
 
-    for _ in 0..t {
-        let (x, y) = read_values_as!(read_line(reader), i64, i64);
-        let distance = (y - x).abs();
-        ans.push(calculate_steps(distance).to_string());
-    }
-
-    write!(writer, "{}", ans.join("\n")).unwrap();
+    let ans = (0..num_cases)
+        .map(|_| {
+            let (x, y) = read_values_as!(read_line(reader), i64, i64);
+            let distance = (y - x).abs();
+            calculate_steps(distance).to_string()
+        })
+        .collect::<Vec<String>>()
+        .join("\n");
+    write!(writer, "{}", ans).unwrap();
 }
 
 fn calculate_steps(distance: i64) -> i64 {

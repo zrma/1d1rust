@@ -5,20 +5,20 @@ use std::io::{BufRead, Write};
 fn solve4504(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: usize = read_value(read_line(reader));
 
-    let mut results = Vec::with_capacity(n);
+    let mut answers = Vec::with_capacity(n);
     loop {
         let m: i32 = read_value(read_line(reader));
         if m == 0 {
             break;
         }
-        results.push(if m % n as i32 == 0 {
+        answers.push(if m % n as i32 == 0 {
             format!("{} is a multiple of {}.", m, n)
         } else {
             format!("{} is NOT a multiple of {}.", m, n)
         });
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/4504

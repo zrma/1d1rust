@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve10384(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
 
-    let mut results = Vec::with_capacity(num_cases);
+    let mut answers = Vec::with_capacity(num_cases);
     for case_num in 1..=num_cases {
         let sentence = read_line(reader);
         let mut letter_counts = [0; 26];
@@ -27,10 +27,10 @@ fn solve10384(reader: &mut impl BufRead, writer: &mut impl Write) {
             _ => "Triple pangram!!!",
         };
 
-        results.push(format!("Case {}: {}", case_num, verdict));
+        answers.push(format!("Case {}: {}", case_num, verdict));
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/10384

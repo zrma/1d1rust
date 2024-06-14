@@ -4,6 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve1894(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
+    let mut answers = Vec::new();
     while reader.read_line(&mut line).unwrap_or(0) > 0 {
         let (x1, y1, x2, y2, x3, y3, x4, y4) =
             read_values_as!(&line, f64, f64, f64, f64, f64, f64, f64, f64);
@@ -14,9 +15,11 @@ fn solve1894(reader: &mut impl BufRead, writer: &mut impl Write) {
         let p4 = Point { x: x4, y: y4 };
 
         let ans = find_point(p1, p2, p3, p4);
-        writeln!(writer, "{:.3} {:.3}", ans.x, ans.y).expect("Failed to write");
+        answers.push(format!("{:.3} {:.3}", ans.x, ans.y));
         line.clear();
     }
+
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 #[derive(Copy, Clone, PartialEq, PartialOrd)]
@@ -75,24 +78,20 @@ fn test_solve1894() {
                 .to_string(),
             want: "1.000 0.000
 -2.500 -2.500
-0.151 -0.398
-"
-            .to_string(),
+0.151 -0.398"
+                .to_string(),
         },
         TestData {
             s: "0.000 0.000 0.000 1.000 0.000 0.000 1.000 0.000".to_string(),
-            want: "1.000 1.000
-"
-            .to_string(),
+            want: "1.000 1.000".to_string(),
         },
         TestData {
             s: "1.000 0.000 3.500 3.500 1.000 0.000 -2.500 -2.500
 1.866 0.000 3.127 3.543 1.866 0.000 0.151 -0.398"
                 .to_string(),
             want: "0.000 1.000
-1.412 3.145
-"
-            .to_string(),
+1.412 3.145"
+                .to_string(),
         },
     ]
     .iter()

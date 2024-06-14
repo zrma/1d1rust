@@ -11,8 +11,8 @@ fn solve1916(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let (start, end) = read_values_as!(read_line(reader), usize, usize);
 
-    let result = find_shortest_path(&graph, n, start, end);
-    write!(writer, "{}", result).expect("Failed to write");
+    let ans = find_shortest_path(&graph, n, start, end);
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn read_graph(reader: &mut impl BufRead, n: usize, m: usize) -> Vec<Vec<Way>> {

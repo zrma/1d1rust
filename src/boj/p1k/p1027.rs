@@ -8,6 +8,7 @@ fn solve1027(reader: &mut impl BufRead, writer: &mut impl Write) {
         .split_whitespace()
         .map(|s| s.parse().unwrap())
         .collect();
+
     let ans = (0..n).map(|i| count_visible(i, &heights)).max().unwrap();
     write!(writer, "{}", ans).expect("Failed to write");
 }

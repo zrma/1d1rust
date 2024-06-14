@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve5217(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
 
-    let mut results = Vec::with_capacity(num_cases);
+    let mut answers = Vec::with_capacity(num_cases);
     for _ in 0..num_cases {
         let n: i32 = read_value(read_line(reader));
         let pairs = (1..n / 2 + 1)
@@ -18,7 +18,7 @@ fn solve5217(reader: &mut impl BufRead, writer: &mut impl Write) {
                 }
             })
             .collect::<Vec<String>>();
-        results.push(format!(
+        answers.push(format!(
             "Pairs for {}:{}{}",
             n,
             if pairs.is_empty() { "" } else { " " },
@@ -26,7 +26,7 @@ fn solve5217(reader: &mut impl BufRead, writer: &mut impl Write) {
         ));
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/5217

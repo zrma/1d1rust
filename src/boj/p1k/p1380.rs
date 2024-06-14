@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve1380(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut cnt = 0;
-
+    let mut answers = vec![];
     loop {
         let n: usize = read_value(read_line(reader));
         if n == 0 {
@@ -24,8 +24,10 @@ fn solve1380(reader: &mut impl BufRead, writer: &mut impl Write) {
         let unique_number = numbers.iter().fold(0, |acc, &i| acc ^ i);
         let lost_name = &names[unique_number - 1];
 
-        writeln!(writer, "{} {}", cnt, lost_name).expect("Failed to write");
+        answers.push(format!("{} {}", cnt, lost_name));
     }
+
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1380
@@ -57,9 +59,8 @@ Margaret Thatcher
 0"
             .to_string(),
             want: "1 Alison Addaway
-2 Helen Clark
-"
-            .to_string(),
+2 Helen Clark"
+                .to_string(),
         },
         TestData {
             s: "2
@@ -70,9 +71,7 @@ Margaret Thatcher
 2 A
 0"
             .to_string(),
-            want: "1 Helen Clark
-"
-            .to_string(),
+            want: "1 Helen Clark".to_string(),
         },
     ]
     .iter()

@@ -16,7 +16,7 @@ fn solve22233(reader: &mut impl BufRead, writer: &mut impl Write) {
         })
         .collect::<HashSet<_>>();
 
-    let mut results = Vec::with_capacity(m);
+    let mut answers = Vec::with_capacity(m);
     for _ in 0..m {
         line.clear();
         reader.read_line(&mut line).unwrap();
@@ -29,10 +29,10 @@ fn solve22233(reader: &mut impl BufRead, writer: &mut impl Write) {
         for q in &query {
             keywords.remove(q);
         }
-        results.push(format!("{}", keywords.len()));
+        answers.push(format!("{}", keywords.len()));
     }
 
-    write!(writer, "{}", results.join("\n")).unwrap();
+    write!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/22233

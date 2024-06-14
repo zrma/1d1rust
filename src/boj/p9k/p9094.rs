@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve9094(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
-    let mut results = Vec::with_capacity(num_cases);
+    let mut answers = Vec::with_capacity(num_cases);
 
     for _ in 0..num_cases {
         let (n, m): (i32, i32) = read_values_as!(read_line(reader), i32, i32);
@@ -17,10 +17,10 @@ fn solve9094(reader: &mut impl BufRead, writer: &mut impl Write) {
                 }
             }
         }
-        results.push(count.to_string());
+        answers.push(count.to_string());
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/9094

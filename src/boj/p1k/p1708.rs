@@ -12,9 +12,8 @@ fn solve1708(reader: &mut impl BufRead, writer: &mut impl Write) {
         points.push(Point { x, y });
     }
 
-    let res = convex_hull(&mut points);
-
-    write!(writer, "{}", res).expect("Failed to write");
+    let ans = convex_hull(&mut points);
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]

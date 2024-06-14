@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve4388(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut results = vec![];
+    let mut answers = vec![];
     loop {
         let (mut a, mut b) = read_values_as!(read_line(reader), i32, i32);
         if a == 0 && b == 0 {
@@ -25,10 +25,10 @@ fn solve4388(reader: &mut impl BufRead, writer: &mut impl Write) {
             b /= 10;
         }
 
-        results.push(carry_count.to_string());
+        answers.push(carry_count.to_string());
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/4388

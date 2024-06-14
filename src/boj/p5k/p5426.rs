@@ -18,8 +18,8 @@ fn solve5426(reader: &mut impl BufRead, writer: &mut impl Write) {
             board[size - 1 - col][row] = c;
         }
 
-        let result = board.iter().flat_map(|row| row.iter()).collect::<String>();
-        answers.push(result);
+        let ans = board.iter().flat_map(|row| row.iter()).collect::<String>();
+        answers.push(ans);
     }
 
     write!(writer, "{}", answers.join("\n")).unwrap();

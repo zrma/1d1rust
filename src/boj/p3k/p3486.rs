@@ -5,15 +5,15 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve3486(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases = read_value(read_line(reader));
-    let mut results = Vec::new();
+    let mut answers = Vec::new();
 
     for _ in 0..num_cases {
         let (a, b) = read_values_as!(read_line(reader), String, String);
         let reversed_sum = reverse_sum(&a, &b);
-        results.push(reversed_sum);
+        answers.push(reversed_sum);
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 fn reverse_sum(a: &str, b: &str) -> String {

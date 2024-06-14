@@ -16,12 +16,12 @@ fn solve14713(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let target_sentence = read_line(reader);
 
-    let result = match can_form(&mut sentences, &target_sentence) {
+    let ans = match can_form(&mut sentences, &target_sentence) {
         true => "Possible",
         false => "Impossible",
     };
 
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn can_form(sentences: &mut [Vec<String>], target_sentence: &str) -> bool {

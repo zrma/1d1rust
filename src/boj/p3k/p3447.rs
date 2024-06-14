@@ -2,18 +2,18 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve3447(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut results = Vec::new();
+    let mut answers = Vec::new();
     let mut line = String::new();
     while reader.read_line(&mut line).unwrap_or(0) > 0 {
         let mut s = line.trim().to_string();
         while s.contains("BUG") {
             s = s.replace("BUG", "");
         }
-        results.push(s);
+        answers.push(s);
         line.clear();
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/3447

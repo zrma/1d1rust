@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2975(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut results = vec![];
+    let mut answers = vec![];
     loop {
         let (balance, op, amount) = read_values_as!(read_line(reader), i32, char, i32);
         if balance == 0 && op == 'W' && amount == 0 {
@@ -17,14 +17,14 @@ fn solve2975(reader: &mut impl BufRead, writer: &mut impl Write) {
             _ => panic!("Invalid operation"),
         };
 
-        results.push(if new_balance < -200 {
+        answers.push(if new_balance < -200 {
             "Not allowed".to_string()
         } else {
             new_balance.to_string()
         });
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/2975

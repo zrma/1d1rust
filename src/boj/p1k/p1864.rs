@@ -16,6 +16,7 @@ fn solve1864(reader: &mut impl BufRead, writer: &mut impl Write) {
         _ => unreachable!(),
     };
 
+    let mut answers = vec![];
     loop {
         let s = read_line(reader);
         if s == "#" {
@@ -25,9 +26,10 @@ fn solve1864(reader: &mut impl BufRead, writer: &mut impl Write) {
         let ans = s.chars().rev().enumerate().fold(0, |acc, (i, c)| {
             acc + char_to_num(c) * 8_isize.pow(i as u32)
         });
-
-        writeln!(writer, "{}", ans).expect("Failed to write");
+        answers.push(ans.to_string());
     }
+
+    writeln!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1864

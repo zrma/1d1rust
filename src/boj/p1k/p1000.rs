@@ -1,17 +1,13 @@
+use crate::read_values_as;
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 pub(crate) fn solve1000(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut line = String::new();
-    reader.read_line(&mut line).unwrap();
+    let (a, b) = read_values_as!(read_line(reader), i32, i32);
 
-    let sum = line
-        .split_whitespace()
-        .take(2)
-        .map(|num_str| num_str.parse::<i32>().unwrap())
-        .sum::<i32>();
-
-    write!(writer, "{}", sum).expect("Failed to write");
+    let ans = a + b;
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1000

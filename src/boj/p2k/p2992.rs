@@ -10,14 +10,14 @@ fn solve2992(reader: &mut impl BufRead, writer: &mut impl Write) {
         .map(|c| c.to_digit(10).unwrap())
         .collect::<Vec<_>>();
 
-    let mut results = vec![];
+    let mut answers = vec![];
     let mut used = vec![false; numbers.len()];
     let mut buf = vec![];
-    solve2992_rec(&numbers, &mut used, &mut buf, &mut results);
+    solve2992_rec(&numbers, &mut used, &mut buf, &mut answers);
 
-    results.sort();
+    answers.sort();
     let mut ans = 0;
-    for a in results {
+    for a in answers {
         if a > numbers.iter().fold(0, |acc, &n| acc * 10 + n) {
             ans = a;
             break;

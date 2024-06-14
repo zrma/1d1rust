@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve4613(reader: &mut impl BufRead, writer: &mut impl Write) {
     let reader = reader.lines();
-    let mut results = vec![];
+    let mut answers = vec![];
 
     for line in reader.map_while(Result::ok) {
         if line == "#" {
@@ -17,10 +17,10 @@ fn solve4613(reader: &mut impl BufRead, writer: &mut impl Write) {
                 acc + (i as u32 + 1) * (c as u32 - 'A' as u32 + 1)
             }
         });
-        results.push(sum.to_string());
+        answers.push(sum.to_string());
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/4613

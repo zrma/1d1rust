@@ -4,6 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve1871(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
+    let mut answers = Vec::with_capacity(n);
     for _ in 0..n {
         let line = read_line(reader);
         let mut iter = line.split('-');
@@ -19,10 +20,11 @@ fn solve1871(reader: &mut impl BufRead, writer: &mut impl Write) {
         let right_value = right.parse::<i64>().unwrap();
 
         let diff = (left_value as i64 - right_value).abs();
-        let result = if diff <= 100 { "nice" } else { "not nice" };
-
-        writeln!(writer, "{}", result).expect("Failed to write");
+        let ans = if diff <= 100 { "nice" } else { "not nice" };
+        answers.push(ans);
     }
+
+    writeln!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1871

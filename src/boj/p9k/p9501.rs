@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve9501(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
 
-    let results: Vec<String> = (0..num_cases)
+    let ans = (0..num_cases)
         .map(|_| {
             let (num_spaceships, dist) = read_values_as!(read_line(reader), i32, i32);
             let count = (0..num_spaceships)
@@ -17,9 +17,10 @@ fn solve9501(reader: &mut impl BufRead, writer: &mut impl Write) {
                 .count();
             count.to_string()
         })
-        .collect();
+        .collect::<Vec<String>>()
+        .join("\n");
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/9501

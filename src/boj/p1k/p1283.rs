@@ -6,15 +6,15 @@ use std::io::{BufRead, Write};
 fn solve1283(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_phrases = read_value(read_line(reader));
     let mut shortcut_set = HashSet::new();
-    let mut result = Vec::with_capacity(num_phrases);
+    let mut answers = Vec::with_capacity(num_phrases);
 
     for _ in 0..num_phrases {
         let phrase = read_line(reader);
         let phrase_with_shortcut = insert_shortcut(&phrase, &mut shortcut_set);
-        result.push(phrase_with_shortcut);
+        answers.push(phrase_with_shortcut);
     }
 
-    write!(writer, "{}", result.join("\n")).unwrap();
+    write!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 fn insert_shortcut(phrase: &str, shortcuts: &mut HashSet<char>) -> String {

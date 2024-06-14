@@ -4,27 +4,31 @@ use std::io::{BufRead, Write};
 fn solve1718(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = reader.lines().next().unwrap().unwrap();
     let key = reader.lines().next().unwrap().unwrap();
+    let keys_as_bytes = key.as_bytes();
 
-    let mut res = String::new();
+    let mut answers = String::new();
     for (i, c) in s.chars().enumerate() {
         if c == ' ' {
-            res.push(' ');
+            answers.push(' ');
             continue;
         }
 
-        let key_char = key.as_bytes()[i % key.len()] as char;
-        let key_num = key_char as i8 - 'a' as i8 + 1;
-        let c_num = c as i8 - 'a' as i8 + 1;
+        let key_char = char::from(keys_as_bytes[i % key.len()]);
+        let key_num = key_char
+            .to_digit(36)
+            .expect("Failed to convert char to digit")
+            - 10;
+        let c_num = c.to_digit(36).expect("Failed to convert char to digit") - 10;
 
-        let mut res_num = c_num - key_num;
-        if res_num <= 0 {
-            res_num += 26;
-        }
-
-        res.push((res_num as u8 + b'a' - 1) as char);
+        let ans = if c_num <= key_num {
+            26 + c_num - key_num
+        } else {
+            c_num - key_num
+        };
+        answers.push(char::from_u32(ans + 96).expect("Failed to convert u32 to char"));
     }
 
-    write!(writer, "{}", res).expect("Failed to write");
+    write!(writer, "{}", answers).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1718

@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1284(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut res = vec![];
+    let mut answers = vec![];
 
     loop {
         let n = read_value::<String>(read_line(reader));
@@ -19,10 +19,10 @@ fn solve1284(reader: &mut impl BufRead, writer: &mut impl Write) {
                 _ => 3,
             };
         }
-        res.push(len.to_string());
+        answers.push(len.to_string());
     }
 
-    write!(writer, "{}", res.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1284
