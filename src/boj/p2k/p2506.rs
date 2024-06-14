@@ -4,13 +4,13 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve2506(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_questions = read_value::<usize>(read_line(reader));
-    let results = read_value::<String>(read_line(reader))
+    let scores = read_value::<String>(read_line(reader))
         .split_whitespace()
         .take(num_questions)
         .map(|s| s.parse::<i32>().unwrap())
         .collect::<Vec<i32>>();
 
-    let (total_score, _) = results.iter().fold((0, 0), |(acc_score, streak), &result| {
+    let (total_score, _) = scores.iter().fold((0, 0), |(acc_score, streak), &result| {
         if result == 1 {
             let new_streak = streak + 1;
             (acc_score + new_streak, new_streak)

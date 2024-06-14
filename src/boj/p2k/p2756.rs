@@ -5,15 +5,17 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve2756(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t = read_value(read_line(reader));
-
+    let mut answers = Vec::with_capacity(t);
     for _ in 0..t {
         let points = read_points(read_line(reader));
         let scores = points.iter().map(calc_score).collect::<Vec<_>>();
         let (score1, score2) = scores.split_at(3);
-        let result = compare_scores(score1.iter().sum(), score2.iter().sum());
 
-        writeln!(writer, "{}", result).expect("Failed to write");
+        let ans = compare_scores(score1.iter().sum(), score2.iter().sum());
+        answers.push(ans);
     }
+
+    writeln!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 fn read_points(s: String) -> Vec<Point> {

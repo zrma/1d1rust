@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve4158(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut results = Vec::new();
+    let mut answers = Vec::new();
     let mut hash_set = std::collections::HashSet::new();
     let mut buffer = String::new();
 
@@ -33,10 +33,10 @@ fn solve4158(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         }
 
-        results.push(overlap_count.to_string());
+        answers.push(overlap_count.to_string());
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/4158

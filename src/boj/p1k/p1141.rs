@@ -9,7 +9,6 @@ fn solve1141(reader: &mut impl BufRead, writer: &mut impl Write) {
     strings.sort();
 
     let ans = count_unique_prefixes(&strings);
-
     write!(writer, "{}", ans).expect("Failed to write");
 }
 

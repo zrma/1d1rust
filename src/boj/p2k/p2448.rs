@@ -8,13 +8,13 @@ fn solve2448(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut board = vec![vec![' '; 2 * n - 1]; n];
     draw_star(&mut board, 0, n - 1, n);
 
-    let result = board
+    let ans = board
         .into_iter()
         .map(|row| row.into_iter().collect::<String>().trim_end().to_string())
         .collect::<Vec<String>>()
         .join("\n");
 
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn draw_star(board: &mut Vec<Vec<char>>, y: usize, x: usize, n: usize) {

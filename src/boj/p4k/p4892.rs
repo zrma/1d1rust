@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve4892(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut results = vec![];
+    let mut answers = vec![];
     let mut case_num = 1;
     loop {
         let n0: i32 = read_value(read_line(reader));
@@ -16,7 +16,7 @@ fn solve4892(reader: &mut impl BufRead, writer: &mut impl Write) {
         let n3 = 3 * n2;
         let n4 = n3 / 9;
 
-        results.push(format!(
+        answers.push(format!(
             "{}. {} {}",
             case_num,
             if n0 % 2 == 0 { "even" } else { "odd" },
@@ -25,7 +25,7 @@ fn solve4892(reader: &mut impl BufRead, writer: &mut impl Write) {
         case_num += 1;
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/4892

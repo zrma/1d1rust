@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve17124(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases = read_value::<usize>(read_line(reader));
 
-    let mut results = Vec::new();
+    let mut answers = Vec::new();
     for _ in 0..num_cases {
         let (num_a, num_b) = read_values_as!(read_line(reader), usize, usize);
 
@@ -18,10 +18,10 @@ fn solve17124(reader: &mut impl BufRead, writer: &mut impl Write) {
             .iter()
             .map(|&ai| find_closest(&b_values, ai))
             .sum::<i64>();
-        results.push(total_closest_sum.to_string());
+        answers.push(total_closest_sum.to_string());
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 fn find_closest(b_values: &[i64], target: i64) -> i64 {

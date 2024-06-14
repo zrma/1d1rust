@@ -13,13 +13,13 @@ fn solve1267(reader: &mut impl BufRead, writer: &mut impl Write) {
         (y + y_add, m + m_add)
     });
 
-    let result = match y_cost.cmp(&m_cost) {
+    let ans = match y_cost.cmp(&m_cost) {
         Ordering::Less => format!("Y {}", y_cost),
         Ordering::Greater => format!("M {}", m_cost),
         Ordering::Equal => format!("Y M {}", y_cost),
     };
 
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1267

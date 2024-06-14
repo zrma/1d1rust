@@ -11,10 +11,10 @@ fn solve1182(reader: &mut impl BufRead, writer: &mut impl Write) {
         .map(|v| v.parse().unwrap())
         .collect();
 
-    let mut count = 0;
-    choose_nums(&nums, 0, 0, s, &mut count, false);
+    let mut ans = 0;
+    choose_nums(&nums, 0, 0, s, &mut ans, false);
 
-    write!(writer, "{}", count).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn choose_nums(nums: &[i64], sum: i64, i: usize, s: i64, count: &mut i64, is_non_empty: bool) {

@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve4435(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t: usize = read_value(read_line(reader));
 
-    let mut results = Vec::with_capacity(t);
+    let mut answers = Vec::with_capacity(t);
     for i in 1..=t {
         let good = read_n_values::<i32>(reader, 6);
         let evil = read_n_values::<i32>(reader, 7);
@@ -30,10 +30,10 @@ fn solve4435(reader: &mut impl BufRead, writer: &mut impl Write) {
             std::cmp::Ordering::Equal => "No victor on this battle field",
         };
 
-        results.push(format!("Battle {}: {}", i, result));
+        answers.push(format!("Battle {}: {}", i, result));
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/4435

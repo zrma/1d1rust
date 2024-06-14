@@ -7,7 +7,7 @@ fn solve5361(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let prices = [350.34, 230.90, 190.55, 125.30, 180.90];
 
-    let results = (0..num_cases)
+    let ans = (0..num_cases)
         .map(|_| {
             let parts = read_n_values::<f64>(reader, 5);
             let total = parts
@@ -17,9 +17,10 @@ fn solve5361(reader: &mut impl BufRead, writer: &mut impl Write) {
                 .sum::<f64>();
             format!("${:.2}", total)
         })
-        .collect::<Vec<String>>();
+        .collect::<Vec<String>>()
+        .join("\n");
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/5361

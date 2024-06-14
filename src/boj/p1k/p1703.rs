@@ -2,7 +2,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1703(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut results = vec![];
+    let mut answers = vec![];
     let mut input = String::new();
 
     while reader.read_line(&mut input).expect("Failed to read") != 0 {
@@ -29,11 +29,11 @@ fn solve1703(reader: &mut impl BufRead, writer: &mut impl Write) {
             })
             .fold(1, |acc, (a, b)| acc * a - b);
 
-        results.push(calculation_result.to_string());
+        answers.push(calculation_result.to_string());
         input.clear();
     }
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1703

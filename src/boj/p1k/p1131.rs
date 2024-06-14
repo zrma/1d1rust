@@ -2,7 +2,7 @@ use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 const MAX_SIZE: usize = 1_000_001;
-const ARR: [[usize; 16]; 7] = [
+const CYCLE_TABLE: [[usize; 16]; 7] = [
     [0; 16],                                          // K = 0 (placeholder)
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0], // K = 1
     [1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // K = 2
@@ -25,7 +25,7 @@ const ARR: [[usize; 16]; 7] = [
 fn solve1131(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (a, b, k) = read_values_as!(read_line(reader), usize, usize, usize);
     let mut dp = vec![0; MAX_SIZE];
-    for &val in ARR[k].iter().take_while(|&&x| x != 0) {
+    for &val in CYCLE_TABLE[k].iter().take_while(|&&x| x != 0) {
         let mut n = val;
         loop {
             if n < MAX_SIZE {
@@ -38,8 +38,8 @@ fn solve1131(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let sum: usize = (a..=b).map(|n| calc_min(k, n, &mut dp)).sum();
-    write!(writer, "{}", sum).expect("Failed to write");
+    let ans: usize = (a..=b).map(|n| calc_min(k, n, &mut dp)).sum();
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn calc_s(k: usize, n: usize) -> usize {
@@ -111,7 +111,7 @@ use rayon::prelude::*;
 use std::collections::{HashMap, HashSet};
 use std::sync::Mutex;
 
-fn find_cycle_min(k: usize, n: usize, memo: &mut HashMap<usize, usize>) -> usize {
+fn find_min_cycle(k: usize, n: usize, memo: &mut HashMap<usize, usize>) -> usize {
     if let Some(&result) = memo.get(&n) {
         return result;
     }
@@ -139,12 +139,12 @@ fn find_cycle_min(k: usize, n: usize, memo: &mut HashMap<usize, usize>) -> usize
 }
 
 #[allow(dead_code)]
-fn find_min_values(k: usize, n: usize) -> Vec<usize> {
+fn find_min_cycles(k: usize, n: usize) -> Vec<usize> {
     let unique_cycle_min_set = Mutex::new(HashSet::new());
 
     (1..=n).into_par_iter().for_each(|i| {
         let mut memo = HashMap::new();
-        let cycle_min = find_cycle_min(k, i, &mut memo);
+        let cycle_min = find_min_cycle(k, i, &mut memo);
         let mut unique_minimums = unique_cycle_min_set.lock().unwrap();
         unique_minimums.insert(cycle_min);
     });
@@ -160,16 +160,16 @@ fn find_min_values(k: usize, n: usize) -> Vec<usize> {
 }
 
 #[test]
-fn test_find_circle_minimal() {
+fn test_find_min_cycles() {
     // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-    let got = find_min_values(1, 10);
+    let got = find_min_cycles(1, 10);
     assert_eq!(got, vec![1, 2, 3, 4, 5, 6, 7, 8, 9]);
 }
 
 #[test]
 #[ignore]
-fn test_find_circle() {
+fn test_find_whole_min_cycles() {
     // [1, 2, 3, 4, 5, 6, 7, 8, 9]
     // [1, 4]
     // [1, 55, 136, 153, 160, 370, 371, 407, 919]
@@ -180,28 +180,31 @@ fn test_find_circle() {
     let k_values: Vec<usize> = vec![1, 2, 3, 4, 5, 6];
     let n: usize = 1_000_000;
 
-    let results: Vec<Vec<usize>> = k_values
+    let whole_min_cycles: Vec<Vec<usize>> = k_values
         .par_iter()
-        .map(|&k| find_min_values(k, n))
+        .map(|&k| find_min_cycles(k, n))
         .collect();
 
-    for (k, min_values) in k_values.iter().zip(results.iter()) {
-        println!("k = {}, min_values = {:?}", k, min_values);
+    for (k, min_cycles) in k_values.iter().zip(whole_min_cycles.iter()) {
+        println!("k = {}, min_values = {:?}", k, min_cycles);
     }
 
-    assert_eq!(results[0], vec![1, 2, 3, 4, 5, 6, 7, 8, 9]);
-    assert_eq!(results[1], vec![1, 4]);
-    assert_eq!(results[2], vec![1, 55, 136, 153, 160, 370, 371, 407, 919]);
-    assert_eq!(results[3], vec![1, 1138, 1634, 2178, 8208, 9474]);
+    assert_eq!(whole_min_cycles[0], vec![1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    assert_eq!(whole_min_cycles[1], vec![1, 4]);
     assert_eq!(
-        results[4],
+        whole_min_cycles[2],
+        vec![1, 55, 136, 153, 160, 370, 371, 407, 919]
+    );
+    assert_eq!(whole_min_cycles[3], vec![1, 1138, 1634, 2178, 8208, 9474]);
+    assert_eq!(
+        whole_min_cycles[4],
         vec![
             1, 244, 4150, 4151, 8294, 8299, 9044, 9045, 10933, 24584, 54748, 58618, 89883, 92727,
             93084, 194979
         ]
     );
     assert_eq!(
-        results[5],
+        whole_min_cycles[5],
         vec![1, 17148, 63804, 93531, 239459, 282595, 548834]
     );
 }

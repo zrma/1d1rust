@@ -54,9 +54,8 @@ fn solve14940(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let result = matrix_to_str(&map);
-
-    write!(writer, "{}", result).expect("Failed to write");
+    let ans = matrix_to_str(&map);
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/14940

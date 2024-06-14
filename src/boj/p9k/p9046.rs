@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 // noinspection SpellCheckingInspection
 fn solve9046(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases = read_value(read_line(reader));
-    let mut results = Vec::with_capacity(num_cases);
+    let mut answers = Vec::with_capacity(num_cases);
     for _ in 0..num_cases {
         let line = read_line(reader);
         let mut counts = [0; 26];
@@ -29,9 +29,9 @@ fn solve9046(reader: &mut impl BufRead, writer: &mut impl Write) {
         } else {
             '?'
         };
-        results.push(result_char.to_string());
+        answers.push(result_char.to_string());
     }
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/9046

@@ -6,7 +6,7 @@ fn solve11094(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
     let prefix = "Simon says";
 
-    let results = (0..num_cases)
+    let ans = (0..num_cases)
         .filter_map(|_| {
             let s = read_line(reader);
             if s.starts_with(prefix) {
@@ -18,7 +18,7 @@ fn solve11094(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<String>>()
         .join("\n");
 
-    write!(writer, "{}", results).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/11094

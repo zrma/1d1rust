@@ -6,9 +6,8 @@ fn solve1515(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
     let sequence = s.as_bytes();
 
-    let final_number = find_final_number_in_sequence(sequence);
-
-    write!(writer, "{}", final_number).unwrap();
+    let ans = find_final_number_in_sequence(sequence);
+    write!(writer, "{}", ans).unwrap();
 }
 
 fn find_final_number_in_sequence(sequence: &[u8]) -> usize {

@@ -8,7 +8,7 @@ fn solve1925(reader: &mut impl BufRead, writer: &mut impl Write) {
     let b = read_point(reader);
     let c = read_point(reader);
 
-    let res = match (
+    let ans = match (
         is_collinear(a, b, c),
         is_equilateral(a, b, c),
         is_isosceles(a, b, c),
@@ -19,7 +19,7 @@ fn solve1925(reader: &mut impl BufRead, writer: &mut impl Write) {
         _ => classify_scalene(a, b, c),
     };
 
-    write!(writer, "{}", res).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn classify_isosceles(a: Point, b: Point, c: Point) -> &'static str {

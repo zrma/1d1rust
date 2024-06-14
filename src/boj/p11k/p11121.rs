@@ -5,15 +5,15 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve11121(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_of_cases = read_value(read_line(reader));
-    let mut results = Vec::with_capacity(num_of_cases);
+    let mut answers = Vec::with_capacity(num_of_cases);
 
     for _ in 0..num_of_cases {
         let (a, b) = read_values_as!(read_line(reader), String, String);
-        let result = if a == b { "OK" } else { "ERROR" };
-        results.push(result);
+        let ans = if a == b { "OK" } else { "ERROR" };
+        answers.push(ans);
     }
 
-    let output = results.join("\n");
+    let output = answers.join("\n");
     write!(writer, "{}", output).expect("Failed to write");
 }
 

@@ -22,8 +22,8 @@ fn solve16500(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let result = if can_form[target.len()] { 1 } else { 0 };
-    write!(writer, "{}", result).expect("Failed to write");
+    let ans = if can_form[target.len()] { 1 } else { 0 };
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/16500

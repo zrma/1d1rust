@@ -7,15 +7,16 @@ fn solve2721(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let triangular_number = |n| n * (n + 1) / 2;
 
-    let results = (0..num_cases)
+    let ans = (0..num_cases)
         .map(|_| {
             let n = read_value::<usize>(read_line(reader));
             (1..=n).map(|k| k * triangular_number(k + 1)).sum::<usize>()
         })
         .map(|sum| sum.to_string())
-        .collect::<Vec<String>>();
+        .collect::<Vec<String>>()
+        .join("\n");
 
-    write!(writer, "{}", results.join("\n")).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1547
