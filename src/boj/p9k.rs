@@ -14,6 +14,7 @@ mod p9469;
 mod p9494;
 mod p9501;
 mod p9506;
+mod p9517;
 mod p9536;
 mod p9723;
 mod p9772;
