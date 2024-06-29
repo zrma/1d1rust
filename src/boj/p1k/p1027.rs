@@ -1,4 +1,5 @@
 use crate::utils::io::{read_line, read_value};
+use num_traits::ToPrimitive;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -6,7 +7,7 @@ fn solve1027(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
     let heights: Vec<i32> = read_line(reader)
         .split_whitespace()
-        .map(|s| s.parse().unwrap())
+        .map(|s| s.parse().expect("Failed to parse value"))
         .collect();
 
     let ans = (0..n).map(|i| count_visible(i, &heights)).max().unwrap();
@@ -23,7 +24,16 @@ fn count_slope(iter: impl Iterator<Item = usize>, i: usize, heights: &[i32], sig
     let mut cnt = 0;
     let mut max_slope = f64::NEG_INFINITY;
     for j in iter {
-        let slope = calc_slope(i as f64, heights[i] as f64, j as f64, heights[j] as f64) * sign;
+        let x1 = i.to_f64().expect("Failed to convert i to f64");
+        let y1 = heights[i]
+            .to_f64()
+            .expect("Failed to convert height to f64");
+        let x2 = j.to_f64().expect("Failed to convert j to f64");
+        let y2 = heights[j]
+            .to_f64()
+            .expect("Failed to convert height to f64");
+
+        let slope = calc_slope(x1, y1, x2, y2) * sign;
         if slope > max_slope {
             cnt += 1;
             max_slope = slope;
