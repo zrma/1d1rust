@@ -1,10 +1,11 @@
 use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
+use num_traits::ToPrimitive;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1011(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_cases = read_value(read_line(reader));
+    let num_cases: usize = read_value(read_line(reader));
 
     let ans = (0..num_cases)
         .map(|_| {
@@ -12,13 +13,18 @@ fn solve1011(reader: &mut impl BufRead, writer: &mut impl Write) {
             let distance = (y - x).abs();
             calculate_steps(distance).to_string()
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
     write!(writer, "{}", ans).unwrap();
 }
 
 fn calculate_steps(distance: i64) -> i64 {
-    let n = (distance as f64).sqrt() as i64;
+    let n = distance
+        .to_f64()
+        .expect("Failed to convert distance to f64")
+        .sqrt()
+        .to_i64()
+        .expect("Failed to convert f64 to i64");
     let mut steps = 2 * n - 1;
     let remaining = distance - n * n;
 
