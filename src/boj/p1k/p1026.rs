@@ -5,21 +5,21 @@ use std::io::{BufRead, Write};
 fn solve1026(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: usize = read_value(read_line(reader));
     let a_values = {
-        let mut values = read_n_values::<i32>(reader, n);
+        let mut values: Vec<i32> = read_n_values(reader, n);
         values.sort_unstable();
         values
     };
     let b_values = {
-        let mut values = read_n_values::<i32>(reader, n);
+        let mut values: Vec<i32> = read_n_values(reader, n);
         values.sort_unstable_by(|a, b| b.cmp(a));
         values
     };
 
-    let ans = a_values
+    let ans: i32 = a_values
         .iter()
         .zip(b_values.iter())
         .map(|(a, b)| a * b)
-        .sum::<i32>();
+        .sum();
     write!(writer, "{}", ans).expect("Failed to write");
 }
 
