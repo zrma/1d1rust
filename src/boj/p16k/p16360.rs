@@ -19,14 +19,15 @@ fn solve16360(reader: &mut impl BufRead, writer: &mut impl Write) {
         ("w", "was"),
     ];
 
-    let answers: Vec<String> = (0..num_of_cases)
+    let ans = (0..num_of_cases)
         .map(|_| {
             let word = read_line(reader);
             transform_word(&word, &suffix_mapping)
         })
-        .collect();
+        .collect::<Vec<String>>()
+        .join("\n");
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn transform_word(word: &str, mapping: &[(&str, &str)]) -> String {

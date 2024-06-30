@@ -7,9 +7,9 @@ fn solve17201(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
     let chars: Vec<char> = s.chars().collect();
 
-    let answer = chars.windows(2).all(|w| w[0] != w[1]);
+    let ans = chars.windows(2).all(|w| w[0] != w[1]);
 
-    write!(writer, "{}", if answer { "Yes" } else { "No" }).expect("Failed to write");
+    write!(writer, "{}", if ans { "Yes" } else { "No" }).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/17201
