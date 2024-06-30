@@ -15,8 +15,8 @@ fn solve25757(reader: &mut impl BufRead, writer: &mut impl Write) {
         _ => 3,
     };
 
-    let answer = unique_names_set.len() / divisor;
-    write!(writer, "{}", answer).unwrap();
+    let ans = unique_names_set.len() / divisor;
+    write!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/25757

@@ -8,12 +8,12 @@ fn solve25205(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     // noinspection SpellCheckingInspection
     const CHECKING_TARGETS: &str = "rsefaqtdwczxvg";
-    let answer = match s.chars().last() {
+    let ans = match s.chars().last() {
         Some(last_char) if CHECKING_TARGETS.contains(last_char) => "1",
         _ => "0",
     };
 
-    write!(writer, "{}", answer).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/25205

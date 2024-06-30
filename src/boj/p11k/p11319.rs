@@ -4,15 +4,16 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve11319(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
-    let answers: Vec<String> = (0..num_cases)
+    let ans = (0..num_cases)
         .map(|_| {
             let line = read_line(reader);
             count_vowels_and_consonants(&line)
         })
         .map(|(vowels, consonants)| format!("{} {}", consonants, vowels))
-        .collect();
+        .collect::<Vec<String>>()
+        .join("\n");
 
-    write!(writer, "{}", answers.join("\n")).unwrap();
+    write!(writer, "{}", ans).unwrap();
 }
 
 fn count_vowels_and_consonants(line: &str) -> (usize, usize) {

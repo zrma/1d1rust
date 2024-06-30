@@ -8,10 +8,10 @@ fn solve15666(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut unique_nums = extract_unique_numbers(reader, n);
     unique_nums.sort_unstable();
 
-    let result = generate_combinations(&unique_nums, m);
-    let result_str = matrix_to_str(&result);
+    let combinations = generate_combinations(&unique_nums, m);
+    let ans = matrix_to_str(&combinations);
 
-    write!(writer, "{}", result_str).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn extract_unique_numbers(reader: &mut impl BufRead, n: usize) -> Vec<usize> {

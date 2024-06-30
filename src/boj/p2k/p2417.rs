@@ -6,12 +6,12 @@ fn solve2417(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: u64 = read_value(read_line(reader));
     let sqrt_n = integer_sqrt(n);
 
-    let result = if sqrt_n * sqrt_n >= n {
+    let ans = if sqrt_n * sqrt_n >= n {
         sqrt_n
     } else {
         sqrt_n + 1
     };
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 fn integer_sqrt(n: u64) -> u64 {

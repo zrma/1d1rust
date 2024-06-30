@@ -16,12 +16,12 @@ fn solve20154(reader: &mut impl BufRead, writer: &mut impl Write) {
         .sum::<u32>()
         % 10;
 
-    let answer = if sum % 2 == 0 {
+    let ans = if sum % 2 == 0 {
         "You're the winner?"
     } else {
         "I'm a winner!"
     };
-    write!(writer, "{}", answer).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/20154
