@@ -7,21 +7,21 @@ use std::iter::FromIterator;
 #[allow(dead_code)]
 fn solve2776(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases = read_value::<usize>(read_line(reader));
-    let mut all_answers = Vec::with_capacity(num_cases);
+    let mut answers = Vec::with_capacity(num_cases);
 
     for _ in 0..num_cases {
         let originals: HashSet<i32> = read_collection(reader);
         let queries: Vec<i32> = read_collection(reader);
 
-        let answers = queries
+        let ans = queries
             .iter()
             .map(|q| if originals.contains(q) { "1" } else { "0" })
             .collect::<Vec<&str>>()
             .join("\n");
-        all_answers.push(answers);
+        answers.push(ans);
     }
 
-    write!(writer, "{}", all_answers.join("\n")).unwrap();
+    write!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 fn read_collection<T, C>(reader: &mut impl BufRead) -> C

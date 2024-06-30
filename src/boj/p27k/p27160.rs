@@ -13,8 +13,8 @@ fn solve27160(reader: &mut impl BufRead, writer: &mut impl Write) {
         *counts.entry(name).or_insert(0) += count;
     }
 
-    let answer = counts.values().any(|&count| count == 5);
-    write!(writer, "{}", if answer { "YES" } else { "NO" }).unwrap();
+    let ans = counts.values().any(|&count| count == 5);
+    write!(writer, "{}", if ans { "YES" } else { "NO" }).unwrap();
 }
 
 // https://www.acmicpc.net/problem/27160

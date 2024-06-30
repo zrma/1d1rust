@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve24510(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_of_cases: usize = read_value(read_line(reader));
-    let answer = (0..num_of_cases)
+    let ans = (0..num_of_cases)
         .map(|_| {
             let s = read_line(reader);
             let mut count = 0;
@@ -25,7 +25,7 @@ fn solve24510(reader: &mut impl BufRead, writer: &mut impl Write) {
         .max()
         .expect("Should have at least one case");
 
-    write!(writer, "{}", answer).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/24510

@@ -22,12 +22,12 @@ fn solve23841(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let answer = board
+    let ans = board
         .iter()
         .map(|row| row.iter().collect::<String>())
         .collect::<Vec<String>>()
         .join("\n");
-    write!(writer, "{}", answer).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/23841

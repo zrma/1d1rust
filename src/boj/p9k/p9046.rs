@@ -2,7 +2,6 @@ use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
-// noinspection SpellCheckingInspection
 fn solve9046(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases = read_value(read_line(reader));
     let mut answers = Vec::with_capacity(num_cases);
@@ -23,13 +22,13 @@ fn solve9046(reader: &mut impl BufRead, writer: &mut impl Write) {
             .filter(|&(_, &count)| count == max_count)
             .collect();
 
-        let result_char = if max_indices.len() == 1 {
+        let decrypted = if max_indices.len() == 1 {
             let (index, _) = max_indices[0];
             (index as u8 + b'a') as char
         } else {
             '?'
         };
-        answers.push(result_char.to_string());
+        answers.push(decrypted.to_string());
     }
     write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
