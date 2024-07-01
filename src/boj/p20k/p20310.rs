@@ -28,15 +28,15 @@ fn solve20310(reader: &mut impl BufRead, writer: &mut impl Write) {
             .collect()
     }
 
-    let result = filter_chars(&s, '1', num_ones_to_remove);
-    let result = filter_chars(
-        &result.chars().rev().collect::<String>(),
+    let ans = filter_chars(&s, '1', num_ones_to_remove);
+    let ans = filter_chars(
+        &ans.chars().rev().collect::<String>(),
         '0',
         num_zeros_to_remove,
     );
-    let result = result.chars().rev().collect::<String>();
+    let ans = ans.chars().rev().collect::<String>();
 
-    write!(writer, "{}", result).unwrap();
+    write!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/20310

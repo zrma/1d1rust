@@ -3,13 +3,13 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve6841(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut ans = vec![];
+    let mut answers = vec![];
     loop {
         let s = read_line(reader);
         if s.is_empty() {
             break;
         }
-        let result = match s.trim() {
+        let ans = match s.trim() {
             "CU" => "see you",
             ":-)" => "I’m happy",
             ":-(" => "I’m unhappy",
@@ -24,14 +24,14 @@ fn solve6841(reader: &mut impl BufRead, writer: &mut impl Write) {
             "TTYL" => "talk to you later",
             _ => s.trim(),
         };
-        ans.push(result.to_string());
+        answers.push(ans.to_string());
 
         if s.trim() == "TTYL" {
             break;
         }
     }
 
-    write!(writer, "{}", ans.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/6841

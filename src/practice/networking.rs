@@ -4,7 +4,7 @@ extern crate reqwest;
 use std::collections::HashMap;
 
 #[allow(dead_code)]
-async fn call_body(url: &str) -> Result<(), reqwest::Error> {
+async fn get_body(url: &str) -> Result<(), reqwest::Error> {
     let mut map = HashMap::new();
     map.insert("lang", "rust");
     map.insert("body", "json");
@@ -41,47 +41,47 @@ mod tests {
 
     #[tokio::test]
     #[ignore]
-    async fn test_call_body() {
+    async fn test_get_body() {
         let url = "https://httpbin.org/post".to_string();
-        let res = call_body(&url).await;
-        assert!(res.is_ok());
+        let body = get_body(&url).await;
+        assert!(body.is_ok());
     }
 
     #[tokio::test]
-    async fn test_call_body_with_mock_success() {
+    async fn test_get_body_with_mock_success() {
         let mock_server = MockServer::start().await;
 
-        let response =
+        let give =
             ResponseTemplate::new(200).set_body_string(r#"{"message": "This is a mock response"}"#);
 
         Mock::given(method("POST"))
             .and(path("/post"))
-            .respond_with(response)
+            .respond_with(give)
             .mount(&mock_server)
             .await;
 
         let url = format!("{}/post", mock_server.uri());
-        let result = call_body(&url).await;
+        let body = get_body(&url).await;
 
-        assert!(result.is_ok());
+        assert!(body.is_ok());
     }
 
     #[tokio::test]
-    async fn test_call_body_with_mock_error() {
+    async fn test_get_body_with_mock_error() {
         let mock_server = MockServer::start().await;
 
-        let response =
+        let give =
             ResponseTemplate::new(500).set_body_string(r#"{"error": "Internal Server Error"}"#);
 
         Mock::given(method("POST"))
             .and(path("/post"))
-            .respond_with(response)
+            .respond_with(give)
             .mount(&mock_server)
             .await;
 
         let url = format!("{}/post", mock_server.uri());
-        let result = call_body(&url).await;
+        let body = get_body(&url).await;
 
-        assert!(result.is_err());
+        assert!(body.is_err());
     }
 }

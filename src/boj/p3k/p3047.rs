@@ -10,7 +10,7 @@ fn solve3047(reader: &mut impl BufRead, writer: &mut impl Write) {
     };
 
     let sequence = read_line(reader);
-    let result = sequence
+    let ans = sequence
         .chars()
         .map(|c| match c {
             'A' => arr[0],
@@ -22,7 +22,7 @@ fn solve3047(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<String>>()
         .join(" ");
 
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/3047

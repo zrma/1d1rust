@@ -14,7 +14,7 @@ fn solve5656(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let result = match op.as_str() {
+        let ans = match op.as_str() {
             ">" => a > b,
             ">=" => a >= b,
             "<" => a < b,
@@ -24,7 +24,7 @@ fn solve5656(reader: &mut impl BufRead, writer: &mut impl Write) {
             _ => panic!("invalid operator"),
         };
 
-        writeln!(writer, "Case {}: {}", i, result).expect("Failed to write");
+        writeln!(writer, "Case {}: {}", i, ans).expect("Failed to write");
     }
 }
 

@@ -21,14 +21,14 @@ fn solve28702(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let next_num = current_number.expect("No valid number found") + 1;
-    let result = match (next_num % 3 == 0, next_num % 5 == 0) {
+    let ans = match (next_num % 3 == 0, next_num % 5 == 0) {
         (true, true) => "FizzBuzz".to_string(),
         (true, false) => "Fizz".to_string(),
         (false, true) => "Buzz".to_string(),
         (false, false) => next_num.to_string(),
     };
 
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/28702
