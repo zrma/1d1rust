@@ -8,11 +8,11 @@ fn disguise(clothes: Vec<Vec<String>>) -> i32 {
         let count = counts.entry(part).or_insert(0);
         *count += 1;
     }
-    let mut result = 1;
+    let mut ans = 1;
     for (_, count) in counts {
-        result *= count + 1
+        ans *= count + 1
     }
-    result - 1
+    ans - 1
 }
 
 // noinspection SpellCheckingInspection

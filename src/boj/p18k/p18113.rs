@@ -16,21 +16,21 @@ fn solve18113(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let mut result = -1;
+    let mut ans = -1;
     let mut left = 1;
     let mut right = *lengths.iter().max().unwrap_or(&0);
     while left <= right {
         let mid = (left + right) / 2;
         let count: i32 = lengths.iter().map(|&x| x / mid).sum();
         if count >= m {
-            result = mid;
+            ans = mid;
             left = mid + 1;
         } else {
             right = mid - 1;
         }
     }
 
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/18113

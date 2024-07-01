@@ -10,7 +10,7 @@ fn solve4378(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let result = s
+        let ans = s
             .chars()
             .map(|c| {
                 qwerty
@@ -21,7 +21,7 @@ fn solve4378(reader: &mut impl BufRead, writer: &mut impl Write) {
             })
             .collect::<String>();
 
-        write!(writer, "{}", result).expect("Failed to write");
+        write!(writer, "{}", ans).expect("Failed to write");
     }
 }
 

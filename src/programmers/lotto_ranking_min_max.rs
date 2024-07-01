@@ -16,8 +16,8 @@ fn lotto_ranking_min_max(lotto_numbers: Vec<i32>, win_numbers: Vec<i32>) -> Vec<
             }
         }
     }
-    let result = min(6, 6 - (matched_count - 1));
-    vec![max(1, result - unknown_slots), result]
+    let ans = min(6, 6 - (matched_count - 1));
+    vec![max(1, ans - unknown_slots), ans]
 }
 
 // https://programmers.co.kr/learn/courses/30/lessons/77484?language=go
