@@ -10,9 +10,9 @@ fn solve3004(reader: &mut impl BufRead, writer: &mut impl Write) {
     // 세로로 자르는 횟수 (ceiling)
     let col = (n + 1) / 2;
 
-    let result = (row + 1) * (col + 1);
+    let ans = (row + 1) * (col + 1);
 
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/3004

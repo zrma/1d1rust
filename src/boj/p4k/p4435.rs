@@ -24,13 +24,13 @@ fn solve4435(reader: &mut impl BufRead, writer: &mut impl Write) {
             .map(|(a, b)| a * b)
             .sum();
 
-        let result = match good_power_sum.cmp(&evil_power_sum) {
+        let ans = match good_power_sum.cmp(&evil_power_sum) {
             std::cmp::Ordering::Greater => "Good triumphs over Evil",
             std::cmp::Ordering::Less => "Evil eradicates all trace of Good",
             std::cmp::Ordering::Equal => "No victor on this battle field",
         };
 
-        answers.push(format!("Battle {}: {}", i, result));
+        answers.push(format!("Battle {}: {}", i, ans));
     }
 
     write!(writer, "{}", answers.join("\n")).expect("Failed to write");

@@ -5,9 +5,9 @@ use std::io::{BufRead, Write};
 fn solve3507(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: usize = read_value(read_line(reader));
 
-    let result = 199usize.saturating_sub(n);
+    let ans = 199usize.saturating_sub(n);
 
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/3507

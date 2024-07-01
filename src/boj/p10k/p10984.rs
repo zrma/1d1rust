@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve10984(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_of_cases: usize = read_value(read_line(reader));
-    let result = (0..num_of_cases)
+    let ans = (0..num_of_cases)
         .map(|_| {
             let total_subjects: usize = read_value(read_line(reader));
             let (mut total_credits, mut weighted_sum) = (0f32, 0f32);
@@ -20,7 +20,7 @@ fn solve10984(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<String>>()
         .join("\n");
 
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/10984
