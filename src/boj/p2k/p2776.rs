@@ -1,4 +1,4 @@
-use crate::utils::io::{read_line, read_value};
+use crate::utils::io::{read_line, read_n_values, read_value};
 use std::collections::HashSet;
 use std::hash::Hash;
 use std::io::{BufRead, Write};
@@ -31,11 +31,8 @@ where
     <T as std::str::FromStr>::Err: std::fmt::Debug,
     C: FromIterator<T>,
 {
-    let _ = read_value::<usize>(read_line(reader));
-    read_line(reader)
-        .split_whitespace()
-        .map(|x| x.parse::<T>().expect("Failed to parse number"))
-        .collect::<C>()
+    let n: usize = read_value(read_line(reader));
+    read_n_values::<T>(reader, n).into_iter().collect()
 }
 
 // https://www.acmicpc.net/problem/2776
