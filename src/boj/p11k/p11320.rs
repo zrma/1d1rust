@@ -4,11 +4,15 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve11320(reader: &mut impl BufRead, writer: &mut impl Write) {
+    count_cover_tris(reader, writer);
+}
+
+pub fn count_cover_tris(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
 
     let ans = (0..num_cases)
         .map(|_| {
-            let (a, b) = read_values_as!(read_line(reader), i32, i32);
+            let (a, b) = read_values_as!(read_line(reader), i64, i64);
             let q = a / b;
             q * q
         })

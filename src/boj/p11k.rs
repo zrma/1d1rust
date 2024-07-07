@@ -9,6 +9,7 @@ mod p11109;
 mod p11121;
 mod p11134;
 mod p11179;
+mod p11312;
 mod p11319;
 mod p11320;
 mod p11367;
