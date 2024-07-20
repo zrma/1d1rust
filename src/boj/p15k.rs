@@ -19,3 +19,4 @@ mod p15923;
 mod p15927;
 mod p15947;
 mod p15973;
+mod psolve15734;
