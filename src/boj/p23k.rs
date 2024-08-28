@@ -6,4 +6,5 @@ mod p23802;
 mod p23803;
 mod p23804;
 mod p23805;
+mod p23806;
 mod p23841;
