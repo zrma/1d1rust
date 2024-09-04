@@ -8,3 +8,4 @@ mod p24313;
 mod p24510;
 mod p24623;
 mod p24723;
+mod p24724;
