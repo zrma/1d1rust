@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve13985(reader: &mut impl BufRead, writer: &mut impl Write) {
     let line = read_line(reader);
     let nums: Vec<i32> = line
-        .split(|c| c == ' ' || c == '=')
+        .split([' ', '='])
         .filter_map(|s| s.parse::<i32>().ok())
         .collect();
 
