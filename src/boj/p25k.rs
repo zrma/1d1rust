@@ -9,3 +9,4 @@ mod p25640;
 mod p25641;
 mod p25757;
 mod p25915;
+mod p25285;
