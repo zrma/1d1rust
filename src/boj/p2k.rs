@@ -48,6 +48,7 @@ mod p2721;
 mod p2747;
 mod p2748;
 mod p2756;
+mod p2765;
 mod p2776;
 mod p2783;
 mod p2800;
