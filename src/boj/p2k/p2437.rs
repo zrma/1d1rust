@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve2437(reader: &mut impl BufRead, writer: &mut impl Write) {
     read_line(reader);
-    let arr = read_values::<i32>(reader);
+    let arr: Vec<i32> = read_values(reader);
     let res = get_unavailable_sum(arr);
     write!(writer, "{}", res).unwrap();
 }

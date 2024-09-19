@@ -3,11 +3,11 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve5532(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let total_days = read_value::<i32>(read_line(reader));
-    let total_math_pages = read_value::<i32>(read_line(reader));
-    let total_korean_pages = read_value::<i32>(read_line(reader));
-    let math_pages_per_day = read_value::<i32>(read_line(reader));
-    let korean_pages_per_day = read_value::<i32>(read_line(reader));
+    let total_days: i32 = read_value(read_line(reader));
+    let total_math_pages: i32 = read_value(read_line(reader));
+    let total_korean_pages: i32 = read_value(read_line(reader));
+    let math_pages_per_day: i32 = read_value(read_line(reader));
+    let korean_pages_per_day: i32 = read_value(read_line(reader));
 
     let required_math_days = (total_math_pages as f64 / math_pages_per_day as f64).ceil() as i32;
     let required_korean_days =

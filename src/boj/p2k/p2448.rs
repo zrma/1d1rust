@@ -11,7 +11,7 @@ fn solve2448(reader: &mut impl BufRead, writer: &mut impl Write) {
     let ans = board
         .into_iter()
         .map(|row| row.into_iter().collect::<String>().trim_end().to_string())
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

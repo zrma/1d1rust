@@ -7,8 +7,8 @@ fn solve4435(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let mut answers = Vec::with_capacity(t);
     for i in 1..=t {
-        let good = read_n_values::<i32>(reader, 6);
-        let evil = read_n_values::<i32>(reader, 7);
+        let good: Vec<i32> = read_n_values(reader, 6);
+        let evil: Vec<i32> = read_n_values(reader, 7);
 
         let good_power_weights = [1, 2, 3, 3, 4, 10];
         let evil_power_weights = [1, 2, 2, 2, 3, 5, 10];

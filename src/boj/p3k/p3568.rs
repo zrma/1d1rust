@@ -16,18 +16,15 @@ fn solve3568(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     for var in vars {
-        let var_name = var
-            .chars()
-            .take_while(|&ch| ch.is_alphabetic())
-            .collect::<String>();
+        let var_name: String = var.chars().take_while(|&ch| ch.is_alphabetic()).collect();
 
-        let others = var.chars().skip(var_name.len()).collect::<String>();
+        let others: String = var.chars().skip(var_name.len()).collect();
         if others.is_empty() {
             writeln!(writer, "{} {};", default_type, var_name).expect("Failed to write");
             continue;
         }
 
-        let others = others.replace("[]", "][").chars().rev().collect::<String>();
+        let others: String = others.replace("[]", "][").chars().rev().collect();
         writeln!(writer, "{}{} {};", default_type, others, var_name).expect("Failed to write");
     }
 }

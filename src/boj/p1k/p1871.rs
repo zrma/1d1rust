@@ -3,21 +3,21 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1871(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_value(read_line(reader));
+    let n: usize = read_value(read_line(reader));
     let mut answers = Vec::with_capacity(n);
     for _ in 0..n {
         let line = read_line(reader);
         let mut iter = line.split('-');
         let (left, right) = (iter.next().unwrap(), iter.next().unwrap().trim());
 
-        let left_value = left
+        let left_value: usize = left
             .chars()
             .rev()
             .enumerate()
             .map(|(i, c)| ((c as u8 - b'A') as usize) * 26usize.pow(i as u32))
-            .sum::<usize>();
+            .sum();
 
-        let right_value = right.parse::<i64>().unwrap();
+        let right_value: i64 = right.parse().unwrap();
 
         let diff = (left_value as i64 - right_value).abs();
         let ans = if diff <= 100 { "nice" } else { "not nice" };

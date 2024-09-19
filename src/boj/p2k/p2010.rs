@@ -3,14 +3,14 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2010(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_multiplugs = read_value::<usize>(read_line(reader));
+    let num_multi_plugs: usize = read_value(read_line(reader));
     let mut total_ports = 0;
 
-    for _ in 0..num_multiplugs {
+    for _ in 0..num_multi_plugs {
         total_ports += read_value::<usize>(read_line(reader));
     }
 
-    let available_ports = total_ports - num_multiplugs + 1;
+    let available_ports = total_ports - num_multi_plugs + 1;
     write!(writer, "{}", available_ports).expect("Failed to write");
 }
 

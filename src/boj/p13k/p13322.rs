@@ -6,7 +6,7 @@ fn solve13322(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
     let indices = (0..s.len())
         .map(|i| i.to_string())
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", indices).expect("Failed to write");

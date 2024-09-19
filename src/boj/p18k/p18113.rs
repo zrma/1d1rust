@@ -8,7 +8,7 @@ fn solve18113(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let mut lengths = vec![];
     for _ in 0..n {
-        let value: i32 = read_value(read_line(reader));
+        let value = read_value(read_line(reader));
         if value > 2 * k {
             lengths.push(value - 2 * k);
         } else if 2 * k > value && value > k {

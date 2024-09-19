@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve2204(reader: &mut impl BufRead, writer: &mut impl Write) {
     loop {
-        let n = read_line(reader).parse::<usize>().unwrap();
+        let n: usize = read_line(reader).parse().unwrap();
         if n == 0 {
             break;
         }

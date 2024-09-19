@@ -5,11 +5,9 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve6236(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (n, m) = read_values_as!(read_line(reader), usize, usize);
-    let expenses = (0..n)
-        .map(|_| read_line(reader).parse::<usize>().unwrap())
-        .collect::<Vec<usize>>();
+    let expenses: Vec<usize> = (0..n).map(|_| read_line(reader).parse().unwrap()).collect();
     let max_expense = *expenses.iter().max().unwrap();
-    let total_expenses = expenses.iter().sum::<usize>();
+    let total_expenses: usize = expenses.iter().sum();
 
     let optimal_withdrawal =
         find_optimal_withdrawal_amount(&expenses, max_expense, total_expenses, m);

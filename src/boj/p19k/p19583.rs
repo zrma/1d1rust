@@ -43,8 +43,8 @@ fn solve19583(reader: &mut impl BufRead, writer: &mut impl Write) {
 
 fn str_to_time(s: &str) -> i32 {
     let mut iter = s.split(':');
-    let h = iter.next().unwrap().parse::<i32>().unwrap();
-    let m = iter.next().unwrap().parse::<i32>().unwrap();
+    let h: i32 = iter.next().unwrap().parse().unwrap();
+    let m: i32 = iter.next().unwrap().parse().unwrap();
     h * 60 + m
 }
 

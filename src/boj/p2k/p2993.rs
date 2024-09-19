@@ -8,9 +8,9 @@ fn solve2993(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for i in 1..s.len() {
         for j in i + 1..s.len() {
-            let rev_a = s[..i].chars().rev().collect::<String>();
-            let rev_b = s[i..j].chars().rev().collect::<String>();
-            let rev_c = s[j..].chars().rev().collect::<String>();
+            let rev_a: String = s[..i].chars().rev().collect();
+            let rev_b: String = s[i..j].chars().rev().collect();
+            let rev_c: String = s[j..].chars().rev().collect();
 
             let combined = rev_a + &rev_b + &rev_c;
             if combined < min {

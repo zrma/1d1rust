@@ -17,7 +17,7 @@ fn solve10984(reader: &mut impl BufRead, writer: &mut impl Write) {
             let avg_grade = weighted_sum / total_credits;
             format!("{} {:.1}", total_credits, avg_grade)
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

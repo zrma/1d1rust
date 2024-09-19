@@ -15,7 +15,7 @@ fn solve9550(reader: &mut impl BufRead, writer: &mut impl Write) {
                 .sum::<usize>()
                 .to_string()
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

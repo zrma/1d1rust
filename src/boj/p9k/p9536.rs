@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve9536(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_line(reader).parse::<usize>().unwrap();
+    let t: usize = read_line(reader).parse().unwrap();
     for _ in 0..t {
         let s = read_line(reader);
         let mut sounds = s.split_whitespace().collect::<Vec<&str>>();

@@ -4,13 +4,13 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve8892(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_line(reader).parse::<usize>().unwrap();
+    let t: usize = read_line(reader).parse().unwrap();
 
     for _ in 0..t {
-        let n = read_line(reader).parse::<usize>().unwrap();
-        let words = (0..n)
+        let n: usize = read_line(reader).parse().unwrap();
+        let words: Vec<Vec<u8>> = (0..n)
             .map(|_| read_line(reader).as_bytes().to_vec())
-            .collect::<Vec<Vec<u8>>>();
+            .collect();
 
         let mut ans = String::new();
         for i in 0..n {

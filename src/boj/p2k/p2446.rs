@@ -13,7 +13,7 @@ fn solve2446(reader: &mut impl BufRead, writer: &mut impl Write) {
                 .skip(1)
                 .map(|i| " ".repeat(i) + &"*".repeat(2 * (n - i) - 1)),
         )
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).unwrap();

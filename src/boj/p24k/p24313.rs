@@ -6,13 +6,13 @@ fn solve24313(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (a1, a0) = {
         let line = read_line(reader);
         let mut s = line.split_whitespace();
-        let a1 = s.next().unwrap().parse::<i64>().unwrap();
-        let a0 = s.next().unwrap().parse::<i64>().unwrap();
+        let a1: i64 = s.next().unwrap().parse().unwrap();
+        let a0: i64 = s.next().unwrap().parse().unwrap();
         (a1, a0)
     };
 
-    let c = read_line(reader).parse::<i64>().unwrap();
-    let n0 = read_line(reader).parse::<i64>().unwrap();
+    let c: i64 = read_line(reader).parse().unwrap();
+    let n0: i64 = read_line(reader).parse().unwrap();
 
     // f(n) = a1 * n + a0
     // g(n) ~= n

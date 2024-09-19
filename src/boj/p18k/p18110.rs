@@ -11,8 +11,8 @@ fn solve18110(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let round_target = (n as f32 * 0.15).round() as usize;
-    let mut nums = (0..n)
-        .map(|_| read_value::<f32>(read_line(reader)))
+    let mut nums: Vec<f32> = (0..n)
+        .map(|_| read_value(read_line(reader)))
         .collect::<Vec<_>>();
 
     nums.sort_unstable_by(|a, b| a.partial_cmp(b).unwrap());

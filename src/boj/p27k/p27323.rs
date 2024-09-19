@@ -3,8 +3,8 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve27323(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let a = read_line(reader).parse::<i32>().unwrap();
-    let b = read_line(reader).parse::<i32>().unwrap();
+    let a: i32 = read_line(reader).parse().unwrap();
+    let b: i32 = read_line(reader).parse().unwrap();
 
     write!(writer, "{}", a * b).unwrap();
 }

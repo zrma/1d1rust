@@ -11,9 +11,7 @@ fn solve16172(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn remove_digits(s: &str) -> String {
-    s.chars()
-        .filter(|c| !c.is_ascii_digit())
-        .collect::<String>()
+    s.chars().filter(|c| !c.is_ascii_digit()).collect::<_>()
 }
 
 // https://www.acmicpc.net/problem/16172

@@ -6,9 +6,7 @@ fn solve3058(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t: usize = read_value(read_line(reader));
     let ans: Vec<String> = (0..t)
         .map(|_| {
-            let v = read_n_values::<i32>(reader, 7)
-                .into_iter()
-                .filter(|&x| x % 2 == 0);
+            let v = read_n_values(reader, 7).into_iter().filter(|&x| x % 2 == 0);
             let (sum, min) = v.fold((0, i32::MAX), |(sum, min), x| (sum + x, min.min(x)));
             format!("{} {}", sum, min)
         })

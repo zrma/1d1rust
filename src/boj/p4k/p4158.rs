@@ -17,7 +17,7 @@ fn solve4158(reader: &mut impl BufRead, writer: &mut impl Write) {
         hash_set.clear();
         for _ in 0..n {
             reader.read_line(&mut buffer).expect("Failed to read");
-            let num = buffer.trim().parse::<i32>().expect("Failed to parse");
+            let num: i32 = buffer.trim().parse().expect("Failed to parse");
             buffer.clear();
             hash_set.insert(num);
         }
@@ -25,7 +25,7 @@ fn solve4158(reader: &mut impl BufRead, writer: &mut impl Write) {
         let mut overlap_count = 0;
         for _ in 0..m {
             reader.read_line(&mut buffer).expect("Failed to read");
-            let num = buffer.trim().parse::<i32>().expect("Failed to parse");
+            let num: i32 = buffer.trim().parse().expect("Failed to parse");
             buffer.clear();
 
             if hash_set.contains(&num) {

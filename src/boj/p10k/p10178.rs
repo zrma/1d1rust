@@ -14,7 +14,7 @@ fn solve10178(reader: &mut impl BufRead, writer: &mut impl Write) {
                 pieces_per_child, dad_pieces
             )
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

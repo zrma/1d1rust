@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2712(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_value::<usize>(read_line(reader));
+    let t: usize = read_value(read_line(reader));
     let ans = (0..t)
         .map(|_| {
             let (value, unit) = read_values_as!(read_line(reader), f64, String);

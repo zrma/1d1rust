@@ -3,10 +3,10 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve21964(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_line(reader).parse().unwrap();
     let s = read_line(reader);
 
-    let ans = s.chars().skip(n - 5).take(5).collect::<String>();
+    let ans: String = s.chars().skip(n - 5).take(5).collect::<_>();
     write!(writer, "{}", ans).unwrap();
 }
 

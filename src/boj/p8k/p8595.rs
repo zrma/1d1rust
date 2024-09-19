@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve8595(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_line(reader).parse().unwrap();
     let s = read_line(reader);
 
     let s = &s[..n];
@@ -15,14 +15,14 @@ fn solve8595(reader: &mut impl BufRead, writer: &mut impl Write) {
         if ch.is_numeric() {
             num_str.push(ch);
         } else if !num_str.is_empty() {
-            sum += num_str.parse::<u64>().unwrap_or(0);
+            sum += num_str.parse().unwrap_or(0);
             num_str.clear();
         }
     }
 
     // Check for a number at the end of the string
     if !num_str.is_empty() {
-        sum += num_str.parse::<u64>().unwrap_or(0);
+        sum += num_str.parse().unwrap_or(0);
     }
 
     write!(writer, "{}", sum).unwrap();

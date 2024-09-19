@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve30402(reader: &mut impl BufRead, writer: &mut impl Write) {
     let input = (0..15)
         .map(|_| read_values::<String>(reader).join(""))
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("");
 
     let output = input.chars().find_map(|c| match c {

@@ -42,7 +42,7 @@ fn test_solve15610() {
 
         let got: f64 =
             read_value(String::from_utf8(writer).expect("Failed to convert writer to string"));
-        let want = data.want.parse::<f64>().unwrap();
+        let want: f64 = data.want.parse().unwrap();
 
         assert!((got - want).abs() < 1e-6, "case {}", i);
     }

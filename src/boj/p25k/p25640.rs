@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve25640(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_line(reader).parse().unwrap();
 
     let mut ans = 0;
     for _ in 0..n {

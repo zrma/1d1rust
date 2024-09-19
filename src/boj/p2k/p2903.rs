@@ -4,7 +4,7 @@ use crate::utils::io::read_line;
 
 #[allow(dead_code)]
 fn solve2903(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<u64>().unwrap();
+    let n: u64 = read_line(reader).parse().unwrap();
 
     let mut res = 2;
     for _ in 0..n {

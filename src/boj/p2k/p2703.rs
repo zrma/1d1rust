@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2703(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_cases: usize = read_value(read_line(reader));
+    let num_cases = read_value(read_line(reader));
     const SPACE_INDEX: usize = 26;
 
     let mut decrypted_sentences = Vec::with_capacity(num_cases);
@@ -17,13 +17,13 @@ fn solve2703(reader: &mut impl BufRead, writer: &mut impl Write) {
             },
         );
 
-        let decrypted_sentence = encrypted_sentence
+        let decrypted_sentence: String = encrypted_sentence
             .chars()
             .map(|char| match char {
                 'A'..='Z' => decryption_key[char as usize - 'A' as usize],
                 _ => char,
             })
-            .collect::<String>();
+            .collect::<_>();
 
         decrypted_sentences.push(decrypted_sentence);
     }

@@ -4,12 +4,12 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve2512(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cities = read_value(read_line(reader));
-    let city_budgets = {
+    let city_budgets: Vec<u32> = {
         let s = read_line(reader);
         s.split_whitespace()
             .take(num_cities)
-            .map(|x| x.parse::<u32>().unwrap())
-            .collect::<Vec<_>>()
+            .map(|x| x.parse().unwrap())
+            .collect()
     };
     let total_budget = read_value(read_line(reader));
 
@@ -17,10 +17,10 @@ fn solve2512(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut upper_bound = city_budgets.iter().max().unwrap() + 1;
     while lower_bound + 1 < upper_bound {
         let mid = (lower_bound + upper_bound) / 2;
-        let total = city_budgets
+        let total: u32 = city_budgets
             .iter()
             .map(|&budget| if budget > mid { mid } else { budget })
-            .sum::<u32>();
+            .sum();
         if total <= total_budget {
             lower_bound = mid;
         } else {

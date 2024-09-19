@@ -26,12 +26,12 @@ fn solve2800(reader: &mut impl BufRead, writer: &mut impl Write) {
                 contains[pairs[j].1] = false;
             }
         }
-        let t = s
+        let t: String = s
             .chars()
             .enumerate()
             .filter(|&(i, _)| contains[i])
             .map(|(_, c)| c)
-            .collect::<String>();
+            .collect();
         ans.push(t);
     }
 

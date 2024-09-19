@@ -11,7 +11,7 @@ fn solve25285(reader: &mut impl BufRead, writer: &mut impl Write) {
             let (height, weight): (u8, u8) = read_values_as!(read_line(reader), u8, u8);
             assess_military_eligibility(height, bmi(weight, height)).to_string()
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

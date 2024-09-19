@@ -4,12 +4,12 @@ use std::io::{BufRead, Write};
 fn solve2720(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
     reader.read_line(&mut line).unwrap();
-    let t = line.trim().parse::<i64>().unwrap();
+    let t: i64 = line.trim().parse().unwrap();
 
     for _ in 0..t {
         let mut line = String::new();
         reader.read_line(&mut line).unwrap();
-        let c = line.trim().parse::<u32>().unwrap();
+        let c: u32 = line.trim().parse().unwrap();
 
         let mut res = String::new();
         res.push_str(&format!("{} ", c / 25));

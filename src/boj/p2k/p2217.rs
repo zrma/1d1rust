@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve2217(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
     let mut ropes: Vec<i32> = (0..n)
-        .map(|_| read_line(reader).trim().parse::<i32>().unwrap())
+        .map(|_| read_line(reader).trim().parse().unwrap())
         .collect();
 
     ropes.sort_unstable_by(|a, b| b.cmp(a));

@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 pub fn solve6321(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = read_line(reader);
 
-    let n = line.trim().parse::<i64>().unwrap();
+    let n: i64 = line.trim().parse().unwrap();
 
     for i in 1..=n {
         line.clear();

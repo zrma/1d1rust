@@ -5,12 +5,12 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve10833(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_students: usize = read_value(read_line(reader));
-    let ans = (0..num_students)
+    let ans: i32 = (0..num_students)
         .map(|_| {
             let (students, apples): (i32, i32) = read_values_as!(read_line(reader), i32, i32);
             apples % students
         })
-        .sum::<i32>();
+        .sum();
 
     write!(writer, "{}", ans).expect("Failed to write");
 }

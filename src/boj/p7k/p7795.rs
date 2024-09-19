@@ -10,8 +10,8 @@ fn solve7795(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..num_cases {
         let (n, m) = read_values_as!(read_line(reader), usize, usize);
 
-        let mut a = read_n_values::<i32>(reader, n);
-        let mut b = read_n_values::<i32>(reader, m);
+        let mut a: Vec<i32> = read_n_values(reader, n);
+        let mut b: Vec<i32> = read_n_values(reader, m);
 
         a.sort_unstable();
         b.sort_unstable();

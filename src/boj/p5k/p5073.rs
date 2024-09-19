@@ -20,8 +20,8 @@ fn solve5073(reader: &mut impl BufRead, writer: &mut impl Write) {
 fn read_sides(reader: &mut (impl BufRead + Sized)) -> Vec<i32> {
     read_line(reader)
         .split_whitespace()
-        .map(|x| x.parse::<i32>().unwrap())
-        .collect::<Vec<_>>()
+        .map(|x| x.parse().unwrap())
+        .collect()
 }
 
 fn classify_triangle(v: &[i32]) -> String {

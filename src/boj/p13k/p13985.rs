@@ -6,7 +6,7 @@ fn solve13985(reader: &mut impl BufRead, writer: &mut impl Write) {
     let line = read_line(reader);
     let nums: Vec<i32> = line
         .split([' ', '='])
-        .filter_map(|s| s.parse::<i32>().ok())
+        .filter_map(|s| s.parse().ok())
         .collect();
 
     let res = if nums[0] + nums[1] == nums[2] {

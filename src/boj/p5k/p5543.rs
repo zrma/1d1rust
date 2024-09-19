@@ -11,7 +11,7 @@ fn solve5543(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn read_price(reader: &mut impl BufRead) -> i32 {
-    read_value::<i32>(read_line(reader))
+    read_value(read_line(reader))
 }
 
 // https://www.acmicpc.net/problem/5543

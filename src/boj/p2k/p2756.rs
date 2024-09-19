@@ -20,7 +20,7 @@ fn solve2756(reader: &mut impl BufRead, writer: &mut impl Write) {
 
 fn read_points(s: String) -> Vec<Point> {
     s.split_whitespace()
-        .map(|s| s.parse::<f64>().unwrap())
+        .map(|s| s.parse().unwrap())
         .collect::<Vec<_>>() // Collect all numbers first
         .chunks(2) // Split them into chunks of two
         .map(|chunk| Point {

@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve23375(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (x, y) = read_values_as!(read_line(reader), i32, i32);
 
-    let r = read_line(reader).parse::<i32>().unwrap();
+    let r: i32 = read_line(reader).parse().unwrap();
 
     let (x1, y1) = (x - r, y + r);
     let (x2, y2) = (x + r, y + r);

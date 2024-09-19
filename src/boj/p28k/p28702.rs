@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve28702(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let inputs = (0..3).map(|_| read_line(reader)).collect::<Vec<String>>();
+    let inputs = (0..3).map(|_| read_line(reader)).collect::<Vec<_>>();
 
     let mut current_number: Option<i32> = None;
     for input in &inputs {
@@ -14,7 +14,7 @@ fn solve28702(reader: &mut impl BufRead, writer: &mut impl Write) {
                 }
             }
             _ => {
-                let number = input.parse::<i32>().expect("Failed to parse");
+                let number: i32 = input.parse().expect("Failed to parse");
                 current_number = Some(number);
             }
         }

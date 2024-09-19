@@ -9,15 +9,15 @@ fn solve5361(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = (0..num_cases)
         .map(|_| {
-            let parts = read_n_values::<f64>(reader, 5);
-            let total = parts
+            let parts: Vec<f64> = read_n_values(reader, 5);
+            let total: f64 = parts
                 .iter()
                 .zip(prices.iter())
                 .map(|(p, price)| p * price)
-                .sum::<f64>();
+                .sum();
             format!("${:.2}", total)
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

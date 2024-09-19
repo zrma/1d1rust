@@ -3,14 +3,14 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve11648(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut number_str: String = read_line(reader);
+    let mut number_str = read_line(reader);
 
     let mut steps = 0;
     while number_str.len() > 1 {
-        let product = number_str
+        let product: u64 = number_str
             .chars()
             .map(|c| c.to_digit(10).expect("Invalid digit") as u64)
-            .product::<u64>();
+            .product();
 
         number_str = product.to_string();
         steps += 1;

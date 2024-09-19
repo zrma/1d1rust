@@ -6,7 +6,7 @@ fn solve30501(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_of_names = read_value(read_line(reader));
     let names = (0..num_of_names)
         .map(|_| read_line(reader))
-        .collect::<Vec<String>>();
+        .collect::<Vec<_>>();
 
     let killer = names
         .iter()

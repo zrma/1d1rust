@@ -16,7 +16,7 @@ fn solve24724(reader: &mut impl BufRead, writer: &mut impl Write) {
 
             format!("Material Management {}\nClassification ---- End!", i + 1)
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

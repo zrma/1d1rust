@@ -12,7 +12,7 @@ fn solve11006(reader: &mut impl BufRead, writer: &mut impl Write) {
             let two_legged = num_chickens - one_legged;
             format!("{} {}", one_legged, two_legged)
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

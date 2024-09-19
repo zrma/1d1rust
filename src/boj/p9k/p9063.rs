@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve9063(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<i64>().unwrap();
+    let n: i64 = read_line(reader).parse().unwrap();
 
     let mut min_x = i32::MAX;
     let mut max_x = i32::MIN;
@@ -13,7 +13,7 @@ fn solve9063(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..n {
         let nums: Vec<i32> = read_line(reader)
             .split_whitespace()
-            .map(|x| x.parse::<i32>().unwrap())
+            .map(|x| x.parse().unwrap())
             .collect();
         let x = nums[0];
         let y = nums[1];

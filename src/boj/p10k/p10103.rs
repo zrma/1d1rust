@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve10103(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n: i32 = read_value(read_line(reader));
+    let n = read_value(read_line(reader));
     let (mut a, mut b) = (100, 100);
 
     for _ in 0..n {

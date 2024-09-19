@@ -3,12 +3,12 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve26068(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_line(reader).parse().unwrap();
 
     let mut ans = 0;
     for _ in 0..n {
         let t = read_line(reader);
-        let t = t[2..].parse::<i32>().unwrap();
+        let t: i32 = t[2..].parse().unwrap();
         if t <= 90 {
             ans += 1;
         }

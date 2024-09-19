@@ -10,7 +10,7 @@ fn solve14713(reader: &mut impl BufRead, writer: &mut impl Write) {
             read_line(reader)
                 .split_whitespace()
                 .map(|word| word.to_string())
-                .collect::<Vec<String>>()
+                .collect::<Vec<_>>()
         })
         .collect::<Vec<Vec<String>>>();
 

@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2852(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_line(reader).parse().unwrap();
     let mut scores = [0, 0];
     let mut durations = [0, 0];
     let mut prev_score_time = 0;

@@ -15,7 +15,7 @@ fn solve11094(reader: &mut impl BufRead, writer: &mut impl Write) {
                 None
             }
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

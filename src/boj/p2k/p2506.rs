@@ -3,12 +3,12 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2506(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_questions = read_value::<usize>(read_line(reader));
-    let scores = read_value::<String>(read_line(reader))
+    let num_questions = read_value(read_line(reader));
+    let scores: Vec<i32> = read_value::<String>(read_line(reader))
         .split_whitespace()
         .take(num_questions)
-        .map(|s| s.parse::<i32>().unwrap())
-        .collect::<Vec<i32>>();
+        .map(|s| s.parse().unwrap())
+        .collect::<_>();
 
     let (total_score, _) = scores.iter().fold((0, 0), |(acc_score, streak), &result| {
         if result == 1 {

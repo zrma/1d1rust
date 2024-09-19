@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2476(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_cases = read_value::<usize>(read_line(reader));
+    let num_cases: usize = read_value(read_line(reader));
     let max_prize = (0..num_cases)
         .map(|_| {
             let (die1, die2, die3) = read_values_as!(read_line(reader), u32, u32, u32);

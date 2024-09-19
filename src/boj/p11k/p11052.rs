@@ -4,10 +4,10 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve11052(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
-    let mut prices = read_line(reader)
+    let mut prices: Vec<i32> = read_line(reader)
         .split_whitespace()
-        .map(|s| s.parse::<i32>().unwrap())
-        .collect::<Vec<i32>>();
+        .map(|s| s.parse().unwrap())
+        .collect();
 
     prices.insert(0, 0);
 

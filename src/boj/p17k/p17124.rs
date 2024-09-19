@@ -4,20 +4,17 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve17124(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_cases = read_value::<usize>(read_line(reader));
+    let num_cases: usize = read_value(read_line(reader));
 
     let mut answers = Vec::new();
     for _ in 0..num_cases {
         let (num_a, num_b) = read_values_as!(read_line(reader), usize, usize);
 
-        let a_values = read_n_values::<i64>(reader, num_a);
-        let mut b_values = read_n_values::<i64>(reader, num_b);
+        let a_values: Vec<i64> = read_n_values(reader, num_a);
+        let mut b_values: Vec<i64> = read_n_values(reader, num_b);
         b_values.sort_unstable();
 
-        let total_closest_sum = a_values
-            .iter()
-            .map(|&ai| find_closest(&b_values, ai))
-            .sum::<i64>();
+        let total_closest_sum: i64 = a_values.iter().map(|&ai| find_closest(&b_values, ai)).sum();
         answers.push(total_closest_sum.to_string());
     }
 

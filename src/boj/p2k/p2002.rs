@@ -11,7 +11,7 @@ fn solve2002(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn read_input(reader: &mut impl BufRead) -> (Vec<String>, Vec<String>) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_line(reader).parse().unwrap();
     let in_cars = read_cars(reader, n);
     let out_cars = read_cars(reader, n);
 

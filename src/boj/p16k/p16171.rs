@@ -6,10 +6,7 @@ fn solve16171(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
     let k = read_line(reader);
 
-    let s = s
-        .chars()
-        .filter(|c| !c.is_ascii_digit())
-        .collect::<String>();
+    let s: String = s.chars().filter(|c| !c.is_ascii_digit()).collect::<_>();
     let ans = if s.contains(&k) { 1 } else { 0 };
 
     write!(writer, "{}", ans).expect("Failed to write");

@@ -10,12 +10,12 @@ fn solve6502(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let (r, w, h) = {
+        let (r, w, h): (i32, i32, i32) = {
             let mut s = s.split_whitespace();
             (
-                s.next().unwrap().parse::<i32>().unwrap(),
-                s.next().unwrap().parse::<i32>().unwrap(),
-                s.next().unwrap().parse::<i32>().unwrap(),
+                s.next().unwrap().parse().unwrap(),
+                s.next().unwrap().parse().unwrap(),
+                s.next().unwrap().parse().unwrap(),
             )
         };
 

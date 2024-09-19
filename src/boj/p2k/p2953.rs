@@ -3,10 +3,10 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2953(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let ans = (1..=5)
+    let ans: (i32, i32) = (1..=5)
         .map(|i| {
-            let scores = read_n_values::<i32>(reader, 4);
-            (i, scores.iter().sum::<i32>())
+            let scores = read_n_values(reader, 4);
+            (i, scores.iter().sum())
         })
         .max_by_key(|&(_, score)| score)
         .expect("Should have at least one score");

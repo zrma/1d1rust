@@ -4,10 +4,10 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2485(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
-    let mut v = vec![];
+    let n: usize = read_line(reader).parse().unwrap();
+    let mut v: Vec<i64> = vec![];
     for _ in 0..n {
-        v.push(read_line(reader).parse::<i64>().unwrap());
+        v.push(read_line(reader).parse().unwrap());
     }
 
     let mut gcd_val = v[1] - v[0];

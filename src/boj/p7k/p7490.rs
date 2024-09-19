@@ -3,10 +3,10 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve7490(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_line(reader).parse::<usize>().unwrap();
+    let t: usize = read_line(reader).parse().unwrap();
 
     for _ in 0..t {
-        let n = read_line(reader).parse::<usize>().unwrap();
+        let n: usize = read_line(reader).parse().unwrap();
 
         make_to_zero(writer, n);
         writeln!(writer).expect("Failed to write");

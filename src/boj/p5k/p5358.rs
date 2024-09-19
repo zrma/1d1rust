@@ -10,7 +10,7 @@ fn solve5358(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let transformed = s
+        let transformed: String = s
             .trim_end()
             .chars()
             .map(|c| match c {
@@ -20,7 +20,7 @@ fn solve5358(reader: &mut impl BufRead, writer: &mut impl Write) {
                 'E' => 'I',
                 _ => c,
             })
-            .collect::<String>();
+            .collect();
         ans.push(transformed);
         s.clear();
     }

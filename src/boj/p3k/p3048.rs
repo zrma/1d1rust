@@ -33,7 +33,7 @@ fn solve3048(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut ants = ants0;
     ants.extend(ants1);
 
-    let t = read_line(reader).parse::<usize>().unwrap();
+    let t: usize = read_line(reader).parse().unwrap();
 
     for _ in 0..t {
         for i in 0..ants.len() - 1 {

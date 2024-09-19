@@ -7,7 +7,7 @@ fn solve1296(reader: &mut impl BufRead, writer: &mut impl Write) {
     let name = read_line(reader);
     let (l, o, v, e) = initial_count(&name);
 
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_line(reader).parse().unwrap();
     let ans = (0..n)
         .map(|_| read_line(reader))
         .max_by_key(|name| {

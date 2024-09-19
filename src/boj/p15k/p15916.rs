@@ -4,11 +4,11 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve15916(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: usize = read_value(read_line(reader));
-    let arr = read_line(reader)
+    let arr: Vec<i64> = read_line(reader)
         .split_whitespace()
         .take(n)
-        .map(|s| s.parse::<i64>().unwrap())
-        .collect::<Vec<i64>>();
+        .map(|s| s.parse().unwrap())
+        .collect();
     let k: i64 = read_value(read_line(reader));
 
     let initial_cmp = arr[0].cmp(&k);
