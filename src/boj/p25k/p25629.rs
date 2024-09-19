@@ -3,8 +3,8 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve25629(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_value::<usize>(read_line(reader));
-    let numbers = read_n_values::<i32>(reader, n);
+    let n: usize = read_value(read_line(reader));
+    let numbers: Vec<i32> = read_n_values(reader, n);
 
     let (odd_cnt, even_cnt) = numbers
         .iter()

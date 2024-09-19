@@ -6,15 +6,15 @@ use std::io::{BufRead, Write};
 fn solve2468(reader: &mut impl BufRead, writer: &mut impl Write) {
     let map_size: usize = read_value(read_line(reader));
 
-    let heights_map = (0..map_size)
+    let heights_map: Vec<Vec<i32>> = (0..map_size)
         .map(|_| {
             read_line(reader)
                 .split_whitespace()
                 .take(map_size)
-                .map(|s| s.parse::<i32>().unwrap())
-                .collect::<Vec<i32>>()
+                .map(|s| s.parse().unwrap())
+                .collect()
         })
-        .collect::<Vec<Vec<i32>>>();
+        .collect();
 
     let max_height = heights_map
         .iter()

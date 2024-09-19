@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve18221(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_line(reader).parse().unwrap();
     let mut arr = vec![vec![0; n]; n];
 
     let (mut x0, mut y0) = (0, 0);
@@ -13,7 +13,7 @@ fn solve18221(reader: &mut impl BufRead, writer: &mut impl Write) {
         let s = read_line(reader);
         let mut iter = s.split_whitespace();
         row.iter_mut().enumerate().for_each(|(x, col)| {
-            let v = iter.next().unwrap().parse::<i32>().unwrap();
+            let v: i32 = iter.next().unwrap().parse().unwrap();
             *col = v;
 
             if v == 2 {

@@ -6,7 +6,7 @@ use std::iter::FromIterator;
 
 #[allow(dead_code)]
 fn solve2776(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_cases = read_value::<usize>(read_line(reader));
+    let num_cases: usize = read_value(read_line(reader));
     let mut answers = Vec::with_capacity(num_cases);
 
     for _ in 0..num_cases {

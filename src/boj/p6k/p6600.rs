@@ -72,8 +72,8 @@ fn test_solve6600() {
         let want = data.want.split_whitespace();
 
         for (j, (got, want)) in got.split_whitespace().zip(want).enumerate() {
-            let got = got.parse::<f64>().unwrap();
-            let want = want.parse::<f64>().unwrap();
+            let got: f64 = got.parse().unwrap();
+            let want: f64 = want.parse().unwrap();
 
             const EPSILON: f64 = 1e-6;
 

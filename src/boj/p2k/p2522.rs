@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2522(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_value::<usize>(read_line(reader));
+    let n: usize = read_value(read_line(reader));
 
     let ans = (1..=n)
         .chain((1..n).rev())

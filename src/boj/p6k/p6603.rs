@@ -7,11 +7,11 @@ fn solve6603(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut res = vec![];
 
     while line != "0" {
-        let numbers = line
+        let numbers: Vec<i32> = line
             .split_whitespace()
             .skip(1)
-            .map(|s| s.parse::<i32>().unwrap())
-            .collect::<Vec<_>>();
+            .map(|s| s.parse().unwrap())
+            .collect();
 
         let mut ans = vec![];
         choose_lotto(&numbers, &mut ans, 0, 6, vec![]);

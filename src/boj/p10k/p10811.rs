@@ -17,7 +17,7 @@ fn solve10811(reader: &mut impl BufRead, writer: &mut impl Write) {
     let output = arr
         .iter()
         .map(|&num| num.to_string())
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join(" ");
 
     write!(writer, "{}", output).expect("Failed to write");

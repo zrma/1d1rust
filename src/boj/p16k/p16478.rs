@@ -38,7 +38,7 @@ fn test_solve16478() {
         let got: f64 = crate::utils::io::read_value(
             String::from_utf8(writer).expect("Failed to convert writer to string"),
         );
-        let want = data.want.parse::<f64>().unwrap();
+        let want: f64 = data.want.parse().unwrap();
 
         const EPSILON: f64 = 1e-6;
 

@@ -6,12 +6,12 @@ fn solve6322(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut i = 1;
     loop {
         let s = read_line(reader);
-        let (a, b, c) = {
+        let (a, b, c): (i32, i32, i32) = {
             let mut s = s.split_whitespace();
             (
-                s.next().unwrap().parse::<i32>().unwrap(),
-                s.next().unwrap().parse::<i32>().unwrap(),
-                s.next().unwrap().parse::<i32>().unwrap(),
+                s.next().unwrap().parse().unwrap(),
+                s.next().unwrap().parse().unwrap(),
+                s.next().unwrap().parse().unwrap(),
             )
         };
 

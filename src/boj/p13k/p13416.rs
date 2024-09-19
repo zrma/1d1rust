@@ -7,9 +7,9 @@ fn solve13416(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = (0..num_cases)
         .map(|_| {
-            let num_days = read_value::<usize>(read_line(reader));
+            let num_days: usize = read_value(read_line(reader));
             let profits: i32 = (0..num_days)
-                .map(|_| read_n_values::<i32>(reader, 3))
+                .map(|_| read_n_values(reader, 3))
                 .map(|v| v.iter().copied().filter(|&x| x > 0).max().unwrap_or(0))
                 .sum();
             profits.to_string()

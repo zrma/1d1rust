@@ -17,7 +17,7 @@ fn solve5217(reader: &mut impl BufRead, writer: &mut impl Write) {
                     None
                 }
             })
-            .collect::<Vec<String>>();
+            .collect::<Vec<_>>();
         answers.push(format!(
             "Pairs for {}:{}{}",
             n,

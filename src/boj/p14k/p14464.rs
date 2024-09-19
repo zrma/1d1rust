@@ -9,7 +9,7 @@ fn solve14464(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let mut chicken_times = BTreeMap::new();
     for _ in 0..num_chickens {
-        let time = read_value::<i32>(read_line(reader));
+        let time: i32 = read_value(read_line(reader));
         *chicken_times.entry(time).or_insert(0) += 1;
     }
 

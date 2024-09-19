@@ -4,8 +4,8 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1267(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_calls = read_value::<usize>(read_line(reader));
-    let call_durations = read_n_values::<usize>(reader, num_calls);
+    let num_calls: usize = read_value(read_line(reader));
+    let call_durations: Vec<usize> = read_n_values(reader, num_calls);
 
     let (y_cost, m_cost) = call_durations.iter().fold((0, 0), |(y, m), &dur| {
         let y_add = (dur / 30 + 1) * 10;

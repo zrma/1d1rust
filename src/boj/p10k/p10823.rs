@@ -4,11 +4,11 @@ use std::io::{BufRead, Write};
 fn solve10823(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut s = String::new();
     reader.read_to_string(&mut s).unwrap();
-    let ans = s
+    let ans: u64 = s
         .replace('\n', "")
         .split(',')
         .map(|x| x.parse::<u64>().unwrap())
-        .sum::<u64>();
+        .sum();
     write!(writer, "{}", ans).expect("Failed to write");
 }
 

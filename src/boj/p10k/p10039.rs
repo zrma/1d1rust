@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve10039(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut sum = 0;
     for _ in 0..5 {
-        let score: i32 = read_value(read_line(reader));
+        let score = read_value(read_line(reader));
         sum += std::cmp::max(40, score);
     }
     write!(writer, "{}", sum / 5).expect("Failed to write");

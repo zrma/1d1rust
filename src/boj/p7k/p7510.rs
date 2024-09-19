@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve7510(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let t = read_line(reader).parse::<usize>().unwrap();
+    let t: usize = read_line(reader).parse().unwrap();
     for i in 1..=t {
         let (a, b, c) = {
             let (a, b, c) = read_values_as!(read_line(reader), i32, i32, i32);

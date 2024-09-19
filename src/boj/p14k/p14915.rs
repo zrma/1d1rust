@@ -25,7 +25,7 @@ fn solve14915(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     res.reverse();
-    let output = res.into_iter().collect::<String>();
+    let output: String = res.into_iter().collect::<_>();
     write!(writer, "{}", output).expect("Failed to write");
 }
 

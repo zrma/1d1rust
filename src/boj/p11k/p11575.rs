@@ -9,14 +9,14 @@ fn solve11575(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..t {
         let (a, b) = read_values_as!(read_line(reader), i32, i32);
 
-        let ans = read_line(reader)
+        let ans: String = read_line(reader)
             .chars()
             .map(|c| {
                 let mut c = c as i32 - 'A' as i32;
                 c = (a * c + b) % 26;
                 (c + 'A' as i32) as u8 as char
             })
-            .collect::<String>();
+            .collect::<_>();
 
         writeln!(writer, "{}", ans).expect("Failed to write");
     }

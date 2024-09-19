@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve5026(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<i32>().unwrap();
+    let n: i32 = read_line(reader).parse().unwrap();
 
     for _ in 0..n {
         let s = read_line(reader);
@@ -12,8 +12,8 @@ fn solve5026(reader: &mut impl BufRead, writer: &mut impl Write) {
             writeln!(writer, "skipped").expect("Failed to write");
         } else {
             let mut iter = s.split('+');
-            let a = iter.next().unwrap().parse::<i32>().unwrap();
-            let b = iter.next().unwrap().parse::<i32>().unwrap();
+            let a: i32 = iter.next().unwrap().parse().unwrap();
+            let b: i32 = iter.next().unwrap().parse().unwrap();
             writeln!(writer, "{}", a + b).expect("Failed to write");
         }
     }

@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve7785(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_line(reader).parse().unwrap();
 
     let mut set = std::collections::HashSet::new();
 
@@ -18,7 +18,7 @@ fn solve7785(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let mut v = set.into_iter().collect::<Vec<String>>();
+    let mut v = set.into_iter().collect::<Vec<_>>();
     v.sort_by(|a, b| b.cmp(a));
 
     let output = v.join("\n");

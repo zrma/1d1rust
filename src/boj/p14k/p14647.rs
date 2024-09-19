@@ -32,14 +32,14 @@ fn find_max_index(grid: &[Vec<String>], n: usize, m: usize, is_row: bool) -> (us
     let mut max_idx = 0;
     let mut max_count = 0;
     for i in 0..(if is_row { n } else { m }) {
-        let count = (0..(if is_row { m } else { n }))
+        let count: usize = (0..(if is_row { m } else { n }))
             .map(|j| {
                 grid[if is_row { i } else { j }][if is_row { j } else { i }]
                     .chars()
                     .filter(|&ch| ch == '9')
                     .count()
             })
-            .sum::<usize>();
+            .sum();
         if count > max_count {
             max_count = count;
             max_idx = i;

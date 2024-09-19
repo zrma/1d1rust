@@ -42,12 +42,9 @@ fn solve11382(reader: &mut impl BufRead, writer: &mut impl Write) {
 fn solve11382simple(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
 
-    let numbers = s
-        .split_whitespace()
-        .map(|s| s.parse::<u64>().unwrap())
-        .collect::<Vec<_>>();
+    let numbers: Vec<u64> = s.split_whitespace().map(|s| s.parse().unwrap()).collect();
 
-    let sum = numbers.iter().sum::<u64>();
+    let sum: u64 = numbers.iter().sum();
     write!(writer, "{}", sum).expect("Failed to write");
 }
 

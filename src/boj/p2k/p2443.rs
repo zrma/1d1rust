@@ -7,7 +7,7 @@ fn solve2443(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = (0..n)
         .map(|i| " ".repeat(i) + &"*".repeat(2 * (n - i) - 1))
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).unwrap();

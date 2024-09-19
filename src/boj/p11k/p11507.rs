@@ -10,7 +10,7 @@ fn solve11507(reader: &mut impl BufRead, writer: &mut impl Write) {
     for i in 0..s.len() / 3 {
         let suit_char = s.chars().nth(i * 3).unwrap();
         let suit_index = suits.iter().position(|&x| x == suit_char).unwrap();
-        let num = s[i * 3 + 1..i * 3 + 3].parse::<usize>().unwrap();
+        let num: usize = s[i * 3 + 1..i * 3 + 3].parse().unwrap();
         if cards[suit_index][num] == 1 {
             write!(writer, "GRESKA").expect("Failed to write");
             return;
@@ -18,10 +18,10 @@ fn solve11507(reader: &mut impl BufRead, writer: &mut impl Write) {
         cards[suit_index][num] = 1;
     }
 
-    let ans = cards
+    let ans: Vec<String> = cards
         .iter()
         .map(|card| (13 - card.iter().sum::<usize>()).to_string())
-        .collect::<Vec<String>>();
+        .collect();
 
     write!(writer, "{}", ans.join(" ")).expect("Failed to write");
 }

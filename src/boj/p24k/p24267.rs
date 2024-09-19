@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve24267(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<i64>().unwrap();
+    let n: i64 = read_line(reader).parse().unwrap();
 
     writeln!(writer, "{}", n * (n - 1) * (n - 2) / 6).expect("Failed to write");
     writeln!(writer, "3").expect("Failed to write");

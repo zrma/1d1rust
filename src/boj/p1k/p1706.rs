@@ -14,7 +14,7 @@ fn solve1706(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let mut answer: Option<String> = None;
     for line in &board {
-        let v = line.iter().collect::<String>();
+        let v: String = line.iter().collect::<_>();
         v.split('#')
             .filter(|&s| s.len() > 1)
             .for_each(|word| update_answer(&mut answer, word));

@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1283(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_phrases = read_value(read_line(reader));
+    let num_phrases: usize = read_value(read_line(reader));
     let mut shortcut_set = HashSet::new();
     let mut answers = Vec::with_capacity(num_phrases);
 

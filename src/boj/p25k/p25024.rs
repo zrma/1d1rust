@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve25024(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
 
-    let ans: String = (0..num_cases)
+    let ans = (0..num_cases)
         .map(|_| {
             let (a, b): (u32, u32) = read_values_as!(read_line(reader), u32, u32);
 
@@ -23,7 +23,7 @@ fn solve25024(reader: &mut impl BufRead, writer: &mut impl Write) {
 
             format!("{} {}", time_check, date_check)
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

@@ -8,7 +8,7 @@ fn solve2523(reader: &mut impl BufRead, writer: &mut impl Write) {
     let ans = (1..=n)
         .chain((1..n).rev())
         .map(|i| "*".repeat(i))
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).unwrap();

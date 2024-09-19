@@ -6,7 +6,7 @@ fn solve1284(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut answers = vec![];
 
     loop {
-        let n = read_value::<String>(read_line(reader));
+        let n: String = read_value(read_line(reader));
         if n == "0" {
             break;
         }

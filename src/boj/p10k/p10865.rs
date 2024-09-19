@@ -4,14 +4,14 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve10865(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, m): (usize, usize) = read_values_as!(read_line(reader), usize, usize);
+    let (n, m) = read_values_as!(read_line(reader), usize, usize);
     let mut friends = vec![0; n];
     let mut line = String::new();
     for _ in 0..m {
         line.clear();
         reader.read_line(&mut line).expect("Failed to read");
 
-        let (a, b): (usize, usize) = read_values_as!(&line, usize, usize);
+        let (a, b) = read_values_as!(&line, usize, usize);
         friends[a - 1] += 1;
         friends[b - 1] += 1;
     }
@@ -19,7 +19,7 @@ fn solve10865(reader: &mut impl BufRead, writer: &mut impl Write) {
     let ans = friends
         .iter()
         .map(|f| f.to_string())
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
     write!(writer, "{}", ans).expect("Failed to write");
 }

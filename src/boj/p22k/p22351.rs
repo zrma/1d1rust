@@ -7,9 +7,7 @@ fn solve22351(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s_len = s.len();
 
     for start_len in 1..=3.min(s_len) {
-        let start = s[0..start_len]
-            .parse::<usize>()
-            .expect("Should be a number");
+        let start: usize = s[0..start_len].parse().expect("Should be a number");
         let mut current_num = start;
         let mut generated_string = current_num.to_string();
 

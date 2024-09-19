@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve15886(reader: &mut impl BufRead, writer: &mut impl Write) {
     let _: usize = read_value(read_line(reader));
-    let s: String = read_line(reader);
+    let s = read_line(reader);
 
     let count = s
         .as_bytes()

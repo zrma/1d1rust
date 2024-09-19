@@ -7,7 +7,7 @@ fn solve17502(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
     let s = s.as_bytes();
 
-    let s = s
+    let s: String = s
         .iter()
         .enumerate()
         .map(|(i, &c)| {
@@ -22,7 +22,7 @@ fn solve17502(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         })
         .map(|c| c as char)
-        .collect::<String>();
+        .collect::<_>();
 
     write!(writer, "{}", s).expect("Failed to write");
 }

@@ -3,10 +3,10 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve5363(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_line(reader).parse::<usize>().unwrap();
+    let n: usize = read_line(reader).parse().unwrap();
 
     for _ in 0..n {
-        let mut words = read_values::<String>(reader);
+        let mut words = read_values(reader);
 
         rotate_first_two_words(&mut words);
 

@@ -1,13 +1,14 @@
 use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
+use std::collections::HashSet;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve25757(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (total_names, count_type) = read_values_as!(read_line(reader), u32, char);
-    let unique_names_set = (0..total_names)
-        .map(|_| read_value::<String>(read_line(reader)))
-        .collect::<std::collections::HashSet<_>>();
+    let unique_names_set: HashSet<String> = (0..total_names)
+        .map(|_| read_value(read_line(reader)))
+        .collect::<_>();
 
     let divisor = match count_type {
         'Y' => 1,

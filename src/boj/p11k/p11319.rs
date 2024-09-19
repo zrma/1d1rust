@@ -10,7 +10,7 @@ fn solve11319(reader: &mut impl BufRead, writer: &mut impl Write) {
             count_vowels_and_consonants(&line)
         })
         .map(|(vowels, consonants)| format!("{} {}", consonants, vowels))
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).unwrap();

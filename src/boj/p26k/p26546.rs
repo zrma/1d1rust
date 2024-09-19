@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve26546(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_cases = read_value::<usize>(read_line(reader));
+    let num_cases: usize = read_value(read_line(reader));
     let ans = (0..num_cases)
         .map(|_| {
             let (input_string, start_idx, end_idx) =
@@ -15,7 +15,7 @@ fn solve26546(reader: &mut impl BufRead, writer: &mut impl Write) {
                 .chain(chars[end_idx..].iter())
                 .collect::<String>()
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve2576(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (total_odd_sum, smallest_odd) = (0..7).fold((None, i32::MAX), |(acc, min_odd), _| {
-        let number = read_value::<i32>(read_line(reader));
+        let number: i32 = read_value(read_line(reader));
         if number % 2 != 0 {
             let new_acc = Some(acc.unwrap_or(0) + number);
             let new_min_odd = min_odd.min(number);

@@ -7,7 +7,7 @@ fn solve16500(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_words = read_value(read_line(reader));
     let words = (0..num_words)
         .map(|_| read_line(reader))
-        .collect::<Vec<String>>();
+        .collect::<Vec<_>>();
 
     let mut can_form = vec![false; target.len() + 1];
     can_form[0] = true;

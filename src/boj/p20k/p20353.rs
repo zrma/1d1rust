@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve20353(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let area = read_line(reader).parse::<f64>().unwrap();
+    let area: f64 = read_line(reader).parse().unwrap();
     let res = area.sqrt() * 4.0;
     write!(writer, "{}", res).unwrap();
 }
@@ -44,7 +44,7 @@ fn test_solve20353() {
         let got: f64 = crate::utils::io::read_value(
             String::from_utf8(writer).expect("Failed to convert writer to string"),
         );
-        let want = data.want.parse::<f64>().unwrap();
+        let want: f64 = data.want.parse().unwrap();
 
         assert!((got - want).abs() < 1e-6, "case {}", i);
     }

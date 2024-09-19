@@ -3,17 +3,17 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve10419(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_cases = read_value::<i32>(read_line(reader));
+    let num_cases = read_value(read_line(reader));
     let ans = (0..num_cases)
         .map(|_| {
-            let d: i32 = read_value(read_line(reader));
+            let d = read_value(read_line(reader));
             let mut t = 0;
             while t * (t + 1) <= d {
                 t += 1;
             }
             (t - 1).to_string()
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

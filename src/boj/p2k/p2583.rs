@@ -38,11 +38,11 @@ fn find_areas(table: &mut [Vec<bool>]) -> Vec<usize> {
 fn read_input(reader: &mut impl BufRead) -> (usize, usize, Vec<Vec<usize>>) {
     let (row, col, n) = read_values_as!(read_line(reader), usize, usize, usize);
 
-    let rects = (0..n)
+    let rects: Vec<Vec<usize>> = (0..n)
         .map(|_| {
             read_line(reader)
                 .split_whitespace()
-                .map(|num_str| num_str.parse::<usize>().unwrap())
+                .map(|num_str| num_str.parse().unwrap())
                 .collect()
         })
         .collect();

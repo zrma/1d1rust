@@ -12,10 +12,10 @@ fn solve1703(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         let mut tokens = trimmed_input.split_whitespace();
-        let number_of_pairs = tokens
+        let number_of_pairs: usize = tokens
             .next()
             .expect("Failed to get the number of pairs")
-            .parse::<usize>()
+            .parse()
             .expect("Failed to parse number of pairs");
 
         let calculation_result = tokens
@@ -23,8 +23,8 @@ fn solve1703(reader: &mut impl BufRead, writer: &mut impl Write) {
             .collect::<Vec<_>>()
             .chunks(2)
             .map(|pair| {
-                let a = pair[0].parse::<i32>().expect("Failed to parse 'a'");
-                let b = pair[1].parse::<i32>().expect("Failed to parse 'b'");
+                let a: i32 = pair[0].parse().expect("Failed to parse 'a'");
+                let b: i32 = pair[1].parse().expect("Failed to parse 'b'");
                 (a, b)
             })
             .fold(1, |acc, (a, b)| acc * a - b);

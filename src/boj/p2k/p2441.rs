@@ -3,12 +3,12 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2441(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n: usize = read_value(read_line(reader));
+    let n = read_value(read_line(reader));
 
     let ans = (0..n)
         .rev()
         .map(|i| " ".repeat(n - i - 1) + &"*".repeat(i + 1))
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).unwrap();

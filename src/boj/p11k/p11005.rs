@@ -7,7 +7,7 @@ fn solve11005(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let nums: Vec<i32> = line
         .split_whitespace()
-        .map(|num_str| num_str.parse::<i32>().unwrap())
+        .map(|num_str| num_str.parse().unwrap())
         .collect();
 
     let res = convert_to_base(nums[0], nums[1]);

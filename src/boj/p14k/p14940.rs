@@ -15,7 +15,7 @@ fn solve14940(reader: &mut impl BufRead, writer: &mut impl Write) {
         reader.read_line(&mut line).unwrap();
 
         for (j, c) in line.split_whitespace().enumerate() {
-            let v = c.parse::<i32>().unwrap();
+            let v = c.parse().unwrap();
             match v {
                 2 => {
                     start = (i, j);

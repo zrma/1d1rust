@@ -24,7 +24,7 @@ fn solve16360(reader: &mut impl BufRead, writer: &mut impl Write) {
             let word = read_line(reader);
             transform_word(&word, &suffix_mapping)
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

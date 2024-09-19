@@ -9,7 +9,7 @@ fn solve10179(reader: &mut impl BufRead, writer: &mut impl Write) {
             let price: f64 = read_value(read_line(reader));
             format!("${:.2}", price * 0.8)
         })
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");

@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1547(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_cases = read_value::<usize>(read_line(reader));
+    let num_cases: usize = read_value(read_line(reader));
     let mut ball_position = 1;
 
     for _ in 0..num_cases {

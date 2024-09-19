@@ -34,7 +34,7 @@ fn solve20310(reader: &mut impl BufRead, writer: &mut impl Write) {
         '0',
         num_zeros_to_remove,
     );
-    let ans = ans.chars().rev().collect::<String>();
+    let ans: String = ans.chars().rev().collect::<_>();
 
     write!(writer, "{}", ans).unwrap();
 }

@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve2997(reader: &mut impl BufRead, writer: &mut impl Write) {
     let arr = {
-        let mut temp_arr = read_n_values::<i32>(reader, 3);
+        let mut temp_arr: Vec<i32> = read_n_values(reader, 3);
         temp_arr.sort_unstable();
         temp_arr
     };

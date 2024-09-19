@@ -9,11 +9,11 @@ fn solve14175(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut board = Vec::with_capacity(n * k);
     for _ in 0..n {
         let s = read_line(reader);
-        let s = s
+        let s: String = s
             .chars()
             .take(m)
             .flat_map(|c| std::iter::repeat(c).take(k))
-            .collect::<String>();
+            .collect::<_>();
         for _ in 0..k {
             board.push(s.clone());
         }

@@ -3,15 +3,15 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve25756(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_value::<usize>(read_line(reader));
+    let n: usize = read_value(read_line(reader));
 
-    let result = read_n_values::<f64>(reader, n)
+    let result: String = read_n_values::<f64>(reader, n)
         .into_iter()
         .scan(0.0, |v, x| {
             *v = 1.0 - (1.0 - *v) * (1.0 - x / 100.0);
             Some(format!("{:.6}\n", *v * 100.0))
         })
-        .collect::<String>();
+        .collect::<_>();
 
     let ans = result.trim_end(); // 마지막 개행 제거
 
@@ -58,15 +58,11 @@ fn test_solve25756() {
             .map(|s| {
                 String::from_utf8(s.to_vec())
                     .expect("Failed to convert writer to string")
-                    .parse::<f64>()
+                    .parse()
                     .expect("Failed to parse value")
             })
             .collect();
-        let want = data
-            .want
-            .split('\n')
-            .map(|s| s.parse::<f64>().unwrap())
-            .collect::<Vec<f64>>();
+        let want: Vec<f64> = data.want.split('\n').map(|s| s.parse().unwrap()).collect();
 
         const EPSILON: f64 = 1e-6;
 

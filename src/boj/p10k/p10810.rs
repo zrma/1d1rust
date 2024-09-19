@@ -19,7 +19,7 @@ fn solve10810(reader: &mut impl BufRead, writer: &mut impl Write) {
     let output = baskets
         .iter()
         .map(|&num| num.to_string())
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join(" ");
 
     write!(writer, "{}", output).expect("Failed to write");

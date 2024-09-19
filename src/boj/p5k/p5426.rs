@@ -18,7 +18,7 @@ fn solve5426(reader: &mut impl BufRead, writer: &mut impl Write) {
             board[size - 1 - col][row] = c;
         }
 
-        let ans = board.iter().flat_map(|row| row.iter()).collect::<String>();
+        let ans: String = board.iter().flat_map(|row| row.iter()).collect();
         answers.push(ans);
     }
 

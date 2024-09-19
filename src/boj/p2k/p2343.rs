@@ -4,14 +4,14 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2343(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (num_lessons, num_bluerays) = read_values_as!(read_line(reader), usize, usize);
-    let lesson_durations = {
+    let (num_lessons, num_blue_rays) = read_values_as!(read_line(reader), usize, usize);
+    let lesson_durations: Vec<usize> = {
         let mut s = String::new();
         reader.read_line(&mut s).unwrap();
         s.split_whitespace()
             .take(num_lessons)
-            .map(|x| x.parse::<usize>().unwrap())
-            .collect::<Vec<_>>()
+            .map(|x| x.parse().unwrap())
+            .collect()
     };
     let mut lower_bound = *lesson_durations.iter().max().unwrap();
     let mut upper_bound = lesson_durations.iter().sum();
@@ -26,7 +26,7 @@ fn solve2343(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
             current_sum += lesson_duration;
         }
-        if blueray_count > num_bluerays {
+        if blueray_count > num_blue_rays {
             lower_bound = mid_size + 1;
         } else {
             upper_bound = mid_size;

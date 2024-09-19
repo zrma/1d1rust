@@ -5,14 +5,14 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve16499(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_of_words: usize = read_value(read_line(reader));
-    let unique_words = (0..num_of_words)
+    let unique_words: HashSet<String> = (0..num_of_words)
         .map(|_| read_line(reader))
         .map(|s| {
             let mut chars = s.chars().collect::<Vec<char>>();
             chars.sort_unstable();
-            chars.into_iter().collect::<String>()
+            chars.into_iter().collect::<_>()
         })
-        .collect::<HashSet<String>>();
+        .collect::<_>();
 
     write!(writer, "{}", unique_words.len()).expect("Failed to write");
 }

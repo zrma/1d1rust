@@ -8,7 +8,7 @@ fn solve1411(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_of_words: usize = read_value(read_line(reader));
     let mut unique_words = HashMap::new();
 
-    let alphabet = "abcdefghijklmnopqrstuvwxyz".chars().collect::<Vec<char>>();
+    let alphabet: Vec<char> = "abcdefghijklmnopqrstuvwxyz".chars().collect();
 
     for _ in 0..num_of_words {
         let word = read_line(reader);
@@ -29,10 +29,7 @@ fn solve1411(reader: &mut impl BufRead, writer: &mut impl Write) {
         *unique_words.entry(new_word).or_insert(0) += 1;
     }
 
-    let ans = unique_words
-        .iter()
-        .map(|(_, &v)| v * (v - 1) / 2)
-        .sum::<usize>();
+    let ans: usize = unique_words.iter().map(|(_, &v)| v * (v - 1) / 2).sum();
 
     write!(writer, "{}", ans).expect("Failed to write");
 }

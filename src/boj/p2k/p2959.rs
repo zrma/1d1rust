@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2959(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let mut v = read_n_values::<i32>(reader, 4);
+    let mut v: Vec<i32> = read_n_values(reader, 4);
     v.sort_unstable();
     let ans = v[0] * v[2];
     write!(writer, "{}", ans).unwrap();

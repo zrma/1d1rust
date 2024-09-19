@@ -3,17 +3,17 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2721(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let num_cases = read_value::<usize>(read_line(reader));
+    let num_cases: usize = read_value(read_line(reader));
 
     let triangular_number = |n| n * (n + 1) / 2;
 
     let ans = (0..num_cases)
         .map(|_| {
-            let n = read_value::<usize>(read_line(reader));
+            let n: usize = read_value(read_line(reader));
             (1..=n).map(|k| k * triangular_number(k + 1)).sum::<usize>()
         })
         .map(|sum| sum.to_string())
-        .collect::<Vec<String>>()
+        .collect::<Vec<_>>()
         .join("\n");
 
     write!(writer, "{}", ans).expect("Failed to write");
