@@ -35,6 +35,7 @@ mod p2512;
 mod p2522;
 mod p2523;
 mod p2527;
+mod p2547;
 mod p2576;
 mod p2583;
 mod p2596;
