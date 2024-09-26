@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve2037(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (p, w): (usize, usize) = read_values_as!(read_line(reader), usize, usize);
+    let (p, w) = read_values_as!(read_line(reader), usize, usize);
     let s = read_line(reader);
     let button_mappings: HashMap<char, (usize, usize)> = [
         vec![' '],

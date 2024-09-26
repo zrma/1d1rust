@@ -10,7 +10,7 @@ fn solve5612(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut max_cars = init_cars;
     let mut curr_cars = init_cars;
     for _ in 0..tick {
-        let (in_, out): (i32, i32) = read_values_as!(read_line(reader), i32, i32);
+        let (in_, out) = read_values_as!(read_line(reader), i32, i32);
         curr_cars += in_ - out;
         if curr_cars < 0 {
             write!(writer, "0").expect("Failed to write");
