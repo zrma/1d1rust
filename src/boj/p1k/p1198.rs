@@ -21,7 +21,9 @@ fn solve1198(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", max_area as f64 / 2.0).expect("Failed to write");
+    let max_area_f64 = f64::from(max_area) / 2.0;
+
+    write!(writer, "{}", max_area_f64).expect("Failed to write");
 }
 
 fn calc_area(p0: (i32, i32), p1: (i32, i32), p2: (i32, i32)) -> i32 {

@@ -1,4 +1,5 @@
 use crate::utils::io::{read_line, read_n_values, read_value};
+use std::convert::TryFrom;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -7,11 +8,10 @@ fn solve10874(reader: &mut impl BufRead, writer: &mut impl Write) {
     let ans = (0..num_students)
         .filter_map(|i| {
             let scores: Vec<i32> = read_n_values(reader, 10);
-            if scores
-                .iter()
-                .enumerate()
-                .all(|(j, &s)| s == (j as i32 % 5 + 1))
-            {
+            if scores.iter().enumerate().all(|(j, &s)| {
+                let expected = i32::try_from(j % 5 + 1).expect("Index out of range for i32");
+                s == expected
+            }) {
                 Some((i + 1).to_string())
             } else {
                 None

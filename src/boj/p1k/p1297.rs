@@ -1,5 +1,6 @@
 use crate::read_values_as;
 use crate::utils::io::read_line;
+use num::ToPrimitive;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -9,7 +10,16 @@ fn solve1297(reader: &mut impl BufRead, writer: &mut impl Write) {
     let x = (d * d / (h * h + w * w)).sqrt();
     let (y, z) = (x * h, x * w);
 
-    write!(writer, "{} {}", y as i64, z as i64).expect("Failed to write");
+    let y_i64 = y.to_i64().unwrap_or_else(|| {
+        eprintln!("y value {} is out of i64 range or invalid.", y);
+        0
+    });
+    let z_i64 = z.to_i64().unwrap_or_else(|| {
+        eprintln!("z value {} is out of i64 range or invalid.", z);
+        0
+    });
+
+    write!(writer, "{} {}", y_i64, z_i64).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/1297

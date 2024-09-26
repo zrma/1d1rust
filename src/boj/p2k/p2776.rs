@@ -28,7 +28,7 @@ fn read_collection<T, C>(reader: &mut impl BufRead) -> C
 where
     T: std::str::FromStr,
     T: Eq + Hash,
-    <T as std::str::FromStr>::Err: std::fmt::Debug,
+    T::Err: std::fmt::Debug,
     C: FromIterator<T>,
 {
     let n: usize = read_value(read_line(reader));

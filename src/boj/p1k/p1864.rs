@@ -1,4 +1,5 @@
 use crate::utils::io::read_line;
+use std::convert::TryInto;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -24,7 +25,8 @@ fn solve1864(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         let ans = s.chars().rev().enumerate().fold(0, |acc, (i, c)| {
-            acc + char_to_num(c) * 8_isize.pow(i as u32)
+            let exponent: u32 = i.try_into().expect("Index too large for u32");
+            acc + char_to_num(c) * 8_isize.pow(exponent)
         });
         answers.push(ans.to_string());
     }

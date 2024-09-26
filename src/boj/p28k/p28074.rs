@@ -6,14 +6,18 @@ fn solve28074(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
 
     let mut arr = vec![true; 26];
-    [b'M', b'O', b'B', b'I', b'S']
-        .iter()
-        .for_each(|&x| arr[(x - b'A') as usize] = false);
+    [b'M', b'O', b'B', b'I', b'S'].iter().for_each(|&x| {
+        if let Some(idx) = byte_to_index(x) {
+            arr[idx] = false;
+        }
+    });
 
     let ans = s
         .chars()
         .fold(arr, |mut acc, x| {
-            acc[(x as u8 - b'A') as usize] = true;
+            if let Some(idx) = char_to_index(x) {
+                acc[idx] = true;
+            }
             acc
         })
         .iter()
@@ -23,6 +27,24 @@ fn solve28074(reader: &mut impl BufRead, writer: &mut impl Write) {
         write!(writer, "YES").unwrap();
     } else {
         write!(writer, "NO").unwrap();
+    }
+}
+
+fn byte_to_index(x: u8) -> Option<usize> {
+    if x.is_ascii_uppercase() {
+        Option::from(usize::from(x - b'A'))
+    } else {
+        None
+    }
+}
+
+fn char_to_index(ch: char) -> Option<usize> {
+    if ch.is_ascii_alphabetic() {
+        let upper = ch.to_ascii_uppercase();
+        let x = upper as u8;
+        byte_to_index(x)
+    } else {
+        None
     }
 }
 
