@@ -7,7 +7,7 @@ fn solve10178(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
     let ans = (0..num_cases)
         .map(|_| {
-            let (candy, children): (i32, i32) = read_values_as!(read_line(reader), i32, i32);
+            let (candy, children) = read_values_as!(read_line(reader), i32, i32);
             let (pieces_per_child, dad_pieces) = (candy / children, candy % children);
             format!(
                 "You get {} piece(s) and your dad gets {} piece(s).",
