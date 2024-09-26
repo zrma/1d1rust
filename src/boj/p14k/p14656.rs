@@ -4,10 +4,10 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve14656(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_students: usize = read_value(read_line(reader));
-    let ans = read_n_values::<u32>(reader, num_students)
+    let ans = read_n_values::<usize>(reader, num_students)
         .iter()
         .enumerate()
-        .filter(|(i, &v)| (i + 1) as u32 != v)
+        .filter(|(i, &v)| (i + 1) != v)
         .count();
 
     write!(writer, "{}", ans).expect("Failed to write");

@@ -9,7 +9,7 @@ fn solve11648(reader: &mut impl BufRead, writer: &mut impl Write) {
     while number_str.len() > 1 {
         let product: u64 = number_str
             .chars()
-            .map(|c| c.to_digit(10).expect("Invalid digit") as u64)
+            .map(|c| u64::from(c.to_digit(10).expect("Invalid digit")))
             .product();
 
         number_str = product.to_string();

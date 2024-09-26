@@ -1,5 +1,6 @@
 use crate::utils::io::{read_line, read_value};
 use std::collections::BinaryHeap;
+use std::convert::TryFrom;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -36,8 +37,10 @@ fn solve1414(reader: &mut impl BufRead, writer: &mut impl Write) {
 
 fn char_to_value(ch: char) -> Option<usize> {
     match ch {
-        'a'..='z' => Some(ch as usize - 'a' as usize + 1),
-        'A'..='Z' => Some(ch as usize - 'A' as usize + 27),
+        'a'..='z' => ch.to_digit(36).and_then(|d| usize::try_from(d - 9).ok()),
+        'A'..='Z' => ch
+            .to_digit(36)
+            .and_then(|d| usize::try_from(d - 9 + 26).ok()),
         _ => None,
     }
 }

@@ -1,5 +1,6 @@
 use crate::read_values_as;
 use crate::utils::io::read_line;
+use std::convert::TryFrom;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -20,7 +21,19 @@ fn read_board(reader: &mut impl BufRead, r: usize, c: usize) -> Vec<Vec<char>> {
 }
 
 fn dfs(visited: &mut Vec<bool>, board: &[Vec<char>], x: usize, y: usize, dist: i32) -> i32 {
-    let i = (board[x][y] as u8 - b'A') as usize;
+    let c = board[x][y];
+    let c_u8 = u8::try_from(c).expect("Character is not a valid ASCII character");
+
+    if !c_u8.is_ascii_uppercase() {
+        panic!("Character out of expected range 'A' to 'Z'");
+    }
+
+    let value = c_u8
+        .checked_sub(b'A')
+        .expect("Subtraction underflow: character less than 'A'");
+
+    let i = usize::from(value);
+
     if visited[i] {
         return dist - 1;
     }

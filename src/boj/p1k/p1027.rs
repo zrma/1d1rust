@@ -1,5 +1,5 @@
 use crate::utils::io::{read_line, read_value};
-use num_traits::ToPrimitive;
+use num::ToPrimitive;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]

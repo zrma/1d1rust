@@ -9,7 +9,7 @@ fn candies(n: usize, arr: Vec<i32>) -> i64 {
 
     let mut sum: i64 = 0;
     for &i in result.iter() {
-        sum += i as i64;
+        sum += i64::from(i);
     }
     sum
 }
