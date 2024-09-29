@@ -63,6 +63,7 @@ mod p2921;
 mod p2953;
 mod p2954;
 mod p2959;
+mod p2961;
 mod p2965;
 mod p2975;
 mod p2985;
