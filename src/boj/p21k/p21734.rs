@@ -1,3 +1,4 @@
+use crate::utils::functions::char_to_digit;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -14,7 +15,7 @@ fn solve21734(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn repeat_char_based_on_ascii_value(c: char) -> String {
-    let mut n = c as usize;
+    let mut n: usize = char_to_digit(c);
     let mut repeat_cnt = 0;
     while n > 0 {
         repeat_cnt += n % 10;

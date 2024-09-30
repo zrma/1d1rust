@@ -1,3 +1,4 @@
+use crate::utils::functions::char_to_index;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -14,11 +15,8 @@ fn solve1718(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         let key_char = char::from(keys_as_bytes[i % key.len()]);
-        let key_num = key_char
-            .to_digit(36)
-            .expect("Failed to convert char to digit")
-            - 10;
-        let c_num = c.to_digit(36).expect("Failed to convert char to digit") - 10;
+        let key_num: u32 = char_to_index(key_char);
+        let c_num: u32 = char_to_index(c);
 
         let ans = if c_num <= key_num {
             26 + c_num - key_num

@@ -1,3 +1,4 @@
+use crate::utils::functions::char_to_index;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -29,10 +30,9 @@ fn calculate_mass(formula: &str) -> i32 {
             'C' => stack.push(12),
             'O' => stack.push(16),
             digit => {
-                if let Some(mass) = digit.to_digit(10) {
-                    if let Some(last) = stack.pop() {
-                        stack.push(last * mass as i32);
-                    }
+                let mass: u32 = char_to_index(digit);
+                if let Some(last) = stack.pop() {
+                    stack.push(last * mass as i32);
                 }
             }
         }

@@ -1,3 +1,4 @@
+use crate::utils::functions::char_to_index;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -7,7 +8,7 @@ fn solve14726(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..t {
         let s = read_line(reader);
         let res = s.chars().enumerate().fold(0, |acc, (i, c)| {
-            let mut x = c.to_digit(10).unwrap();
+            let mut x: u32 = char_to_index(c);
             if i % 2 == 0 {
                 x *= 2;
                 x = x / 10 + x % 10;

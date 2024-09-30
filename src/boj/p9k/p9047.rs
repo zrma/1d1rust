@@ -1,3 +1,4 @@
+use crate::utils::functions::char_to_index;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -9,7 +10,7 @@ fn solve9047(reader: &mut impl BufRead, writer: &mut impl Write) {
         let mut s: String = read_value(read_line(reader));
         let mut cnt = 0;
         while s != "6174" {
-            let mut digits: Vec<u32> = s.chars().map(|c| c.to_digit(10).unwrap()).collect();
+            let mut digits: Vec<u32> = s.chars().map(char_to_index).collect();
             digits.sort_unstable();
             let asc = digits.iter().fold(0, |acc, &x| acc * 10 + x);
             let desc = digits.iter().rev().fold(0, |acc, &x| acc * 10 + x);

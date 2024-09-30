@@ -1,3 +1,4 @@
+use crate::utils::functions::char_to_index;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -6,14 +7,8 @@ fn solve12813(reader: &mut impl BufRead, writer: &mut impl Write) {
     let a = read_line(reader);
     let b = read_line(reader);
 
-    let a = a
-        .chars()
-        .map(|c| c.to_digit(2).unwrap() as u8)
-        .collect::<Vec<_>>();
-    let b = b
-        .chars()
-        .map(|c| c.to_digit(2).unwrap() as u8)
-        .collect::<Vec<_>>();
+    let a = a.chars().map(char_to_index::<u8>).collect::<Vec<_>>();
+    let b = b.chars().map(char_to_index::<u8>).collect::<Vec<_>>();
 
     let res = [
         a.iter().zip(&b).map(|(&a, &b)| a & b).collect::<Vec<_>>(),

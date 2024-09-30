@@ -1,3 +1,4 @@
+use crate::utils::functions::char_to_index;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -7,12 +8,7 @@ fn solve2290(reader: &mut impl BufRead, writer: &mut impl Write) {
         let s = read_line(reader);
         let mut iter = s.split_whitespace();
         let s: usize = iter.next().unwrap().parse().unwrap();
-        let arr: Vec<usize> = iter
-            .next()
-            .unwrap()
-            .chars()
-            .map(|ch| ch.to_digit(10).unwrap() as usize)
-            .collect();
+        let arr: Vec<usize> = iter.next().unwrap().chars().map(char_to_index).collect();
         (s, arr)
     };
 

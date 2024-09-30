@@ -1,4 +1,5 @@
 use crate::read_values_as;
+use crate::utils::functions::char_to_index;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -21,8 +22,8 @@ fn solve15353(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let a = a_char.unwrap_or('0').to_digit(10).unwrap();
-        let b = b_char.unwrap_or('0').to_digit(10).unwrap();
+        let a: u32 = char_to_index(a_char.unwrap_or('0'));
+        let b: u32 = char_to_index(b_char.unwrap_or('0'));
 
         let sum = a + b + carry;
         carry = sum / 10;
