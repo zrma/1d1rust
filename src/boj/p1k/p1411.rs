@@ -2,7 +2,7 @@ use crate::utils::io::{read_line, read_value};
 use std::collections::HashMap;
 use std::io::{BufRead, Write};
 
-//noinspection SpellCheckingInspection
+// noinspection SpellCheckingInspection
 #[allow(dead_code)]
 fn solve1411(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_of_words: usize = read_value(read_line(reader));

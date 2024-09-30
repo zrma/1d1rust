@@ -18,3 +18,11 @@ pub fn try_next_pos(
         None
     }
 }
+
+pub fn char_to_digit(c: char) -> u8 {
+    match c {
+        'a'..='z' => (c as u8).wrapping_sub(b'a'),
+        'A'..='Z' => (c as u8).wrapping_sub(b'A'),
+        _ => panic!("Character is not a valid ASCII character"),
+    }
+}
