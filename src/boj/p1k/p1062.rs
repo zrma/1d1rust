@@ -1,5 +1,5 @@
 use crate::read_values_as;
-use crate::utils::functions::char_to_digit;
+use crate::utils::functions::char_to_index;
 use crate::utils::io::read_line;
 use std::collections::HashSet;
 use std::convert::TryInto;
@@ -20,7 +20,7 @@ fn solve1062(reader: &mut impl BufRead, writer: &mut impl Write) {
     let essential_letters = ['a', 'c', 'i', 'n', 't'];
     let essential_bitmask = essential_letters
         .iter()
-        .fold(0u32, |acc, &c| acc | (1 << char_to_digit(c)));
+        .fold(0u32, |acc, &c| acc | (1 << char_to_index::<u8>(c)));
 
     let mut words_bitmasks = Vec::new();
     let mut unique_chars = HashSet::new();
@@ -33,7 +33,7 @@ fn solve1062(reader: &mut impl BufRead, writer: &mut impl Write) {
         let word = &line[4..line.len() - 4]; // Remove "anta" and "tica"
         let mut bitmask = 0u32;
         for c in word.chars() {
-            let idx = char_to_digit(c);
+            let idx: u32 = char_to_index(c);
             if !essential_letters.contains(&c) {
                 bitmask |= 1 << idx;
                 unique_chars.insert(idx);
@@ -60,7 +60,7 @@ fn solve1062(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn dfs(
-    letters: &[u8],
+    letters: &[u32],
     words_bitmasks: &[u32],
     index: usize,
     selected: u32,

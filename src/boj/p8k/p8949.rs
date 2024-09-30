@@ -1,4 +1,5 @@
 use crate::read_values_as;
+use crate::utils::functions::char_to_index;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -14,7 +15,7 @@ fn solve8949(reader: &mut impl BufRead, writer: &mut impl Write) {
         let a_char = a_iter.next().unwrap_or('0');
         let b_char = b_iter.next().unwrap_or('0');
 
-        ans.push(a_char.to_digit(10).unwrap() + b_char.to_digit(10).unwrap());
+        ans.push(char_to_index::<u32>(a_char) + char_to_index::<u32>(b_char));
 
         if a_iter.peek().is_none() && b_iter.peek().is_none() {
             break;

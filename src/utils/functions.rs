@@ -1,3 +1,5 @@
+use std::convert::{TryFrom, TryInto};
+
 pub fn check_palindrome_nth(s: &[u8], i: usize) -> bool {
     s[i] == s[s.len() - 1 - i]
 }
@@ -19,10 +21,23 @@ pub fn try_next_pos(
     }
 }
 
-pub fn char_to_digit(c: char) -> u8 {
-    match c {
-        'a'..='z' => (c as u8).wrapping_sub(b'a'),
-        'A'..='Z' => (c as u8).wrapping_sub(b'A'),
-        _ => panic!("Character is not a valid ASCII character"),
-    }
+pub fn char_to_index<T>(c: char) -> T
+where
+    T: TryFrom<u64> + Copy,
+{
+    let sub = match c {
+        'a'..='z' => b'a',
+        'A'..='Z' => b'A',
+        '0'..='9' => b'0',
+        _ => panic!("Character is not a valid ASCII letter"),
+    };
+
+    let value = u64::from(c)
+        .checked_sub(u64::from(sub))
+        .expect("Subtraction underflow");
+    T::try_from(value).ok().expect("Conversion failed")
+}
+
+pub fn char_to_digit<T: TryFrom<u64> + Copy>(c: char) -> T {
+    u64::from(c).try_into().ok().expect("Conversion failed")
 }

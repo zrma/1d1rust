@@ -1,3 +1,4 @@
+use crate::utils::functions::char_to_index;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -5,10 +6,7 @@ use std::io::{BufRead, Write};
 fn solve2992(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
 
-    let numbers = s
-        .chars()
-        .map(|c| c.to_digit(10).unwrap())
-        .collect::<Vec<_>>();
+    let numbers = s.chars().map(char_to_index).collect::<Vec<_>>();
 
     let mut answers = vec![];
     let mut used = vec![false; numbers.len()];

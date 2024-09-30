@@ -1,3 +1,4 @@
+use crate::utils::functions::char_to_index;
 use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
@@ -50,7 +51,7 @@ fn eval(expr: &str) -> i32 {
 
     for c in expr.chars() {
         if c.is_ascii_digit() {
-            num = num * 10 + c.to_digit(10).unwrap() as i32;
+            num = num * 10 + char_to_index::<i32>(c);
         } else {
             nums.push(num);
             num = 0;

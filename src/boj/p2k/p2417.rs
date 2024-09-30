@@ -1,4 +1,5 @@
 use crate::utils::io::{read_line, read_value};
+use num::ToPrimitive;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -15,7 +16,11 @@ fn solve2417(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn integer_sqrt(n: u64) -> u64 {
-    (n as f64).sqrt() as u64
+    n.to_f64()
+        .expect("Failed to convert n to f64")
+        .sqrt()
+        .to_u64()
+        .expect("Failed to convert f64 to u64")
 }
 
 // https://www.acmicpc.net/problem/4158
