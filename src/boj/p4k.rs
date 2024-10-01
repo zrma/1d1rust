@@ -4,6 +4,7 @@ mod p4378;
 mod p4388;
 mod p4435;
 mod p4447;
+mod p4493;
 mod p4504;
 mod p4597;
 mod p4613;
