@@ -8,7 +8,7 @@ fn solve9094(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut answers = Vec::with_capacity(num_cases);
 
     for _ in 0..num_cases {
-        let (n, m): (i32, i32) = read_values_as!(read_line(reader), i32, i32);
+        let (n, m) = read_values_as!(read_line(reader), i32, i32);
         let mut count = 0;
         for a in 1..n {
             for b in a + 1..n {
@@ -57,7 +57,7 @@ fn test_solve9094() {
         let mut writer = vec![];
         solve9094(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

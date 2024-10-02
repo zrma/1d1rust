@@ -15,7 +15,7 @@ fn solve25756(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = result.trim_end(); // 마지막 개행 제거
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/25756

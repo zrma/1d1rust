@@ -1,3 +1,4 @@
+use crate::utils::functions::char_to_index;
 use crate::utils::io::{read_line, read_value};
 use std::io::{BufRead, Write};
 
@@ -20,7 +21,7 @@ fn solve2703(reader: &mut impl BufRead, writer: &mut impl Write) {
         let decrypted_sentence: String = encrypted_sentence
             .chars()
             .map(|char| match char {
-                'A'..='Z' => decryption_key[char as usize - 'A' as usize],
+                'A'..='Z' => decryption_key[char_to_index::<usize>(char)],
                 _ => char,
             })
             .collect::<_>();
@@ -67,7 +68,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let mut writer = vec![];
         solve2703(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

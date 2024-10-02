@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve25175(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (n, m, k): (i64, i64, i64) = read_values_as!(read_line(reader), i64, i64, i64);
+    let (n, m, k) = read_values_as!(read_line(reader), i64, i64, i64);
 
     // 현재 사람은 항상 3모를 부름
     let curr_count: i64 = 3;
@@ -48,7 +48,7 @@ fn test_solve25175() {
         let mut writer = vec![];
         solve25175(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

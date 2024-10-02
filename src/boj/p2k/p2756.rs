@@ -90,7 +90,7 @@ SCORE: 200 to 140, PLAYER 1 WINS.
         let mut writer = vec![];
         solve2756(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

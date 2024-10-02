@@ -8,13 +8,13 @@ fn solve25285(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = (0..num_cases)
         .map(|_| {
-            let (height, weight): (u8, u8) = read_values_as!(read_line(reader), u8, u8);
+            let (height, weight) = read_values_as!(read_line(reader), u8, u8);
             assess_military_eligibility(height, bmi(weight, height)).to_string()
         })
         .collect::<Vec<_>>()
         .join("\n");
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 fn bmi(weight: u8, height: u8) -> f32 {
@@ -97,7 +97,7 @@ fn test_solve25285() {
         let mut writer = vec![];
         solve25285(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

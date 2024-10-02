@@ -7,7 +7,7 @@ fn solve11966(reader: &mut impl BufRead, writer: &mut impl Write) {
     let is_power_of_two = (n != 0) && (n & (n - 1) == 0);
     let ans = if is_power_of_two { 1 } else { 0 };
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/11966
@@ -112,7 +112,7 @@ fn test_solve11966() {
         let mut writer = vec![];
         solve11966(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

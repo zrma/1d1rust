@@ -1,4 +1,5 @@
 use crate::utils::io::{read_line, read_value};
+use std::convert::TryFrom;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -11,7 +12,7 @@ fn solve4504(reader: &mut impl BufRead, writer: &mut impl Write) {
         if m == 0 {
             break;
         }
-        answers.push(if m % n as i32 == 0 {
+        answers.push(if m % i32::try_from(n).expect("Failed to convert") == 0 {
             format!("{} is a multiple of {}.", m, n)
         } else {
             format!("{} is NOT a multiple of {}.", m, n)
@@ -74,7 +75,7 @@ fn test_solve4504() {
         let mut writer = vec![];
         solve4504(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

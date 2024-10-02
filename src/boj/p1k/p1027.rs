@@ -11,7 +11,7 @@ fn solve1027(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect();
 
     let ans = (0..n).map(|i| count_visible(i, &heights)).max().unwrap();
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 fn count_visible(i: usize, heights: &[i32]) -> usize {
@@ -93,7 +93,7 @@ fn test_solve1027() {
         let mut writer = vec![];
         solve1027(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

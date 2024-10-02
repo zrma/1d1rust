@@ -7,7 +7,7 @@ fn solve18409(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
 
     let ans = s.chars().filter(|&c| "aeiou".contains(c)).count();
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/18409
@@ -39,7 +39,7 @@ bitaro"
         let mut writer = vec![];
         solve18409(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

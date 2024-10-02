@@ -21,10 +21,10 @@ fn solve14579(reader: &mut impl BufRead, writer: &mut impl Write) {
                 .then_with(|| a_submit_cnt.cmp(b_submit_cnt))
                 .then_with(|| a_submit_time.cmp(b_submit_time))
         })
-        .expect("Failed to get min")
+        .expect("min_by should return a value")
         .0;
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/14579
@@ -79,7 +79,7 @@ fn test_solve14579() {
         let mut writer = vec![];
         solve14579(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

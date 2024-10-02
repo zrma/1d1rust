@@ -21,10 +21,10 @@ fn solve1011(reader: &mut impl BufRead, writer: &mut impl Write) {
 fn calculate_steps(distance: i64) -> i64 {
     let n = distance
         .to_f64()
-        .expect("Failed to convert distance to f64")
+        .expect("distance should be convertible to f64")
         .sqrt()
         .to_i64()
-        .expect("Failed to convert f64 to i64");
+        .expect("the square root of distance should be convertible to i64");
     let mut steps = 2 * n - 1;
     let remaining = distance - n * n;
 
@@ -106,7 +106,7 @@ fn test_solve1011() {
         let mut writer = vec![];
         solve1011(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

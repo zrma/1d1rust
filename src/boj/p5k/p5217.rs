@@ -70,7 +70,7 @@ Pairs for 10: 1 9, 2 8, 3 7, 4 6"
         let mut writer = vec![];
         solve5217(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

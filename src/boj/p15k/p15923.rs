@@ -18,7 +18,7 @@ fn solve15923(reader: &mut impl BufRead, writer: &mut impl Write) {
         + (points[0].0 - points[n - 1].0).abs()
         + (points[0].1 - points[n - 1].1).abs();
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/15923
@@ -60,7 +60,7 @@ fn test_solve15923() {
         let mut writer = vec![];
         solve15923(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

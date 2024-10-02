@@ -21,7 +21,7 @@ fn solve14713(reader: &mut impl BufRead, writer: &mut impl Write) {
         false => "Impossible",
     };
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 fn can_form(sentences: &mut [Vec<String>], target_sentence: &str) -> bool {

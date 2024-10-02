@@ -31,7 +31,7 @@ fn solve1411(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans: usize = unique_words.iter().map(|(_, &v)| v * (v - 1) / 2).sum();
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/1411
@@ -87,7 +87,7 @@ bcbadcbbca"
         let mut writer = vec![];
         solve1411(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

@@ -16,7 +16,7 @@ fn solve11466(reader: &mut impl BufRead, writer: &mut impl Write) {
         w / 2.0
     };
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 fn min(a: f64, b: f64) -> f64 {

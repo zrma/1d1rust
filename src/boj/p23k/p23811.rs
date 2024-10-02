@@ -12,7 +12,7 @@ fn solve23811(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     append_pattern(&mut ans, n, &short_line, &long_line);
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 pub fn append_pattern(ans: &mut String, n: usize, even_line: &str, odd_line: &str) {
@@ -72,7 +72,7 @@ fn test_solve23811() {
         let mut writer = vec![];
         solve23811(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

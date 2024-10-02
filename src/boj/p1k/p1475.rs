@@ -13,7 +13,7 @@ fn solve1475(reader: &mut impl BufRead, writer: &mut impl Write) {
     count_digits(&mut n, &mut counts);
 
     let ans = compute_max_set_needed(&counts);
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 fn count_digits(n: &mut usize, counts: &mut [i32; 10]) {
@@ -76,7 +76,7 @@ fn test_solve9999() {
         let mut writer = vec![];
         solve1475(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

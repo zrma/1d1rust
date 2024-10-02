@@ -39,7 +39,7 @@ fn solve1131(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let ans: usize = (a..=b).map(|n| calc_min(k, n, &mut dp)).sum();
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 fn calc_s(k: usize, n: usize) -> usize {
@@ -100,7 +100,7 @@ fn test_solve1131() {
         let mut writer = vec![];
         solve1131(reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }
