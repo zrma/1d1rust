@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve23972(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let (k, n): (u64, u64) = read_values_as!(read_line(reader), u64, u64);
+    let (k, n) = read_values_as!(read_line(reader), u64, u64);
 
     if n == 1 {
         write!(writer, "-1").expect("Failed to write");
@@ -16,7 +16,7 @@ fn solve23972(reader: &mut impl BufRead, writer: &mut impl Write) {
     // ans >= k * n / (n - 1)
     let ans = (k * n + (n - 2)) / (n - 1); // 올림 효과를 위해 n-2를 더하여 정수 나눗셈 처리
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/23972
@@ -61,7 +61,7 @@ fn test_solve23972() {
         let mut writer = vec![];
         solve23972(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

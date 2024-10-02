@@ -1,10 +1,13 @@
+use std::any::type_name;
 use std::io::BufRead;
 
 pub fn read_value<T: std::str::FromStr>(line: String) -> T
 where
     <T as std::str::FromStr>::Err: std::fmt::Debug,
 {
-    line.trim().parse::<T>().expect("Failed to parse value")
+    line.trim()
+        .parse::<T>()
+        .unwrap_or_else(|_| panic!("line should be parseable as {}", type_name::<T>()))
 }
 
 pub fn read_line(reader: &mut impl BufRead) -> String {

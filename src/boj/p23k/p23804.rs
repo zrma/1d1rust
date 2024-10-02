@@ -25,7 +25,7 @@ fn solve23804(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     ans.pop(); // remove last '\n'
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/23804
@@ -74,7 +74,7 @@ fn test_solve23804() {
         let mut writer = vec![];
         solve23804(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

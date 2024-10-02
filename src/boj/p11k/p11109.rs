@@ -21,7 +21,7 @@ fn solve11109(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(answer);
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/11109
@@ -58,7 +58,7 @@ does not matter"
         let mut writer = vec![];
         solve11109(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

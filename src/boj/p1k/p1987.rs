@@ -11,7 +11,7 @@ fn solve1987(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut visited = vec![false; 26];
     let ans = dfs(&mut visited, &board, 0, 0, 1);
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 fn read_board(reader: &mut impl BufRead, r: usize, c: usize) -> Vec<Vec<char>> {
@@ -103,7 +103,7 @@ HMCHH"
         let mut writer = vec![];
         solve1987(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

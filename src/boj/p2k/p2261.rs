@@ -1,5 +1,6 @@
 use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
+use num::ToPrimitive;
 use std::cmp::Ordering;
 use std::io::{BufRead, Write};
 
@@ -38,7 +39,13 @@ fn solve2261(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         }
 
-        let d = (ans as f64).sqrt().ceil() as i32;
+        let d = ans
+            .to_f64()
+            .expect("Failed to convert to f64")
+            .sqrt()
+            .ceil()
+            .to_i32()
+            .expect("Failed to convert to i32");
         let lower = Point::new(-10000, p.y - d);
         let upper = Point::new(10000, p.y + d);
 
@@ -49,7 +56,7 @@ fn solve2261(reader: &mut impl BufRead, writer: &mut impl Write) {
         set.insert(p.clone());
     }
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 #[derive(Clone, Eq, PartialEq)]
@@ -142,7 +149,7 @@ fn test_solve2261() {
         let mut writer = vec![];
         solve2261(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

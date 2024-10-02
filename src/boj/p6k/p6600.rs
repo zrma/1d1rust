@@ -68,7 +68,7 @@ fn test_solve6600() {
         let mut writer = vec![];
         solve6600(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         let want = data.want.split_whitespace();
 
         for (j, (got, want)) in got.split_whitespace().zip(want).enumerate() {

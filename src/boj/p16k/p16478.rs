@@ -7,7 +7,7 @@ fn solve16478(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (pab, pbc, pcd) = read_values_as!(read_line(reader), f64, f64, f64);
 
     let ans = pab * pcd / pbc;
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/16478

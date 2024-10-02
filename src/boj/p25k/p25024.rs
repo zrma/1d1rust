@@ -8,7 +8,7 @@ fn solve25024(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = (0..num_cases)
         .map(|_| {
-            let (a, b): (u32, u32) = read_values_as!(read_line(reader), u32, u32);
+            let (a, b) = read_values_as!(read_line(reader), u32, u32);
 
             let is_valid_time = (0..24).contains(&a) && (0..60).contains(&b);
             let is_valid_date = match a {
@@ -26,7 +26,7 @@ fn solve25024(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<_>>()
         .join("\n");
 
-    write!(writer, "{}", ans).expect("Failed to write");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/25024
@@ -82,7 +82,7 @@ Yes Yes"
         let mut writer = vec![];
         solve25024(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }

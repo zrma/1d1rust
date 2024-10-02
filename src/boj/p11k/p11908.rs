@@ -11,7 +11,7 @@ fn solve11908(reader: &mut impl BufRead, writer: &mut impl Write) {
         (max_card.max(card), sum + card)
     });
 
-    write!(writer, "{}", total_sum - max_card).expect("Failed to write");
+    write!(writer, "{}", total_sum - max_card).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/11908
@@ -50,7 +50,7 @@ fn test_solve11908() {
         let mut writer = vec![];
         solve11908(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to convert writer to string");
+        let got = String::from_utf8(writer).expect("writer should be a valid string");
         assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
     }
 }
