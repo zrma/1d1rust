@@ -19,7 +19,7 @@ fn decrypt_cipher(n: usize, s: &str, writer: &mut impl Write) {
             } else {
                 (j + 1) * n - i - 1
             };
-            write!(writer, "{}", char::from(vec[idx])).expect("Failed to write");
+            write!(writer, "{}", char::from(vec[idx])).expect("write! should work");
         }
     }
 }

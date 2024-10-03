@@ -16,7 +16,7 @@ fn solve2720(reader: &mut impl BufRead, writer: &mut impl Write) {
         res.push_str(&format!("{} ", (c % 25) / 10));
         res.push_str(&format!("{} ", ((c % 25) % 10) / 5));
         res.push_str(&format!("{}", ((c % 25) % 10) % 5));
-        writeln!(writer, "{}", res).expect("Failed to write");
+        writeln!(writer, "{}", res).expect("writeln! should work");
     }
 }
 

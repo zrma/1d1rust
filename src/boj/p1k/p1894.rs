@@ -19,7 +19,7 @@ fn solve1894(reader: &mut impl BufRead, writer: &mut impl Write) {
         line.clear();
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("write! should work");
 }
 
 #[derive(Copy, Clone, PartialEq, PartialOrd)]

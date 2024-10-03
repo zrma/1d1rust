@@ -8,13 +8,13 @@ fn solve4134(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..n {
         let mut x: u64 = read_line(reader).parse().unwrap();
         if x <= 1 {
-            writeln!(writer, "2").expect("Failed to write");
+            writeln!(writer, "2").expect("writeln! should work");
             continue;
         }
         while !is_prime(x) {
             x += 1;
         }
-        writeln!(writer, "{}", x).expect("Failed to write");
+        writeln!(writer, "{}", x).expect("writeln! should work");
     }
 }
 

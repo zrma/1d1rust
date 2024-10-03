@@ -15,8 +15,8 @@ fn solve2576(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     match total_odd_sum {
-        Some(sum) => write!(writer, "{}\n{}", sum, smallest_odd).expect("Failed to write"),
-        None => write!(writer, "-1").expect("Failed to write"),
+        Some(sum) => write!(writer, "{}\n{}", sum, smallest_odd).expect("write! should work"),
+        None => write!(writer, "-1").expect("write! should work"),
     }
 }
 

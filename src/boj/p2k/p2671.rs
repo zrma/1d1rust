@@ -8,7 +8,7 @@ fn solve2671(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = is_submarine(&line);
 
-    write!(writer, "{}", if res { "SUBMARINE" } else { "NOISE" }).expect("Failed to write");
+    write!(writer, "{}", if res { "SUBMARINE" } else { "NOISE" }).expect("write! should work");
 }
 
 fn build_state_machine() -> HashMap<&'static str, (&'static str, &'static str)> {

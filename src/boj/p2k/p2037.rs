@@ -42,7 +42,7 @@ fn solve2037(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", total_time).expect("Failed to write");
+    write!(writer, "{}", total_time).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/2037

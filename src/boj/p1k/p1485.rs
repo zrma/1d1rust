@@ -11,9 +11,9 @@ fn solve1485(reader: &mut impl BufRead, writer: &mut impl Write) {
             .collect::<Vec<_>>();
 
         if is_square(&points) {
-            writeln!(writer, "1").expect("Failed to write");
+            writeln!(writer, "1").expect("writeln! should work");
         } else {
-            writeln!(writer, "0").expect("Failed to write");
+            writeln!(writer, "0").expect("writeln! should work");
         }
     }
 }

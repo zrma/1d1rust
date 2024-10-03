@@ -12,7 +12,9 @@ where
 
 pub fn read_line(reader: &mut impl BufRead) -> String {
     let mut line = String::new();
-    reader.read_line(&mut line).expect("Failed to read line");
+    reader
+        .read_line(&mut line)
+        .expect("line should be readable");
     line.trim().to_string()
 }
 
@@ -23,7 +25,7 @@ macro_rules! read_values_as {
         let mut iter = line.split_whitespace();
         (
             $(
-                iter.next().expect("Fail to iterate").parse::<$t>().expect("Failed to parse value"),
+                iter.next().expect("token should exist").parse::<$t>().expect("token should be parseable"),
             )+
         )
     }};
@@ -35,7 +37,10 @@ where
 {
     read_line(reader)
         .split_whitespace()
-        .map(|s| s.parse::<T>().expect("Failed to parse value"))
+        .map(|s| {
+            s.parse::<T>()
+                .unwrap_or_else(|_| panic!("{} should be parseable", s))
+        })
         .collect::<Vec<T>>()
 }
 
@@ -46,7 +51,10 @@ where
     read_line(reader)
         .split_whitespace()
         .take(n)
-        .map(|s| s.parse::<T>().expect("Failed to parse value"))
+        .map(|s| {
+            s.parse::<T>()
+                .unwrap_or_else(|_| panic!("{} should be parseable", s))
+        })
         .collect::<Vec<T>>()
 }
 

@@ -19,7 +19,7 @@ fn solve2506(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     });
 
-    write!(writer, "{}", total_score).expect("Failed to write");
+    write!(writer, "{}", total_score).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/2506

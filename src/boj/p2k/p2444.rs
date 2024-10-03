@@ -7,21 +7,21 @@ fn solve2444(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for i in 1..=n {
         for _ in 0..(n - i) {
-            write!(writer, " ").expect("Failed to write");
+            write!(writer, " ").expect("write! should work");
         }
         for _ in 0..(2 * i - 1) {
-            write!(writer, "*").expect("Failed to write");
+            write!(writer, "*").expect("write! should work");
         }
-        writeln!(writer).expect("Failed to write");
+        writeln!(writer).expect("writeln! should work");
     }
     for i in (1..n).rev() {
         for _ in 0..(n - i) {
-            write!(writer, " ").expect("Failed to write");
+            write!(writer, " ").expect("write! should work");
         }
         for _ in 0..(2 * i - 1) {
-            write!(writer, "*").expect("Failed to write");
+            write!(writer, "*").expect("write! should work");
         }
-        writeln!(writer).expect("Failed to write");
+        writeln!(writer).expect("writeln! should work");
     }
 }
 

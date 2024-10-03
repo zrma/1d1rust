@@ -11,7 +11,7 @@ fn solve2010(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let available_ports = total_ports - num_multi_plugs + 1;
-    write!(writer, "{}", available_ports).expect("Failed to write");
+    write!(writer, "{}", available_ports).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/2010

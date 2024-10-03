@@ -25,13 +25,13 @@ fn solve1864(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         let ans = s.chars().rev().enumerate().fold(0, |acc, (i, c)| {
-            let exponent: u32 = i.try_into().expect("Index too large for u32");
+            let exponent: u32 = i.try_into().expect("i should be a valid u32");
             acc + char_to_num(c) * 8_isize.pow(exponent)
         });
         answers.push(ans.to_string());
     }
 
-    writeln!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/1864

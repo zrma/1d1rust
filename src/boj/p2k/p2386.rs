@@ -14,7 +14,7 @@ fn solve2386(reader: &mut impl BufRead, writer: &mut impl Write) {
         let s = parts.next().unwrap_or("");
 
         let count = s.chars().filter(|&ch| ch == c).count();
-        writeln!(writer, "{} {}", c, count).expect("Failed to write");
+        writeln!(writer, "{} {}", c, count).expect("writeln! should work");
     }
 }
 

@@ -14,13 +14,15 @@ fn solve28702(reader: &mut impl BufRead, writer: &mut impl Write) {
                 }
             }
             _ => {
-                let number: i32 = input.parse().expect("Failed to parse");
+                let number: i32 = input.parse().unwrap_or_else(|_| {
+                    panic!("{} should be a number", input);
+                });
                 current_number = Some(number);
             }
         }
     }
 
-    let next_num = current_number.expect("No valid number found") + 1;
+    let next_num = current_number.expect("current_number should be Some") + 1;
     let ans = match (next_num % 3 == 0, next_num % 5 == 0) {
         (true, true) => "FizzBuzz".to_string(),
         (true, false) => "Fizz".to_string(),

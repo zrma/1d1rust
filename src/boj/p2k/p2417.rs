@@ -17,10 +17,10 @@ fn solve2417(reader: &mut impl BufRead, writer: &mut impl Write) {
 
 fn integer_sqrt(n: u64) -> u64 {
     n.to_f64()
-        .expect("Failed to convert n to f64")
+        .expect("n should be convertible to f64")
         .sqrt()
         .to_u64()
-        .expect("Failed to convert f64 to u64")
+        .expect("the square root of n should be convertible to u64")
 }
 
 // https://www.acmicpc.net/problem/4158

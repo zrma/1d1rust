@@ -27,8 +27,10 @@ fn solve2852(reader: &mut impl BufRead, writer: &mut impl Write) {
     let time_sec = 48 * 60;
     calc_durations(&mut durations, &scores, time_sec, prev_score_time);
 
-    writeln!(writer, "{:02}:{:02}", durations[0] / 60, durations[0] % 60).expect("Failed to write");
-    write!(writer, "{:02}:{:02}", durations[1] / 60, durations[1] % 60).expect("Failed to write");
+    writeln!(writer, "{:02}:{:02}", durations[0] / 60, durations[0] % 60)
+        .expect("writeln! should work");
+    write!(writer, "{:02}:{:02}", durations[1] / 60, durations[1] % 60)
+        .expect("write! should work");
 }
 
 fn calc_durations(

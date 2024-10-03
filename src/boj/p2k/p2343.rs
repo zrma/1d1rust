@@ -32,7 +32,7 @@ fn solve2343(reader: &mut impl BufRead, writer: &mut impl Write) {
             upper_bound = mid_size;
         }
     }
-    write!(writer, "{}", lower_bound).expect("Failed to write");
+    write!(writer, "{}", lower_bound).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/2343

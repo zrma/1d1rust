@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve2455(reader: &mut impl BufRead, writer: &mut impl Write) {
     let max_passengers = calc_max_passengers(reader, 4);
 
-    write!(writer, "{}", max_passengers).expect("Failed to write");
+    write!(writer, "{}", max_passengers).expect("write! should work");
 }
 
 pub fn calc_max_passengers(reader: &mut impl BufRead, n: usize) -> i32 {

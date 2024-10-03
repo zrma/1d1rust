@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve1475(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut n: usize = read_value(read_line(reader));
     if n == 0 {
-        write!(writer, "1").expect("Failed to write");
+        write!(writer, "1").expect("write! should work");
         return;
     }
 
