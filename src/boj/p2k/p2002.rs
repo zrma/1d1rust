@@ -7,7 +7,7 @@ fn solve2002(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = count_mismatched_order(&in_cars, &out_cars);
 
-    write!(writer, "{}", res).expect("Failed to write");
+    write!(writer, "{}", res).expect("write! should work");
 }
 
 fn read_input(reader: &mut impl BufRead) -> (Vec<String>, Vec<String>) {

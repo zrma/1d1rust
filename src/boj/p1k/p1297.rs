@@ -11,15 +11,15 @@ fn solve1297(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (y, z) = (x * h, x * w);
 
     let y_i64 = y.to_i64().unwrap_or_else(|| {
-        eprintln!("y value {} is out of i64 range or invalid.", y);
+        eprintln!("{} should be a valid i64 value.", y);
         0
     });
     let z_i64 = z.to_i64().unwrap_or_else(|| {
-        eprintln!("z value {} is out of i64 range or invalid.", z);
+        eprintln!("{} should be a valid i64 value.", z);
         0
     });
 
-    write!(writer, "{} {}", y_i64, z_i64).expect("Failed to write");
+    write!(writer, "{} {}", y_i64, z_i64).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/1297

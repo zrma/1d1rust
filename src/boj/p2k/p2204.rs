@@ -17,7 +17,7 @@ fn solve2204(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         words.sort_by_key(|a| a.to_lowercase());
 
-        writeln!(writer, "{}", &words[0]).expect("Failed to write");
+        writeln!(writer, "{}", &words[0]).expect("writeln! should work");
     }
 }
 

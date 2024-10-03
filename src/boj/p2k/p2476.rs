@@ -14,7 +14,7 @@ fn solve2476(reader: &mut impl BufRead, writer: &mut impl Write) {
         .max()
         .unwrap();
 
-    write!(writer, "{}", max_prize).expect("Failed to write");
+    write!(writer, "{}", max_prize).expect("write! should work");
 }
 
 fn calculate_prize(die1: u32, die2: u32, die3: u32) -> u32 {

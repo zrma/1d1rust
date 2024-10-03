@@ -21,7 +21,7 @@ fn solve2870(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     for num in nums {
-        writeln!(writer, "{}", num).expect("Failed to write");
+        writeln!(writer, "{}", num).expect("writeln! should work");
     }
 }
 

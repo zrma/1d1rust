@@ -12,7 +12,7 @@ fn solve2309(reader: &mut impl BufRead, writer: &mut impl Write) {
     heights.retain(|&h| h != height_to_remove1 && h != height_to_remove2);
 
     for height in heights {
-        writeln!(writer, "{}", height).expect("Failed to write");
+        writeln!(writer, "{}", height).expect("writeln! should work");
     }
 }
 

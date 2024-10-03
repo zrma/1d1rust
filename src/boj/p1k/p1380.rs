@@ -27,7 +27,7 @@ fn solve1380(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(format!("{} {}", cnt, lost_name));
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/1380

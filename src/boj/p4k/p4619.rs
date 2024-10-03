@@ -42,7 +42,7 @@ fn solve4619(reader: &mut impl BufRead, writer: &mut impl Write) {
             })
             .expect("at least one value should be found");
 
-        writeln!(writer, "{}", result).expect("writeln should work");
+        writeln!(writer, "{}", result).expect("writeln! should work");
     }
 }
 

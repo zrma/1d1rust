@@ -14,7 +14,7 @@ fn solve1547(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", ball_position).expect("Failed to write");
+    write!(writer, "{}", ball_position).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/1547

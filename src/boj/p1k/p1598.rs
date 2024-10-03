@@ -10,7 +10,7 @@ fn solve1598(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (r2, c2) = ((b - 1) / 4, (b - 1) % 4);
 
     let dist = (r1 - r2).abs() + (c1 - c2).abs();
-    write!(writer, "{}", dist).expect("Failed to write");
+    write!(writer, "{}", dist).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/1598

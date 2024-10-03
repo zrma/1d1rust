@@ -12,7 +12,7 @@ fn solve1924(reader: &mut impl BufRead, writer: &mut impl Write) {
     let weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     let weekday = weekdays[total_days % 7];
 
-    write!(writer, "{}", weekday).expect("Failed to write");
+    write!(writer, "{}", weekday).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/1924

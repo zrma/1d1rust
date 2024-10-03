@@ -23,7 +23,7 @@ fn solve2684(reader: &mut impl BufRead, writer: &mut impl Write) {
             .map(|&num| num.to_string())
             .collect::<Vec<_>>()
             .join(" ");
-        writeln!(writer, "{}", res).expect("Failed to write");
+        writeln!(writer, "{}", res).expect("writeln! should work");
     }
 }
 

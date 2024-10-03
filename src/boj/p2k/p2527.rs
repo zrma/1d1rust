@@ -18,7 +18,7 @@ fn solve2527(reader: &mut impl BufRead, writer: &mut impl Write) {
         );
 
         let res = common_point_code((ax, ay, ap, aq), (bx, by, bp, bq));
-        writeln!(writer, "{}", res).expect("Failed to write");
+        writeln!(writer, "{}", res).expect("writeln! should work");
     }
 }
 

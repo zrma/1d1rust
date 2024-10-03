@@ -29,9 +29,9 @@ fn solve1414(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     if included_nodes != n {
-        write!(writer, "-1").expect("Failed to write");
+        write!(writer, "-1").expect("write! should work");
     } else {
-        write!(writer, "{}", total - mst_weight).expect("Failed to write");
+        write!(writer, "{}", total - mst_weight).expect("write! should work");
     }
 }
 

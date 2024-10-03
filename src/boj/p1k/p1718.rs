@@ -23,10 +23,10 @@ fn solve1718(reader: &mut impl BufRead, writer: &mut impl Write) {
         } else {
             c_num - key_num
         };
-        answers.push(char::from_u32(ans + 96).expect("Failed to convert u32 to char"));
+        answers.push(char::from_u32(ans + 96).expect("ans should be a valid char"));
     }
 
-    write!(writer, "{}", answers).expect("Failed to write");
+    write!(writer, "{}", answers).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/1718

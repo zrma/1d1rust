@@ -11,7 +11,7 @@ fn solve2501(reader: &mut impl BufRead, writer: &mut impl Write) {
         if n % i == 0 {
             cnt += 1;
             if cnt == k {
-                write!(writer, "{}", i).expect("Failed to write");
+                write!(writer, "{}", i).expect("write! should work");
                 return;
             }
         }

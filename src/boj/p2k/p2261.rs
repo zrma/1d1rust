@@ -41,11 +41,11 @@ fn solve2261(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         let d = ans
             .to_f64()
-            .expect("Failed to convert to f64")
+            .expect("ans should be a valid f64")
             .sqrt()
             .ceil()
             .to_i32()
-            .expect("Failed to convert to i32");
+            .expect("sqrt of ans should be a valid i32");
         let lower = Point::new(-10000, p.y - d);
         let upper = Point::new(10000, p.y + d);
 

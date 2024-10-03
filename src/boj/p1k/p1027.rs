@@ -7,7 +7,10 @@ fn solve1027(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
     let heights: Vec<i32> = read_line(reader)
         .split_whitespace()
-        .map(|s| s.parse().expect("Failed to parse value"))
+        .map(|s| {
+            s.parse()
+                .unwrap_or_else(|_| panic!("{} should be a number", s))
+        })
         .collect();
 
     let ans = (0..n).map(|i| count_visible(i, &heights)).max().unwrap();
@@ -24,14 +27,14 @@ fn count_slope(iter: impl Iterator<Item = usize>, i: usize, heights: &[i32], sig
     let mut cnt = 0;
     let mut max_slope = f64::NEG_INFINITY;
     for j in iter {
-        let x1 = i.to_f64().expect("Failed to convert i to f64");
+        let x1 = i.to_f64().expect("i should be convertible to f64");
         let y1 = heights[i]
             .to_f64()
-            .expect("Failed to convert height to f64");
-        let x2 = j.to_f64().expect("Failed to convert j to f64");
+            .expect("height should be convertible to f64");
+        let x2 = j.to_f64().expect("j should be convertible to f64");
         let y2 = heights[j]
             .to_f64()
-            .expect("Failed to convert height to f64");
+            .expect("height should be convertible to f64");
 
         let slope = calc_slope(x1, y1, x2, y2) * sign;
         if slope > max_slope {

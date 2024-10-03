@@ -27,7 +27,7 @@ fn solve1706(reader: &mut impl BufRead, writer: &mut impl Write) {
             .for_each(|word| update_answer(&mut answer, word));
     }
 
-    write!(writer, "{}", answer.unwrap_or_default()).expect("Failed to write");
+    write!(writer, "{}", answer.unwrap_or_default()).expect("write! should work");
 }
 
 fn update_answer(answer: &mut Option<String>, word: &str) {

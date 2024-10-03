@@ -10,7 +10,7 @@ fn solve7490(reader: &mut impl BufRead, writer: &mut impl Write) {
         let n: usize = read_line(reader).parse().unwrap();
 
         make_to_zero(writer, n);
-        writeln!(writer).expect("Failed to write");
+        writeln!(writer).expect("writeln! should work");
     }
 }
 
@@ -21,7 +21,7 @@ fn make_to_zero(writer: &mut impl Write, n: usize) {
     make_to_zero_rec(&mut res, &mut nums, 0);
 
     for s in res {
-        writeln!(writer, "{}", s).expect("Failed to write");
+        writeln!(writer, "{}", s).expect("writeln! should work");
     }
 }
 

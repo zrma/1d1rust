@@ -57,7 +57,10 @@ fn test_solve25756() {
             .split(|&c| c == b'\n')
             .map(|s| {
                 String::from_utf8(s.to_vec())
-                    .expect("Failed to convert writer to string")
+                    .expect(
+                        "writer should be a valid string
+",
+                    )
                     .parse()
                     .expect("Failed to parse value")
             })

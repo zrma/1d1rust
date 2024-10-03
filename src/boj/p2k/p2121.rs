@@ -21,7 +21,7 @@ fn solve2121(reader: &mut impl BufRead, writer: &mut impl Write) {
         })
         .count();
 
-    write!(writer, "{}", res).expect("Failed to write");
+    write!(writer, "{}", res).expect("write! should work");
 }
 
 fn read_point(reader: &mut impl BufRead) -> (i32, i32) {
