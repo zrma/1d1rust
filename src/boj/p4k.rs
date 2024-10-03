@@ -12,6 +12,7 @@ mod p4619;
 mod p4740;
 mod p4766;
 mod p4779;
+mod p4880;
 mod p4889;
 mod p4892;
 mod p4963;
