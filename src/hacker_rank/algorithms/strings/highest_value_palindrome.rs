@@ -1,4 +1,4 @@
-use std::cmp::Ordering;
+use std::cmp::Ordering::{Greater, Less};
 
 #[allow(dead_code)]
 fn highest_value_palindrome(s: String, n: i32, k: i32) -> String {
@@ -26,14 +26,14 @@ fn make_simple_palindrome(mut result: Vec<u8>, n: i32, mut k: i32) -> (Vec<u8>, 
         let lhs = result.get(i1).unwrap();
         let rhs = result.get(i2).unwrap();
         match lhs.cmp(rhs) {
-            Ordering::Greater => {
+            Greater => {
                 result[i2] = result[i1];
                 k -= 1;
                 if k < 0 {
                     return (result, -1, false);
                 }
             }
-            Ordering::Less => {
+            Less => {
                 result[i1] = result[i2];
                 k -= 1;
                 if k < 0 {

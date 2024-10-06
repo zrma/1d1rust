@@ -1,6 +1,6 @@
 use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
-use std::cmp::Ordering;
+use std::cmp::Ordering::{Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -11,8 +11,8 @@ fn solve10103(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..n {
         let (x, y) = read_values_as!(read_line(reader), i32, i32);
         match x.cmp(&y) {
-            Ordering::Greater => b -= x,
-            Ordering::Less => a -= y,
+            Greater => b -= x,
+            Less => a -= y,
             _ => {}
         }
     }

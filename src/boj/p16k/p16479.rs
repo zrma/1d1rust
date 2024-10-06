@@ -1,5 +1,6 @@
 use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -8,12 +9,12 @@ fn solve16479(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (d1, d2) = read_values_as!(read_line(reader), i32, i32);
 
     let res = match d1.cmp(&d2) {
-        std::cmp::Ordering::Equal => k.pow(2) as f64,
-        std::cmp::Ordering::Less => {
+        Equal => k.pow(2) as f64,
+        Less => {
             let d3 = d2 - d1;
             k.pow(2) as f64 - (d3.pow(2) as f64) / 4.0
         }
-        std::cmp::Ordering::Greater => {
+        Greater => {
             let d3 = d1 - d2;
             k.pow(2) as f64 - (d3.pow(2) as f64) / 4.0
         }

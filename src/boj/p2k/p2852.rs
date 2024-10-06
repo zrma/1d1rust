@@ -1,5 +1,6 @@
 use crate::read_values_as;
 use crate::utils::io::read_line;
+use std::cmp::Ordering::{Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -40,10 +41,10 @@ fn calc_durations(
     prev_score_time: usize,
 ) {
     match scores[0].cmp(&scores[1]) {
-        std::cmp::Ordering::Greater => {
+        Greater => {
             durations[0] += time_sec - prev_score_time;
         }
-        std::cmp::Ordering::Less => {
+        Less => {
             durations[1] += time_sec - prev_score_time;
         }
         _ => {}

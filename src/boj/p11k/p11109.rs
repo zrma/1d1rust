@@ -1,6 +1,6 @@
 use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
-use std::cmp::Ordering;
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -14,9 +14,9 @@ fn solve11109(reader: &mut impl BufRead, writer: &mut impl Write) {
         let time_parallel = d + n * p;
 
         let answer = match time_serial.cmp(&time_parallel) {
-            Ordering::Less => "do not parallelize",
-            Ordering::Equal => "does not matter",
-            Ordering::Greater => "parallelize",
+            Less => "do not parallelize",
+            Equal => "does not matter",
+            Greater => "parallelize",
         };
         answers.push(answer);
     }

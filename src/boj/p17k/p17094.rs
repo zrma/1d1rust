@@ -1,4 +1,5 @@
 use crate::utils::io::{read_line, read_value};
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -16,9 +17,9 @@ fn solve17094(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     match x.cmp(&y) {
-        std::cmp::Ordering::Less => write!(writer, "e").expect("Failed to write"),
-        std::cmp::Ordering::Equal => write!(writer, "yee").expect("Failed to write"),
-        std::cmp::Ordering::Greater => write!(writer, "2").expect("Failed to write"),
+        Less => write!(writer, "e").expect("Failed to write"),
+        Equal => write!(writer, "yee").expect("Failed to write"),
+        Greater => write!(writer, "2").expect("Failed to write"),
     }
 }
 

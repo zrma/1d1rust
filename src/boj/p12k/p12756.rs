@@ -1,6 +1,6 @@
 use crate::read_values_as;
 use crate::utils::io::read_line;
-use std::cmp::Ordering;
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -12,9 +12,9 @@ fn solve12756(reader: &mut impl BufRead, writer: &mut impl Write) {
     let b_surv_turns = (b_hp + a_atk - 1) / a_atk;
 
     let ans = match a_surv_turns.cmp(&b_surv_turns) {
-        Ordering::Less => "PLAYER B",
-        Ordering::Equal => "DRAW",
-        Ordering::Greater => "PLAYER A",
+        Less => "PLAYER B",
+        Equal => "DRAW",
+        Greater => "PLAYER A",
     };
 
     write!(writer, "{}", ans).expect("write! should work");

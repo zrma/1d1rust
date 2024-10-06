@@ -1,4 +1,5 @@
 use crate::utils::io::read_n_values;
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -13,9 +14,9 @@ fn solve2997(reader: &mut impl BufRead, writer: &mut impl Write) {
         let diff1 = arr[1] - arr[0];
         let diff2 = arr[2] - arr[1];
         match diff1.cmp(&diff2) {
-            std::cmp::Ordering::Equal => (arr[2] + diff1).to_string(),
-            std::cmp::Ordering::Greater => (arr[0] + diff2).to_string(),
-            std::cmp::Ordering::Less => (arr[1] + diff1).to_string(),
+            Equal => (arr[2] + diff1).to_string(),
+            Greater => (arr[0] + diff2).to_string(),
+            Less => (arr[1] + diff1).to_string(),
         }
     };
 

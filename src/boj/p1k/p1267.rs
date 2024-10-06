@@ -1,5 +1,5 @@
 use crate::utils::io::{read_line, read_n_values, read_value};
-use std::cmp::Ordering;
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -14,9 +14,9 @@ fn solve1267(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     let ans = match y_cost.cmp(&m_cost) {
-        Ordering::Less => format!("Y {}", y_cost),
-        Ordering::Greater => format!("M {}", m_cost),
-        Ordering::Equal => format!("Y M {}", y_cost),
+        Less => format!("Y {}", y_cost),
+        Greater => format!("M {}", m_cost),
+        Equal => format!("Y M {}", y_cost),
     };
 
     write!(writer, "{}", ans).expect("write! should work");

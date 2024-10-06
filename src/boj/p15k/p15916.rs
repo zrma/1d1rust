@@ -1,4 +1,5 @@
 use crate::utils::io::{read_line, read_value};
+use std::cmp::Ordering::Equal;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -12,7 +13,7 @@ fn solve15916(reader: &mut impl BufRead, writer: &mut impl Write) {
     let k: i64 = read_value(read_line(reader));
 
     let initial_cmp = arr[0].cmp(&k);
-    if initial_cmp == std::cmp::Ordering::Equal {
+    if initial_cmp == Equal {
         write!(writer, "T").expect("Failed to write");
         return;
     }
