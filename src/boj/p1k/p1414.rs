@@ -1,5 +1,6 @@
 use crate::utils::functions::char_to_index;
 use crate::utils::io::{read_line, read_value};
+use std::cmp::Ordering;
 use std::collections::BinaryHeap;
 use std::io::{BufRead, Write};
 
@@ -74,13 +75,13 @@ impl Node {
 }
 
 impl Ord for Node {
-    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+    fn cmp(&self, other: &Self) -> Ordering {
         other.value.cmp(&self.value)
     }
 }
 
 impl PartialOrd for Node {
-    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         Some(other.value.cmp(&self.value))
     }
 }

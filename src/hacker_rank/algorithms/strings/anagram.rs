@@ -1,4 +1,4 @@
-use std::cmp::Ordering;
+use std::cmp::Ordering::{Greater, Less};
 
 #[allow(dead_code)]
 fn anagram(s: String) -> usize {
@@ -23,8 +23,8 @@ fn anagram(s: String) -> usize {
         let lhs = v1.get(i).unwrap();
         let rhs = v2.get(j).unwrap();
         match lhs.cmp(rhs) {
-            Ordering::Less => i += 1,
-            Ordering::Greater => j += 1,
+            Less => i += 1,
+            Greater => j += 1,
             _ => {
                 eq += 1;
                 i += 1;

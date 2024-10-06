@@ -1,4 +1,5 @@
 use crate::utils::io::{read_line, read_value};
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -12,9 +13,9 @@ fn solve11536(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 1..n {
         let s = read_line(reader);
         match s.cmp(&prev) {
-            std::cmp::Ordering::Less => is_increasing = false,
-            std::cmp::Ordering::Greater => is_decreasing = false,
-            std::cmp::Ordering::Equal => {}
+            Less => is_increasing = false,
+            Greater => is_decreasing = false,
+            Equal => {}
         }
         prev = s;
     }

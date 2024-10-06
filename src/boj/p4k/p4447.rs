@@ -1,4 +1,5 @@
 use crate::utils::io::read_line;
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -17,9 +18,9 @@ fn solve4447(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         }
         let ans = match g.cmp(&b) {
-            std::cmp::Ordering::Greater => " is GOOD",
-            std::cmp::Ordering::Less => " is A BADDY",
-            std::cmp::Ordering::Equal => " is NEUTRAL",
+            Greater => " is GOOD",
+            Less => " is A BADDY",
+            Equal => " is NEUTRAL",
         };
         writeln!(writer, "{}{}", s, ans).expect("Failed to write");
     }

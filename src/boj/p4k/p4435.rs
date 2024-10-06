@@ -1,4 +1,5 @@
 use crate::utils::io::{read_line, read_n_values, read_value};
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -25,9 +26,9 @@ fn solve4435(reader: &mut impl BufRead, writer: &mut impl Write) {
             .sum();
 
         let ans = match good_power_sum.cmp(&evil_power_sum) {
-            std::cmp::Ordering::Greater => "Good triumphs over Evil",
-            std::cmp::Ordering::Less => "Evil eradicates all trace of Good",
-            std::cmp::Ordering::Equal => "No victor on this battle field",
+            Greater => "Good triumphs over Evil",
+            Less => "Evil eradicates all trace of Good",
+            Equal => "No victor on this battle field",
         };
 
         answers.push(format!("Battle {}: {}", i, ans));

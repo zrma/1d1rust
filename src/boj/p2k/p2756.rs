@@ -1,5 +1,5 @@
 use crate::utils::io::{read_line, read_value};
-use std::cmp::Ordering;
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -32,9 +32,9 @@ fn read_points(s: String) -> Vec<Point> {
 
 fn compare_scores(score1: i32, score2: i32) -> String {
     match score1.cmp(&score2) {
-        Ordering::Greater => format!("SCORE: {} to {}, PLAYER 1 WINS.", score1, score2),
-        Ordering::Less => format!("SCORE: {} to {}, PLAYER 2 WINS.", score1, score2),
-        Ordering::Equal => format!("SCORE: {} to {}, TIE.", score1, score2),
+        Greater => format!("SCORE: {} to {}, PLAYER 1 WINS.", score1, score2),
+        Less => format!("SCORE: {} to {}, PLAYER 2 WINS.", score1, score2),
+        Equal => format!("SCORE: {} to {}, TIE.", score1, score2),
     }
 }
 

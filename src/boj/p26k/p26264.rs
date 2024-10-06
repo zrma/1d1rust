@@ -1,4 +1,5 @@
 use crate::utils::io::{read_line, read_value};
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -22,9 +23,9 @@ fn solve26264(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let ans = match cnt_of_bigdata.cmp(&cnt_of_security) {
-        std::cmp::Ordering::Less => "security!",
-        std::cmp::Ordering::Equal => "bigdata? security!",
-        std::cmp::Ordering::Greater => "bigdata?",
+        Less => "security!",
+        Equal => "bigdata? security!",
+        Greater => "bigdata?",
     };
 
     write!(writer, "{}", ans).expect("write! should work");

@@ -1,5 +1,6 @@
 use crate::read_values_as;
 use crate::utils::io::{read_line, read_value};
+use std::cmp::Ordering::{Equal, Greater, Less};
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
@@ -26,9 +27,9 @@ fn play_game(reader: &mut impl BufRead) -> String {
         });
 
     match p1_wins.cmp(&p2_wins) {
-        std::cmp::Ordering::Greater => "Player 1".to_string(),
-        std::cmp::Ordering::Less => "Player 2".to_string(),
-        std::cmp::Ordering::Equal => "TIE".to_string(),
+        Greater => "Player 1".to_string(),
+        Less => "Player 2".to_string(),
+        Equal => "TIE".to_string(),
     }
 }
 
