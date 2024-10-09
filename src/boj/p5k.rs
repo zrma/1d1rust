@@ -19,3 +19,4 @@ mod p5656;
 mod p5692;
 mod p5704;
 mod p5789;
+mod p5893;
