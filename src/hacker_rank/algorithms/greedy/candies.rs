@@ -2,19 +2,15 @@ use std::cmp::max;
 
 #[allow(dead_code)]
 fn candies(n: usize, arr: Vec<i32>) -> i64 {
-    let mut result = &mut vec![0; n];
+    let result = vec![0; n];
 
-    result = forward(result, &arr);
-    result = backward(result, &arr);
+    let result = forward(result, &arr);
+    let result = backward(result, &arr);
 
-    let mut sum: i64 = 0;
-    for &i in result.iter() {
-        sum += i64::from(i);
-    }
-    sum
+    result.iter().map(|&i| i64::from(i)).sum()
 }
 
-fn forward<'a>(result: &'a mut Vec<i32>, arr: &[i32]) -> &'a mut Vec<i32> {
+fn forward(mut result: Vec<i32>, arr: &[i32]) -> Vec<i32> {
     let mut candy: i32 = 1;
     result[0] = candy;
     for i in 1..result.len() {
@@ -28,7 +24,7 @@ fn forward<'a>(result: &'a mut Vec<i32>, arr: &[i32]) -> &'a mut Vec<i32> {
     result
 }
 
-fn backward<'a>(result: &'a mut Vec<i32>, arr: &[i32]) -> &'a mut Vec<i32> {
+fn backward(mut result: Vec<i32>, arr: &[i32]) -> Vec<i32> {
     let mut candy: i32 = 1;
     for i in (0..result.len() - 1).rev() {
         if arr[i] > arr[i + 1] {
