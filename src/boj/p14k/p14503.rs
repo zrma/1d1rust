@@ -7,9 +7,9 @@ fn solve14503(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (rows, cols) = read_values_as!(read_line(reader), usize, usize);
     let (start_row, start_col, start_dir) = read_values_as!(read_line(reader), usize, usize, usize);
 
-    let mut map = read_map(reader, rows, cols);
+    let map = read_map(reader, rows, cols);
 
-    let mut cleaner = Cleaner::new(start_col, start_row, start_dir, &mut map);
+    let mut cleaner = Cleaner::new(start_col, start_row, start_dir, map);
     cleaner.clean();
 
     write!(writer, "{}", cleaner.count).expect("Failed to write");
@@ -66,16 +66,16 @@ impl Direction {
     }
 }
 
-struct Cleaner<'a> {
+struct Cleaner {
     x: usize,
     y: usize,
     direction: Direction,
-    map: &'a mut Vec<Vec<usize>>,
+    map: Vec<Vec<usize>>,
     count: usize,
 }
 
-impl<'a> Cleaner<'a> {
-    fn new(x: usize, y: usize, direction_index: usize, map: &'a mut Vec<Vec<usize>>) -> Self {
+impl Cleaner {
+    fn new(x: usize, y: usize, direction_index: usize, map: Vec<Vec<usize>>) -> Self {
         let direction = Direction::from_index(direction_index);
 
         Self {

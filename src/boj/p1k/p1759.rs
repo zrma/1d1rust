@@ -13,7 +13,7 @@ fn solve1759(reader: &mut impl BufRead, writer: &mut impl Write) {
     input.sort();
 
     let mut params = PasswordParams {
-        input: &input,
+        input,
         start_index: 0,
         curr_len: 0,
         max_len: l,
@@ -28,8 +28,8 @@ fn solve1759(reader: &mut impl BufRead, writer: &mut impl Write) {
     write!(writer, "{}", params.ans.join("\n")).unwrap();
 }
 
-struct PasswordParams<'a> {
-    input: &'a [char],
+struct PasswordParams {
+    input: Vec<char>,
     start_index: usize,
     curr_len: usize,
     max_len: usize,
