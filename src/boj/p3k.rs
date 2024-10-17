@@ -18,5 +18,6 @@ mod p3512;
 mod p3533;
 mod p3554;
 mod p3568;
+mod p3578;
 mod p3613;
 mod p3765;
