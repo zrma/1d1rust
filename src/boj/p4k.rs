@@ -18,3 +18,4 @@ mod p4880;
 mod p4889;
 mod p4892;
 mod p4963;
+mod p7523;
