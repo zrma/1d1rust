@@ -12,7 +12,7 @@ fn solve13458(reader: &mut impl BufRead, writer: &mut impl Write) {
         acc + 1 + if x > b { (x - b + c - 1) / c } else { 0 }
     });
 
-    write!(writer, "{}", total).expect("write should work");
+    write!(writer, "{}", total).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/13458

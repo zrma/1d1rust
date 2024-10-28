@@ -24,7 +24,7 @@ fn solve25965(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         });
 
-        writeln!(writer, "{}", total_donation).expect("write should work");
+        writeln!(writer, "{}", total_donation).expect("writeln! should work");
     }
 }
 

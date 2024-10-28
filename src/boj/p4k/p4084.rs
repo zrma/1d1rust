@@ -18,7 +18,7 @@ fn solve4084(reader: &mut impl BufRead, writer: &mut impl Write) {
             count += 1;
         }
 
-        writeln!(writer, "{}", count).expect("write should work");
+        writeln!(writer, "{}", count).expect("writeln! should work");
     }
 }
 

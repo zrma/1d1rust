@@ -18,7 +18,7 @@ fn solve26040(reader: &mut impl BufRead, writer: &mut impl Write) {
         })
         .collect();
 
-    write!(writer, "{}", ans).expect("write should work");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/26040
