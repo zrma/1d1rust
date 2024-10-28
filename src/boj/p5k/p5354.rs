@@ -8,18 +8,18 @@ fn solve5354(reader: &mut impl BufRead, writer: &mut impl Write) {
         let n: usize = read_value(read_line(reader));
 
         if n == 1 {
-            writeln!(writer, "#").expect("write should work");
+            writeln!(writer, "#").expect("writeln! should work");
         } else {
-            writeln!(writer, "{}", "#".repeat(n)).expect("write should work");
+            writeln!(writer, "{}", "#".repeat(n)).expect("writeln! should work");
 
             for _ in 1..n - 1 {
-                writeln!(writer, "#{}#", "J".repeat(n - 2)).expect("write should work");
+                writeln!(writer, "#{}#", "J".repeat(n - 2)).expect("writeln! should work");
             }
-            writeln!(writer, "{}", "#".repeat(n)).expect("write should work");
+            writeln!(writer, "{}", "#".repeat(n)).expect("writeln! should work");
         }
 
         if case < num_cases - 1 {
-            writeln!(writer).expect("write should work");
+            writeln!(writer).expect("writeln! should work");
         }
     }
 }

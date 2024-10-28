@@ -9,7 +9,7 @@ fn solve25904(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for (i, &limit) in limits.iter().cycle().enumerate() {
         if x > limit {
-            write!(writer, "{}", i % n + 1).expect("write should work");
+            write!(writer, "{}", i % n + 1).expect("write! should work");
             return;
         }
         x += 1;
@@ -30,7 +30,7 @@ fn solve25904_cycle(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     });
 
-    write!(writer, "{}", res.expect("should have a result").0 % n + 1).expect("write should work");
+    write!(writer, "{}", res.expect("should have a result").0 % n + 1).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/25904
