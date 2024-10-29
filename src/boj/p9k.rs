@@ -20,6 +20,7 @@ mod p9536;
 mod p9550;
 mod p9610;
 mod p9655;
+mod p9656;
 mod p9723;
 mod p9772;
 mod p9946;
