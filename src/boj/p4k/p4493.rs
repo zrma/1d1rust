@@ -7,12 +7,12 @@ use std::io::{BufRead, Write};
 fn solve4493(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
 
-    let result = (0..num_cases)
+    let ans = (0..num_cases)
         .map(|_| play_game(reader))
         .collect::<Vec<_>>()
         .join("\n");
 
-    write!(writer, "{}", result).unwrap();
+    write!(writer, "{}", ans).unwrap();
 }
 
 fn play_game(reader: &mut impl BufRead) -> String {

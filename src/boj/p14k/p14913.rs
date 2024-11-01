@@ -5,14 +5,14 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve14913(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (first_term, common_diff, target) = read_values_as!(read_line(reader), i64, i64, i64);
-    let result = match (target - first_term).checked_rem(common_diff) {
+    let ans = match (target - first_term).checked_rem(common_diff) {
         Some(0) if (target - first_term) / common_diff >= 0 => {
             ((target - first_term) / common_diff + 1).to_string()
         }
         _ => "X".to_string(),
     };
 
-    write!(writer, "{}", result).expect("Failed to write");
+    write!(writer, "{}", ans).expect("Failed to write");
 }
 
 // https://www.acmicpc.net/problem/14913

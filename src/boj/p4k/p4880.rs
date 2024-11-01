@@ -10,7 +10,7 @@ fn solve4880(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let result = if a2 - a1 == a3 - a2 {
+        let ans = if a2 - a1 == a3 - a2 {
             format!("AP {}", a3 + (a2 - a1)) // 등차수열
         } else if a1 != 0 && a2 % a1 == 0 && a3 % a2 == 0 {
             format!("GP {}", a3 * (a2 / a1)) // 등비수열
@@ -18,7 +18,7 @@ fn solve4880(reader: &mut impl BufRead, writer: &mut impl Write) {
             panic!("Invalid sequence: {} {} {}", a1, a2, a3); // 잘못된 입력 시 패닉 발생
         };
 
-        writeln!(writer, "{}", result).expect("Failed to write result");
+        writeln!(writer, "{}", ans).expect("Failed to write result");
     }
 }
 
