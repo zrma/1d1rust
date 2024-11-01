@@ -5,13 +5,13 @@ use std::io::{BufRead, Write};
 fn solve3578(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: usize = read_value(read_line(reader));
 
-    let result = match n {
+    let ans = match n {
         0 => "1".to_string(),
         1 => "0".to_string(),
         _ => format!("{}{}", if n % 2 == 0 { "" } else { "4" }, "8".repeat(n / 2)),
     };
 
-    write!(writer, "{}", result).expect("write! should work");
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/3578

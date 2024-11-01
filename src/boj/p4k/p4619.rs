@@ -20,7 +20,7 @@ fn solve4619(reader: &mut impl BufRead, writer: &mut impl Write) {
             .to_i32()
             .expect("a should be i32");
 
-        let result = (-1..=1)
+        let ans = (-1..=1)
             .map(|offset| estimated_a + offset)
             .filter(|&a| a >= 1)
             .min_by(|&a1, &a2| {
@@ -42,7 +42,7 @@ fn solve4619(reader: &mut impl BufRead, writer: &mut impl Write) {
             })
             .expect("at least one value should be found");
 
-        writeln!(writer, "{}", result).expect("writeln! should work");
+        writeln!(writer, "{}", ans).expect("writeln! should work");
     }
 }
 

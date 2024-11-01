@@ -9,7 +9,7 @@ fn solve5692(reader: &mut impl BufRead, writer: &mut impl Write) {
         })
         .collect();
 
-    let results: Vec<String> = reader
+    let answers: Vec<String> = reader
         .lines()
         .map_while(Result::ok)
         .filter_map(|line| {
@@ -30,7 +30,7 @@ fn solve5692(reader: &mut impl BufRead, writer: &mut impl Write) {
         })
         .collect();
 
-    write!(writer, "{}", results.join("\n")).expect("write! should work");
+    write!(writer, "{}", answers.join("\n")).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/5692

@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve2765(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut trip = 0;
-    let mut results = Vec::new();
+    let mut answers = Vec::new();
 
     loop {
         trip += 1;
@@ -18,10 +18,10 @@ fn solve2765(reader: &mut impl BufRead, writer: &mut impl Write) {
         let distance = calculate_distance(diameter_inch, revolutions);
         let speed = calculate_speed(distance, time_sec);
 
-        results.push(format!("Trip #{}: {:.2} {:.2}", trip, distance, speed));
+        answers.push(format!("Trip #{}: {:.2} {:.2}", trip, distance, speed));
     }
 
-    write!(writer, "{}", results.join("\n")).unwrap();
+    write!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 fn calculate_distance(diameter_inch: f64, revolutions: f64) -> f64 {
