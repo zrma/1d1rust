@@ -6,4 +6,5 @@ mod p27433;
 mod p27736;
 mod p27889;
 mod p27930;
+mod p27960;
 mod p27964;
