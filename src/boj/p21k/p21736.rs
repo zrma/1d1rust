@@ -23,7 +23,7 @@ fn solve21736(reader: &mut impl BufRead, writer: &mut impl Write) {
                 'O' => row[x] = Block::Empty,
                 'X' => row[x] = Block::Wall,
                 'P' => row[x] = Block::Person,
-                _ => unreachable!(),
+                _ => unreachable!("invalid block"),
             }
         }
     }

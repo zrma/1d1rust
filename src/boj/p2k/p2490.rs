@@ -13,7 +13,7 @@ fn solve2490(reader: &mut impl BufRead, writer: &mut impl Write) {
             2 => "B",
             3 => "A",
             4 => "E",
-            _ => unreachable!(),
+            _ => unreachable!("invalid input"),
         });
     }
 

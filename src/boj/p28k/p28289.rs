@@ -14,7 +14,7 @@ fn solve28289(reader: &mut impl BufRead, writer: &mut impl Write) {
             (_, 1 | 2) => 0,
             (_, 3) => 1,
             (_, 4) => 2,
-            _ => continue,
+            _ => unreachable!("invalid class"),
         };
         ans[index] += 1;
     }

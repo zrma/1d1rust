@@ -30,7 +30,7 @@ fn solve1672(reader: &mut impl BufRead, writer: &mut impl Write) {
             ('T', 'G') => 'A',
             ('T', 'C') => 'G',
             ('T', 'T') => 'T',
-            _ => unreachable!(),
+            _ => unreachable!("invalid DNA"),
         };
     }
     write!(writer, "{}", ans).expect("write! should work");

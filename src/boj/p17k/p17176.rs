@@ -15,7 +15,7 @@ fn solve17176(reader: &mut impl BufRead, writer: &mut impl Write) {
             ' ' => 0,
             'A'..='Z' => (char as u8 - b'A' + 1) as usize,
             'a'..='z' => (char as u8 - b'a' + 27) as usize,
-            _ => unreachable!(),
+            _ => unreachable!("invalid char"),
         };
         char_counts[index] += 1;
     }
