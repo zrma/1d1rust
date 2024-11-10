@@ -14,7 +14,7 @@ fn solve1864(reader: &mut impl BufRead, writer: &mut impl Write) {
         '&' => 6,
         '%' => 7,
         '/' => -1,
-        _ => unreachable!(),
+        _ => unreachable!("invalid char"),
     };
 
     let mut answers = vec![];

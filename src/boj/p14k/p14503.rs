@@ -31,7 +31,7 @@ impl Direction {
             1 => East,
             2 => South,
             3 => West,
-            _ => unreachable!(),
+            _ => unreachable!("invalid index"),
         }
     }
 

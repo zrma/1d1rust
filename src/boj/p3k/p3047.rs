@@ -16,7 +16,7 @@ fn solve3047(reader: &mut impl BufRead, writer: &mut impl Write) {
             'A' => arr[0],
             'B' => arr[1],
             'C' => arr[2],
-            _ => unreachable!(),
+            _ => unreachable!("invalid sequence"),
         })
         .map(|v| v.to_string())
         .collect::<Vec<_>>()

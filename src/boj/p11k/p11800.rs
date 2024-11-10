@@ -39,7 +39,7 @@ fn get_double_name(value: u8) -> &'static str {
         4 => "Dorgy",
         5 => "Dabash",
         6 => "Dosh",
-        _ => unreachable!(),
+        _ => unreachable!("invalid value"),
     }
 }
 
@@ -51,7 +51,7 @@ fn get_single_name(value: u8) -> &'static str {
         4 => "Ghar",
         5 => "Bang",
         6 => "Sheesh",
-        _ => unreachable!(),
+        _ => unreachable!("invalid value"),
     }
 }
 

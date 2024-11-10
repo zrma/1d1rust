@@ -27,7 +27,7 @@ fn calculate_prize(die1: u32, die2: u32, die3: u32) -> u32 {
         Some((&num, &3)) => 10000 + num * 1000,
         Some((&num, &2)) => 1000 + num * 100,
         Some((_, &1)) => *counts.keys().max().unwrap() * 100,
-        _ => unreachable!(),
+        _ => unreachable!("invalid dice"),
     }
 }
 

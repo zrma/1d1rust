@@ -23,7 +23,7 @@ fn calculate_remaining_hairs(mut hairs: usize, actions: &str) -> usize {
             'b' => {
                 hairs = hairs.saturating_sub(1);
             }
-            _ => unreachable!(),
+            _ => unreachable!("invalid action"),
         }
     }
     hairs
