@@ -17,6 +17,7 @@ mod p5612;
 mod p5613;
 mod p5637;
 mod p5656;
+mod p5691;
 mod p5692;
 mod p5704;
 mod p5724;
