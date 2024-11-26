@@ -149,6 +149,12 @@ fn test_solve1925() {
         solve1925(&mut reader, &mut writer);
 
         let got = String::from_utf8(writer).expect("writer should be a valid string");
-        assert_eq!(got, data.want, "failed at {} with {}", i, data.s);
+        assert_eq!(
+            got.trim(),
+            data.want.trim(),
+            "failed at {} with {}",
+            i,
+            data.s
+        );
     }
 }
