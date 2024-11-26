@@ -23,9 +23,9 @@ fn solve3023(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for row in board {
         for ch in row {
-            write!(writer, "{}", ch).expect("Failed to write");
+            write!(writer, "{}", ch).expect("write! should work");
         }
-        writeln!(writer).expect("Failed to write");
+        writeln!(writer).expect("writeln! should work");
     }
 }
 

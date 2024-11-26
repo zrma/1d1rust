@@ -19,7 +19,7 @@ fn solve3554(reader: &mut impl BufRead, writer: &mut impl Write) {
                     .for_each(|v| *v = v.wrapping_mul(*v) % 2010),
                 _ => {
                     let sum: usize = slice.iter().sum();
-                    writeln!(writer, "{}", sum).expect("Failed to write");
+                    writeln!(writer, "{}", sum).expect("writeln! should work");
                 }
             }
         }

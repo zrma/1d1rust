@@ -15,7 +15,7 @@ fn solve2756(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(ans);
     }
 
-    writeln!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).expect("writeln! should work");
 }
 
 fn read_points(s: String) -> Vec<Point> {

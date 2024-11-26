@@ -7,7 +7,7 @@ fn solve10101(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = classify_triangle(&angles);
 
-    write!(writer, "{}", res).expect("Failed to write");
+    write!(writer, "{}", res).expect("write! should work");
 }
 
 fn classify_triangle(angles: &(u32, u32, u32)) -> String {

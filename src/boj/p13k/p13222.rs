@@ -10,7 +10,7 @@ fn solve13222(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..n {
         let curr = read_value::<u32>(read_line(reader)).pow(2);
         let ans = if curr <= area_limit { "YES" } else { "NO" };
-        writeln!(writer, "{}", ans).expect("Failed to write");
+        writeln!(writer, "{}", ans).expect("writeln! should work");
     }
 }
 

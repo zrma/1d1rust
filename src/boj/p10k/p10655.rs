@@ -26,7 +26,7 @@ fn solve10655(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let res = dist - max_skip_dist;
-    write!(writer, "{}", res).expect("Failed to write");
+    write!(writer, "{}", res).expect("write! should work");
 }
 
 type Point = (i32, i32);

@@ -8,7 +8,7 @@ fn solve10569(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..t {
         let (v, e) = read_values_as!(read_line(reader), i32, i32);
 
-        writeln!(writer, "{}", 2 - v + e).expect("Failed to write");
+        writeln!(writer, "{}", 2 - v + e).expect("writeln! should work");
     }
 }
 

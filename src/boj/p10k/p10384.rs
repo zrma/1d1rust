@@ -30,7 +30,7 @@ fn solve10384(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(format!("Case {}: {}", case_num, verdict));
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/10384

@@ -8,18 +8,18 @@ fn solve2547(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for _ in 0..num_cases {
         let n = read_next_non_empty_line(&mut lines)
-            .expect("Failed to read number of students")
+            .expect("next line should exist")
             .parse::<u64>()
-            .expect("Invalid input for number of students");
+            .expect("n should be parseable as u64");
 
         let n_u128 = n as u128;
         let mut total_mod_n = 0u128;
 
         for _ in 0..n {
             let candies = read_next_non_empty_line(&mut lines)
-                .expect("Not enough lines for candies")
+                .expect("next line should exist")
                 .parse::<u128>()
-                .expect("Invalid input for candies");
+                .expect("candies should be parseable as u128");
 
             total_mod_n = (total_mod_n + candies % n_u128) % n_u128;
         }

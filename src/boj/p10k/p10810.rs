@@ -22,7 +22,7 @@ fn solve10810(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<_>>()
         .join(" ");
 
-    write!(writer, "{}", output).expect("Failed to write");
+    write!(writer, "{}", output).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/10810

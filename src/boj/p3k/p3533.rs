@@ -19,9 +19,9 @@ fn solve3533(reader: &mut impl BufRead, writer: &mut impl Write) {
     //  9   1    0     0         0         0     1
     // 10   0    0     0         0         0     1
     if sum % 4 == 0 {
-        write!(writer, "0").expect("Failed to write output");
+        write!(writer, "0").expect("write! should work");
     } else {
-        write!(writer, "1").expect("Failed to write output");
+        write!(writer, "1").expect("write! should work");
     }
 }
 
@@ -67,9 +67,9 @@ fn solve3533_explicit_formula(reader: &mut impl BufRead, writer: &mut impl Write
     // (nC2 + nC3) % 2 == 1 이면 0, 아니면 1
 
     if (combination(n, 2) + combination(n, 3)) % 2 == 1 {
-        write!(writer, "0").expect("Failed to write output");
+        write!(writer, "0").expect("write! should work");
     } else {
-        write!(writer, "1").expect("Failed to write output");
+        write!(writer, "1").expect("write! should work");
     }
 }
 

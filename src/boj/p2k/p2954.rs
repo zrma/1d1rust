@@ -7,7 +7,7 @@ fn solve2954(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = replace_vowels(line);
 
-    write!(writer, "{}", res).expect("Failed to write");
+    write!(writer, "{}", res).expect("write! should work");
 }
 
 fn replace_vowels(input: String) -> String {

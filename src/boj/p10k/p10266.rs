@@ -9,7 +9,7 @@ fn solve10266(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = is_gear_match_possible(&mut gear_a, &mut gear_b);
 
-    write!(writer, "{}", if ans { "possible" } else { "impossible" }).expect("Failed to write");
+    write!(writer, "{}", if ans { "possible" } else { "impossible" }).expect("write! should work");
 }
 
 fn is_gear_match_possible(gear_a: &mut [bool], gear_b: &mut [bool]) -> bool {
