@@ -15,11 +15,11 @@ fn solve5691(reader: &mut impl BufRead, writer: &mut impl Write) {
 
 fn find_min_third_num(a: i32, b: i32) -> i32 {
     debug_assert!(
-        a >= 0 && a <= 1_000_000_000,
+        (0..=1_000_000_000).contains(&a),
         "a must be between 0 and 1,000,000,000"
     );
     debug_assert!(
-        b >= 0 && b <= 1_000_000_000,
+        (0..=1_000_000_000).contains(&b),
         "b must be between 0 and 1,000,000,000"
     );
     2 * a - b
@@ -60,6 +60,12 @@ fn test_solve5691() {
         solve5691(&mut reader, &mut writer);
 
         let got = String::from_utf8(writer).expect("writer should be a valid string");
-        assert_eq!(got.trim(), data.want, "failed at {} with {}", i, data.s);
+        assert_eq!(
+            got.trim(),
+            data.want.trim(),
+            "failed at {} with {}",
+            i,
+            data.s
+        );
     }
 }
