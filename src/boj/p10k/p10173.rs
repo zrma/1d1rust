@@ -17,7 +17,7 @@ fn solve10173(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         };
 
-        writeln!(writer, "{}", ans).expect("Failed to write");
+        writeln!(writer, "{}", ans).expect("writeln! should work");
     }
 }
 

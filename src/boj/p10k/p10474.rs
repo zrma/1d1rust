@@ -14,7 +14,7 @@ fn solve10474(reader: &mut impl BufRead, writer: &mut impl Write) {
         ans.push(format!("{} {} / {}", a / b, a % b, b));
     }
 
-    write!(writer, "{}", ans.join("\n")).expect("Failed to write");
+    write!(writer, "{}", ans.join("\n")).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/10474

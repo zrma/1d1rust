@@ -9,7 +9,9 @@ fn solve10865(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
     for _ in 0..m {
         line.clear();
-        reader.read_line(&mut line).expect("Failed to read");
+        reader
+            .read_line(&mut line)
+            .expect("line should be readable");
 
         let (a, b) = read_values_as!(&line, usize, usize);
         friends[a - 1] += 1;

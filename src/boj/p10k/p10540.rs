@@ -28,7 +28,7 @@ fn solve10540(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let max_area = (max_x - min_x).max(max_y - min_y).pow(2);
-    write!(writer, "{}", max_area).expect("Failed to write");
+    write!(writer, "{}", max_area).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/10540

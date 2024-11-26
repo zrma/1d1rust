@@ -20,7 +20,7 @@ fn solve2997(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     };
 
-    write!(writer, "{}", res).expect("Failed to write");
+    write!(writer, "{}", res).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/2997

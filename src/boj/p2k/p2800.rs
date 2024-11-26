@@ -39,7 +39,7 @@ fn solve2800(reader: &mut impl BufRead, writer: &mut impl Write) {
     ans.dedup();
 
     for a in ans {
-        writeln!(writer, "{}", a).expect("Failed to write");
+        writeln!(writer, "{}", a).expect("writeln! should work");
     }
 }
 

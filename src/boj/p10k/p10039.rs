@@ -8,7 +8,7 @@ fn solve10039(reader: &mut impl BufRead, writer: &mut impl Write) {
         let score = read_value(read_line(reader));
         sum += std::cmp::max(40, score);
     }
-    write!(writer, "{}", sum / 5).expect("Failed to write");
+    write!(writer, "{}", sum / 5).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/10039

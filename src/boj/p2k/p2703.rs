@@ -29,7 +29,7 @@ fn solve2703(reader: &mut impl BufRead, writer: &mut impl Write) {
         decrypted_sentences.push(decrypted_sentence);
     }
 
-    write!(writer, "{}", decrypted_sentences.join("\n")).expect("Failed to write");
+    write!(writer, "{}", decrypted_sentences.join("\n")).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/2703

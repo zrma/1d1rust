@@ -19,7 +19,7 @@ fn solve2863(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", max_idx).expect("Failed to write");
+    write!(writer, "{}", max_idx).expect("write! should work");
 }
 
 fn rotate(a: f64, b: f64, c: f64, d: f64) -> (f64, f64, f64, f64) {

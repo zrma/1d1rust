@@ -24,7 +24,7 @@ fn solve2975(reader: &mut impl BufRead, writer: &mut impl Write) {
         });
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    write!(writer, "{}", answers.join("\n")).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/2975

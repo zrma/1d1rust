@@ -11,7 +11,7 @@ fn solve2953(reader: &mut impl BufRead, writer: &mut impl Write) {
         .max_by_key(|&(_, score)| score)
         .expect("Should have at least one score");
 
-    write!(writer, "{} {}", ans.0, ans.1).expect("Failed to write");
+    write!(writer, "{} {}", ans.0, ans.1).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/2953
