@@ -16,13 +16,13 @@ fn solve10214(reader: &mut impl BufRead, writer: &mut impl Write) {
                 (yonsei_total + y, korea_total + k)
             });
 
-        let result = match yonsei_score.cmp(&korea_score) {
+        let ans = match yonsei_score.cmp(&korea_score) {
             Ordering::Greater => "Yonsei",
             Ordering::Less => "Korea",
             Ordering::Equal => "Draw",
         };
 
-        writeln!(writer, "{}", result).expect("Failed to write");
+        writeln!(writer, "{}", ans).expect("Failed to write");
     }
 }
 

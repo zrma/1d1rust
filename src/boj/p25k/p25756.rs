@@ -5,15 +5,13 @@ use std::io::{BufRead, Write};
 fn solve25756(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: usize = read_value(read_line(reader));
 
-    let result: String = read_n_values::<f64>(reader, n)
+    let ans: String = read_n_values::<f64>(reader, n)
         .into_iter()
         .scan(0.0, |v, x| {
             *v = 1.0 - (1.0 - *v) * (1.0 - x / 100.0);
             Some(format!("{:.6}\n", *v * 100.0))
         })
         .collect::<_>();
-
-    let ans = result.trim_end(); // 마지막 개행 제거
 
     write!(writer, "{}", ans).expect("write! should work");
 }
@@ -54,6 +52,7 @@ fn test_solve25756() {
         solve25756(&mut reader, &mut writer);
 
         let got: Vec<f64> = writer
+            .trim_ascii_end()
             .split(|&c| c == b'\n')
             .map(|s| {
                 String::from_utf8(s.to_vec())
@@ -64,7 +63,7 @@ fn test_solve25756() {
                     .parse()
                     .expect("Failed to parse value")
             })
-            .collect();
+            .collect::<Vec<_>>();
         let want: Vec<f64> = data.want.split('\n').map(|s| s.parse().unwrap()).collect();
 
         const EPSILON: f64 = 1e-6;

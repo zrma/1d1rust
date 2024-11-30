@@ -7,8 +7,8 @@ fn solve15633(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let sum = (1..=n).filter(|&i| n % i == 0).sum::<i32>();
 
-    let result = sum * 5 - 24;
-    writeln!(writer, "{}", result).expect("writeln! should work");
+    let ans = sum * 5 - 24;
+    writeln!(writer, "{}", ans).expect("writeln! should work");
 }
 
 // https://www.acmicpc.net/problem/15633
