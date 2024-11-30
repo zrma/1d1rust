@@ -11,13 +11,13 @@ fn solve5063(reader: &mut impl BufRead, writer: &mut impl Write) {
         let (r, e, c) = read_values_as!(read_line(reader), i32, i32, i32);
         let net_profit = e - c;
 
-        let result = match net_profit.cmp(&r) {
+        let ans = match net_profit.cmp(&r) {
             Ordering::Greater => "advertise",
             Ordering::Equal => "does not matter",
             Ordering::Less => "do not advertise",
         };
 
-        writeln!(writer, "{}", result).expect("Failed to write");
+        writeln!(writer, "{}", ans).expect("Failed to write");
     }
 }
 

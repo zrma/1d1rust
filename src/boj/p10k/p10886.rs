@@ -12,13 +12,13 @@ fn solve10886(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     });
 
-    let result = if cute > not_cute {
+    let ans = if cute > not_cute {
         "Junhee is cute!"
     } else {
         "Junhee is not cute!"
     };
 
-    writeln!(writer, "{}", result).expect("write should work");
+    writeln!(writer, "{}", ans).expect("write should work");
 }
 
 // https://www.acmicpc.net/problem/10886
