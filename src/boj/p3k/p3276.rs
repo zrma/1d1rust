@@ -7,7 +7,7 @@ fn solve3276(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let (r_ans, c_ans) = (1..)
         .take_while(|&r| r * r <= n)
-        .map(|r| (r, (n + r - 1) / r))
+        .map(|r| (r, n.div_ceil(r)))
         .min_by_key(|&(r, c)| r + c)
         .unwrap_or((1, n));
 

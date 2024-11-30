@@ -10,7 +10,7 @@ fn solve25193(reader: &mut impl BufRead, writer: &mut impl Write) {
     let k_count = n - c_count;
     let group_count = k_count + 1;
 
-    let max_c_per_group = (c_count + group_count - 1) / group_count;
+    let max_c_per_group = c_count.div_ceil(group_count);
     write!(writer, "{}", max_c_per_group).expect("Failed to write");
 }
 
