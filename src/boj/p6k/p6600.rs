@@ -71,23 +71,7 @@ fn test_solve6600() {
         let got = String::from_utf8(writer).expect("writer should be a valid string");
         let want = data.want.split_whitespace();
 
-        for (j, (got, want)) in got.split_whitespace().zip(want).enumerate() {
-            let got: f64 = got.parse().unwrap();
-            let want: f64 = want.parse().unwrap();
-
-            const EPSILON: f64 = 1e-6;
-
-            let abs_diff = (got - want).abs();
-            let rel_diff = abs_diff / want.abs().max(1e-9);
-
-            assert!(
-                abs_diff < EPSILON || rel_diff < EPSILON,
-                "case {}-{}: absolute error: {}, relative error: {}",
-                i,
-                j,
-                abs_diff,
-                rel_diff
-            );
-        }
+        use crate::utils::assert::match_multilines_as_f64;
+        match_multilines_as_f64(i, got.split_whitespace(), want);
     }
 }
