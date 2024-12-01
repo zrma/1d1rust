@@ -3,14 +3,14 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve5363(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n: usize = read_line(reader).parse().unwrap();
+    let n: usize = read_line(reader).parse().expect("should be a number");
 
     for _ in 0..n {
         let mut words = read_values(reader);
 
         rotate_first_two_words(&mut words);
 
-        writeln!(writer, "{}", words.join(" ")).unwrap();
+        writeln!(writer, "{}", words.join(" ")).expect("writeln! should work");
     }
 }
 

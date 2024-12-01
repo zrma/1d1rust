@@ -6,7 +6,7 @@ fn solve19946(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: u128 = read_value(read_line(reader));
     let extra_operations = n.trailing_zeros(); // 실수 이후 추가 연산 횟수
     let ans = 64 - extra_operations; // 실수가 처음 발생한 위치
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/19946

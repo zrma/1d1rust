@@ -98,7 +98,7 @@ fn test_solve1198() {
             "writer should be a valid string
 ",
         ));
-        let want: f64 = data.want.parse().unwrap();
+        let want: f64 = data.want.parse().expect("data.want should be a valid f64");
 
         const EPSILON: f64 = 1e-6;
 

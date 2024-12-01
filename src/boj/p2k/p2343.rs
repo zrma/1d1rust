@@ -7,10 +7,10 @@ fn solve2343(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (num_lessons, num_blue_rays) = read_values_as!(read_line(reader), usize, usize);
     let lesson_durations: Vec<usize> = {
         let mut s = String::new();
-        reader.read_line(&mut s).unwrap();
+        reader.read_line(&mut s).expect("line should be readable");
         s.split_whitespace()
             .take(num_lessons)
-            .map(|x| x.parse().unwrap())
+            .map(|x| x.parse().expect("should be a number"))
             .collect()
     };
     let mut lower_bound = *lesson_durations.iter().max().unwrap();

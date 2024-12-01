@@ -8,7 +8,7 @@ fn solve1182(reader: &mut impl BufRead, writer: &mut impl Write) {
     let nums: Vec<i64> = read_line(reader)
         .split_whitespace()
         .take(n)
-        .map(|v| v.parse().unwrap())
+        .map(|v| v.parse().expect("should be a number"))
         .collect();
 
     let mut ans = 0;

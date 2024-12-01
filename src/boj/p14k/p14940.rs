@@ -12,10 +12,12 @@ fn solve14940(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut start = (0, 0);
     for (i, row) in map.iter_mut().enumerate() {
         line.clear();
-        reader.read_line(&mut line).unwrap();
+        reader
+            .read_line(&mut line)
+            .expect("line should be readable");
 
         for (j, c) in line.split_whitespace().enumerate() {
-            let v = c.parse().unwrap();
+            let v = c.parse().expect("should be a number");
             match v {
                 2 => {
                     start = (i, j);

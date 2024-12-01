@@ -15,7 +15,7 @@ fn solve13411(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut entries = Vec::with_capacity(n);
     for i in 0..n {
         s.clear();
-        reader.read_line(&mut s).unwrap();
+        reader.read_line(&mut s).expect("line should be readable");
 
         let (x, y, v) = read_values_as!(&s, f64, f64, f64);
 

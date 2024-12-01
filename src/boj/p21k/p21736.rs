@@ -12,7 +12,9 @@ fn solve21736(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
     for (y, row) in map.iter_mut().enumerate() {
         line.clear();
-        reader.read_line(&mut line).unwrap();
+        reader
+            .read_line(&mut line)
+            .expect("line should be readable");
 
         for (x, c) in line.trim().chars().enumerate() {
             match c {
