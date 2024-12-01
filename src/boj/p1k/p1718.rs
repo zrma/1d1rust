@@ -3,8 +3,16 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1718(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let s = reader.lines().next().unwrap().unwrap();
-    let key = reader.lines().next().unwrap().unwrap();
+    let s = reader
+        .lines()
+        .next()
+        .expect("s should have a line")
+        .expect("line should be readable");
+    let key = reader
+        .lines()
+        .next()
+        .expect("key should have a line")
+        .expect("line should be readable");
     let keys_as_bytes = key.as_bytes();
 
     let mut answers = String::new();

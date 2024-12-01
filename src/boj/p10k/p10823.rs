@@ -3,11 +3,13 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve10823(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut s = String::new();
-    reader.read_to_string(&mut s).unwrap();
+    reader
+        .read_to_string(&mut s)
+        .expect("line should be readable");
     let ans: u64 = s
         .replace('\n', "")
         .split(',')
-        .map(|x| x.parse::<u64>().unwrap())
+        .map(|x| x.parse::<u64>().expect("should be a number"))
         .sum();
     write!(writer, "{}", ans).expect("write! should work");
 }

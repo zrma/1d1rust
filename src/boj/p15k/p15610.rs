@@ -44,7 +44,7 @@ fn test_solve15610() {
             "writer should be a valid string
 ",
         ));
-        let want: f64 = data.want.parse().unwrap();
+        let want: f64 = data.want.parse().expect("data.want should be a valid f64");
 
         assert!((got - want).abs() < 1e-6, "case {}", i);
     }

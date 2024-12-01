@@ -133,7 +133,11 @@ fn find_min_cycle(k: usize, n: usize, memo: &mut HashMap<usize, usize>) -> usize
         }
 
         if let Some(prev_step) = seen.get(&x) {
-            let min_cycle = sequence[*prev_step..].iter().min().unwrap().to_owned();
+            let min_cycle = sequence[*prev_step..]
+                .iter()
+                .min()
+                .expect("min should exist")
+                .to_owned();
             memo.insert(n, min_cycle);
             return min_cycle;
         }
@@ -151,13 +155,13 @@ fn find_min_cycles(k: usize, n: usize) -> Vec<usize> {
     (1..=n).into_par_iter().for_each(|i| {
         let mut memo = HashMap::new();
         let cycle_min = find_min_cycle(k, i, &mut memo);
-        let mut unique_minimums = unique_cycle_min_set.lock().unwrap();
+        let mut unique_minimums = unique_cycle_min_set.lock().expect("lock should work");
         unique_minimums.insert(cycle_min);
     });
 
     let mut sorted_unique_minimums: Vec<usize> = unique_cycle_min_set
         .lock()
-        .unwrap()
+        .expect("lock should work")
         .iter()
         .cloned()
         .collect();

@@ -10,7 +10,9 @@ fn solve11880(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut output = String::new();
     for _ in 0..t {
         input.clear();
-        reader.read_line(&mut input).unwrap();
+        reader
+            .read_line(&mut input)
+            .expect("line should be readable");
 
         let (a, b, c) = read_values_as!(&input, i64, i64, i64);
 

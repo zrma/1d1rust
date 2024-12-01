@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1141(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n: usize = read_line(reader).parse().unwrap();
+    let n: usize = read_line(reader).parse().expect("should be a number");
 
     let mut strings: Vec<String> = (0..n).map(|_| read_line(reader)).collect();
     strings.sort();

@@ -13,7 +13,10 @@ fn solve1027(reader: &mut impl BufRead, writer: &mut impl Write) {
         })
         .collect();
 
-    let ans = (0..n).map(|i| count_visible(i, &heights)).max().unwrap();
+    let ans = (0..n)
+        .map(|i| count_visible(i, &heights))
+        .max()
+        .expect("should have a max");
     write!(writer, "{}", ans).expect("write! should work");
 }
 

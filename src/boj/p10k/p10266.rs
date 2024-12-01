@@ -49,7 +49,9 @@ fn compute_prefix_function(pattern: &[bool]) -> Vec<usize> {
 fn read_n_values(reader: &mut impl BufRead, n: usize) -> Vec<bool> {
     let mut values = vec![false; GEAR_TEETH_COUNT];
     let mut line = String::new();
-    reader.read_line(&mut line).unwrap();
+    reader
+        .read_line(&mut line)
+        .expect("line should be readable");
     for v in line
         .split_whitespace()
         .take(n)

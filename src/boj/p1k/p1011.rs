@@ -15,7 +15,7 @@ fn solve1011(reader: &mut impl BufRead, writer: &mut impl Write) {
         })
         .collect::<Vec<_>>()
         .join("\n");
-    write!(writer, "{}", ans).unwrap();
+    write!(writer, "{}", ans).expect("write! should work");
 }
 
 fn calculate_steps(distance: i64) -> i64 {
