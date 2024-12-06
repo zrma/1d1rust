@@ -22,6 +22,7 @@ mod p11507;
 mod p11536;
 mod p11575;
 mod p11648;
+mod p11772;
 mod p11800;
 mod p11880;
 mod p11899;
