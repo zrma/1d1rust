@@ -15,14 +15,11 @@ fn solve25965(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         let (k_factor, d_factor, a_factor) = read_values_as!(read_line(reader), i64, i64, i64);
 
-        let total_donation: i64 = donations.iter().fold(0, |acc, (k, d, a)| {
-            let donation = k * k_factor - d * d_factor + a * a_factor;
-            if donation > 0 {
-                acc + donation
-            } else {
-                acc
-            }
-        });
+        let total_donation: i64 = donations
+            .iter()
+            .map(|(k, d, a)| k * k_factor - d * d_factor + a * a_factor)
+            .filter(|&donation| donation > 0)
+            .sum();
 
         writeln!(writer, "{}", total_donation).expect("writeln! should work");
     }

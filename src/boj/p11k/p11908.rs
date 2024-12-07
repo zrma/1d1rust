@@ -4,14 +4,12 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve11908(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cards: usize = read_value(read_line(reader));
-
     let cards: Vec<usize> = read_n_values(reader, num_cards);
 
-    let (max_card, total_sum) = cards.iter().fold((0, 0), |(max_card, sum), &card| {
-        (max_card.max(card), sum + card)
-    });
+    let max_card = cards.iter().max().copied().unwrap_or(0);
+    let total_sum: usize = cards.iter().sum();
 
-    write!(writer, "{}", total_sum - max_card).expect("write! should work");
+    writeln!(writer, "{}", total_sum - max_card).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/11908

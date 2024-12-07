@@ -26,12 +26,10 @@ fn solve14568(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 #[allow(dead_code)]
-fn solve14568_fold(reader: &mut impl BufRead, writer: &mut impl Write) {
+fn solve14568_iter(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: i32 = read_value(read_line(reader));
 
-    let ans = (2..=n - 2)
-        .step_by(2)
-        .fold(0, |acc, i| acc + (n - i - 2) / 2);
+    let ans: i32 = (2..=n - 2).step_by(2).map(|i| (n - i - 2) / 2).sum();
 
     write!(writer, "{}", ans).expect("write! should work");
 }
@@ -95,7 +93,7 @@ fn test_solve14568() {
         {
             let mut reader = data.s.as_bytes();
             let mut writer = vec![];
-            solve14568_fold(&mut reader, &mut writer);
+            solve14568_iter(&mut reader, &mut writer);
 
             let got = String::from_utf8(writer).expect("writer should be a valid string");
             assert_eq!(

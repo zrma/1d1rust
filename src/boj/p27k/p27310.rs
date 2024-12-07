@@ -5,11 +5,14 @@ use std::io::{BufRead, Write};
 fn solve27310(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
 
-    let ans = s.chars().fold(0, |acc, ch| match ch {
-        '_' => acc + 6,
-        ':' => acc + 2,
-        _ => acc + 1,
-    });
+    let ans: i32 = s
+        .chars()
+        .map(|ch| match ch {
+            '_' => 6,
+            ':' => 2,
+            _ => 1,
+        })
+        .sum();
 
     write!(writer, "{}", ans).unwrap();
 }

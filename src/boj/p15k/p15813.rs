@@ -7,7 +7,7 @@ fn solve15813(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
     let arr = &s.as_bytes()[0..n];
 
-    let ans = arr.iter().fold(0, |acc, &x| acc + (x - b'A' + 1));
+    let ans: u8 = arr.iter().map(|&x| x - b'A' + 1).sum();
 
     write!(writer, "{}", ans).expect("write! should work");
 }

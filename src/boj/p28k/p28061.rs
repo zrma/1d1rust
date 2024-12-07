@@ -11,11 +11,11 @@ fn solve28061(reader: &mut impl BufRead, writer: &mut impl Write) {
         .iter()
         .rev()
         .enumerate()
-        .fold(0, |max_lemon, (index, &lemon)| {
-            let adjusted_value =
-                lemon.saturating_sub(1 + u64::try_from(index).expect("index should be valid"));
-            max_lemon.max(adjusted_value)
-        });
+        .map(|(index, &lemon)| {
+            lemon.saturating_sub(1 + u64::try_from(index).expect("index should be valid"))
+        })
+        .max()
+        .unwrap_or(0);
 
     write!(writer, "{}", ans).expect("write! should work");
 }

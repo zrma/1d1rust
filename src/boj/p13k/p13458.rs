@@ -8,11 +8,13 @@ fn solve13458(reader: &mut impl BufRead, writer: &mut impl Write) {
     let a: Vec<i64> = read_n_values(reader, n);
     let (b, c): (i64, i64) = read_values_as!(read_line(reader), i64, i64);
 
-    let total: i64 = a.iter().fold(0, |acc, &x| {
-        acc + 1 + if x > b { (x - b + c - 1) / c } else { 0 }
-    });
+    let total = a.len() as i64
+        + a.iter()
+            .filter(|&&x| x > b)
+            .map(|&x| (x - b + c - 1) / c)
+            .sum::<i64>();
 
-    write!(writer, "{}", total).expect("write! should work");
+    writeln!(writer, "{}", total).expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/13458

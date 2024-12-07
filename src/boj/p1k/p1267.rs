@@ -7,11 +7,8 @@ fn solve1267(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_calls: usize = read_value(read_line(reader));
     let call_durations: Vec<usize> = read_n_values(reader, num_calls);
 
-    let (y_cost, m_cost) = call_durations.iter().fold((0, 0), |(y, m), &dur| {
-        let y_add = (dur / 30 + 1) * 10;
-        let m_add = (dur / 60 + 1) * 15;
-        (y + y_add, m + m_add)
-    });
+    let y_cost: usize = call_durations.iter().map(|&dur| (dur / 30 + 1) * 10).sum();
+    let m_cost: usize = call_durations.iter().map(|&dur| (dur / 60 + 1) * 15).sum();
 
     let ans = match y_cost.cmp(&m_cost) {
         Less => format!("Y {}", y_cost),

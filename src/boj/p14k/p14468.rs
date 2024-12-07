@@ -11,18 +11,16 @@ fn solve14468(reader: &mut impl BufRead, writer: &mut impl Write) {
         end: usize,
     }
 
-    let positions = sequence.chars().enumerate().fold(
-        [Position { start: 0, end: 0 }; 26],
-        |mut acc, (index, char)| {
-            let alphabet_index = char as usize - 'A' as usize;
-            if acc[alphabet_index].start == 0 {
-                acc[alphabet_index].start = index + 1;
-            } else {
-                acc[alphabet_index].end = index + 1;
-            }
-            acc
-        },
-    );
+    let mut positions = [Position { start: 0, end: 0 }; 26];
+    for (index, ch) in sequence.chars().enumerate() {
+        let alphabet_index = ch as usize - 'A' as usize;
+        let pos = &mut positions[alphabet_index];
+        if pos.start == 0 {
+            pos.start = index + 1;
+        } else {
+            pos.end = index + 1;
+        }
+    }
 
     // ┌─────┐
     // │  ┌──│──┐
@@ -33,9 +31,7 @@ fn solve14468(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut crossing_count = 0;
     for i in 0..26 {
         for j in 0..26 {
-            let a = &positions[i];
-            let b = &positions[j];
-            if i != j && cross(a, b) {
+            if i != j && cross(&positions[i], &positions[j]) {
                 crossing_count += 1;
             }
         }

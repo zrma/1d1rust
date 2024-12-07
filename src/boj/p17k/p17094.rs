@@ -7,20 +7,18 @@ fn solve17094(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
     let s = read_line(reader);
 
-    let [x, y] = s.chars().take(n).fold([0, 0], |mut acc, c| {
-        if c == '2' {
-            acc[0] += 1;
-        } else if c == 'e' {
-            acc[1] += 1;
-        }
-        acc
+    let (x, y) = s.chars().take(n).fold((0, 0), |(x, y), c| match c {
+        '2' => (x + 1, y),
+        'e' => (x, y + 1),
+        _ => (x, y),
     });
 
     match x.cmp(&y) {
-        Less => write!(writer, "e").expect("Failed to write"),
-        Equal => write!(writer, "yee").expect("Failed to write"),
-        Greater => write!(writer, "2").expect("Failed to write"),
+        Less => write!(writer, "e"),
+        Equal => write!(writer, "yee"),
+        Greater => write!(writer, "2"),
     }
+    .expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/17094
