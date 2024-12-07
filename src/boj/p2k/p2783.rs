@@ -12,7 +12,8 @@ fn solve2783(reader: &mut impl BufRead, writer: &mut impl Write) {
             let (a, b) = read_values_as!(read_line(reader), f64, f64);
             a / b
         })
-        .fold(x / y, |min_price, price| min_price.min(price));
+        .reduce(|a, b| a.min(b))
+        .unwrap_or(x / y);
 
     let ans = min_price * 1000.0;
     write!(writer, "{:.2}", ans).unwrap();

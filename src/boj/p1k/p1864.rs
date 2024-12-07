@@ -24,10 +24,16 @@ fn solve1864(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let ans = s.chars().rev().enumerate().fold(0, |acc, (i, c)| {
-            let exponent: u32 = i.try_into().expect("i should be a valid u32");
-            acc + char_to_num(c) * 8_isize.pow(exponent)
-        });
+        let ans: isize = s
+            .chars()
+            .rev()
+            .enumerate()
+            .map(|(i, c)| {
+                let exponent: u32 = i.try_into().expect("i should be a valid u32");
+                char_to_num(c) * 8_isize.pow(exponent)
+            })
+            .sum();
+
         answers.push(ans.to_string());
     }
 

@@ -9,19 +9,15 @@ fn solve7600(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let ans = s
-            .as_bytes()
-            .iter()
-            .filter(|&x| x.is_ascii_alphabetic())
-            .map(|&x| x.to_ascii_lowercase() - b'a')
-            .fold([false; 26], |mut acc, x| {
-                acc[x as usize] = true;
-                acc
-            })
-            .iter()
-            .filter(|&x| *x)
-            .count();
+        let mut acc = [false; 26];
+        for &byte in s.as_bytes() {
+            if byte.is_ascii_alphabetic() {
+                let idx = (byte.to_ascii_lowercase() - b'a') as usize;
+                acc[idx] = true;
+            }
+        }
 
+        let ans = acc.iter().filter(|&&x| x).count();
         writeln!(writer, "{}", ans).expect("Failed to write");
     }
 }

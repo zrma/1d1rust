@@ -10,21 +10,19 @@ fn solve2703(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut decrypted_sentences = Vec::with_capacity(num_cases);
     for _ in 0..num_cases {
         let encrypted_sentence = read_line(reader);
-        let decryption_key = read_line(reader).chars().enumerate().fold(
-            [' '; SPACE_INDEX + 1],
-            |mut acc, (index, char)| {
-                acc[index] = char;
-                acc
-            },
-        );
+        let key_line = read_line(reader);
+        let mut decryption_key = [' '; SPACE_INDEX + 1];
+        for (index, ch) in key_line.chars().enumerate() {
+            decryption_key[index] = ch;
+        }
 
         let decrypted_sentence: String = encrypted_sentence
             .chars()
-            .map(|char| match char {
-                'A'..='Z' => decryption_key[char_to_index::<usize>(char)],
-                _ => char,
+            .map(|ch| match ch {
+                'A'..='Z' => decryption_key[char_to_index::<usize>(ch)],
+                _ => ch,
             })
-            .collect::<_>();
+            .collect();
 
         decrypted_sentences.push(decrypted_sentence);
     }

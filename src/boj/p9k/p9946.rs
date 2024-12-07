@@ -13,15 +13,19 @@ fn solve9946(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let chars1 = line1.chars().fold([0; 26], |mut acc, c| {
-            acc[c as usize - 'a' as usize] += 1;
-            acc
-        });
+        let mut chars1 = [0; 26];
+        for c in line1.chars() {
+            if c.is_ascii_alphabetic() {
+                chars1[c as usize - 'a' as usize] += 1;
+            }
+        }
 
-        let chars2 = line2.chars().fold([0; 26], |mut acc, c| {
-            acc[c as usize - 'a' as usize] += 1;
-            acc
-        });
+        let mut chars2 = [0; 26];
+        for c in line2.chars() {
+            if c.is_ascii_alphabetic() {
+                chars2[c as usize - 'a' as usize] += 1;
+            }
+        }
 
         let is_same = chars1.iter().zip(chars2.iter()).all(|(a, b)| a == b);
         if is_same {

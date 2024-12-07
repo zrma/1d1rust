@@ -15,7 +15,29 @@ fn solve18198(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     let winner = if score_a > score_b { "A" } else { "B" };
-    write!(writer, "{}", winner).expect("Failed to write");
+    writeln!(writer, "{}", winner).expect("writeln! should work");
+}
+
+#[allow(dead_code)]
+fn solve18198_iter(reader: &mut impl BufRead, writer: &mut impl Write) {
+    let s = read_line(reader);
+    let s = s.as_bytes();
+
+    let mut score_a = 0;
+    let mut score_b = 0;
+
+    for pair in s.windows(2) {
+        match pair {
+            b"A1" => score_a += 1,
+            b"A2" => score_a += 2,
+            b"B1" => score_b += 1,
+            b"B2" => score_b += 2,
+            _ => {}
+        }
+    }
+
+    let winner = if score_a > score_b { "A" } else { "B" };
+    writeln!(writer, "{}", winner).expect("writeln! should work");
 }
 
 // https://www.acmicpc.net/problem/18198
@@ -48,17 +70,34 @@ fn test_solve18198() {
     .iter()
     .enumerate()
     {
-        let mut reader = &mut data.s.as_bytes();
-        let mut writer = vec![];
-        solve18198(&mut reader, &mut writer);
+        {
+            let mut reader = &mut data.s.as_bytes();
+            let mut writer = vec![];
+            solve18198(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
-        assert_eq!(
-            got.trim(),
-            data.want.trim(),
-            "failed at {} with {}",
-            i,
-            data.s
-        );
+            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            assert_eq!(
+                got.trim(),
+                data.want.trim(),
+                "failed at {} with {}",
+                i,
+                data.s
+            );
+        }
+
+        {
+            let mut reader = &mut data.s.as_bytes();
+            let mut writer = vec![];
+            solve18198_iter(&mut reader, &mut writer);
+
+            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            assert_eq!(
+                got.trim(),
+                data.want.trim(),
+                "failed at {} with {}",
+                i,
+                data.s
+            );
+        }
     }
 }

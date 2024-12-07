@@ -7,16 +7,21 @@ fn solve14726(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t = read_value(read_line(reader));
     for _ in 0..t {
         let s = read_line(reader);
-        let res = s.chars().enumerate().fold(0, |acc, (i, c)| {
-            let mut x: u32 = char_to_index(c);
-            if i % 2 == 0 {
-                x *= 2;
-                x = x / 10 + x % 10;
-            }
-            acc + x
-        });
 
-        if res % 10 == 0 {
+        let sum: u32 = s
+            .chars()
+            .enumerate()
+            .map(|(i, c)| {
+                let mut x: u32 = char_to_index(c);
+                if i % 2 == 0 {
+                    x *= 2;
+                    x = x / 10 + x % 10;
+                }
+                x
+            })
+            .sum();
+
+        if sum % 10 == 0 {
             writeln!(writer, "T").expect("Failed to write");
         } else {
             writeln!(writer, "F").expect("Failed to write");

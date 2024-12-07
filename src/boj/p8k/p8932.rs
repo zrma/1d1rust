@@ -64,14 +64,17 @@ fn solve8932(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut res = Vec::with_capacity(num_cases);
     for _ in 0..num_cases {
         let values: Vec<f64> = read_n_values(reader, 7);
-        let sum = values.iter().zip(scores.iter()).fold(0, |acc, (v, s)| {
-            let p = *v;
-            let score = match s.s {
-                S::Track => s.a * ((s.b - p).powf(s.c)),
-                S::Field => s.a * ((p - s.b).powf(s.c)),
-            };
-            acc + score as i32
-        });
+        let sum: i32 = values
+            .iter()
+            .zip(scores.iter())
+            .map(|(&p, s)| {
+                let score = match s.s {
+                    S::Track => s.a * (s.b - p).powf(s.c),
+                    S::Field => s.a * (p - s.b).powf(s.c),
+                };
+                score as i32
+            })
+            .sum();
 
         res.push(sum.to_string());
     }

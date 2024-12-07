@@ -5,23 +5,20 @@ use std::io::{BufRead, Write};
 fn solve28074(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
 
-    let mut arr = vec![true; 26];
-    [b'M', b'O', b'B', b'I', b'S'].iter().for_each(|&x| {
+    let mut arr = [true; 26];
+    for &x in [b'M', b'O', b'B', b'I', b'S'].iter() {
         if let Some(idx) = byte_to_index(x) {
             arr[idx] = false;
         }
-    });
+    }
 
-    let ans = s
-        .chars()
-        .fold(arr, |mut acc, x| {
-            if let Some(idx) = char_to_index(x) {
-                acc[idx] = true;
-            }
-            acc
-        })
-        .iter()
-        .all(|&x| x);
+    for ch in s.chars() {
+        if let Some(idx) = char_to_index(ch) {
+            arr[idx] = true;
+        }
+    }
+
+    let ans = arr.iter().all(|&x| x);
 
     if ans {
         write!(writer, "YES").unwrap();

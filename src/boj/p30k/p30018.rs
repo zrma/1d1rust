@@ -7,10 +7,7 @@ fn solve30018(reader: &mut impl BufRead, writer: &mut impl Write) {
     let a: Vec<u32> = read_n_values(reader, n);
     let b: Vec<u32> = read_n_values(reader, n);
 
-    let ans = a
-        .iter()
-        .zip(&b)
-        .fold(0, |acc, (a, b)| acc + b.saturating_sub(*a));
+    let ans: u32 = a.into_iter().zip(b).map(|(x, y)| y.saturating_sub(x)).sum();
 
     writeln!(writer, "{}", ans).expect("writeln! should work");
 }

@@ -10,11 +10,15 @@ fn solve10214(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     const GAME_COUNT: usize = 9;
     for _ in 0..num_cases {
-        let (yonsei_score, korea_score) =
-            (0..GAME_COUNT).fold((0, 0), |(yonsei_total, korea_total), _| {
+        let results: Vec<(i32, i32)> = (0..GAME_COUNT)
+            .map(|_| {
                 let (y, k) = read_values_as!(read_line(reader), i32, i32);
-                (yonsei_total + y, korea_total + k)
-            });
+                (y, k)
+            })
+            .collect();
+
+        let yonsei_score: i32 = results.iter().map(|&(y, _)| y).sum();
+        let korea_score: i32 = results.iter().map(|&(_, k)| k).sum();
 
         let ans = match yonsei_score.cmp(&korea_score) {
             Ordering::Greater => "Yonsei",
