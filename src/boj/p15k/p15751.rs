@@ -12,7 +12,7 @@ fn solve15751(reader: &mut impl BufRead, writer: &mut impl Write) {
         a.abs_diff(y) + b.abs_diff(x), // 워프: (a -> y = x -> b)
     ]
     .iter()
-    .map(|d| *d)
+    .copied()
     .min()
     .expect("ans should not be empty");
 
