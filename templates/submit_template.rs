@@ -41,31 +41,50 @@ fn solve(reader: &mut impl BufRead, writer: &mut impl Write) {
 #[macro_export]
 macro_rules! read_values_as {
     ($line:expr, $( $t:ty ),+ ) => {{
-        let line = $line;
-        let mut iter = line.split_whitespace();
+        let ln = $line;
+        let mut iter = ln.split_whitespace();
         (
             $(
-                iter.next().expect("token should exist").parse::<$t>().expect("token should be parseable"),
+                {
+                    let token = iter
+                        .next()
+                        .expect("expected a token, but found none");
+                    token.parse::<$t>()
+                        .unwrap_or_else(|_| panic!(
+                            "expected a value of type `{}` from '{}', but parsing failed",
+                            stringify!($t),
+                            token
+                        ))
+                },
             )+
         )
     }};
 }
 
 // Basic input functions - copy if needed
-pub fn read_value<T: std::str::FromStr>(line: String) -> T
+pub fn read_values<T: std::str::FromStr>(reader: &mut impl BufRead) -> Vec<T>
 where
-    <T as std::str::FromStr>::Err: std::fmt::Debug,
+    T::Err: std::fmt::Debug,
 {
-    line.trim()
-        .parse::<T>()
-        .unwrap_or_else(|_| panic!("line should be parseable as {}", type_name::<T>()))
+    let line = read_line(reader);
+    line.split_whitespace()
+        .map(|s| {
+            s.parse::<T>().unwrap_or_else(|_| {
+                panic!(
+                    "expected a value of type `{}` from '{}', but parsing failed",
+                    type_name::<T>(),
+                    s
+                )
+            })
+        })
+        .collect()
 }
 
 pub fn read_line(reader: &mut impl BufRead) -> String {
     let mut line = String::new();
     reader
         .read_line(&mut line)
-        .expect("line should be readable");
+        .expect("expected to read a line from input, but encountered an error");
     line.trim().to_string()
 }
 
