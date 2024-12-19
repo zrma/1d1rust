@@ -9,9 +9,9 @@ fn solve17484(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (n, m) = read_values_as!(read_line(reader), usize, usize);
 
     let mut grid = vec![vec![0; m]; n];
-    for i in 0..n {
-        grid[i] = read_n_values::<i32>(reader, m);
-    }
+    grid.iter_mut().for_each(|row| {
+        *row = read_n_values::<i32>(reader, m);
+    });
 
     // dp[i][j][k]: i행 j열에 도착했을 때, 마지막 이동 방향이 k인 경우의 최소 비용
     // k: 0 = 왼쪽 대각선(좌하), 1 = 아래, 2 = 오른쪽 대각선(우하)
