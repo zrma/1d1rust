@@ -17,6 +17,7 @@ mod p1284;
 mod p1296;
 mod p1297;
 mod p1380;
+mod p1406;
 mod p1411;
 mod p1414;
 mod p1475;
