@@ -2,6 +2,10 @@ use std::any::type_name;
 use std::io::{self, BufWriter};
 use std::io::{BufRead, Write};
 
+// NOTE - function order
+// 1. main
+// 2. solve####
+// 3. other boilerplate code
 fn main() {
     let stdin = io::stdin();
     let mut reader = stdin.lock();
