@@ -26,6 +26,7 @@ mod p1446;
 mod p1475;
 mod p1485;
 mod p1515;
+mod p1522;
 mod p1544;
 mod p1547;
 mod p1598;
