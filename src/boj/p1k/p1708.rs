@@ -13,7 +13,7 @@ fn solve1708(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let ans = convex_hull(&mut points);
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
@@ -242,7 +242,7 @@ fn test_solve1708() {
         let mut writer = vec![];
         solve1708(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

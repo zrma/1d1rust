@@ -22,7 +22,7 @@ fn solve14568(reader: &mut impl BufRead, writer: &mut impl Write) {
         ans += (n - i - 2) / 2; // 남은 사탕을 둘이 나눔
     }
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 #[allow(dead_code)]
@@ -31,7 +31,7 @@ fn solve14568_iter(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans: i32 = (2..=n - 2).step_by(2).map(|i| (n - i - 2) / 2).sum();
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/14568
@@ -80,7 +80,7 @@ fn test_solve14568() {
             let mut writer = vec![];
             solve14568(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),
@@ -95,7 +95,7 @@ fn test_solve14568() {
             let mut writer = vec![];
             solve14568_iter(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),

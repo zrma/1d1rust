@@ -9,7 +9,7 @@ fn solve10266(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = is_gear_match_possible(&mut gear_a, &mut gear_b);
 
-    write!(writer, "{}", if ans { "possible" } else { "impossible" }).expect("write! should work");
+    writeln!(writer, "{}", if ans { "possible" } else { "impossible" }).unwrap();
 }
 
 fn is_gear_match_possible(gear_a: &mut [bool], gear_b: &mut [bool]) -> bool {
@@ -49,9 +49,7 @@ fn compute_prefix_function(pattern: &[bool]) -> Vec<usize> {
 fn read_n_values(reader: &mut impl BufRead, n: usize) -> Vec<bool> {
     let mut values = vec![false; GEAR_TEETH_COUNT];
     let mut line = String::new();
-    reader
-        .read_line(&mut line)
-        .expect("line should be readable");
+    reader.read_line(&mut line).unwrap();
     for v in line
         .split_whitespace()
         .take(n)
@@ -109,7 +107,7 @@ fn test_solve10266() {
         let mut writer = vec![];
         solve10266(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

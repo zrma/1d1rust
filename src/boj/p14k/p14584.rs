@@ -16,7 +16,7 @@ fn solve14584(reader: &mut impl BufRead, writer: &mut impl Write) {
             .collect::<_>();
 
         if words.iter().any(|word| decoded.contains(word)) {
-            write!(writer, "{}", decoded).expect("Failed to write");
+            writeln!(writer, "{}", decoded).unwrap();
             break 'outer;
         }
     }
@@ -57,7 +57,7 @@ ll"
         let mut writer = vec![];
         solve14584(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

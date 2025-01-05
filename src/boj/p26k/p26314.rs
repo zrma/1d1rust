@@ -10,7 +10,7 @@ fn solve26314(reader: &mut impl BufRead, writer: &mut impl Write) {
         let vowels = line.chars().filter(|&ch| "aeiou".contains(ch)).count();
         let consonants = line.len() - vowels;
         let ans: u8 = (vowels > consonants).into();
-        writeln!(writer, "{}\n{}", line, ans).expect("write! failed");
+        writeln!(writer, "{}\n{}", line, ans).unwrap();
     }
 }
 
@@ -62,7 +62,7 @@ abe
         let mut writer = vec![];
         solve26314(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

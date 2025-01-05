@@ -12,16 +12,14 @@ fn solve13223(reader: &mut impl BufRead, writer: &mut impl Write) {
         24 * 3600 - start + end
     };
 
-    writeln!(writer, "{}", format_seconds_to_time(diff)).expect("write! should work");
+    writeln!(writer, "{}", format_seconds_to_time(diff)).unwrap();
 }
 
 fn parse_time_to_seconds(time: &str) -> u32 {
-    let mut parts = time
-        .split(':')
-        .map(|s| s.parse::<u32>().expect("time should be in HH:MM:SS format"));
-    let h = parts.next().expect("missing hours");
-    let m = parts.next().expect("missing minutes");
-    let s = parts.next().expect("missing seconds");
+    let mut parts = time.split(':').map(|s| s.parse::<u32>().unwrap());
+    let h = parts.next().unwrap();
+    let m = parts.next().unwrap();
+    let s = parts.next().unwrap();
 
     h * 3600 + m * 60 + s
 }
@@ -82,7 +80,7 @@ fn test_solve13223() {
         let mut writer = vec![];
         solve13223(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

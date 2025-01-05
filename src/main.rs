@@ -16,5 +16,5 @@ fn main() {
 
     boj::p1k::p1000::solve1000(&mut reader, &mut writer);
 
-    writer.flush().expect("writer should be flushed");
+    writer.flush().unwrap();
 }

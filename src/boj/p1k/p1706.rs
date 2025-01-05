@@ -27,7 +27,7 @@ fn solve1706(reader: &mut impl BufRead, writer: &mut impl Write) {
             .for_each(|word| update_answer(&mut answer, word));
     }
 
-    write!(writer, "{}", answer.unwrap_or_default()).expect("write! should work");
+    writeln!(writer, "{}", answer.unwrap_or_default()).unwrap();
 }
 
 fn update_answer(answer: &mut Option<String>, word: &str) {
@@ -75,7 +75,7 @@ e##it
         let mut writer = vec![];
         solve1706(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

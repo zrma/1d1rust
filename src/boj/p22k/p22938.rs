@@ -8,7 +8,7 @@ fn solve22938(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (bx, by, br) = read_values_as!(read_line(reader), i64, i64, i64);
 
     let res = is_intersect((ax, ay, ar), (bx, by, br));
-    write!(writer, "{}", res).unwrap();
+    writeln!(writer, "{}", res).unwrap();
 }
 
 type Circle = (i64, i64, i64);
@@ -66,7 +66,7 @@ fn test_solve22938() {
         let mut writer = vec![];
         solve22938(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

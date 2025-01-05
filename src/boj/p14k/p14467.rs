@@ -18,7 +18,7 @@ fn solve14467(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
         cow_positions.insert(cow_id, position);
     }
-    write!(writer, "{}", crossings).expect("Failed to write");
+    writeln!(writer, "{}", crossings).unwrap();
 }
 
 // https://www.acmicpc.net/problem/14467
@@ -61,7 +61,7 @@ fn test_solve14467() {
         let mut writer = vec![];
         solve14467(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

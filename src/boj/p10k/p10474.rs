@@ -14,7 +14,7 @@ fn solve10474(reader: &mut impl BufRead, writer: &mut impl Write) {
         ans.push(format!("{} {} / {}", a / b, a % b, b));
     }
 
-    write!(writer, "{}", ans.join("\n")).expect("write! should work");
+    writeln!(writer, "{}", ans.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/10474
@@ -56,7 +56,7 @@ fn test_solve10474() {
         let mut writer = vec![];
         solve10474(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

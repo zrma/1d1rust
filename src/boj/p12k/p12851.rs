@@ -46,8 +46,8 @@ fn solve12851(reader: &mut impl BufRead, writer: &mut impl Write) {
         current_level = next_level;
     }
 
-    writeln!(writer, "{}", min_time).expect("Failed to write");
-    write!(writer, "{}", num_ways).expect("Failed to write");
+    writeln!(writer, "{}", min_time).unwrap();
+    writeln!(writer, "{}", num_ways).unwrap();
 }
 
 // https://www.acmicpc.net/problem/12851
@@ -109,7 +109,7 @@ fn test_solve12851() {
         let mut writer = vec![];
         solve12851(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

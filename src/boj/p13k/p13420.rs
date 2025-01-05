@@ -13,11 +13,10 @@ fn solve13420(reader: &mut impl BufRead, writer: &mut impl Write) {
             "-" => a - b == c,
             "*" => a * b == c,
             "/" => a / b == c,
-            _ => panic!("unexpected operator"),
+            _ => unreachable!(),
         };
 
-        writeln!(writer, "{}", if ans { "correct" } else { "wrong answer" })
-            .expect("Failed to write");
+        writeln!(writer, "{}", if ans { "correct" } else { "wrong answer" }).unwrap();
     }
 }
 
@@ -50,7 +49,7 @@ correct
         let mut writer = vec![];
         solve13420(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(got, data.want, "failed at {}th case", i);
     }
 }

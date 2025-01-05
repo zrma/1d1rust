@@ -12,9 +12,7 @@ fn solve21736(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
     for (y, row) in map.iter_mut().enumerate() {
         line.clear();
-        reader
-            .read_line(&mut line)
-            .expect("line should be readable");
+        reader.read_line(&mut line).unwrap();
 
         for (x, c) in line.trim().chars().enumerate() {
             match c {
@@ -70,7 +68,7 @@ fn solve21736(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = count.to_string();
 
-    write!(writer, "{}", if count == 0 { "TT" } else { &res }).unwrap();
+    writeln!(writer, "{}", if count == 0 { "TT" } else { &res }).unwrap();
 }
 
 #[derive(Copy, Clone, PartialEq, Debug)]
@@ -114,7 +112,7 @@ XPP"
         let mut writer = vec![];
         solve21736(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

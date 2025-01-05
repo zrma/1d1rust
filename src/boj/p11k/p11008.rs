@@ -25,7 +25,7 @@ fn solve11008(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(total_keystrokes.to_string());
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/11008
@@ -61,7 +61,7 @@ baaaaaaaaaaa aaa"
         let mut writer = vec![];
         solve11008(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

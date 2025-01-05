@@ -8,7 +8,7 @@ fn solve21335(reader: &mut impl BufRead, writer: &mut impl Write) {
     let r = (area / std::f64::consts::PI).sqrt();
 
     let ans = 2.0 * std::f64::consts::PI * r;
-    write!(writer, "{:.6}", ans).unwrap();
+    writeln!(writer, "{:.6}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/21335
@@ -36,10 +36,8 @@ fn test_solve21335() {
         let mut writer = vec![];
         solve21335(&mut reader, &mut writer);
 
-        let got: f64 = crate::utils::io::read_value(
-            String::from_utf8(writer).expect("writer should be a valid string"),
-        );
-        let want: f64 = data.want.parse().expect("data.want should be a valid f64");
+        let got: f64 = crate::utils::io::read_value(String::from_utf8(writer).unwrap());
+        let want: f64 = data.want.parse().unwrap();
 
         const EPSILON: f64 = 1e-6;
 

@@ -6,7 +6,7 @@ fn solve11024(reader: &mut impl BufRead, writer: &mut impl Write) {
     let num_cases: usize = read_value(read_line(reader));
     (0..num_cases).for_each(|_| {
         let sum: i32 = read_values(reader).iter().sum();
-        writeln!(writer, "{}", sum).expect("write! should work");
+        writeln!(writer, "{}", sum).unwrap();
     });
 }
 
@@ -47,7 +47,7 @@ fn test_solve11024() {
         let mut writer = vec![];
         solve11024(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

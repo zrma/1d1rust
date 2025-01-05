@@ -20,7 +20,7 @@ fn solve15734(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let ans = left.min(right) * 2;
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/15734
@@ -49,7 +49,7 @@ fn test_solve15734() {
         let mut writer = vec![];
         solve15734(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

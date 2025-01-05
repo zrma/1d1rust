@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve20353(reader: &mut impl BufRead, writer: &mut impl Write) {
     let area: f64 = read_line(reader).parse().unwrap();
     let res = area.sqrt() * 4.0;
-    write!(writer, "{}", res).unwrap();
+    writeln!(writer, "{}", res).unwrap();
 }
 
 // https://www.acmicpc.net/problem/20353
@@ -41,11 +41,8 @@ fn test_solve20353() {
         let mut writer = vec![];
         solve20353(&mut reader, &mut writer);
 
-        let got: f64 = crate::utils::io::read_value(String::from_utf8(writer).expect(
-            "writer should be a valid string
-",
-        ));
-        let want: f64 = data.want.parse().expect("data.want should be a valid f64");
+        let got: f64 = crate::utils::io::read_value(String::from_utf8(writer).unwrap());
+        let want: f64 = data.want.parse().unwrap();
 
         assert!((got - want).abs() < 1e-6, "case {}", i);
     }

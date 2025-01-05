@@ -7,7 +7,7 @@ fn solve10995(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for i in 0..n {
         let padding = if i % 2 == 0 { "" } else { " " };
-        writeln!(writer, "{}{}", padding, "* ".repeat(n).trim_end()).expect("write! should work");
+        writeln!(writer, "{}{}", padding, "* ".repeat(n).trim_end()).unwrap();
     }
 }
 
@@ -58,7 +58,7 @@ fn test_solve10995() {
         let mut writer = vec![];
         solve10995(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

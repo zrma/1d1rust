@@ -7,7 +7,7 @@ fn solve1515(reader: &mut impl BufRead, writer: &mut impl Write) {
     let sequence = s.as_bytes();
 
     let ans = find_final_number_in_sequence(sequence);
-    write!(writer, "{}", ans).unwrap();
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn find_final_number_in_sequence(sequence: &[u8]) -> usize {
@@ -79,7 +79,7 @@ fn test_solve() {
         let mut writer = vec![];
         solve1515(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

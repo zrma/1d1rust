@@ -13,7 +13,7 @@ fn solve18786(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let max_area = find_max_area(&points);
-    write!(writer, "{}", max_area).expect("Failed to write");
+    writeln!(writer, "{}", max_area).unwrap();
 }
 
 fn find_max_area(points: &[Point]) -> i32 {
@@ -142,7 +142,7 @@ fn test_solve18786() {
         let mut writer = vec![];
         solve18786(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

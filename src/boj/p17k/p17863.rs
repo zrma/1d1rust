@@ -6,7 +6,7 @@ fn solve17863(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
 
     let res = if s.starts_with("555") { "YES" } else { "NO" };
-    write!(writer, "{}", res).expect("Failed to write");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 // https://www.acmicpc.net/problem/17863
@@ -42,7 +42,7 @@ fn test_solve17863() {
         let mut writer = vec![];
         solve17863(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

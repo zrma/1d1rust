@@ -7,7 +7,7 @@ fn solve23972(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (k, n) = read_values_as!(read_line(reader), u64, u64);
 
     if n == 1 {
-        write!(writer, "-1").expect("Failed to write");
+        writeln!(writer, "-1").unwrap();
         return;
     }
 
@@ -16,7 +16,7 @@ fn solve23972(reader: &mut impl BufRead, writer: &mut impl Write) {
     // ans >= k * n / (n - 1)
     let ans = (k * n + (n - 2)) / (n - 1); // 올림 효과를 위해 n-2를 더하여 정수 나눗셈 처리
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/23972
@@ -61,7 +61,7 @@ fn test_solve23972() {
         let mut writer = vec![];
         solve23972(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

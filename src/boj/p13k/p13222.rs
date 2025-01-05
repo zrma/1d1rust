@@ -10,7 +10,7 @@ fn solve13222(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..n {
         let curr = read_value::<u32>(read_line(reader)).pow(2);
         let ans = if curr <= area_limit { "YES" } else { "NO" };
-        writeln!(writer, "{}", ans).expect("writeln! should work");
+        writeln!(writer, "{}", ans).unwrap();
     }
 }
 
@@ -57,7 +57,7 @@ YES
         let mut writer = vec![];
         solve13222(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

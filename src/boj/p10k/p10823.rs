@@ -3,15 +3,13 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve10823(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut s = String::new();
-    reader
-        .read_to_string(&mut s)
-        .expect("line should be readable");
+    reader.read_to_string(&mut s).unwrap();
     let ans: u64 = s
         .replace('\n', "")
         .split(',')
-        .map(|x| x.parse::<u64>().expect("should be a number"))
+        .map(|x| x.parse::<u64>().unwrap())
         .sum();
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/10823
@@ -52,7 +50,7 @@ fn test_solve10823() {
         let mut writer = vec![];
         solve10823(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

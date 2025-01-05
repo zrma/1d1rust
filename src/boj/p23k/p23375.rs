@@ -13,10 +13,10 @@ fn solve23375(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (x3, y3) = (x + r, y - r);
     let (x4, y4) = (x - r, y - r);
 
-    writeln!(writer, "{} {}", x1, y1).expect("Failed to write");
-    writeln!(writer, "{} {}", x2, y2).expect("Failed to write");
-    writeln!(writer, "{} {}", x3, y3).expect("Failed to write");
-    writeln!(writer, "{} {}", x4, y4).expect("Failed to write");
+    writeln!(writer, "{} {}", x1, y1).unwrap();
+    writeln!(writer, "{} {}", x2, y2).unwrap();
+    writeln!(writer, "{} {}", x3, y3).unwrap();
+    writeln!(writer, "{} {}", x4, y4).unwrap();
 }
 
 // https://www.acmicpc.net/problem/23375
@@ -58,7 +58,7 @@ fn test_solve23375() {
         let mut writer = vec![];
         solve23375(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

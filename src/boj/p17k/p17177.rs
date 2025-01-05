@@ -33,12 +33,12 @@ fn solve17177(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for x in 1..a {
         if check(a, b, c, x) {
-            write!(writer, "{}", x).expect("Failed to write");
+            writeln!(writer, "{}", x).unwrap();
             return;
         }
     }
 
-    write!(writer, "-1").expect("Failed to write");
+    writeln!(writer, "-1").unwrap();
 }
 
 // https://www.acmicpc.net/problem/17177
@@ -74,7 +74,7 @@ fn test_solve17177() {
         let mut writer = vec![];
         solve17177(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

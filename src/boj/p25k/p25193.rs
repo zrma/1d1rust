@@ -11,7 +11,7 @@ fn solve25193(reader: &mut impl BufRead, writer: &mut impl Write) {
     let group_count = k_count + 1;
 
     let max_c_per_group = c_count.div_ceil(group_count);
-    write!(writer, "{}", max_c_per_group).expect("Failed to write");
+    writeln!(writer, "{}", max_c_per_group).unwrap();
 }
 
 // https://www.acmicpc.net/problem/25193
@@ -56,7 +56,7 @@ CKCKCKC"
         let mut writer = vec![];
         solve25193(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

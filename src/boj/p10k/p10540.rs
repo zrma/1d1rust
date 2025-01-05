@@ -28,7 +28,7 @@ fn solve10540(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let max_area = (max_x - min_x).max(max_y - min_y).pow(2);
-    write!(writer, "{}", max_area).expect("write! should work");
+    writeln!(writer, "{}", max_area).unwrap();
 }
 
 // https://www.acmicpc.net/problem/10540
@@ -65,7 +65,7 @@ fn test_solve10540() {
         let mut writer = vec![];
         solve10540(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

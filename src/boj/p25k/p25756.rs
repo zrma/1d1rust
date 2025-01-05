@@ -13,7 +13,7 @@ fn solve25756(reader: &mut impl BufRead, writer: &mut impl Write) {
         })
         .collect::<_>();
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/25756
@@ -54,15 +54,7 @@ fn test_solve25756() {
         let got: Vec<f64> = writer
             .trim_ascii_end()
             .split(|&c| c == b'\n')
-            .map(|s| {
-                String::from_utf8(s.to_vec())
-                    .expect(
-                        "writer should be a valid string
-",
-                    )
-                    .parse()
-                    .expect("Failed to parse value")
-            })
+            .map(|s| String::from_utf8(s.to_vec()).unwrap().parse().unwrap())
             .collect::<Vec<_>>();
         let want: Vec<f64> = data.want.split('\n').map(|s| s.parse().unwrap()).collect();
 

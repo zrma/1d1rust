@@ -21,7 +21,7 @@ fn solve17144(reader: &mut impl BufRead, writer: &mut impl Write) {
         .flatten()
         .filter(|&&cell| cell > 0)
         .sum();
-    write!(writer, "{}", ans).expect("Failed to write output");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 struct MoveParams {
@@ -287,7 +287,7 @@ fn test_solve17144() {
         let mut writer = vec![];
         solve17144(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

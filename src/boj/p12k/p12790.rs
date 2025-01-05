@@ -15,7 +15,7 @@ fn solve12790(reader: &mut impl BufRead, writer: &mut impl Write) {
             + (base_atk + equip_atk).max(0) * 2
             + (base_def + equip_def) * 2;
 
-        writeln!(writer, "{}", power).expect("write! should work");
+        writeln!(writer, "{}", power).unwrap();
     }
 }
 
@@ -59,7 +59,7 @@ fn test_solve12790() {
         let mut writer = vec![];
         solve12790(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

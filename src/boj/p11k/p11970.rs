@@ -14,7 +14,7 @@ fn solve11970(reader: &mut impl BufRead, writer: &mut impl Write) {
         // 겹치지 않는 경우
         (b - a) + (d - c)
     };
-    writeln!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/11970
@@ -70,7 +70,7 @@ fn test_solve11970() {
         let mut writer = vec![];
         solve11970(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -12,7 +12,7 @@ fn solve1916(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (start, end) = read_values_as!(read_line(reader), usize, usize);
 
     let ans = find_shortest_path(&graph, n, start, end);
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn read_graph(reader: &mut impl BufRead, n: usize, m: usize) -> Vec<Vec<Way>> {
@@ -120,7 +120,7 @@ fn test_solve1916() {
         let mut writer = vec![];
         solve1916(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -15,7 +15,7 @@ fn solve18198(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     let winner = if score_a > score_b { "A" } else { "B" };
-    writeln!(writer, "{}", winner).expect("writeln! should work");
+    writeln!(writer, "{}", winner).unwrap();
 }
 
 #[allow(dead_code)]
@@ -37,7 +37,7 @@ fn solve18198_iter(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let winner = if score_a > score_b { "A" } else { "B" };
-    writeln!(writer, "{}", winner).expect("writeln! should work");
+    writeln!(writer, "{}", winner).unwrap();
 }
 
 // https://www.acmicpc.net/problem/18198
@@ -75,7 +75,7 @@ fn test_solve18198() {
             let mut writer = vec![];
             solve18198(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),
@@ -90,7 +90,7 @@ fn test_solve18198() {
             let mut writer = vec![];
             solve18198_iter(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),

@@ -10,10 +10,10 @@ fn solve1062(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (n, k) = read_values_as!(read_line(reader), usize, usize);
 
     if k < 5 {
-        write!(writer, "0").expect("Failed to write");
+        writeln!(writer, "0").unwrap();
         return;
     } else if k == 26 {
-        write!(writer, "{}", n).expect("Failed to write");
+        writeln!(writer, "{}", n).unwrap();
         return;
     }
 
@@ -56,7 +56,7 @@ fn solve1062(reader: &mut impl BufRead, writer: &mut impl Write) {
         &mut max_readable,
     );
 
-    write!(writer, "{}", max_readable).expect("Failed to write");
+    writeln!(writer, "{}", max_readable).unwrap();
 }
 
 fn dfs(
@@ -149,7 +149,7 @@ antaktica"
             let mut writer = vec![];
             solve1062(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),

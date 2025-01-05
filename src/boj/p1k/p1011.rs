@@ -15,16 +15,11 @@ fn solve1011(reader: &mut impl BufRead, writer: &mut impl Write) {
         })
         .collect::<Vec<_>>()
         .join("\n");
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn calculate_steps(distance: i64) -> i64 {
-    let n = distance
-        .to_f64()
-        .expect("distance should be convertible to f64")
-        .sqrt()
-        .to_i64()
-        .expect("the square root of distance should be convertible to i64");
+    let n = distance.to_f64().unwrap().sqrt().to_i64().unwrap();
     let mut steps = 2 * n - 1;
     let remaining = distance - n * n;
 
@@ -106,7 +101,7 @@ fn test_solve1011() {
         let mut writer = vec![];
         solve1011(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

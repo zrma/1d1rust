@@ -11,7 +11,7 @@ fn solve1987(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut visited = vec![false; 26];
     let ans = dfs(&mut visited, &board, 0, 0, 1);
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn read_board(reader: &mut impl BufRead, r: usize, c: usize) -> Vec<Vec<char>> {
@@ -22,15 +22,13 @@ fn read_board(reader: &mut impl BufRead, r: usize, c: usize) -> Vec<Vec<char>> {
 
 fn dfs(visited: &mut Vec<bool>, board: &[Vec<char>], x: usize, y: usize, dist: i32) -> i32 {
     let c = board[x][y];
-    let c_u8 = u8::try_from(c).expect("Character is not a valid ASCII character");
+    let c_u8 = u8::try_from(c).unwrap();
 
     if !c_u8.is_ascii_uppercase() {
-        panic!("Character out of expected range 'A' to 'Z'");
+        unreachable!();
     }
 
-    let value = c_u8
-        .checked_sub(b'A')
-        .expect("Subtraction underflow: character less than 'A'");
+    let value = c_u8.checked_sub(b'A').unwrap();
 
     let i = usize::from(value);
 
@@ -103,7 +101,7 @@ HMCHH"
         let mut writer = vec![];
         solve1987(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -15,15 +15,15 @@ fn solve1205(reader: &mut impl BufRead, writer: &mut impl Write) {
     let scores: Vec<i32> = {
         let line = read_line(reader);
         line.split_whitespace()
-            .map(|x| x.parse::<i32>().expect("parse error"))
+            .map(|x| x.parse::<i32>().unwrap())
             .collect()
     };
 
-    let last_score = *scores.last().expect("scores should not be empty");
+    let last_score = *scores.last().unwrap();
 
     // 랭킹이 가득 찼고 새로운 점수가 마지막 점수보다 크지 않으면 진입 불가
     if n == p && score <= last_score {
-        writeln!(writer, "-1").expect("writeln! should work");
+        writeln!(writer, "-1").unwrap();
         return;
     }
 
@@ -31,7 +31,7 @@ fn solve1205(reader: &mut impl BufRead, writer: &mut impl Write) {
     let rank = (higher_count as i32) + 1;
 
     // 순위가 p보다 크면 리스트 진입 불가
-    writeln!(writer, "{}", if rank > p { -1 } else { rank }).expect("writeln! should work");
+    writeln!(writer, "{}", if rank > p { -1 } else { rank }).unwrap();
 }
 
 // https://www.acmicpc.net/problem/1205
@@ -73,7 +73,7 @@ fn test_solve1205() {
         let mut writer = vec![];
         solve1205(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("valid utf8 string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

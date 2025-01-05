@@ -26,7 +26,7 @@ fn solve10655(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let res = dist - max_skip_dist;
-    write!(writer, "{}", res).expect("write! should work");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 type Point = (i32, i32);
@@ -69,7 +69,7 @@ fn test_solve10655() {
         let mut writer = vec![];
         solve10655(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

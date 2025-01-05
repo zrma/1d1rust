@@ -18,7 +18,7 @@ fn solve17124(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(total_closest_sum.to_string());
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 fn find_closest(b_values: &[i64], target: i64) -> i64 {
@@ -89,7 +89,7 @@ fn test_solve17124() {
         let mut writer = vec![];
         solve17124(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

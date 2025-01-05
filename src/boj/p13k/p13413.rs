@@ -22,7 +22,7 @@ fn solve13413(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         let ans = if w > b { w } else { b };
-        writeln!(writer, "{}", ans).expect("Failed to write");
+        writeln!(writer, "{}", ans).unwrap();
     }
 }
 
@@ -60,7 +60,7 @@ BBWB"
         let mut writer = vec![];
         solve13413(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

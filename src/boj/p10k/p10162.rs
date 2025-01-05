@@ -7,9 +7,9 @@ fn solve10162(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (a, b, c) = (t / 300, (t % 300) / 60, (t % 60) / 10);
 
     if t % 10 != 0 {
-        write!(writer, "-1").expect("Failed to write");
+        writeln!(writer, "-1").unwrap();
     } else {
-        write!(writer, "{} {} {}", a, b, c).expect("Failed to write");
+        writeln!(writer, "{} {} {}", a, b, c).unwrap();
     }
 }
 
@@ -46,7 +46,7 @@ fn test_solve10162() {
         let mut writer = vec![];
         solve10162(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

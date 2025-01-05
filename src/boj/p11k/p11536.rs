@@ -21,11 +21,11 @@ fn solve11536(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     if is_increasing {
-        write!(writer, "INCREASING").expect("Failed to write");
+        writeln!(writer, "INCREASING").unwrap();
     } else if is_decreasing {
-        write!(writer, "DECREASING").expect("Failed to write");
+        writeln!(writer, "DECREASING").unwrap();
     } else {
-        write!(writer, "NEITHER").expect("Failed to write");
+        writeln!(writer, "NEITHER").unwrap();
     }
 }
 
@@ -82,7 +82,7 @@ RINGO"
         let mut writer = vec![];
         solve11536(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

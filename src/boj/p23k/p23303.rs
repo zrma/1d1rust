@@ -8,12 +8,12 @@ fn solve23303(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for i in 1..chars.len() {
         if chars[i] == '2' && (chars[i - 1] == 'D' || chars[i - 1] == 'd') {
-            write!(writer, "D2").unwrap();
+            writeln!(writer, "D2").unwrap();
             return;
         }
     }
 
-    write!(writer, "unrated").unwrap();
+    writeln!(writer, "unrated").unwrap();
 }
 
 // https://www.acmicpc.net/problem/23303
@@ -54,7 +54,7 @@ fn test_solve23303() {
         let mut writer = vec![];
         solve23303(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

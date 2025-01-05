@@ -13,7 +13,7 @@ fn solve23812(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     append_pattern(&mut ans, n, &even_line, &odd_line);
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/23812
@@ -62,7 +62,7 @@ fn test_solve23812() {
         let mut writer = vec![];
         solve23812(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

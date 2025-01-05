@@ -15,7 +15,7 @@ fn solve13411(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut entries = Vec::with_capacity(n);
     for i in 0..n {
         s.clear();
-        reader.read_line(&mut s).expect("line should be readable");
+        reader.read_line(&mut s).unwrap();
 
         let (x, y, v) = read_values_as!(&s, f64, f64, f64);
 
@@ -30,7 +30,7 @@ fn solve13411(reader: &mut impl BufRead, writer: &mut impl Write) {
         s.push_str(&format!("{}\n", entry.id));
     }
 
-    write!(writer, "{}", s).expect("Failed to write");
+    writeln!(writer, "{}", s).unwrap();
 }
 
 // https://www.acmicpc.net/problem/13411
@@ -96,7 +96,7 @@ fn test_solve13411() {
         let mut writer = vec![];
         solve13411(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

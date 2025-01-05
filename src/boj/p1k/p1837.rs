@@ -20,9 +20,9 @@ fn solve1837(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     if let Some(bad_prime) = (2..k).find(|&i| is_prime[i] && compute_mod(&p_str, i as u32) == 0) {
-        write!(writer, "BAD {}", bad_prime).unwrap();
+        writeln!(writer, "BAD {}", bad_prime).unwrap();
     } else {
-        write!(writer, "GOOD").unwrap();
+        writeln!(writer, "GOOD").unwrap();
     }
 }
 
@@ -65,7 +65,7 @@ fn test_solve1837() {
         let mut writer = vec![];
         solve1837(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

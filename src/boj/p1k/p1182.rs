@@ -8,13 +8,13 @@ fn solve1182(reader: &mut impl BufRead, writer: &mut impl Write) {
     let nums: Vec<i64> = read_line(reader)
         .split_whitespace()
         .take(n)
-        .map(|v| v.parse().expect("should be a number"))
+        .map(|v| v.parse().unwrap())
         .collect();
 
     let mut ans = 0;
     choose_nums(&nums, 0, 0, s, &mut ans, false);
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn choose_nums(nums: &[i64], sum: i64, i: usize, s: i64, count: &mut i64, is_non_empty: bool) {
@@ -58,7 +58,7 @@ fn test_solve1182() {
         let mut writer = vec![];
         solve1182(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

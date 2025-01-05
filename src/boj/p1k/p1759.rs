@@ -25,7 +25,7 @@ fn solve1759(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     choose_password(&mut params);
 
-    write!(writer, "{}", params.ans.join("\n")).unwrap();
+    writeln!(writer, "{}", params.ans.join("\n")).unwrap();
 }
 
 struct PasswordParams {
@@ -133,7 +133,7 @@ iyz"
         let mut writer = vec![];
         solve1759(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -14,7 +14,7 @@ fn solve27160(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let ans = counts.values().any(|&count| count == 5);
-    write!(writer, "{}", if ans { "YES" } else { "NO" }).unwrap();
+    writeln!(writer, "{}", if ans { "YES" } else { "NO" }).unwrap();
 }
 
 // https://www.acmicpc.net/problem/27160
@@ -72,7 +72,7 @@ BANANA 5"
         let mut writer = vec![];
         solve27160(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

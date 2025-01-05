@@ -15,7 +15,7 @@ fn solve13172(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     // 결과 출력
-    writeln!(writer, "{}", ans).expect("Failed to write answer");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 const MOD: u64 = 1_000_000_007;
@@ -89,7 +89,7 @@ fn test_solve13172() {
         let mut writer = vec![];
         solve13172(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("valid utf8 string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

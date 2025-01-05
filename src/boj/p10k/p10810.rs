@@ -22,7 +22,7 @@ fn solve10810(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<_>>()
         .join(" ");
 
-    write!(writer, "{}", output).expect("write! should work");
+    writeln!(writer, "{}", output).unwrap();
 }
 
 // https://www.acmicpc.net/problem/10810
@@ -49,7 +49,7 @@ fn test_solve10810() {
         let mut writer = vec![];
         solve10810(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

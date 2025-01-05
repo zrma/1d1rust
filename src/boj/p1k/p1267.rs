@@ -16,7 +16,7 @@ fn solve1267(reader: &mut impl BufRead, writer: &mut impl Write) {
         Equal => format!("Y M {}", y_cost),
     };
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/1267
@@ -61,7 +61,7 @@ fn test_solve1267() {
         let mut writer = vec![];
         solve1267(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

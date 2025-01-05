@@ -17,7 +17,7 @@ fn solve10817(reader: &mut impl BufRead, writer: &mut impl Write) {
         (_, _, _) => b,
     };
 
-    write!(writer, "{}", mid).expect("Failed to write");
+    writeln!(writer, "{}", mid).unwrap();
 }
 
 // https://www.acmicpc.net/problem/10817
@@ -53,7 +53,7 @@ fn test_solve10817() {
         let mut writer = vec![];
         solve10817(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

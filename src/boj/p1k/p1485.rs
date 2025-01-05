@@ -11,9 +11,9 @@ fn solve1485(reader: &mut impl BufRead, writer: &mut impl Write) {
             .collect::<Vec<_>>();
 
         if is_square(&points) {
-            writeln!(writer, "1").expect("writeln! should work");
+            writeln!(writer, "1").unwrap();
         } else {
-            writeln!(writer, "0").expect("writeln! should work");
+            writeln!(writer, "0").unwrap();
         }
     }
 }
@@ -81,7 +81,7 @@ fn test_solve1485() {
         let mut writer = vec![];
         solve1485(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

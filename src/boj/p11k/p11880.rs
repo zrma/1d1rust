@@ -10,9 +10,7 @@ fn solve11880(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut output = String::new();
     for _ in 0..t {
         input.clear();
-        reader
-            .read_line(&mut input)
-            .expect("line should be readable");
+        reader.read_line(&mut input).unwrap();
 
         let (a, b, c) = read_values_as!(&input, i64, i64, i64);
 
@@ -25,7 +23,7 @@ fn solve11880(reader: &mut impl BufRead, writer: &mut impl Write) {
         output.push_str(&format!("{}\n", ans));
     }
 
-    write!(writer, "{}", output).expect("Failed to write");
+    writeln!(writer, "{}", output).unwrap();
 }
 
 // https://www.acmicpc.net/problem/11880
@@ -63,7 +61,7 @@ fn test_solve11880() {
         let mut writer = vec![];
         solve11880(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

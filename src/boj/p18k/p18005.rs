@@ -23,7 +23,7 @@ fn solve18005(reader: &mut impl BufRead, writer: &mut impl Write) {
         0 => 2,
         _ => 1,
     };
-    writeln!(writer, "{}", ans).expect("writeln! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/18005
@@ -55,7 +55,7 @@ fn test_solve18005() {
         let mut writer = vec![];
         solve18005(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

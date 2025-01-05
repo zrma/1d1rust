@@ -23,7 +23,7 @@ fn solve20206(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     };
 
-    write!(writer, "{}", if ans { "Poor" } else { "Lucky" }).unwrap();
+    writeln!(writer, "{}", if ans { "Poor" } else { "Lucky" }).unwrap();
 }
 
 // https://www.acmicpc.net/problem/20206
@@ -91,7 +91,7 @@ fn test_solve20206() {
         let mut writer = vec![];
         solve20206(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

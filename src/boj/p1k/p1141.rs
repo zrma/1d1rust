@@ -3,13 +3,13 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1141(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n: usize = read_line(reader).parse().expect("should be a number");
+    let n: usize = read_line(reader).parse().unwrap();
 
     let mut strings: Vec<String> = (0..n).map(|_| read_line(reader)).collect();
     strings.sort();
 
     let ans = count_unique_prefixes(&strings);
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn count_unique_prefixes(words: &[String]) -> usize {
@@ -90,7 +90,7 @@ topcoding"
         let mut writer = vec![];
         solve1141(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

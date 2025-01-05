@@ -38,7 +38,7 @@ fn solve19583(reader: &mut impl BufRead, writer: &mut impl Write) {
         line.clear();
     }
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn str_to_time(s: &str) -> i32 {
@@ -104,7 +104,7 @@ fn test_solve19583() {
         let mut writer = vec![];
         solve19583(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -39,7 +39,7 @@ fn solve1131(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let ans: usize = (a..=b).map(|n| calc_min(k, n, &mut dp)).sum();
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn calc_s(k: usize, n: usize) -> usize {
@@ -100,7 +100,7 @@ fn test_solve1131() {
         let mut writer = vec![];
         solve1131(reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),
@@ -133,11 +133,7 @@ fn find_min_cycle(k: usize, n: usize, memo: &mut HashMap<usize, usize>) -> usize
         }
 
         if let Some(prev_step) = seen.get(&x) {
-            let min_cycle = sequence[*prev_step..]
-                .iter()
-                .min()
-                .expect("min should exist")
-                .to_owned();
+            let min_cycle = sequence[*prev_step..].iter().min().unwrap().to_owned();
             memo.insert(n, min_cycle);
             return min_cycle;
         }
@@ -155,13 +151,13 @@ fn find_min_cycles(k: usize, n: usize) -> Vec<usize> {
     (1..=n).into_par_iter().for_each(|i| {
         let mut memo = HashMap::new();
         let cycle_min = find_min_cycle(k, i, &mut memo);
-        let mut unique_minimums = unique_cycle_min_set.lock().expect("lock should work");
+        let mut unique_minimums = unique_cycle_min_set.lock().unwrap();
         unique_minimums.insert(cycle_min);
     });
 
     let mut sorted_unique_minimums: Vec<usize> = unique_cycle_min_set
         .lock()
-        .expect("lock should work")
+        .unwrap()
         .iter()
         .cloned()
         .collect();

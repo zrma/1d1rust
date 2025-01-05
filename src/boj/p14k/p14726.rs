@@ -22,9 +22,9 @@ fn solve14726(reader: &mut impl BufRead, writer: &mut impl Write) {
             .sum();
 
         if sum % 10 == 0 {
-            writeln!(writer, "T").expect("Failed to write");
+            writeln!(writer, "T").unwrap();
         } else {
-            writeln!(writer, "F").expect("Failed to write");
+            writeln!(writer, "F").unwrap();
         }
     }
 }
@@ -66,7 +66,7 @@ T
         let mut writer = vec![];
         solve14726(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

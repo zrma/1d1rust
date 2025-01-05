@@ -3,16 +3,8 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve1718(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let s = reader
-        .lines()
-        .next()
-        .expect("s should have a line")
-        .expect("line should be readable");
-    let key = reader
-        .lines()
-        .next()
-        .expect("key should have a line")
-        .expect("line should be readable");
+    let s = reader.lines().next().unwrap().unwrap();
+    let key = reader.lines().next().unwrap().unwrap();
     let keys_as_bytes = key.as_bytes();
 
     let mut answers = String::new();
@@ -31,10 +23,10 @@ fn solve1718(reader: &mut impl BufRead, writer: &mut impl Write) {
         } else {
             c_num - key_num
         };
-        answers.push(char::from_u32(ans + 96).expect("ans should be a valid char"));
+        answers.push(char::from_u32(ans + 96).unwrap());
     }
 
-    write!(writer, "{}", answers).expect("write! should work");
+    writeln!(writer, "{}", answers).unwrap();
 }
 
 // https://www.acmicpc.net/problem/1718
@@ -65,7 +57,7 @@ love"
         let mut writer = vec![];
         solve1718(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

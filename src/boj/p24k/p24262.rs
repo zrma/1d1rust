@@ -5,8 +5,8 @@ use std::io::{BufRead, Write};
 fn solve24262(reader: &mut impl BufRead, writer: &mut impl Write) {
     _ = read_line(reader);
 
-    writeln!(writer, "1").expect("Failed to write");
-    writeln!(writer, "0").expect("Failed to write");
+    writeln!(writer, "1").unwrap();
+    writeln!(writer, "0").unwrap();
 }
 
 // https://www.acmicpc.net/problem/24262
@@ -20,19 +20,27 @@ fn test_solve24262() {
     for (i, data) in [
         TestData {
             s: "1".to_string(),
-            want: "1\n0\n".to_string(),
+            want: "1
+0"
+            .to_string(),
         },
         TestData {
             s: "100000".to_string(),
-            want: "1\n0\n".to_string(),
+            want: "1
+0"
+            .to_string(),
         },
         TestData {
             s: "500000".to_string(),
-            want: "1\n0\n".to_string(),
+            want: "1
+0"
+            .to_string(),
         },
         TestData {
             s: "123".to_string(),
-            want: "1\n0\n".to_string(),
+            want: "1
+0"
+            .to_string(),
         },
     ]
     .iter()
@@ -42,7 +50,7 @@ fn test_solve24262() {
         let mut writer = vec![];
         solve24262(reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

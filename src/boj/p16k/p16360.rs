@@ -27,7 +27,7 @@ fn solve16360(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<_>>()
         .join("\n");
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn transform_word(word: &str, mapping: &[(&str, &str)]) -> String {
@@ -110,7 +110,7 @@ mimeus"
         let mut writer = vec![];
         solve16360(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

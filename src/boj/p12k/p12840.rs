@@ -11,7 +11,7 @@ fn solve12840(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..num_queries {
         let input = read_line(reader);
         if input == "3" {
-            writeln!(writer, "{}", to_timestamp(seconds)).expect("write! should work");
+            writeln!(writer, "{}", to_timestamp(seconds)).unwrap();
         } else {
             let (t, x) = read_values_as!(input, u32, u32);
             seconds = adjust_time(seconds, t, x);
@@ -108,7 +108,7 @@ fn test_solve12840() {
         let mut writer = vec![];
         solve12840(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

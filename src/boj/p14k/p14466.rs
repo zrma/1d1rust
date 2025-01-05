@@ -32,7 +32,7 @@ fn solve14466(reader: &mut impl BufRead, writer: &mut impl Write) {
             .count();
     }
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn dfs(
@@ -116,7 +116,7 @@ fn test_solve14466() {
         let mut writer = vec![];
         solve14466(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

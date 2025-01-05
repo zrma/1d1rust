@@ -13,7 +13,7 @@ fn solve10707(reader: &mut impl BufRead, writer: &mut impl Write) {
     let y_cost = if p <= c { b } else { b + (p - c) * d };
     let ans = x_cost.min(y_cost);
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/10707
@@ -51,7 +51,7 @@ fn test_solve10707() {
         let mut writer = vec![];
         solve10707(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

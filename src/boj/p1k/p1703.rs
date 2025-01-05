@@ -5,30 +5,22 @@ fn solve1703(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut answers = vec![];
     let mut input = String::new();
 
-    while reader.read_line(&mut input).expect("input should be read") != 0 {
+    while reader.read_line(&mut input).unwrap() != 0 {
         let trimmed_input = input.trim();
         if trimmed_input == "0" {
             break;
         }
 
         let mut tokens = trimmed_input.split_whitespace();
-        let number_of_pairs: usize = tokens
-            .next()
-            .expect("token should exist")
-            .parse()
-            .expect("number of pairs should be parseable");
+        let number_of_pairs: usize = tokens.next().unwrap().parse().unwrap();
 
         let calculation_result = tokens
             .take(number_of_pairs * 2)
             .collect::<Vec<_>>()
             .chunks(2)
             .map(|pair| {
-                let a: i32 = pair[0]
-                    .parse()
-                    .expect("first element should be parseable as i32");
-                let b: i32 = pair[1]
-                    .parse()
-                    .expect("second element should be parseable as i32");
+                let a: i32 = pair[0].parse().unwrap();
+                let b: i32 = pair[1].parse().unwrap();
                 (a, b)
             })
             .fold(1, |acc, (a, b)| acc * a - b);
@@ -37,7 +29,7 @@ fn solve1703(reader: &mut impl BufRead, writer: &mut impl Write) {
         input.clear();
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("write! should work");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/1703
@@ -81,7 +73,7 @@ fn test_solve1703() {
         let mut writer = vec![];
         solve1703(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

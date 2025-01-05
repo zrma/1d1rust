@@ -9,7 +9,7 @@ fn solve11908(reader: &mut impl BufRead, writer: &mut impl Write) {
     let max_card = cards.iter().max().copied().unwrap_or(0);
     let total_sum: usize = cards.iter().sum();
 
-    writeln!(writer, "{}", total_sum - max_card).expect("write! should work");
+    writeln!(writer, "{}", total_sum - max_card).unwrap();
 }
 
 // https://www.acmicpc.net/problem/11908
@@ -48,7 +48,7 @@ fn test_solve11908() {
         let mut writer = vec![];
         solve11908(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

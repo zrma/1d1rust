@@ -9,7 +9,7 @@ fn solve13322(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<_>>()
         .join("\n");
 
-    write!(writer, "{}", indices).expect("Failed to write");
+    writeln!(writer, "{}", indices).unwrap();
 }
 
 // https://www.acmicpc.net/problem/13322
@@ -46,7 +46,7 @@ fn test_solve13322() {
         let mut writer = vec![];
         solve13322(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

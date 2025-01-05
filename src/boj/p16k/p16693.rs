@@ -11,9 +11,9 @@ fn solve16693(reader: &mut impl BufRead, writer: &mut impl Write) {
     let ratio2 = std::f64::consts::PI * r1 * r1 / p2;
 
     if ratio1 > ratio2 {
-        write!(writer, "Slice of pizza").expect("Failed to write");
+        writeln!(writer, "Slice of pizza").unwrap();
     } else {
-        write!(writer, "Whole pizza").expect("Failed to write");
+        writeln!(writer, "Whole pizza").unwrap();
     }
 }
 
@@ -52,7 +52,7 @@ fn test_solve16693() {
         let mut writer = vec![];
         solve16693(reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

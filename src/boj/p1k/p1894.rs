@@ -19,7 +19,7 @@ fn solve1894(reader: &mut impl BufRead, writer: &mut impl Write) {
         line.clear();
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("write! should work");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 #[derive(Copy, Clone, PartialEq, PartialOrd)]
@@ -101,7 +101,7 @@ fn test_solve1894() {
         let mut writer = vec![];
         solve1894(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),
