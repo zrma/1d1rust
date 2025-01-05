@@ -1,0 +1,86 @@
+# Code Verification Steps
+Before committing changes or submitting code, always run these commands in order:
+
+1. `cargo fmt` - Format the code according to Rust style guidelines
+2. `cargo clippy` - Check for common mistakes and verify code quality
+3. `cargo test` - Run the test cases to verify functionality
+
+This ensures that the code is:
+- Properly formatted
+- Free of common programming errors
+- Functionally correct according to test cases
+
+# Baekjoon Online Judge (BOJ) Rules
+
+## File Structure
+When adding a new BOJ problem solution:
+
+1. Create a new file in the appropriate directory:
+   - File should be named `p{number}.rs`
+   - Place it in `src/boj/p{n}k/` where n is the first digits of the problem number
+   - Reference nearby files in the same directory for consistent formatting and structure
+   Example: For problem 1000, create `src/boj/p1k/p1000.rs` and check other files in `p1k/`
+
+2. Register the module in the corresponding module file:
+   - Add `mod p{number};` to the appropriate `p{n}k.rs` file
+   - Check the existing module declarations for correct ordering
+   Example: Add `mod p1000;` to `src/boj/p1k.rs`
+
+## Commit Message Format
+When solving problems from Baekjoon Online Judge, use the following commit message format:
+
+```
+boj: solve {problem_number} {problem_title}
+
+- https://www.acmicpc.net/problem/{problem_number}
+```
+
+Example:
+```
+boj: solve 1000 A+B
+
+- https://www.acmicpc.net/problem/1000
+```
+
+To handle multi-line commit messages, use printf with git commit -F:
+```
+printf "boj: solve {problem_number} {problem_title}\n\n- https://www.acmicpc.net/problem/{problem_number}" | git commit -F -
+```
+
+Example:
+```
+printf "boj: solve 1000 A+B\n\n- https://www.acmicpc.net/problem/1000" | git commit -F -
+```
+
+## Code Submission Guide
+When preparing code for submission:
+
+1. Use @submit_template.rs as the base template
+2. Make sure to name the solution function as solve#### where #### is the problem number
+   - Example: For problem 1000, use solve1000 instead of just solve
+3. When the code is ready, paste the complete submission code in the chat
+   - This allows for a final review before actual submission
+4. The submission code should be self-contained and include all necessary functions from the template
+
+## Code Style Guide
+When writing solution code:
+
+1. Solution function should:
+   - Be named solve#### where #### is the problem number
+   - NOT be public (no pub keyword)
+   - Have #[allow(dead_code)] attribute
+   Example:
+   ```rust
+   #[allow(dead_code)]
+   fn solve1000(reader: &mut impl BufRead, writer: &mut impl Write)
+   ```
+
+2. Test function should:
+   - Include problem URL and title as comments above the #[test] attribute
+   Example:
+   ```rust
+   // https://www.acmicpc.net/problem/1000
+   // A+B
+   #[test]
+   fn test_solve1000()
+   ```
