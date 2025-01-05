@@ -12,12 +12,10 @@ fn solve14940(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut start = (0, 0);
     for (i, row) in map.iter_mut().enumerate() {
         line.clear();
-        reader
-            .read_line(&mut line)
-            .expect("line should be readable");
+        reader.read_line(&mut line).unwrap();
 
         for (j, c) in line.split_whitespace().enumerate() {
-            let v = c.parse().expect("should be a number");
+            let v = c.parse::<i32>().unwrap();
             match v {
                 2 => {
                     start = (i, j);
@@ -57,7 +55,7 @@ fn solve14940(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let ans = matrix_to_str(&map);
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/14940
@@ -147,7 +145,7 @@ fn test_solve14940() {
         let mut writer = vec![];
         solve14940(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

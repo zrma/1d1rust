@@ -14,7 +14,7 @@ fn solve15916(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let initial_cmp = arr[0].cmp(&k);
     if initial_cmp == Equal {
-        write!(writer, "T").expect("Failed to write");
+        writeln!(writer, "T").unwrap();
         return;
     }
 
@@ -25,11 +25,11 @@ fn solve15916(reader: &mut impl BufRead, writer: &mut impl Write) {
             continue;
         }
 
-        write!(writer, "T").expect("Failed to write");
+        writeln!(writer, "T").unwrap();
         return;
     }
 
-    write!(writer, "F").expect("Failed to write");
+    writeln!(writer, "F").unwrap();
 }
 
 // https://www.acmicpc.net/problem/15916
@@ -77,7 +77,7 @@ fn test_solve15916() {
         let mut writer = vec![];
         solve15916(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

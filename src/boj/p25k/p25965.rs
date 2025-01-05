@@ -21,7 +21,7 @@ fn solve25965(reader: &mut impl BufRead, writer: &mut impl Write) {
             .filter(|&donation| donation > 0)
             .sum();
 
-        writeln!(writer, "{}", total_donation).expect("writeln! should work");
+        writeln!(writer, "{}", total_donation).unwrap();
     }
 }
 
@@ -93,7 +93,7 @@ fn test_solve25965() {
         let mut writer = vec![];
         solve25965(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

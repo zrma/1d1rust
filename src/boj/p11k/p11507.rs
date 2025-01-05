@@ -12,7 +12,7 @@ fn solve11507(reader: &mut impl BufRead, writer: &mut impl Write) {
         let suit_index = suits.iter().position(|&x| x == suit_char).unwrap();
         let num: usize = s[i * 3 + 1..i * 3 + 3].parse().unwrap();
         if cards[suit_index][num] == 1 {
-            write!(writer, "GRESKA").expect("Failed to write");
+            writeln!(writer, "GRESKA").unwrap();
             return;
         }
         cards[suit_index][num] = 1;
@@ -23,7 +23,7 @@ fn solve11507(reader: &mut impl BufRead, writer: &mut impl Write) {
         .map(|card| (13 - card.iter().sum::<usize>()).to_string())
         .collect();
 
-    write!(writer, "{}", ans.join(" ")).expect("Failed to write");
+    writeln!(writer, "{}", ans.join(" ")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/11507
@@ -56,7 +56,7 @@ fn test_solve11507() {
         let mut writer = vec![];
         solve11507(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

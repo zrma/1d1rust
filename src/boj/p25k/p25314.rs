@@ -8,7 +8,7 @@ fn solve25314(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..(n / 4) {
         write!(writer, "long ").unwrap();
     }
-    write!(writer, "int").unwrap();
+    writeln!(writer, "int").unwrap();
 }
 
 // https://www.acmicpc.net/problem/25314
@@ -36,7 +36,7 @@ fn test_solve25314() {
         let mut writer = vec![];
         solve25314(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

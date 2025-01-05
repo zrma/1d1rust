@@ -36,7 +36,7 @@ fn solve11382(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     res = res.chars().rev().collect();
-    write!(writer, "{}", res).expect("Failed to write");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 #[allow(dead_code)]
@@ -46,7 +46,7 @@ fn solve11382simple(reader: &mut impl BufRead, writer: &mut impl Write) {
     let numbers: Vec<u64> = s.split_whitespace().map(|s| s.parse().unwrap()).collect();
 
     let sum: u64 = numbers.iter().sum();
-    write!(writer, "{}", sum).expect("Failed to write");
+    writeln!(writer, "{}", sum).unwrap();
 }
 
 // https://www.acmicpc.net/problem/11382
@@ -91,7 +91,7 @@ fn test_solve11382() {
             let mut writer = vec![];
             solve11382(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),
@@ -106,7 +106,7 @@ fn test_solve11382() {
             let mut writer = vec![];
             solve11382simple(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),

@@ -8,7 +8,7 @@ fn solve10039(reader: &mut impl BufRead, writer: &mut impl Write) {
         let score = read_value(read_line(reader));
         sum += std::cmp::max(40, score);
     }
-    write!(writer, "{}", sum / 5).expect("write! should work");
+    writeln!(writer, "{}", sum / 5).unwrap();
 }
 
 // https://www.acmicpc.net/problem/10039
@@ -64,7 +64,7 @@ fn test_solve10039() {
         let mut writer = vec![];
         solve10039(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -14,9 +14,9 @@ fn solve15751(reader: &mut impl BufRead, writer: &mut impl Write) {
     .iter()
     .copied()
     .min()
-    .expect("ans should not be empty");
+    .unwrap();
 
-    writeln!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/15751
@@ -56,7 +56,7 @@ fn test_solve15751() {
         let mut writer = vec![];
         solve15751(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

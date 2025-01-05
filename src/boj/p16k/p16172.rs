@@ -7,7 +7,7 @@ fn solve16172(reader: &mut impl BufRead, writer: &mut impl Write) {
     let k = read_line(reader);
 
     let ans = if s.contains(&k) { 1 } else { 0 };
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn remove_digits(s: &str) -> String {
@@ -44,7 +44,7 @@ veS"
         let mut writer = vec![];
         solve16172(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

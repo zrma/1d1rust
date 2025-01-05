@@ -6,7 +6,7 @@ fn solve27323(reader: &mut impl BufRead, writer: &mut impl Write) {
     let a: i32 = read_line(reader).parse().unwrap();
     let b: i32 = read_line(reader).parse().unwrap();
 
-    write!(writer, "{}", a * b).unwrap();
+    writeln!(writer, "{}", a * b).unwrap();
 }
 
 // https://www.acmicpc.net/problem/27323
@@ -19,27 +19,39 @@ fn test_solve27323() {
     }
     for (i, data) in [
         TestData {
-            s: "3\n4".to_string(),
+            s: "3
+4"
+            .to_string(),
             want: "12".to_string(),
         },
         TestData {
-            s: "5\n5".to_string(),
+            s: "5
+5"
+            .to_string(),
             want: "25".to_string(),
         },
         TestData {
-            s: "100\n100".to_string(),
+            s: "100
+100"
+            .to_string(),
             want: "10000".to_string(),
         },
         TestData {
-            s: "2\n3".to_string(),
+            s: "2
+3"
+            .to_string(),
             want: "6".to_string(),
         },
         TestData {
-            s: "100\n1".to_string(),
+            s: "100
+1"
+            .to_string(),
             want: "100".to_string(),
         },
         TestData {
-            s: "4\n4".to_string(),
+            s: "4
+4"
+            .to_string(),
             want: "16".to_string(),
         },
     ]
@@ -50,7 +62,7 @@ fn test_solve27323() {
         let mut writer = vec![];
         solve27323(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -13,7 +13,7 @@ fn solve15803(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (x3, y3) = points[2];
 
     let ans = is_line(x1, y1, x2, y2, x3, y3);
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn is_line(x1: i32, y1: i32, x2: i32, y2: i32, x3: i32, y3: i32) -> String {
@@ -55,7 +55,7 @@ fn test_solve15803() {
         let mut writer = vec![];
         solve15803(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

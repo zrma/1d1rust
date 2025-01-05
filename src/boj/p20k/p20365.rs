@@ -22,7 +22,7 @@ fn solve20365(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     let ans = r_count.min(b_count) + 1;
-    write!(writer, "{}", ans).unwrap();
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/20365
@@ -85,7 +85,7 @@ BRRRRRRB"
         let mut writer = vec![];
         solve20365(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

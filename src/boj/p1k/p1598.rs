@@ -10,7 +10,7 @@ fn solve1598(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (r2, c2) = ((b - 1) / 4, (b - 1) % 4);
 
     let dist = (r1 - r2).abs() + (c1 - c2).abs();
-    write!(writer, "{}", dist).expect("write! should work");
+    writeln!(writer, "{}", dist).unwrap();
 }
 
 // https://www.acmicpc.net/problem/1598
@@ -66,7 +66,7 @@ fn test_solve1598() {
         let mut writer = vec![];
         solve1598(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

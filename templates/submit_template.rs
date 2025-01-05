@@ -15,7 +15,7 @@ fn main() {
 
     solve(&mut reader, &mut writer);
 
-    writer.flush().expect("writer should be flushed");
+    writer.flush().unwrap();
 }
 
 // TODO: Implement solution function
@@ -31,7 +31,7 @@ fn solve(reader: &mut impl BufRead, writer: &mut impl Write) {
     let ans = n; // Placeholder
 
     // Write answer
-    writeln!(writer, "{}", ans).expect("Failed to write");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // TODO: Add the sub function if needed

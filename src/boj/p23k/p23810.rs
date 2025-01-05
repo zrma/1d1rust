@@ -30,9 +30,7 @@ fn solve23810(reader: &mut impl BufRead, writer: &mut impl Write) {
         ans.push('\n');
     }
 
-    ans.pop(); // Remove the last '\n'
-
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/23810
@@ -81,7 +79,7 @@ fn test_solve23810() {
         let mut writer = vec![];
         solve23810(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

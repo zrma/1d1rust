@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve1475(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut n: usize = read_value(read_line(reader));
     if n == 0 {
-        write!(writer, "1").expect("write! should work");
+        writeln!(writer, "1").unwrap();
         return;
     }
 
@@ -13,7 +13,7 @@ fn solve1475(reader: &mut impl BufRead, writer: &mut impl Write) {
     count_digits(&mut n, &mut counts);
 
     let ans = compute_max_set_needed(&counts);
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn count_digits(n: &mut usize, counts: &mut [i32; 10]) {
@@ -76,7 +76,7 @@ fn test_solve9999() {
         let mut writer = vec![];
         solve1475(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

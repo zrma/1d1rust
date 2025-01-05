@@ -11,12 +11,12 @@ fn solve11800(reader: &mut impl BufRead, writer: &mut impl Write) {
         let (a, b) = (a.max(b), a.min(b));
 
         if a == b {
-            writeln!(writer, "Case {}: {}", i, get_double_name(a)).expect("write! should work");
+            writeln!(writer, "Case {}: {}", i, get_double_name(a)).unwrap();
             return;
         }
 
         if a == 6 && b == 5 {
-            writeln!(writer, "Case {}: Sheesh Beesh", i).expect("write! should work");
+            writeln!(writer, "Case {}: Sheesh Beesh", i).unwrap();
             return;
         }
 
@@ -27,7 +27,7 @@ fn solve11800(reader: &mut impl BufRead, writer: &mut impl Write) {
             get_single_name(a),
             get_single_name(b)
         )
-        .expect("write! should work");
+        .unwrap();
     });
 }
 
@@ -109,7 +109,7 @@ Case 9: Sheesh Yakk
         let mut writer = vec![];
         solve11800(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

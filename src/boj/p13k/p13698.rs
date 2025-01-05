@@ -19,17 +19,11 @@ fn solve13698(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let pos1 = positions
-        .iter()
-        .position(|&x| x == 1)
-        .expect("pos1 should exist");
-    let pos2 = positions
-        .iter()
-        .position(|&x| x == 2)
-        .expect("pos2 should exist");
+    let pos1 = positions.iter().position(|&x| x == 1).unwrap();
+    let pos2 = positions.iter().position(|&x| x == 2).unwrap();
 
-    writeln!(writer, "{}", pos1 + 1).expect("writeln! should work");
-    writeln!(writer, "{}", pos2 + 1).expect("writeln! should work");
+    writeln!(writer, "{}", pos1 + 1).unwrap();
+    writeln!(writer, "{}", pos2 + 1).unwrap();
 }
 
 // https://www.acmicpc.net/problem/13698
@@ -61,7 +55,7 @@ fn test_solve13698() {
         let mut writer = vec![];
         solve13698(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

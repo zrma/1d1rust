@@ -7,7 +7,7 @@ fn solve17419(reader: &mut impl BufRead, writer: &mut impl Write) {
     let bits = read_line(reader);
 
     let ones_count = bits.chars().take(n).filter(|&ch| ch == '1').count();
-    write!(writer, "{}", ones_count).expect("Failed to write");
+    writeln!(writer, "{}", ones_count).unwrap();
 }
 
 // https://www.acmicpc.net/problem/17419
@@ -52,7 +52,7 @@ fn test_solve17419() {
         let mut writer = vec![];
         solve17419(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

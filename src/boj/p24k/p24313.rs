@@ -21,11 +21,11 @@ fn solve24313(reader: &mut impl BufRead, writer: &mut impl Write) {
     // a0 <= (c - a1) * n
 
     if (c - a1) >= 0 && (c - a1) * n0 >= a0 {
-        write!(writer, "1").unwrap();
+        writeln!(writer, "1").unwrap();
         return;
     }
 
-    write!(writer, "0").unwrap()
+    writeln!(writer, "0").unwrap();
 }
 
 // https://www.acmicpc.net/problem/24313
@@ -59,7 +59,7 @@ fn test_solve24313() {
         let mut writer = vec![];
         solve24313(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

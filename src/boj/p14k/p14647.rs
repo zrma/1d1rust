@@ -25,7 +25,7 @@ fn solve14647(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let bird_count = count_birds(&grid);
-    write!(writer, "{}", bird_count).expect("Failed to write");
+    writeln!(writer, "{}", bird_count).unwrap();
 }
 
 fn find_max_index(grid: &[Vec<String>], n: usize, m: usize, is_row: bool) -> (usize, usize) {
@@ -104,7 +104,7 @@ fn test_solve14647() {
         let mut writer = vec![];
         solve14647(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

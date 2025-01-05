@@ -7,17 +7,11 @@ fn solve1027(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
     let heights: Vec<i32> = read_line(reader)
         .split_whitespace()
-        .map(|s| {
-            s.parse()
-                .unwrap_or_else(|_| panic!("{} should be a number", s))
-        })
+        .map(|s| s.parse().unwrap())
         .collect();
 
-    let ans = (0..n)
-        .map(|i| count_visible(i, &heights))
-        .max()
-        .expect("should have a max");
-    write!(writer, "{}", ans).expect("write! should work");
+    let ans = (0..n).map(|i| count_visible(i, &heights)).max().unwrap();
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn count_visible(i: usize, heights: &[i32]) -> usize {
@@ -30,14 +24,10 @@ fn count_slope(iter: impl Iterator<Item = usize>, i: usize, heights: &[i32], sig
     let mut cnt = 0;
     let mut max_slope = f64::NEG_INFINITY;
     for j in iter {
-        let x1 = i.to_f64().expect("i should be convertible to f64");
-        let y1 = heights[i]
-            .to_f64()
-            .expect("height should be convertible to f64");
-        let x2 = j.to_f64().expect("j should be convertible to f64");
-        let y2 = heights[j]
-            .to_f64()
-            .expect("height should be convertible to f64");
+        let x1 = i.to_f64().unwrap();
+        let y1 = heights[i].to_f64().unwrap();
+        let x2 = j.to_f64().unwrap();
+        let y2 = heights[j].to_f64().unwrap();
 
         let slope = calc_slope(x1, y1, x2, y2) * sign;
         if slope > max_slope {
@@ -99,7 +89,7 @@ fn test_solve1027() {
         let mut writer = vec![];
         solve1027(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

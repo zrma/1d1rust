@@ -26,7 +26,7 @@ fn solve19637(reader: &mut impl BufRead, writer: &mut impl Write) {
                 low = mid + 1;
             }
         }
-        writeln!(writer, "{}", titles[low].0).expect("Failed to write output");
+        writeln!(writer, "{}", titles[low].0).unwrap();
     }
 }
 
@@ -89,7 +89,7 @@ C"
         let mut writer = vec![];
         solve19637(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("valid utf8 string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

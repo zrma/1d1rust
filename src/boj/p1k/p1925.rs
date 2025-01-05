@@ -19,7 +19,7 @@ fn solve1925(reader: &mut impl BufRead, writer: &mut impl Write) {
         _ => classify_scalene(a, b, c),
     };
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn classify_isosceles(a: Point, b: Point, c: Point) -> &'static str {
@@ -148,7 +148,7 @@ fn test_solve1925() {
         let mut writer = vec![];
         solve1925(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -22,7 +22,7 @@ fn solve25641(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", &s[equal_idx..]).expect("Failed to write");
+    writeln!(writer, "{}", &s[equal_idx..]).unwrap();
 }
 
 // https://www.acmicpc.net/problem/25641
@@ -61,7 +61,7 @@ stst"
         let mut writer = vec![];
         solve25641(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

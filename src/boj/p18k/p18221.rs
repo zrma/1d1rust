@@ -27,7 +27,7 @@ fn solve18221(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     if (x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1) < 25 {
-        write!(writer, "0").expect("Failed to write");
+        writeln!(writer, "0").unwrap();
         return;
     }
 
@@ -37,14 +37,14 @@ fn solve18221(reader: &mut impl BufRead, writer: &mut impl Write) {
             if val == 1 {
                 cnt += 1;
                 if cnt > 2 {
-                    write!(writer, "1").expect("Failed to write");
+                    writeln!(writer, "1").unwrap();
                     return;
                 }
             }
         }
     }
 
-    write!(writer, "0").expect("Failed to write");
+    writeln!(writer, "0").unwrap();
 }
 
 // https://www.acmicpc.net/problem/18221
@@ -133,7 +133,7 @@ fn test_solve18221() {
         let mut writer = vec![];
         solve18221(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

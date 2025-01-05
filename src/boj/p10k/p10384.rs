@@ -30,7 +30,7 @@ fn solve10384(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(format!("Case {}: {}", case_num, verdict));
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("write! should work");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/10384
@@ -74,7 +74,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let mut writer = vec![];
         solve10384(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

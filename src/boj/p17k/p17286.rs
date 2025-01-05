@@ -15,7 +15,7 @@ fn solve17286(reader: &mut impl BufRead, writer: &mut impl Write) {
         min_dist = min_dist.min(tot_dist);
     });
 
-    write!(writer, "{}", min_dist as i32).expect("Failed to write");
+    writeln!(writer, "{}", min_dist as i32).unwrap();
 }
 
 #[derive(Copy, Clone, PartialEq, Debug)]
@@ -80,7 +80,7 @@ fn test_solve17286() {
         let mut writer = vec![];
         solve17286(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

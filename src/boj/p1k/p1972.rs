@@ -18,7 +18,7 @@ fn solve1972(reader: &mut impl BufRead, writer: &mut impl Write) {
         ));
     }
 
-    write!(writer, "{}", ans.join("\n")).unwrap();
+    writeln!(writer, "{}", ans.join("\n")).unwrap();
 }
 
 fn is_string_surprising(s: &str) -> bool {
@@ -80,7 +80,7 @@ BCBABCC is NOT surprising."
         let mut writer = vec![];
         solve1972(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

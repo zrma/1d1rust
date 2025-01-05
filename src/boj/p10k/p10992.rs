@@ -12,7 +12,7 @@ fn solve10992(reader: &mut impl BufRead, writer: &mut impl Write) {
         } else {
             format!("*{}*", " ".repeat(2 * i - 1))
         };
-        writeln!(writer, "{}{}", padding, stars).expect("write! should work");
+        writeln!(writer, "{}{}", padding, stars).unwrap();
     }
 }
 
@@ -63,7 +63,7 @@ fn test_solve10992() {
         let mut writer = vec![];
         solve10992(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -20,7 +20,7 @@ fn solve17176(reader: &mut impl BufRead, writer: &mut impl Write) {
         char_counts[index] += 1;
     }
 
-    write!(
+    writeln!(
         writer,
         "{}",
         if symbol_counts == char_counts {
@@ -29,7 +29,7 @@ fn solve17176(reader: &mut impl BufRead, writer: &mut impl Write) {
             "n"
         }
     )
-    .expect("Failed to write");
+    .unwrap();
 }
 
 // https://www.acmicpc.net/problem/17176
@@ -64,7 +64,7 @@ apple"
         let mut writer = vec![];
         solve17176(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

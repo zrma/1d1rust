@@ -6,7 +6,7 @@ use std::io::{BufRead, Write};
 fn solve16480(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (r0, r1) = read_values_as!(read_line(reader), i64, i64);
 
-    write!(writer, "{}", r0 * (r0 - 2 * r1)).unwrap();
+    writeln!(writer, "{}", r0 * (r0 - 2 * r1)).unwrap();
 }
 
 // https://www.acmicpc.net/problem/16480
@@ -34,7 +34,7 @@ fn test_solve16480() {
         let mut writer = vec![];
         solve16480(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

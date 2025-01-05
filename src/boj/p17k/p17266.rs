@@ -9,7 +9,7 @@ fn solve17266(reader: &mut impl BufRead, writer: &mut impl Write) {
     light_positions.sort_unstable();
 
     let min_height = find_min_height(&light_positions, bridge_length);
-    write!(writer, "{}", min_height).expect("Failed to write");
+    writeln!(writer, "{}", min_height).unwrap();
 }
 
 fn find_min_height(light_positions: &[usize], bridge_length: usize) -> usize {
@@ -108,7 +108,7 @@ fn test_solve17266() {
         let mut writer = vec![];
         solve17266(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

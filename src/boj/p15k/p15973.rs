@@ -8,7 +8,7 @@ fn solve15973(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (bx, by, bp, bq) = read_values_as!(read_line(reader), i32, i32, i32, i32);
 
     let res = common_point_code((ax, ay, ap, aq), (bx, by, bp, bq));
-    write!(writer, "{}", res).expect("Failed to write");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 type Rect = (i32, i32, i32, i32);
@@ -78,7 +78,7 @@ fn test_solve15973() {
         let mut writer = vec![];
         solve15973(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

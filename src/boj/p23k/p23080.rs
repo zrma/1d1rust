@@ -8,7 +8,7 @@ fn solve23080(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let decrypted_message = decrypt_skitaile(&encrypted_message, step);
 
-    write!(writer, "{}", decrypted_message).unwrap();
+    writeln!(writer, "{}", decrypted_message).unwrap();
 }
 
 // noinspection SpellCheckingInspection
@@ -51,7 +51,7 @@ iabucdpefcg"
         let mut writer = vec![];
         solve23080(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

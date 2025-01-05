@@ -9,7 +9,7 @@ fn solve10157(reader: &mut impl BufRead, writer: &mut impl Write) {
     let k = read_value(read_line(reader));
 
     if row * col < k {
-        write!(writer, "0").expect("write! should work");
+        writeln!(writer, "0").unwrap();
         return;
     }
 
@@ -24,7 +24,7 @@ fn solve10157(reader: &mut impl BufRead, writer: &mut impl Write) {
         match dir {
             Direction::Up => {
                 if k0 < row0 {
-                    write!(writer, "{} {}", x, y + k0).expect("write! should work");
+                    writeln!(writer, "{} {}", x, y + k0).unwrap();
                     return;
                 }
                 x += 1;
@@ -35,7 +35,7 @@ fn solve10157(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
             Direction::Right => {
                 if k0 < col0 {
-                    write!(writer, "{} {}", x + k0, y).expect("write! should work");
+                    writeln!(writer, "{} {}", x + k0, y).unwrap();
                     return;
                 }
                 x += col0 - 1;
@@ -46,7 +46,7 @@ fn solve10157(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
             Direction::Down => {
                 if k0 < row0 {
-                    write!(writer, "{} {}", x, y - k0).expect("write! should work");
+                    writeln!(writer, "{} {}", x, y - k0).unwrap();
                     return;
                 }
                 x -= 1;
@@ -57,7 +57,7 @@ fn solve10157(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
             Direction::Left => {
                 if k0 < col0 {
-                    write!(writer, "{} {}", x - k0, y).expect("write! should work");
+                    writeln!(writer, "{} {}", x - k0, y).unwrap();
                     return;
                 }
                 x -= col0 - 1;
@@ -169,7 +169,7 @@ fn test_solve10157() {
         let mut writer = vec![];
         solve10157(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

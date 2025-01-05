@@ -8,7 +8,7 @@ fn solve10569(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..t {
         let (v, e) = read_values_as!(read_line(reader), i32, i32);
 
-        writeln!(writer, "{}", 2 - v + e).expect("writeln! should work");
+        writeln!(writer, "{}", 2 - v + e).unwrap();
     }
 }
 
@@ -48,7 +48,7 @@ fn test_solve10569() {
         let mut writer = vec![];
         solve10569(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

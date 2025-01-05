@@ -18,7 +18,7 @@ fn solve11575(reader: &mut impl BufRead, writer: &mut impl Write) {
             })
             .collect::<_>();
 
-        writeln!(writer, "{}", ans).expect("Failed to write");
+        writeln!(writer, "{}", ans).unwrap();
     }
 }
 
@@ -61,7 +61,7 @@ IAMSPY"
         let mut writer = vec![];
         solve11575(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
-        assert_eq!(got, data.want, "case {} failed", i);
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(got.trim(), data.want.trim(), "case {} failed", i);
     }
 }

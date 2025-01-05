@@ -6,7 +6,7 @@ fn solve19946(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: u128 = read_value(read_line(reader));
     let extra_operations = n.trailing_zeros(); // 실수 이후 추가 연산 횟수
     let ans = 64 - extra_operations; // 실수가 처음 발생한 위치
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/19946
@@ -35,7 +35,7 @@ fn test_solve19946() {
             let mut writer = vec![];
             solve19946(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),

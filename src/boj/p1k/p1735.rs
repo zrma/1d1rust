@@ -9,7 +9,7 @@ fn solve1735(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (c, d) = read_values_as!(read_line(reader), i64, i64);
 
     let (x, y) = sum_and_reduce_fractions(a, b, c, d);
-    write!(writer, "{} {}", x, y).expect("write! should work");
+    writeln!(writer, "{} {}", x, y).unwrap();
 }
 
 fn sum_and_reduce_fractions(a: i64, b: i64, c: i64, d: i64) -> (i64, i64) {
@@ -44,7 +44,7 @@ fn test_solve1735() {
         let mut writer = vec![];
         solve1735(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

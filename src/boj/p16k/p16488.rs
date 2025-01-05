@@ -7,7 +7,7 @@ fn solve16488(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (n, k) = read_values_as!(read_line(reader), i64, i64);
 
     let res = n * n * k;
-    write!(writer, "{}", res).expect("Failed to write");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 // https://www.acmicpc.net/problem/16488
@@ -35,7 +35,7 @@ fn test_solve16488() {
         let mut writer = vec![];
         solve16488(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

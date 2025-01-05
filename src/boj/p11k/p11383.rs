@@ -27,12 +27,12 @@ fn solve11383(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         for (j, c) in iter.by_ref().enumerate() {
             if c != arr[j / 2] as char {
-                write!(writer, "{}", NG).expect("Failed to write");
+                writeln!(writer, "{}", NG).unwrap();
                 return;
             }
         }
     }
-    write!(writer, "{}", OK).expect("Failed to write");
+    writeln!(writer, "{}", OK).unwrap();
 }
 
 // https://www.acmicpc.net/problem/11383
@@ -76,7 +76,7 @@ CCDD"
         let mut writer = vec![];
         solve11383(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

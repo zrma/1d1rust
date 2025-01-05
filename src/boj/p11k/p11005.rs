@@ -12,7 +12,7 @@ fn solve11005(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = convert_to_base(nums[0], nums[1]);
 
-    write!(writer, "{}", res).expect("Failed to write");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 fn convert_to_base(mut n: i32, b: i32) -> String {
@@ -55,7 +55,7 @@ fn test_solve11005() {
         let mut writer = vec![];
         solve11005(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

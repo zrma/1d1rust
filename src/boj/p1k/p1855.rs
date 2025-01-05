@@ -19,7 +19,7 @@ fn decrypt_cipher(n: usize, s: &str, writer: &mut impl Write) {
             } else {
                 (j + 1) * n - i - 1
             };
-            write!(writer, "{}", char::from(vec[idx])).expect("write! should work");
+            write!(writer, "{}", char::from(vec[idx])).unwrap();
         }
     }
 }
@@ -54,7 +54,7 @@ adgjkhebcfil"
         let mut writer = vec![];
         solve1855(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

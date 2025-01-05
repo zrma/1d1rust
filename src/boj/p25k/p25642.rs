@@ -17,7 +17,7 @@ fn solve25642(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let ans = if yt >= 5 { "yj" } else { "yt" };
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/25642
@@ -50,7 +50,7 @@ fn test_solve25642() {
         let mut writer = vec![];
         solve25642(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

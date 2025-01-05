@@ -11,7 +11,7 @@ fn solve15666(reader: &mut impl BufRead, writer: &mut impl Write) {
     let combinations = generate_combinations(&unique_nums, m);
     let ans = matrix_to_str(&combinations);
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn extract_unique_numbers(reader: &mut impl BufRead, n: usize) -> Vec<usize> {
@@ -97,7 +97,7 @@ fn test_solve15666() {
         let mut writer = vec![];
         solve15666(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

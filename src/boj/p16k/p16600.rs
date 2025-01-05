@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve16600(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: f64 = read_value(read_line(reader));
-    write!(writer, "{}", n.sqrt() * 4.0).unwrap();
+    writeln!(writer, "{}", n.sqrt() * 4.0).unwrap();
 }
 
 // https://www.acmicpc.net/problem/16600
@@ -40,11 +40,8 @@ fn test_solve16600() {
         let mut writer = vec![];
         solve16600(&mut reader, &mut writer);
 
-        let got: f64 = read_value(String::from_utf8(writer).expect(
-            "writer should be a valid string
-",
-        ));
-        let want: f64 = data.want.parse().expect("data.want should be a valid f64");
+        let got: f64 = read_value(String::from_utf8(writer).unwrap());
+        let want: f64 = data.want.parse().unwrap();
 
         const EPSILON: f64 = 1e-6;
 

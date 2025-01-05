@@ -17,7 +17,7 @@ fn solve16719(reader: &mut impl BufRead, writer: &mut impl Write) {
         &mut subsequences,
     );
 
-    write!(writer, "{}", subsequences.join("\n")).unwrap();
+    writeln!(writer, "{}", subsequences.join("\n")).unwrap();
 }
 
 fn collect_subsequences(
@@ -119,7 +119,7 @@ STARTLINK"
         let mut writer = vec![];
         solve16719(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

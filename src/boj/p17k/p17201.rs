@@ -9,7 +9,7 @@ fn solve17201(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = chars.windows(2).all(|w| w[0] != w[1]);
 
-    write!(writer, "{}", if ans { "Yes" } else { "No" }).expect("Failed to write");
+    writeln!(writer, "{}", if ans { "Yes" } else { "No" }).unwrap();
 }
 
 // https://www.acmicpc.net/problem/17201
@@ -48,7 +48,7 @@ fn test_solve17201() {
         let mut writer = vec![];
         solve17201(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

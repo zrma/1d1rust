@@ -21,7 +21,7 @@ fn solve20154(reader: &mut impl BufRead, writer: &mut impl Write) {
     } else {
         "I'm a winner!"
     };
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/20154
@@ -54,7 +54,7 @@ fn test_solve20154() {
         let mut writer = vec![];
         solve20154(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

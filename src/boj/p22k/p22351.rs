@@ -7,7 +7,7 @@ fn solve22351(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s_len = s.len();
 
     for start_len in 1..=3.min(s_len) {
-        let start: usize = s[0..start_len].parse().expect("Should be a number");
+        let start: usize = s[0..start_len].parse().unwrap();
         let mut current_num = start;
         let mut generated_string = current_num.to_string();
 
@@ -17,7 +17,7 @@ fn solve22351(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         if generated_string == s {
-            write!(writer, "{} {}", start, current_num).expect("Failed to write");
+            writeln!(writer, "{} {}", start, current_num).unwrap();
             return;
         }
     }
@@ -65,7 +65,7 @@ fn test_solve22351() {
         let mut writer = vec![];
         solve22351(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

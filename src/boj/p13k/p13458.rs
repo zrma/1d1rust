@@ -14,7 +14,7 @@ fn solve13458(reader: &mut impl BufRead, writer: &mut impl Write) {
             .map(|&x| (x - b + c - 1) / c)
             .sum::<i64>();
 
-    writeln!(writer, "{}", total).expect("write! should work");
+    writeln!(writer, "{}", total).unwrap();
 }
 
 // https://www.acmicpc.net/problem/13458
@@ -69,7 +69,7 @@ fn test_solve13458() {
         let mut writer = vec![];
         solve13458(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

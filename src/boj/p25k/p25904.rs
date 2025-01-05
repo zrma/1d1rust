@@ -9,7 +9,7 @@ fn solve25904(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for (i, &limit) in limits.iter().cycle().enumerate() {
         if x > limit {
-            write!(writer, "{}", i % n + 1).expect("write! should work");
+            writeln!(writer, "{}", i % n + 1).unwrap();
             return;
         }
         x += 1;
@@ -30,7 +30,7 @@ fn solve25904_cycle(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     });
 
-    write!(writer, "{}", res.expect("should have a result").0 % n + 1).expect("write! should work");
+    writeln!(writer, "{}", res.unwrap().0 % n + 1).unwrap();
 }
 
 // https://www.acmicpc.net/problem/25904
@@ -63,7 +63,7 @@ fn test_solve25904() {
             let mut writer = vec![];
             solve25904(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),
@@ -78,7 +78,7 @@ fn test_solve25904() {
             let mut writer = vec![];
             solve25904_cycle(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),

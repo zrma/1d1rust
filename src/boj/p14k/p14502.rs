@@ -16,7 +16,7 @@ fn solve14502(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<Vec<i32>>>();
 
     let res = max_safe_area(n, m, map);
-    write!(writer, "{}", res).expect("Failed to write");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 fn max_safe_area(n: usize, m: usize, map: Vec<Vec<i32>>) -> i32 {
@@ -162,7 +162,7 @@ fn test_solve14502() {
         let mut writer = vec![];
         solve14502(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -6,7 +6,7 @@ fn solve25915(reader: &mut impl BufRead, writer: &mut impl Write) {
     let c: char = read_value(read_line(reader));
     let diff = (c as u8).abs_diff(b'I');
 
-    write!(writer, "{}", diff + 84).expect("Failed to write");
+    writeln!(writer, "{}", diff + 84).unwrap();
 }
 
 // https://www.acmicpc.net/problem/25915
@@ -39,7 +39,7 @@ fn test_solve25915() {
         let mut writer = vec![];
         solve25915(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

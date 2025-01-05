@@ -15,7 +15,7 @@ fn solve25175(reader: &mut impl BufRead, writer: &mut impl Write) {
     // 현재 차례인 사람을 0-based 인덱스로 변환 후, 이동 계산
     let next_player = (m - 1 + move_steps).rem_euclid(n) + 1;
 
-    write!(writer, "{}", next_player).expect("Failed to write");
+    writeln!(writer, "{}", next_player).unwrap();
 }
 
 // https://www.acmicpc.net/problem/25175
@@ -48,7 +48,7 @@ fn test_solve25175() {
         let mut writer = vec![];
         solve25175(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

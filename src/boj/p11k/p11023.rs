@@ -4,7 +4,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve11023(reader: &mut impl BufRead, writer: &mut impl Write) {
     let sum: i32 = read_values(reader).iter().sum();
-    write!(writer, "{}", sum).expect("write! should work");
+    writeln!(writer, "{}", sum).unwrap();
 }
 
 // https://www.acmicpc.net/problem/11023
@@ -36,7 +36,7 @@ fn test_solve11023() {
         let mut writer = vec![];
         solve11023(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

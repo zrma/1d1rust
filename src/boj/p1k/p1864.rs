@@ -29,7 +29,7 @@ fn solve1864(reader: &mut impl BufRead, writer: &mut impl Write) {
             .rev()
             .enumerate()
             .map(|(i, c)| {
-                let exponent: u32 = i.try_into().expect("i should be a valid u32");
+                let exponent: u32 = i.try_into().unwrap();
                 char_to_num(c) * 8_isize.pow(exponent)
             })
             .sum();
@@ -37,7 +37,7 @@ fn solve1864(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(ans.to_string());
     }
 
-    writeln!(writer, "{}", answers.join("\n")).expect("write! should work");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/1864
@@ -69,7 +69,7 @@ fn test_solve1864() {
         let mut writer = vec![];
         solve1864(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

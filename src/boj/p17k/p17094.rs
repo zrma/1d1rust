@@ -14,11 +14,10 @@ fn solve17094(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     match x.cmp(&y) {
-        Less => write!(writer, "e"),
-        Equal => write!(writer, "yee"),
-        Greater => write!(writer, "2"),
+        Less => writeln!(writer, "e").unwrap(),
+        Equal => writeln!(writer, "yee").unwrap(),
+        Greater => writeln!(writer, "2").unwrap(),
     }
-    .expect("write! should work");
 }
 
 // https://www.acmicpc.net/problem/17094
@@ -56,7 +55,7 @@ e2e"
         let mut writer = vec![];
         solve17094(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

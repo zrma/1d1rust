@@ -7,7 +7,7 @@ pub(crate) fn solve1000(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (a, b) = read_values_as!(read_line(reader), i32, i32);
 
     let ans = a + b;
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/1000
@@ -55,7 +55,7 @@ fn test_solve1000() {
         let mut writer = vec![];
         solve1000(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

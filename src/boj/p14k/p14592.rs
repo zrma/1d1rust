@@ -21,10 +21,10 @@ fn solve14579(reader: &mut impl BufRead, writer: &mut impl Write) {
                 .then_with(|| a_submit_cnt.cmp(b_submit_cnt))
                 .then_with(|| a_submit_time.cmp(b_submit_time))
         })
-        .expect("min_by should return a value")
+        .unwrap()
         .0;
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/14579
@@ -79,7 +79,7 @@ fn test_solve14579() {
         let mut writer = vec![];
         solve14579(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

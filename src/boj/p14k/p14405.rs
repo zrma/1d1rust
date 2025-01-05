@@ -12,12 +12,12 @@ fn solve14405(reader: &mut impl BufRead, writer: &mut impl Write) {
         } else if s[i..].starts_with("chu") {
             i += 3;
         } else {
-            write!(writer, "NO").expect("Failed to write");
+            writeln!(writer, "NO").unwrap();
             return;
         }
     }
 
-    write!(writer, "YES").expect("Failed to write");
+    writeln!(writer, "YES").unwrap();
 }
 
 // https://www.acmicpc.net/problem/14405
@@ -82,7 +82,7 @@ fn test_solve14405() {
         let mut writer = vec![];
         solve14405(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -7,7 +7,7 @@ fn solve14915(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (n, base) = read_values_as!(read_line(reader), usize, usize);
 
     if n == 0 {
-        write!(writer, "0").expect("Failed to write");
+        writeln!(writer, "0").unwrap();
         return;
     }
 
@@ -26,7 +26,7 @@ fn solve14915(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     res.reverse();
     let output: String = res.into_iter().collect::<_>();
-    write!(writer, "{}", output).expect("Failed to write");
+    writeln!(writer, "{}", output).unwrap();
 }
 
 // https://www.acmicpc.net/problem/14915
@@ -70,7 +70,7 @@ fn test_solve14915() {
         let mut writer = vec![];
         solve14915(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

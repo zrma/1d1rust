@@ -9,7 +9,7 @@ fn solve10874(reader: &mut impl BufRead, writer: &mut impl Write) {
         .filter_map(|i| {
             let scores: Vec<i32> = read_n_values(reader, 10);
             if scores.iter().enumerate().all(|(j, &s)| {
-                let expected = i32::try_from(j % 5 + 1).expect("Index out of range for i32");
+                let expected = i32::try_from(j % 5 + 1).unwrap();
                 s == expected
             }) {
                 Some((i + 1).to_string())
@@ -20,7 +20,7 @@ fn solve10874(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<_>>()
         .join("\n");
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/10874
@@ -65,7 +65,7 @@ fn test_solve10874() {
         let mut writer = vec![];
         solve10874(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

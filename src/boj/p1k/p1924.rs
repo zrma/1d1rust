@@ -12,7 +12,7 @@ fn solve1924(reader: &mut impl BufRead, writer: &mut impl Write) {
     let weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     let weekday = weekdays[total_days % 7];
 
-    write!(writer, "{}", weekday).expect("write! should work");
+    writeln!(writer, "{}", weekday).unwrap();
 }
 
 // https://www.acmicpc.net/problem/1924
@@ -48,7 +48,7 @@ fn test_solve1924() {
         let mut writer = vec![];
         solve1924(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

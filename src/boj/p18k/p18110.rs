@@ -6,7 +6,7 @@ fn solve18110(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
 
     if n == 0 {
-        write!(writer, "0").expect("Failed to write");
+        writeln!(writer, "0").unwrap();
         return;
     }
 
@@ -30,7 +30,7 @@ fn solve18110(reader: &mut impl BufRead, writer: &mut impl Write) {
         0
     };
 
-    write!(writer, "{}", res).expect("Failed to write");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 // https://www.acmicpc.net/problem/18110
@@ -79,7 +79,7 @@ fn test_solve18110() {
         let mut writer = vec![];
         solve18110(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

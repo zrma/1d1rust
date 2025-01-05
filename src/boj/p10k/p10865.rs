@@ -9,9 +9,7 @@ fn solve10865(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut line = String::new();
     for _ in 0..m {
         line.clear();
-        reader
-            .read_line(&mut line)
-            .expect("line should be readable");
+        reader.read_line(&mut line).unwrap();
 
         let (a, b) = read_values_as!(&line, usize, usize);
         friends[a - 1] += 1;
@@ -23,7 +21,7 @@ fn solve10865(reader: &mut impl BufRead, writer: &mut impl Write) {
         .map(|f| f.to_string())
         .collect::<Vec<_>>()
         .join("\n");
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/10865
@@ -79,7 +77,7 @@ fn test_solve10865() {
         let mut writer = vec![];
         solve10865(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

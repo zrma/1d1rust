@@ -9,7 +9,7 @@ fn solve16171(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s: String = s.chars().filter(|c| !c.is_ascii_digit()).collect::<_>();
     let ans = if s.contains(&k) { 1 } else { 0 };
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/16171
@@ -41,7 +41,7 @@ veS"
         let mut writer = vec![];
         solve16171(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

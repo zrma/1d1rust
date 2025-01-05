@@ -75,13 +75,13 @@ fn solve20125(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    writeln!(writer, "{} {}", heart_x + 1, heart_y + 1).expect("Failed to write");
-    write!(
+    writeln!(writer, "{} {}", heart_x + 1, heart_y + 1).unwrap();
+    writeln!(
         writer,
         "{} {} {} {} {}",
         left_arm, right_arm, waist, left_leg, right_leg
     )
-    .expect("Failed to write");
+    .unwrap();
 }
 
 // https://www.acmicpc.net/problem/20125
@@ -146,7 +146,7 @@ ___*_*___"
         let mut writer = vec![];
         solve20125(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("valid utf8 string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -21,7 +21,7 @@ fn solve14713(reader: &mut impl BufRead, writer: &mut impl Write) {
         false => "Impossible",
     };
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn can_form(sentences: &mut [Vec<String>], target_sentence: &str) -> bool {
@@ -87,7 +87,7 @@ pen pineapple apple pen"
         let mut writer = vec![];
         solve14713(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("Failed to read");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

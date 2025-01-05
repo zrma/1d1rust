@@ -12,7 +12,7 @@ fn solve18238(reader: &mut impl BufRead, writer: &mut impl Write) {
         prev = curr;
     }
 
-    write!(writer, "{}", count).expect("Failed to write");
+    writeln!(writer, "{}", count).unwrap();
 }
 
 fn distance_between_chars(from: char, to: char) -> i32 {
@@ -46,7 +46,7 @@ fn test_solve18238() {
         let mut writer = vec![];
         solve18238(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

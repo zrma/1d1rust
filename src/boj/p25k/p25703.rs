@@ -19,9 +19,7 @@ fn solve25703(reader: &mut impl BufRead, writer: &mut impl Write) {
         ans.push_str(&format!("int {}{} = {};\n", ptr, curr_cnt, prev_cnt));
     }
 
-    ans.pop(); // remove last newline
-
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/25703
@@ -71,7 +69,7 @@ int *********ptr9 = &ptr8;"
         let mut writer = vec![];
         solve25703(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

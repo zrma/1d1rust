@@ -10,16 +10,10 @@ fn solve1297(reader: &mut impl BufRead, writer: &mut impl Write) {
     let x = (d * d / (h * h + w * w)).sqrt();
     let (y, z) = (x * h, x * w);
 
-    let y_i64 = y.to_i64().unwrap_or_else(|| {
-        eprintln!("{} should be a valid i64 value.", y);
-        0
-    });
-    let z_i64 = z.to_i64().unwrap_or_else(|| {
-        eprintln!("{} should be a valid i64 value.", z);
-        0
-    });
+    let y_i64 = y.to_i64().unwrap();
+    let z_i64 = z.to_i64().unwrap();
 
-    write!(writer, "{} {}", y_i64, z_i64).expect("write! should work");
+    writeln!(writer, "{} {}", y_i64, z_i64).unwrap();
 }
 
 // https://www.acmicpc.net/problem/1297
@@ -68,7 +62,7 @@ fn test_solve1297() {
         let mut writer = vec![];
         solve1297(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

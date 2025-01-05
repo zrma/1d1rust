@@ -10,7 +10,7 @@ fn solve20529(reader: &mut impl BufRead, writer: &mut impl Write) {
         let s = read_line(reader);
 
         if n > 32 {
-            writeln!(writer, "0").expect("Failed to write");
+            writeln!(writer, "0").unwrap();
             continue;
         }
 
@@ -28,7 +28,7 @@ fn solve20529(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         }
 
-        writeln!(writer, "{}", min_dist).expect("Failed to write");
+        writeln!(writer, "{}", min_dist).unwrap();
     }
 }
 
@@ -89,7 +89,7 @@ ISTJ ISFJ INFJ INTJ ISTP ISFP INFP INTP ESTP ESFP ENFP ENTP ESTJ ESFJ ENFJ ENTJ 
         let mut writer = vec![];
         solve20529(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(got.trim(), data.want.trim(), "failed at {} with {}", i, data.s);
     }
 }

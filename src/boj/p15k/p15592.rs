@@ -26,7 +26,7 @@ fn solve15592(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let res = target.area();
-    write!(writer, "{}", res).expect("Failed to write");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 struct Rect {
@@ -107,7 +107,7 @@ fn test_solve15592() {
         let mut writer = vec![];
         solve15592(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),
