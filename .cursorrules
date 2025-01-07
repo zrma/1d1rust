@@ -84,3 +84,13 @@ When writing solution code:
    #[test]
    fn test_solve1000()
    ```
+
+3. Import statements should:
+   - Import read_values_as! macro directly from crate root: `use crate::read_values_as;`
+   - Import other io utilities from utils::io: `use crate::utils::io::{read_line, read_n_values};`
+   Example:
+   ```rust
+   use crate::read_values_as;
+   use crate::utils::io::{read_line, read_n_values};
+   use std::io::{BufRead, Write};
+   ```
