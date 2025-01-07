@@ -22,7 +22,7 @@ fn solve28702(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    let next_num = current_number.expect("current_number should be Some") + 1;
+    let next_num = current_number.unwrap() + 1;
     let ans = match (next_num % 3 == 0, next_num % 5 == 0) {
         (true, true) => "FizzBuzz".to_string(),
         (true, false) => "Fizz".to_string(),
@@ -30,7 +30,7 @@ fn solve28702(reader: &mut impl BufRead, writer: &mut impl Write) {
         (false, false) => next_num.to_string(),
     };
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/28702
@@ -121,7 +121,7 @@ Fizz"
         let mut writer = vec![];
         solve28702(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

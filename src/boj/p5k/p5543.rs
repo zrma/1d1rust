@@ -7,7 +7,7 @@ fn solve5543(reader: &mut impl BufRead, writer: &mut impl Write) {
     let drinks = (0..2).map(|_| read_price(reader)).min().unwrap();
 
     let total_cost = burgers + drinks - 50;
-    write!(writer, "{}", total_cost).unwrap();
+    writeln!(writer, "{}", total_cost).unwrap();
 }
 
 fn read_price(reader: &mut impl BufRead) -> i32 {
@@ -49,7 +49,7 @@ fn test_solve5543() {
         let mut writer = vec![];
         solve5543(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

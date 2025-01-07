@@ -23,9 +23,9 @@ fn solve27983(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     if let Some((first, second)) = found_pair {
-        write!(writer, "YES\n{} {}", first, second).expect("write should work");
+        writeln!(writer, "YES\n{} {}", first, second).unwrap();
     } else {
-        write!(writer, "NO").expect("write should work");
+        writeln!(writer, "NO").unwrap();
     }
 }
 
@@ -64,7 +64,7 @@ B B"
         let mut writer = vec![];
         solve27983(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

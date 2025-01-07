@@ -23,14 +23,14 @@ fn solve5692(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
 
             let ans = line.chars().rev().enumerate().fold(0, |acc, (pos, c)| {
-                acc + c.to_digit(10).expect("should be a digit") * factorials[pos]
+                acc + c.to_digit(10).unwrap() * factorials[pos]
             });
 
             Some(ans.to_string())
         })
         .collect();
 
-    write!(writer, "{}", answers.join("\n")).expect("write! should work");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/5692
@@ -71,7 +71,7 @@ fn test_solve5692() {
         let mut writer = vec![];
         solve5692(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -26,7 +26,7 @@ fn solve5217(reader: &mut impl BufRead, writer: &mut impl Write) {
         ));
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/5217
@@ -70,7 +70,7 @@ Pairs for 10: 1 9, 2 8, 3 7, 4 6"
         let mut writer = vec![];
         solve5217(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

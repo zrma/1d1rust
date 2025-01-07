@@ -24,7 +24,7 @@ fn solve5656(reader: &mut impl BufRead, writer: &mut impl Write) {
             _ => panic!("invalid operator"),
         };
 
-        writeln!(writer, "Case {}: {}", i, ans).expect("Failed to write");
+        writeln!(writer, "Case {}: {}", i, ans).unwrap();
     }
 }
 
@@ -55,7 +55,7 @@ Case 3: true
         let mut writer = vec![];
         solve5656(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(got, data.want, "case {} failed", i);
     }
 }

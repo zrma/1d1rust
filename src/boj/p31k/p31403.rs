@@ -10,8 +10,8 @@ fn solve31403(reader: &mut impl BufRead, writer: &mut impl Write) {
     let simple_sum = a + b - c;
     let concatenated_sum = format!("{}{}", a, b).parse::<i32>().unwrap() - c;
 
-    writeln!(writer, "{}", simple_sum).expect("Failed to write");
-    write!(writer, "{}", concatenated_sum).expect("Failed to write");
+    writeln!(writer, "{}", simple_sum).unwrap();
+    writeln!(writer, "{}", concatenated_sum).unwrap();
 }
 
 // https://www.acmicpc.net/problem/31403
@@ -49,7 +49,7 @@ fn test_solve31403() {
         let mut writer = vec![];
         solve31403(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

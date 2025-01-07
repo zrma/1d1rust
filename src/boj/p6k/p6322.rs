@@ -23,31 +23,29 @@ fn solve6322(reader: &mut impl BufRead, writer: &mut impl Write) {
         let fb = b as f64;
         let fc = c as f64;
 
-        writeln!(writer, "Triangle #{}", i).expect("Failed to write");
+        writeln!(writer, "Triangle #{}", i).unwrap();
 
         match (a, b, c) {
             (-1, _, _) => {
                 if c * c - b * b <= 0 {
-                    writeln!(writer, "Impossible.").expect("Failed to write");
+                    writeln!(writer, "Impossible.").unwrap();
                 } else {
-                    writeln!(writer, "a = {:.3}", (fc * fc - fb * fb).sqrt())
-                        .expect("Failed to write");
+                    writeln!(writer, "a = {:.3}", (fc * fc - fb * fb).sqrt()).unwrap();
                 }
             }
             (_, -1, _) => {
                 if c * c - a * a <= 0 {
-                    writeln!(writer, "Impossible.").expect("Failed to write");
+                    writeln!(writer, "Impossible.").unwrap();
                 } else {
-                    writeln!(writer, "b = {:.3}", (fc * fc - fa * fa).sqrt())
-                        .expect("Failed to write");
+                    writeln!(writer, "b = {:.3}", (fc * fc - fa * fa).sqrt()).unwrap();
                 }
             }
             _ => {
-                writeln!(writer, "c = {:.3}", (fa * fa + fb * fb).sqrt()).expect("Failed to write")
+                writeln!(writer, "c = {:.3}", (fa * fa + fb * fb).sqrt()).unwrap();
             }
         }
 
-        writeln!(writer).expect("Failed to write");
+        writeln!(writer).unwrap();
 
         i += 1;
     }
@@ -98,7 +96,7 @@ c = 5.000
         let mut writer = vec![];
         solve6322(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

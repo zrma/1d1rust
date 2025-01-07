@@ -12,37 +12,21 @@ fn solve4619(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        let power = n.to_f64().expect("n should be convertible to f64");
-        let base = b.to_f64().expect("b should be convertible to f64");
-        let estimated_a = base
-            .powf(1.0 / power)
-            .round()
-            .to_i32()
-            .expect("a should be i32");
+        let power = n.to_f64().unwrap();
+        let base = b.to_f64().unwrap();
+        let estimated_a = base.powf(1.0 / power).round().to_i32().unwrap();
 
         let ans = (-1..=1)
             .map(|offset| estimated_a + offset)
             .filter(|&a| a >= 1)
             .min_by(|&a1, &a2| {
-                let diff1 = (a1
-                    .to_f64()
-                    .expect("a1 should be convertible to f64")
-                    .pow(power)
-                    - base)
-                    .abs();
-                let diff2 = (a2
-                    .to_f64()
-                    .expect("a2 should be convertible to f64")
-                    .pow(power)
-                    - base)
-                    .abs();
-                diff1
-                    .partial_cmp(&diff2)
-                    .expect("diff1 and diff2 should be comparable")
+                let diff1 = (a1.to_f64().unwrap().pow(power) - base).abs();
+                let diff2 = (a2.to_f64().unwrap().pow(power) - base).abs();
+                diff1.partial_cmp(&diff2).unwrap()
             })
-            .expect("at least one value should be found");
+            .unwrap();
 
-        writeln!(writer, "{}", ans).expect("writeln! should work");
+        writeln!(writer, "{}", ans).unwrap();
     }
 }
 
@@ -94,7 +78,7 @@ fn test_solve4619() {
         let mut writer = vec![];
         solve4619(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

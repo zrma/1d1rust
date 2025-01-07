@@ -39,13 +39,7 @@ fn solve2261(reader: &mut impl BufRead, writer: &mut impl Write) {
             }
         }
 
-        let d = ans
-            .to_f64()
-            .expect("ans should be a valid f64")
-            .sqrt()
-            .ceil()
-            .to_i32()
-            .expect("sqrt of ans should be a valid i32");
+        let d = ans.to_f64().unwrap().sqrt().ceil().to_i32().unwrap();
         let lower = Point::new(-10000, p.y - d);
         let upper = Point::new(10000, p.y + d);
 
@@ -56,7 +50,7 @@ fn solve2261(reader: &mut impl BufRead, writer: &mut impl Write) {
         set.insert(p.clone());
     }
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 #[derive(Clone, Eq, PartialEq)]
@@ -149,7 +143,7 @@ fn test_solve2261() {
         let mut writer = vec![];
         solve2261(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -9,7 +9,7 @@ fn solve5565(reader: &mut impl BufRead, writer: &mut impl Write) {
         remaining -= read_value::<i32>(read_line(reader));
     }
 
-    write!(writer, "{}", remaining).expect("Failed to write");
+    writeln!(writer, "{}", remaining).unwrap();
 }
 
 // https://www.acmicpc.net/problem/5565
@@ -57,7 +57,7 @@ fn test_solve5565() {
         let mut writer = vec![];
         solve5565(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

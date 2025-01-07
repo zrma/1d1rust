@@ -10,7 +10,7 @@ fn solve4806(reader: &mut impl BufRead, writer: &mut impl Write) {
         line.clear();
     }
 
-    write!(writer, "{}", count).expect("write! should work");
+    writeln!(writer, "{}", count).unwrap();
 }
 
 // https://www.acmicpc.net/problem/4806
@@ -46,7 +46,7 @@ three"
         let mut writer = vec![];
         solve4806(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

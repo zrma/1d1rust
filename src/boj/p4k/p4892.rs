@@ -25,7 +25,7 @@ fn solve4892(reader: &mut impl BufRead, writer: &mut impl Write) {
         case_num += 1;
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/4892
@@ -60,7 +60,7 @@ fn test_solve4892() {
         let mut writer = vec![];
         solve4892(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

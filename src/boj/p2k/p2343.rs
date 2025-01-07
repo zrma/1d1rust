@@ -7,10 +7,10 @@ fn solve2343(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (num_lessons, num_blue_rays) = read_values_as!(read_line(reader), usize, usize);
     let lesson_durations: Vec<usize> = {
         let mut s = String::new();
-        reader.read_line(&mut s).expect("line should be readable");
+        reader.read_line(&mut s).unwrap();
         s.split_whitespace()
             .take(num_lessons)
-            .map(|x| x.parse().expect("should be a number"))
+            .map(|x| x.parse().unwrap())
             .collect()
     };
     let mut lower_bound = *lesson_durations.iter().max().unwrap();
@@ -32,7 +32,7 @@ fn solve2343(reader: &mut impl BufRead, writer: &mut impl Write) {
             upper_bound = mid_size;
         }
     }
-    write!(writer, "{}", lower_bound).expect("write! should work");
+    writeln!(writer, "{}", lower_bound).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2343
@@ -100,7 +100,7 @@ fn test_solve2343() {
         let mut writer = vec![];
         solve2343(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -29,9 +29,9 @@ fn solve9946(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         let is_same = chars1.iter().zip(chars2.iter()).all(|(a, b)| a == b);
         if is_same {
-            writeln!(writer, "Case {}: same", case).expect("Failed to write");
+            writeln!(writer, "Case {}: same", case).unwrap();
         } else {
-            writeln!(writer, "Case {}: different", case).expect("Failed to write");
+            writeln!(writer, "Case {}: different", case).unwrap();
         }
     }
 }
@@ -83,7 +83,7 @@ END"
         let mut writer = vec![];
         solve9946(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(got, data.want, "case {} failed", i);
     }
 }

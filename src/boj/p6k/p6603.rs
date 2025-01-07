@@ -20,7 +20,7 @@ fn solve6603(reader: &mut impl BufRead, writer: &mut impl Write) {
         line = read_line(reader);
     }
 
-    write!(writer, "{}", res.join("\n\n")).unwrap();
+    writeln!(writer, "{}", res.join("\n\n")).unwrap();
 }
 
 fn choose_lotto(
@@ -112,7 +112,14 @@ fn test_solve6603() {
         let mut reader = data.s.as_bytes();
         let mut writer = vec![];
         solve6603(&mut reader, &mut writer);
-        let ans = String::from_utf8(writer).expect("writer should be a valid string");
-        assert_eq!(ans, data.want, "case: {}", i);
+
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(
+            got.trim(),
+            data.want.trim(),
+            "failed at {} with {}",
+            i,
+            data.s
+        );
     }
 }

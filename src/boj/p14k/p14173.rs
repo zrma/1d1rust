@@ -24,7 +24,7 @@ fn solve14173(reader: &mut impl BufRead, writer: &mut impl Write) {
     let side = (max_x - min_x).max(max_y - min_y);
     let area = side * side;
 
-    writeln!(writer, "{}", area).expect("writeln! should work");
+    writeln!(writer, "{}", area).unwrap();
 }
 struct Rectangle {
     x1: i32,
@@ -70,7 +70,7 @@ fn test_solve14173() {
         let mut writer = vec![];
         solve14173(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

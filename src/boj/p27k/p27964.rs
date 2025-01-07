@@ -13,12 +13,12 @@ fn solve27964(reader: &mut impl BufRead, writer: &mut impl Write) {
         .cloned()
         .collect();
 
-    write!(
+    writeln!(
         writer,
         "{}",
         if cheeses.len() >= 4 { "yummy" } else { "sad" }
     )
-    .expect("Failed to write");
+    .unwrap();
 }
 
 // https://www.acmicpc.net/problem/27964
@@ -63,7 +63,7 @@ C Chess cheese Cheesa Cheesz Cheesp Cheese"
         let mut writer = vec![];
         solve27964(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

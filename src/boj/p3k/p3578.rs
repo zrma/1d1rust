@@ -11,7 +11,7 @@ fn solve3578(reader: &mut impl BufRead, writer: &mut impl Write) {
         _ => format!("{}{}", if n % 2 == 0 { "" } else { "4" }, "8".repeat(n / 2)),
     };
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/3578
@@ -71,7 +71,7 @@ fn test_solve3578() {
         let mut writer = vec![];
         solve3578(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -18,7 +18,7 @@ fn solve5575(reader: &mut impl BufRead, writer: &mut impl Write) {
         work_durations.push(format!("{} {} {}", hours, minutes, seconds));
     }
 
-    write!(writer, "{}", work_durations.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", work_durations.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/5575
@@ -59,7 +59,7 @@ fn test_solve5575() {
         let mut writer = vec![];
         solve5575(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

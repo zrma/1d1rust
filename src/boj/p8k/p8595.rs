@@ -25,7 +25,7 @@ fn solve8595(reader: &mut impl BufRead, writer: &mut impl Write) {
         sum += num_str.parse().unwrap_or(0);
     }
 
-    write!(writer, "{}", sum).unwrap();
+    writeln!(writer, "{}", sum).unwrap();
 }
 
 // https://www.acmicpc.net/problem/8595
@@ -64,7 +64,7 @@ abcd"
         let mut writer = vec![];
         solve8595(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

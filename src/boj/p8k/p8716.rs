@@ -15,7 +15,7 @@ fn solve8716(reader: &mut impl BufRead, writer: &mut impl Write) {
     let x_intersect = get_intersect(horizontal_line1, horizontal_line2);
     let y_intersect = get_intersect(vertical_line1, vertical_line2);
 
-    write!(writer, "{}", x_intersect * y_intersect).unwrap();
+    writeln!(writer, "{}", x_intersect * y_intersect).unwrap();
 }
 
 struct Line {
@@ -99,7 +99,7 @@ fn test_solve8716() {
         let mut writer = vec![];
         solve8716(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

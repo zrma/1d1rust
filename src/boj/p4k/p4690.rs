@@ -10,8 +10,7 @@ fn solve4690(writer: &mut impl Write) {
                 let c_cubed = c * c * c;
                 for d in c..a {
                     if a_cubed == b_cubed + c_cubed + d * d * d {
-                        writeln!(writer, "Cube = {}, Triple = ({},{},{})", a, b, c, d)
-                            .expect("writeln! should work");
+                        writeln!(writer, "Cube = {}, Triple = ({},{},{})", a, b, c, d).unwrap();
                     }
                 }
             }
@@ -117,7 +116,7 @@ Cube = 100, Triple = (35,70,85)
         let mut writer = vec![];
         solve4690(&mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(got, data.want, "failed at {}", i);
     }
 }

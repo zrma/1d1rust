@@ -7,7 +7,7 @@ fn solve2002(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = count_mismatched_order(&in_cars, &out_cars);
 
-    write!(writer, "{}", res).expect("write! should work");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 fn read_input(reader: &mut impl BufRead) -> (Vec<String>, Vec<String>) {
@@ -311,7 +311,7 @@ T6M225
         let mut writer = vec![];
         solve2002(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

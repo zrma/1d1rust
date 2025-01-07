@@ -21,7 +21,7 @@ fn solve5637(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", longest_word).expect("Failed to write");
+    writeln!(writer, "{}", longest_word).unwrap();
 }
 
 // https://www.acmicpc.net/problem/5637
@@ -71,7 +71,7 @@ PenPineappleApplePen"
         let mut writer = vec![];
         solve5637(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

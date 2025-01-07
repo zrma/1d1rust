@@ -34,7 +34,7 @@ fn solve4435(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(format!("Battle {}: {}", i, ans));
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/4435
@@ -75,7 +75,7 @@ Battle 3: No victor on this battle field"
         let mut writer = vec![];
         solve4435(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

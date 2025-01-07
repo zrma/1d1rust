@@ -9,7 +9,7 @@ fn solve29699(reader: &mut impl BufRead, writer: &mut impl Write) {
     let circular_index = (input_index + GIVEN.len() - 1) % GIVEN.len();
     let character = GIVEN.chars().nth(circular_index).unwrap();
 
-    write!(writer, "{}", character).unwrap();
+    writeln!(writer, "{}", character).unwrap();
 }
 
 // https://www.acmicpc.net/problem/29699
@@ -41,7 +41,7 @@ fn test_solve29699() {
         let mut writer = vec![];
         solve29699(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

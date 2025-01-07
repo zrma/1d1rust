@@ -13,7 +13,7 @@ fn solve5357(reader: &mut impl BufRead, writer: &mut impl Write) {
         ans.push(deduplicate(&s));
     }
 
-    write!(writer, "{}", ans.join("\n")).unwrap();
+    writeln!(writer, "{}", ans.join("\n")).unwrap();
 }
 
 fn deduplicate(s: &str) -> String {
@@ -82,7 +82,7 @@ AAAAAAAAAAAAAAAAAAAAABBA"
         let mut writer = vec![];
         solve5357(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

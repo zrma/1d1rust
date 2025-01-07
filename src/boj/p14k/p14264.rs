@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve14264(reader: &mut impl BufRead, writer: &mut impl Write) {
     let f: f64 = read_value(read_line(reader));
     let ans = 3f64.sqrt() / 4.0 * f * f;
-    write!(writer, "{:e}", ans).expect("Failed to write");
+    writeln!(writer, "{:e}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/14264
@@ -37,11 +37,8 @@ fn test_solve14264() {
         let mut writer = vec![];
         solve14264(&mut reader, &mut writer);
 
-        let got: f64 = read_value(String::from_utf8(writer).expect(
-            "writer should be a valid string
-",
-        ));
-        let want: f64 = data.want.parse().expect("data.want should be a valid f64");
+        let got: f64 = read_value(String::from_utf8(writer).unwrap());
+        let want: f64 = data.want.parse().unwrap();
 
         const EPSILON: f64 = 1e-9;
 

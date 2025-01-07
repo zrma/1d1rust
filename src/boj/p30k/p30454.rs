@@ -29,7 +29,7 @@ fn solve30454(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{} {}", max_segment_count, horses_with_max_segments).expect("Failed to write");
+    writeln!(writer, "{} {}", max_segment_count, horses_with_max_segments).unwrap();
 }
 
 // https://www.acmicpc.net/problem/30454
@@ -80,7 +80,7 @@ fn test_solve30454() {
         let mut writer = vec![];
         solve30454(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

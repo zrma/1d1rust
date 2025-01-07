@@ -13,7 +13,7 @@ fn solve11319(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<_>>()
         .join("\n");
 
-    write!(writer, "{}", ans).unwrap();
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn count_vowels_and_consonants(line: &str) -> (usize, usize) {

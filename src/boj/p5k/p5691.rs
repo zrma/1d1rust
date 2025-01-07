@@ -9,7 +9,7 @@ fn solve5691(reader: &mut impl BufRead, writer: &mut impl Write) {
             break;
         }
 
-        writeln!(writer, "{}", find_min_third_num(a, b)).expect("Failed to write");
+        writeln!(writer, "{}", find_min_third_num(a, b)).unwrap();
     }
 }
 
@@ -59,7 +59,7 @@ fn test_solve5691() {
         let mut writer = vec![];
         solve5691(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

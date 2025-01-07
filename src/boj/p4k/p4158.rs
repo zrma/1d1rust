@@ -16,16 +16,16 @@ fn solve4158(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         hash_set.clear();
         for _ in 0..n {
-            reader.read_line(&mut buffer).expect("Failed to read");
-            let num: i32 = buffer.trim().parse().expect("Failed to parse");
+            reader.read_line(&mut buffer).unwrap();
+            let num: i32 = buffer.trim().parse().unwrap();
             buffer.clear();
             hash_set.insert(num);
         }
 
         let mut overlap_count = 0;
         for _ in 0..m {
-            reader.read_line(&mut buffer).expect("Failed to read");
-            let num: i32 = buffer.trim().parse().expect("Failed to parse");
+            reader.read_line(&mut buffer).unwrap();
+            let num: i32 = buffer.trim().parse().unwrap();
             buffer.clear();
 
             if hash_set.contains(&num) {
@@ -36,7 +36,7 @@ fn solve4158(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(overlap_count.to_string());
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/4158
@@ -106,7 +106,7 @@ fn test_solve4158() {
         let mut writer = vec![];
         solve4158(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

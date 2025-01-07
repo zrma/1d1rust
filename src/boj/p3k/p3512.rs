@@ -23,7 +23,7 @@ fn solve3512(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     writeln!(writer, "{:.0}", total_area).unwrap();
     writeln!(writer, "{:.0}", total_bedroom_area).unwrap();
-    write!(writer, "{:.6}", ans).unwrap();
+    writeln!(writer, "{:.6}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/3512
@@ -67,7 +67,7 @@ fn test_solve3512() {
         let mut writer = vec![];
         solve3512(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         let want = data.want.split_whitespace();
 
         for (j, (got, want)) in got.split_whitespace().zip(want).enumerate() {

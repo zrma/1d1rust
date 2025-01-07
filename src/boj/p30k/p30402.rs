@@ -17,7 +17,7 @@ fn solve30402(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     if let Some(name) = output {
-        write!(writer, "{}", name).unwrap();
+        writeln!(writer, "{}", name).unwrap();
     }
 }
 
@@ -96,7 +96,7 @@ o r g g y y y g g o o y y r g"
         let mut writer = vec![];
         solve30402(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

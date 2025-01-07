@@ -50,6 +50,12 @@ correct
         solve13420(&mut reader, &mut writer);
 
         let got = String::from_utf8(writer).unwrap();
-        assert_eq!(got, data.want, "failed at {}th case", i);
+        assert_eq!(
+            got.trim(),
+            data.want.trim(),
+            "failed at {} with {}",
+            i,
+            data.s
+        );
     }
 }

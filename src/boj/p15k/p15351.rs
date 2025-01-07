@@ -10,7 +10,7 @@ fn solve15351(reader: &mut impl BufRead, writer: &mut impl Write) {
         .map(format_result)
         .collect::<Vec<_>>();
 
-    write!(writer, "{}", ans.join("\n")).unwrap();
+    writeln!(writer, "{}", ans.join("\n")).unwrap();
 }
 
 fn compute_name_value(name: String) -> usize {

@@ -5,16 +5,16 @@ use std::io::{BufRead, Write};
 fn solve31495(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
     if s.len() < 3 {
-        write!(writer, "CE").expect("Failed to write");
+        writeln!(writer, "CE").unwrap();
         return;
     }
 
     match (s.starts_with('"'), s.ends_with('"')) {
         (true, true) => {
-            write!(writer, "{}", &s[1..s.len() - 1]).expect("Failed to write");
+            writeln!(writer, "{}", &s[1..s.len() - 1]).unwrap();
         }
         _ => {
-            write!(writer, "CE").expect("Failed to write");
+            writeln!(writer, "CE").unwrap();
         }
     }
 }
@@ -61,7 +61,7 @@ fn test_solve31495() {
         let mut writer = vec![];
         solve31495(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

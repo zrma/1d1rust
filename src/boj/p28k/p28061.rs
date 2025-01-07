@@ -11,13 +11,11 @@ fn solve28061(reader: &mut impl BufRead, writer: &mut impl Write) {
         .iter()
         .rev()
         .enumerate()
-        .map(|(index, &lemon)| {
-            lemon.saturating_sub(1 + u64::try_from(index).expect("index should be valid"))
-        })
+        .map(|(index, &lemon)| lemon.saturating_sub(1 + u64::try_from(index).unwrap()))
         .max()
         .unwrap_or(0);
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/28061
@@ -49,7 +47,7 @@ fn test_solve28061() {
         let mut writer = vec![];
         solve28061(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

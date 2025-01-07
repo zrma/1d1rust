@@ -14,7 +14,7 @@ fn solve2476(reader: &mut impl BufRead, writer: &mut impl Write) {
         .max()
         .unwrap();
 
-    write!(writer, "{}", max_prize).expect("write! should work");
+    writeln!(writer, "{}", max_prize).unwrap();
 }
 
 fn calculate_prize(die1: u32, die2: u32, die3: u32) -> u32 {
@@ -95,7 +95,7 @@ fn test_solve2476() {
         let mut writer = vec![];
         solve2476(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

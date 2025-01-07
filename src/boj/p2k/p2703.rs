@@ -27,7 +27,7 @@ fn solve2703(reader: &mut impl BufRead, writer: &mut impl Write) {
         decrypted_sentences.push(decrypted_sentence);
     }
 
-    write!(writer, "{}", decrypted_sentences.join("\n")).expect("write! should work");
+    writeln!(writer, "{}", decrypted_sentences.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2703
@@ -66,7 +66,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let mut writer = vec![];
         solve2703(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

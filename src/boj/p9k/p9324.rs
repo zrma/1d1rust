@@ -30,7 +30,7 @@ fn solve9324(reader: &mut impl BufRead, writer: &mut impl Write) {
             idx += 1;
         }
 
-        writeln!(writer, "{}", if is_fake { "FAKE" } else { "OK" }).expect("Failed to write");
+        writeln!(writer, "{}", if is_fake { "FAKE" } else { "OK" }).unwrap();
     }
 }
 
@@ -72,7 +72,7 @@ AAAABBBBCCCCDDDDEEEEFFFF"
         let mut writer = vec![];
         solve9324(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

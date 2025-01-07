@@ -8,7 +8,7 @@ fn solve2257(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let total_mass = calculate_mass(&formula);
 
-    write!(writer, "{}", total_mass).unwrap();
+    writeln!(writer, "{}", total_mass).unwrap();
 }
 
 fn calculate_mass(formula: &str) -> i32 {
@@ -71,7 +71,7 @@ fn test_solve2257() {
         let mut writer = vec![];
         solve2257(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

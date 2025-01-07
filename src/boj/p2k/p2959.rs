@@ -6,7 +6,7 @@ fn solve2959(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut v: Vec<i32> = read_n_values(reader, 4);
     v.sort_unstable();
     let ans = v[0] * v[2];
-    write!(writer, "{}", ans).unwrap();
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2959
@@ -46,7 +46,7 @@ fn test_solve2959() {
         let mut writer = vec![];
         solve2959(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

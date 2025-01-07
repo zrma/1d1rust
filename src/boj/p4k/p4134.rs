@@ -8,13 +8,13 @@ fn solve4134(reader: &mut impl BufRead, writer: &mut impl Write) {
     for _ in 0..n {
         let mut x: u64 = read_line(reader).parse().unwrap();
         if x <= 1 {
-            writeln!(writer, "2").expect("writeln! should work");
+            writeln!(writer, "2").unwrap();
             continue;
         }
         while !is_prime(x) {
             x += 1;
         }
-        writeln!(writer, "{}", x).expect("writeln! should work");
+        writeln!(writer, "{}", x).unwrap();
     }
 }
 
@@ -99,7 +99,7 @@ fn test_solve4134() {
         let mut writer = vec![];
         solve4134(reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

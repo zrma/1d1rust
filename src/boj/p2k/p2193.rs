@@ -12,7 +12,7 @@ fn solve2193(reader: &mut impl BufRead, writer: &mut impl Write) {
         dp[i][1] = dp[i - 1][0];
     }
 
-    write!(writer, "{}", dp[n][0] + dp[n][1]).unwrap();
+    writeln!(writer, "{}", dp[n][0] + dp[n][1]).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2193
@@ -72,7 +72,7 @@ fn test_solve2193() {
         let mut writer = vec![];
         solve2193(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

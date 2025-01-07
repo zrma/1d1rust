@@ -15,8 +15,8 @@ fn solve2576(reader: &mut impl BufRead, writer: &mut impl Write) {
     });
 
     match total_odd_sum {
-        Some(sum) => write!(writer, "{}\n{}", sum, smallest_odd).expect("write! should work"),
-        None => write!(writer, "-1").expect("write! should work"),
+        Some(sum) => writeln!(writer, "{}\n{}", sum, smallest_odd).unwrap(),
+        None => writeln!(writer, "-1").unwrap(),
     }
 }
 
@@ -75,7 +75,7 @@ fn test_solve2576() {
         let mut writer = vec![];
         solve2576(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

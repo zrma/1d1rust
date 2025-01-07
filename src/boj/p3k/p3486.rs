@@ -13,14 +13,13 @@ fn solve3486(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(reversed_sum);
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 fn reverse_sum(a: &str, b: &str) -> String {
     let reversed_a = reverse_and_clean(a);
     let reversed_b = reverse_and_clean(b);
-    let sum = reversed_a.parse::<i64>().expect("Failed to parse a")
-        + reversed_b.parse::<i64>().expect("Failed to parse b");
+    let sum = reversed_a.parse::<i64>().unwrap() + reversed_b.parse::<i64>().unwrap();
     reverse_and_clean(&sum.to_string())
 }
 
@@ -80,7 +79,7 @@ fn test_solve3486() {
         let mut writer = vec![];
         solve3486(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

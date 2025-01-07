@@ -21,8 +21,8 @@ fn solve30802(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let (full_packages, remaining_items) = (n / p, n % p);
 
-    writeln!(writer, "{}", total_pieces).expect("Failed to write");
-    writeln!(writer, "{} {}", full_packages, remaining_items).expect("Failed to write");
+    writeln!(writer, "{}", total_pieces).unwrap();
+    writeln!(writer, "{} {}", full_packages, remaining_items).unwrap();
 }
 
 // https://www.acmicpc.net/problem/30802
@@ -78,7 +78,7 @@ fn test_solve30802() {
         let mut writer = vec![];
         solve30802(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

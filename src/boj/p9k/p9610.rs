@@ -19,11 +19,11 @@ fn solve9610(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    writeln!(writer, "Q1: {}", q1).expect("Failed to write");
-    writeln!(writer, "Q2: {}", q2).expect("Failed to write");
-    writeln!(writer, "Q3: {}", q3).expect("Failed to write");
-    writeln!(writer, "Q4: {}", q4).expect("Failed to write");
-    write!(writer, "AXIS: {}", axis).expect("Failed to write");
+    writeln!(writer, "Q1: {}", q1).unwrap();
+    writeln!(writer, "Q2: {}", q2).unwrap();
+    writeln!(writer, "Q3: {}", q3).unwrap();
+    writeln!(writer, "Q4: {}", q4).unwrap();
+    writeln!(writer, "AXIS: {}", axis).unwrap();
 }
 
 // https://www.acmicpc.net/problem/9610
@@ -78,7 +78,7 @@ AXIS: 4"
         let mut writer = vec![];
         solve9610(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

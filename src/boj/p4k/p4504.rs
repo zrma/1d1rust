@@ -12,14 +12,14 @@ fn solve4504(reader: &mut impl BufRead, writer: &mut impl Write) {
         if m == 0 {
             break;
         }
-        answers.push(if m % i32::try_from(n).expect("Failed to convert") == 0 {
+        answers.push(if m % i32::try_from(n).unwrap() == 0 {
             format!("{} is a multiple of {}.", m, n)
         } else {
             format!("{} is NOT a multiple of {}.", m, n)
         });
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/4504
@@ -75,7 +75,7 @@ fn test_solve4504() {
         let mut writer = vec![];
         solve4504(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

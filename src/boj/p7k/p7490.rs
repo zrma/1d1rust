@@ -10,7 +10,7 @@ fn solve7490(reader: &mut impl BufRead, writer: &mut impl Write) {
         let n: usize = read_line(reader).parse().unwrap();
 
         make_to_zero(writer, n);
-        writeln!(writer).expect("writeln! should work");
+        writeln!(writer).unwrap();
     }
 }
 
@@ -21,7 +21,7 @@ fn make_to_zero(writer: &mut impl Write, n: usize) {
     make_to_zero_rec(&mut res, &mut nums, 0);
 
     for s in res {
-        writeln!(writer, "{}", s).expect("writeln! should work");
+        writeln!(writer, "{}", s).unwrap();
     }
 }
 
@@ -103,7 +103,7 @@ fn test_solve7490() {
         let mut writer = vec![];
         solve7490(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

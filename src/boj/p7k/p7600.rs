@@ -18,7 +18,7 @@ fn solve7600(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         let ans = acc.iter().filter(|&&x| x).count();
-        writeln!(writer, "{}", ans).expect("Failed to write");
+        writeln!(writer, "{}", ans).unwrap();
     }
 }
 
@@ -59,7 +59,7 @@ New Zealand Programming Contest.
         let mut writer = vec![];
         solve7600(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

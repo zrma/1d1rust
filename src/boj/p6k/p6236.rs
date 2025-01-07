@@ -11,7 +11,7 @@ fn solve6236(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let optimal_withdrawal =
         find_optimal_withdrawal_amount(&expenses, max_expense, total_expenses, m);
-    write!(writer, "{}", optimal_withdrawal).unwrap();
+    writeln!(writer, "{}", optimal_withdrawal).unwrap();
 }
 
 fn find_optimal_withdrawal_amount(
@@ -80,7 +80,7 @@ fn test_solve6236() {
         let mut writer = vec![];
         solve6236(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -26,7 +26,7 @@ fn solve4889(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         res += stack.len() / 2;
 
-        writeln!(writer, "{}. {}", case, res).expect("Failed to write");
+        writeln!(writer, "{}. {}", case, res).unwrap();
         case += 1;
     }
 }
@@ -58,7 +58,7 @@ fn test_solve4889() {
         let mut writer = vec![];
         solve4889(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

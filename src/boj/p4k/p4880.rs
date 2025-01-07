@@ -18,7 +18,7 @@ fn solve4880(reader: &mut impl BufRead, writer: &mut impl Write) {
             panic!("Invalid sequence: {} {} {}", a1, a2, a3); // 잘못된 입력 시 패닉 발생
         };
 
-        writeln!(writer, "{}", ans).expect("Failed to write result");
+        writeln!(writer, "{}", ans).unwrap();
     }
 }
 
@@ -65,7 +65,7 @@ AP 1
         let mut writer = vec![];
         solve4880(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

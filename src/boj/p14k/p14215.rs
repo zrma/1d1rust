@@ -13,7 +13,7 @@ fn solve14215(reader: &mut impl BufRead, writer: &mut impl Write) {
         (nums[0] + nums[1]) * 2 - 1
     };
 
-    write!(writer, "{}", res).expect("Failed to write");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 fn read_nums(reader: &mut impl BufRead) -> Vec<usize> {
@@ -64,7 +64,7 @@ fn test_solve14215() {
         let mut writer = vec![];
         solve14215(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

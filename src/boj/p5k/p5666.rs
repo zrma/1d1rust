@@ -7,7 +7,7 @@ fn solve5666(reader: &mut impl BufRead, writer: &mut impl Write) {
     while reader.read_line(&mut line).unwrap_or(0) > 0 {
         let (h, p) = read_values_as!(&line, f64, f64);
         let ans = h / p;
-        writeln!(writer, "{:.2}", ans).expect("writeln! should work");
+        writeln!(writer, "{:.2}", ans).unwrap();
         line.clear();
     }
 }
@@ -53,7 +53,7 @@ fn test_solve5666() {
         let mut writer = vec![];
         solve5666(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         let want = data.want.split_whitespace();
 
         use crate::utils::assert::match_multilines_as_f64;

@@ -7,7 +7,7 @@ fn solve2965(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (a, b, c) = read_values_as!(read_line(reader), i32, i32, i32);
 
     let ans = (b - a).max(c - b) - 1;
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2965
@@ -39,7 +39,7 @@ fn test_solve2965() {
         let mut writer = vec![];
         solve2965(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

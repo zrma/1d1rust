@@ -7,7 +7,7 @@ fn solve29766(reader: &mut impl BufRead, writer: &mut impl Write) {
     let input_line = read_line(reader);
     const SUBSTRING_TO_MATCH: &str = "DKSH";
     let match_count = input_line.matches(SUBSTRING_TO_MATCH).count();
-    write!(writer, "{}", match_count).expect("Failed to write");
+    writeln!(writer, "{}", match_count).unwrap();
 }
 
 // https://www.acmicpc.net/problem/29766
@@ -40,7 +40,7 @@ fn test_solve29766() {
         let mut writer = vec![];
         solve29766(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

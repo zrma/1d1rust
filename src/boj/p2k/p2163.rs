@@ -9,7 +9,7 @@ fn solve2163(reader: &mut impl BufRead, writer: &mut impl Write) {
     // 가로로 n 크기이므로 n - 1번 자르기. (n조각)
     // 세로로 m 크기이므로 m - 1번 자르기. (m조각) 이걸 n 조각 반복
     // (n - 1) + n * (m - 1) = n - 1 + n * m - n = n * m - 1
-    write!(writer, "{}", n * m - 1).unwrap();
+    writeln!(writer, "{}", n * m - 1).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2163
@@ -65,7 +65,7 @@ fn test_solve2163() {
         let mut writer = vec![];
         solve2163(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),
