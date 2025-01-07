@@ -23,7 +23,7 @@ fn solve2684(reader: &mut impl BufRead, writer: &mut impl Write) {
             .map(|&num| num.to_string())
             .collect::<Vec<_>>()
             .join(" ");
-        writeln!(writer, "{}", res).expect("writeln! should work");
+        writeln!(writer, "{}", res).unwrap();
     }
 }
 
@@ -67,7 +67,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
         let mut writer = vec![];
         solve2684(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

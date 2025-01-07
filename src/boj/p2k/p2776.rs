@@ -21,7 +21,7 @@ fn solve2776(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(ans);
     }
 
-    write!(writer, "{}", answers.join("\n")).unwrap();
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 fn read_collection<T, C>(reader: &mut impl BufRead) -> C
@@ -83,7 +83,7 @@ fn test_solve2776() {
         let mut writer = vec![];
         solve2776(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

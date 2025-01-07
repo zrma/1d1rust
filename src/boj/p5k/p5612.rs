@@ -13,13 +13,13 @@ fn solve5612(reader: &mut impl BufRead, writer: &mut impl Write) {
         let (in_, out) = read_values_as!(read_line(reader), i32, i32);
         curr_cars += in_ - out;
         if curr_cars < 0 {
-            write!(writer, "0").expect("Failed to write");
+            writeln!(writer, "0").unwrap();
             return;
         }
         max_cars = max_cars.max(curr_cars);
     }
 
-    write!(writer, "{}", max_cars).expect("Failed to write");
+    writeln!(writer, "{}", max_cars).unwrap();
 }
 
 // https://www.acmicpc.net/problem/5612
@@ -66,7 +66,7 @@ fn test_solve5612() {
         let mut writer = vec![];
         solve5612(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

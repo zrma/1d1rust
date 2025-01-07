@@ -12,7 +12,7 @@ fn solve9081(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(word.into_iter().collect());
     }
 
-    write!(writer, "{}", answers.join("\n")).unwrap();
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 fn process_word(word: &mut [char]) {
@@ -96,7 +96,7 @@ baecd"
         let mut writer = vec![];
         solve9081(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

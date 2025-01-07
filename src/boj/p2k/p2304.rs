@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve2304(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n_line = read_line(reader);
-    let n: usize = n_line.trim().parse().expect("N must be a number");
+    let n: usize = n_line.trim().parse().unwrap();
 
     // 위치(1~1000)마다 기둥 높이를 저장할 배열
     let mut pillars = [0usize; 1001];
@@ -54,7 +54,7 @@ fn solve2304(reader: &mut impl BufRead, writer: &mut impl Write) {
     area += max_height;
 
     // 결과 출력
-    writeln!(writer, "{}", area).expect("Failed to write output");
+    writeln!(writer, "{}", area).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2304
@@ -183,7 +183,7 @@ fn test_solve2304() {
         let mut writer = vec![];
         solve2304(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("valid utf8 string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

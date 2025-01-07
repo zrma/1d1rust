@@ -39,7 +39,7 @@ fn solve2468(reader: &mut impl BufRead, writer: &mut impl Write) {
         max_safe_areas = max_safe_areas.max(current_safe_areas);
     }
 
-    write!(writer, "{}", max_safe_areas).unwrap();
+    writeln!(writer, "{}", max_safe_areas).unwrap();
 }
 
 fn flood_fill(
@@ -106,7 +106,7 @@ fn test_solve2468() {
         let mut writer = vec![];
         solve2468(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

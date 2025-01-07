@@ -16,7 +16,7 @@ fn solve2720(reader: &mut impl BufRead, writer: &mut impl Write) {
         res.push_str(&format!("{} ", (c % 25) / 10));
         res.push_str(&format!("{} ", ((c % 25) % 10) / 5));
         res.push_str(&format!("{}", ((c % 25) % 10) % 5));
-        writeln!(writer, "{}", res).expect("writeln! should work");
+        writeln!(writer, "{}", res).unwrap();
     }
 }
 
@@ -47,7 +47,7 @@ fn test_solve2720() {
         let mut writer = vec![];
         solve2720(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

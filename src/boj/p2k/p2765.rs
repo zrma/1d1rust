@@ -21,7 +21,7 @@ fn solve2765(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(format!("Trip #{}: {:.2} {:.2}", trip, distance, speed));
     }
 
-    write!(writer, "{}", answers.join("\n")).unwrap();
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 fn calculate_distance(diameter_inch: f64, revolutions: f64) -> f64 {
@@ -64,7 +64,7 @@ Trip #2: 1179.86 1415.84"
         let mut writer = vec![];
         solve2765(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

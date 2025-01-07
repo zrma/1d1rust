@@ -12,7 +12,7 @@ fn solve2309(reader: &mut impl BufRead, writer: &mut impl Write) {
     heights.retain(|&h| h != height_to_remove1 && h != height_to_remove2);
 
     for height in heights {
-        writeln!(writer, "{}", height).expect("writeln! should work");
+        writeln!(writer, "{}", height).unwrap();
     }
 }
 
@@ -91,7 +91,7 @@ fn test_solve2309() {
         let mut writer = vec![];
         solve2309(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

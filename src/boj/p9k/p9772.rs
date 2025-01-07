@@ -8,7 +8,7 @@ fn solve9772(reader: &mut impl BufRead, writer: &mut impl Write) {
         let (x, y) = read_values_as!(read_line(reader), f64, f64);
 
         let ans = get_quadrants(x, y);
-        writeln!(writer, "{}", ans).expect("Failed to write");
+        writeln!(writer, "{}", ans).unwrap();
 
         if x == 0.0 && y == 0.0 {
             break;
@@ -71,7 +71,7 @@ AXIS
         let mut writer = vec![];
         solve9772(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

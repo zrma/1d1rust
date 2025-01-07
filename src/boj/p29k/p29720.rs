@@ -9,7 +9,7 @@ fn solve29720(reader: &mut impl BufRead, writer: &mut impl Write) {
     let min_problems = (n - m * k).max(0);
     let max_problems = (n - (m * (k - 1) + 1)).max(0);
 
-    write!(writer, "{} {}", min_problems, max_problems).expect("write should work");
+    writeln!(writer, "{} {}", min_problems, max_problems).unwrap();
 }
 
 // https://www.acmicpc.net/problem/29720
@@ -41,7 +41,7 @@ fn test_solve29720() {
         let mut writer = vec![];
         solve29720(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

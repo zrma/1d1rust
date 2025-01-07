@@ -12,17 +12,15 @@ fn solve29722(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let (new_year, new_month, new_day) = from_total_days(total_days_target);
 
-    writeln!(writer, "{:04}-{:02}-{:02}", new_year, new_month, new_day).expect("write should work");
+    writeln!(writer, "{:04}-{:02}-{:02}", new_year, new_month, new_day).unwrap();
 }
 
 fn parse_date(date_str: &str) -> (i32, i32, i32) {
-    let mut date_parts = date_str
-        .split('-')
-        .map(|s| s.parse::<i32>().expect("Invalid date format"));
+    let mut date_parts = date_str.split('-').map(|s| s.parse::<i32>().unwrap());
     (
-        date_parts.next().expect("Missing year"),
-        date_parts.next().expect("Missing month"),
-        date_parts.next().expect("Missing day"),
+        date_parts.next().unwrap(),
+        date_parts.next().unwrap(),
+        date_parts.next().unwrap(),
     )
 }
 
@@ -79,7 +77,7 @@ fn test_solve29722() {
         let mut writer = vec![];
         solve29722(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -31,7 +31,7 @@ fn solve9506(reader: &mut impl BufRead, writer: &mut impl Write) {
         } else {
             format!("{} is NOT perfect.", n)
         };
-        writeln!(writer, "{}", res).expect("Failed to write");
+        writeln!(writer, "{}", res).unwrap();
     }
 }
 
@@ -62,7 +62,7 @@ fn test_solve9506() {
         let mut writer = vec![];
         solve9506(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -12,7 +12,7 @@ pub(crate) fn solve5789(reader: &mut impl BufRead, writer: &mut impl Write) {
         let left = line_chars[mid - 1];
         let right = line_chars[mid];
         let res = if left == right { "Do-it" } else { "Do-it-Not" };
-        writeln!(writer, "{}", res).expect("Failed to write");
+        writeln!(writer, "{}", res).unwrap();
     }
 }
 
@@ -43,7 +43,7 @@ Do-it
         let mut writer = vec![];
         solve5789(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

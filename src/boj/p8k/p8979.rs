@@ -15,10 +15,8 @@ fn solve8979(reader: &mut impl BufRead, writer: &mut impl Write) {
     // 금, 은, 동 순으로 정렬
     countries.sort_by(|a, b| b.1.cmp(&a.1).then(b.2.cmp(&a.2)).then(b.3.cmp(&a.3)));
 
-    let &(_, target_gold, target_silver, target_bronze) = countries
-        .iter()
-        .find(|&&(id, _, _, _)| id == k)
-        .expect("Must find the target country");
+    let &(_, target_gold, target_silver, target_bronze) =
+        countries.iter().find(|&&(id, _, _, _)| id == k).unwrap();
 
     let rank = countries
         .iter()
@@ -30,7 +28,7 @@ fn solve8979(reader: &mut impl BufRead, writer: &mut impl Write) {
         .count()
         + 1;
 
-    write!(writer, "{}", rank).expect("Failed to write");
+    writeln!(writer, "{}", rank).unwrap();
 }
 
 // https://www.acmicpc.net/problem/8979
@@ -122,7 +120,7 @@ fn test_solve8979() {
         let mut writer = vec![];
         solve8979(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

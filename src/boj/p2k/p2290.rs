@@ -20,9 +20,9 @@ fn solve2290(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for row in board {
         for ch in row {
-            write!(writer, "{}", ch).expect("write! should work");
+            write!(writer, "{}", ch).unwrap();
         }
-        writeln!(writer).expect("writeln! should work");
+        writeln!(writer).unwrap();
     }
 }
 
@@ -208,7 +208,7 @@ fn test_solve2290() {
         let mut writer = vec![];
         solve2290(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(got.trim(), data.want.trim(), "failed at {} with {}", i, data.s);
     }
 }

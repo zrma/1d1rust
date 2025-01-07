@@ -21,7 +21,7 @@ fn solve2121(reader: &mut impl BufRead, writer: &mut impl Write) {
         })
         .count();
 
-    write!(writer, "{}", res).expect("write! should work");
+    writeln!(writer, "{}", res).unwrap();
 }
 
 fn read_point(reader: &mut impl BufRead) -> (i32, i32) {
@@ -69,7 +69,7 @@ fn test_solve2121() {
         let mut writer = vec![];
         solve2121(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

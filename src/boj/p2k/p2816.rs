@@ -36,7 +36,7 @@ fn solve2816(reader: &mut impl BufRead, writer: &mut impl Write) {
         curr -= 1;
     }
 
-    write!(writer, "{}", cmds).unwrap();
+    writeln!(writer, "{}", cmds).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2816
@@ -73,7 +73,7 @@ KBS1"
         let mut writer = vec![];
         solve2816(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("valid utf8 string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

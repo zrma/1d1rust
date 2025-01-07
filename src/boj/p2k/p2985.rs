@@ -7,7 +7,7 @@ fn solve2985(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (a, b, c) = read_values_as!(read_line(reader), i32, i32, i32);
 
     if let Some(expression) = find_expression(a, b, c) {
-        write!(writer, "{}", expression).unwrap();
+        writeln!(writer, "{}", expression).unwrap();
     }
 }
 
@@ -96,7 +96,7 @@ fn test_solve2985() {
         let mut writer = vec![];
         solve2985(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

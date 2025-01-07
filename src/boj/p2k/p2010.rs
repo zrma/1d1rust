@@ -11,7 +11,7 @@ fn solve2010(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let available_ports = total_ports - num_multi_plugs + 1;
-    write!(writer, "{}", available_ports).expect("write! should work");
+    writeln!(writer, "{}", available_ports).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2010
@@ -55,7 +55,7 @@ fn test_solve2010() {
         let mut writer = vec![];
         solve2010(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

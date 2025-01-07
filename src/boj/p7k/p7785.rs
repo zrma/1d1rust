@@ -23,7 +23,7 @@ fn solve7785(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let output = v.join("\n");
 
-    write!(writer, "{}", output).unwrap();
+    writeln!(writer, "{}", output).unwrap();
 }
 
 // https://www.acmicpc.net/problem/7785
@@ -52,7 +52,7 @@ Artem"
         let mut writer = vec![];
         solve7785(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

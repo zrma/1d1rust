@@ -20,9 +20,9 @@ fn solve6502(reader: &mut impl BufRead, writer: &mut impl Write) {
         };
 
         if is_fit(r, w, h) {
-            writeln!(writer, "Pizza {} fits on the table.", i).expect("Failed to write");
+            writeln!(writer, "Pizza {} fits on the table.", i).unwrap();
         } else {
-            writeln!(writer, "Pizza {} does not fit on the table.", i).expect("Failed to write");
+            writeln!(writer, "Pizza {} does not fit on the table.", i).unwrap();
         }
 
         i += 1;
@@ -70,7 +70,7 @@ Pizza 3 fits on the table.
         let mut writer = vec![];
         solve6502(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

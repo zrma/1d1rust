@@ -58,7 +58,7 @@ fn test_solve1322() {
         let mut writer = vec![];
         solve1322(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("valid utf8 string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

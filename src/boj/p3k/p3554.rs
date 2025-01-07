@@ -19,7 +19,7 @@ fn solve3554(reader: &mut impl BufRead, writer: &mut impl Write) {
                     .for_each(|v| *v = v.wrapping_mul(*v) % 2010),
                 _ => {
                     let sum: usize = slice.iter().sum();
-                    writeln!(writer, "{}", sum).expect("writeln! should work");
+                    writeln!(writer, "{}", sum).unwrap();
                 }
             }
         }
@@ -69,7 +69,7 @@ fn test_solve3554() {
             let mut writer = vec![];
             solve3554(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),

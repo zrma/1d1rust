@@ -19,7 +19,7 @@ fn solve2863(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", max_idx).expect("write! should work");
+    writeln!(writer, "{}", max_idx).unwrap();
 }
 
 fn rotate(a: f64, b: f64, c: f64, d: f64) -> (f64, f64, f64, f64) {
@@ -71,7 +71,7 @@ fn test_solve2863() {
         let mut writer = vec![];
         solve2863(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

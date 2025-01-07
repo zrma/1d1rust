@@ -21,7 +21,7 @@ fn solve9226(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 fn is_vowel(c: char) -> bool {
@@ -69,7 +69,7 @@ earpay"
         let mut writer = vec![];
         solve9226(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

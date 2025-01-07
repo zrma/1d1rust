@@ -8,18 +8,18 @@ fn solve5354(reader: &mut impl BufRead, writer: &mut impl Write) {
         let n: usize = read_value(read_line(reader));
 
         if n == 1 {
-            writeln!(writer, "#").expect("writeln! should work");
+            writeln!(writer, "#").unwrap();
         } else {
-            writeln!(writer, "{}", "#".repeat(n)).expect("writeln! should work");
+            writeln!(writer, "{}", "#".repeat(n)).unwrap();
 
             for _ in 1..n - 1 {
-                writeln!(writer, "#{}#", "J".repeat(n - 2)).expect("writeln! should work");
+                writeln!(writer, "#{}#", "J".repeat(n - 2)).unwrap();
             }
-            writeln!(writer, "{}", "#".repeat(n)).expect("writeln! should work");
+            writeln!(writer, "{}", "#".repeat(n)).unwrap();
         }
 
         if case < num_cases - 1 {
-            writeln!(writer).expect("writeln! should work");
+            writeln!(writer).unwrap();
         }
     }
 }
@@ -76,7 +76,7 @@ fn test_solve5354() {
         let mut writer = vec![];
         solve5354(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

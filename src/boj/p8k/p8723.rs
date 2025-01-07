@@ -10,11 +10,11 @@ fn solve8723(reader: &mut impl BufRead, writer: &mut impl Write) {
     v.sort();
 
     if v[0] == v[1] && v[1] == v[2] {
-        write!(writer, "2").unwrap();
+        writeln!(writer, "2").unwrap();
     } else if v[0] * v[0] + v[1] * v[1] == v[2] * v[2] {
-        write!(writer, "1").unwrap();
+        writeln!(writer, "1").unwrap();
     } else {
-        write!(writer, "0").unwrap();
+        writeln!(writer, "0").unwrap();
     }
 }
 
@@ -60,7 +60,7 @@ fn test_solve8723() {
         let mut writer = vec![];
         solve8723(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

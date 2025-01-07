@@ -13,7 +13,7 @@ fn solve10205(reader: &mut impl BufRead, writer: &mut impl Write) {
         ans.push(format_result(case_number, remaining_hairs));
     }
 
-    write!(writer, "{}", ans.join("\n\n")).unwrap();
+    writeln!(writer, "{}", ans.join("\n\n")).unwrap();
 }
 
 fn calculate_remaining_hairs(mut hairs: usize, actions: &str) -> usize {

@@ -13,7 +13,7 @@ fn solve2712(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<_>>()
         .join("\n");
 
-    write!(writer, "{}", ans).unwrap();
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn convert_unit(value: f64, unit: &str) -> String {
@@ -72,7 +72,7 @@ fn test_solve2712() {
         let mut writer = vec![];
         solve2712(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

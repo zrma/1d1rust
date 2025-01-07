@@ -9,7 +9,7 @@ fn solve5613(reader: &mut impl BufRead, writer: &mut impl Write) {
     loop {
         let input = read_line(reader);
         if op == "=" {
-            write!(writer, "{}", ans).expect("write! should work");
+            writeln!(writer, "{}", ans).unwrap();
             break;
         }
 
@@ -72,7 +72,7 @@ fn test_solve5613() {
         let mut writer = vec![];
         solve5613(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

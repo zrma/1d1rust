@@ -20,7 +20,7 @@ fn solve29731(reader: &mut impl BufRead, writer: &mut impl Write) {
         .map(|_| read_line(reader))
         .all(|s| promises.contains(s.as_str()));
 
-    write!(writer, "{}", if ans { "No" } else { "Yes" }).unwrap();
+    writeln!(writer, "{}", if ans { "No" } else { "Yes" }).unwrap();
 }
 
 // https://www.acmicpc.net/problem/29731
@@ -73,7 +73,7 @@ Never gonna stop"
         let mut writer = vec![];
         solve29731(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

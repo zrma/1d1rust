@@ -21,9 +21,9 @@ fn solve28074(reader: &mut impl BufRead, writer: &mut impl Write) {
     let ans = arr.iter().all(|&x| x);
 
     if ans {
-        write!(writer, "YES").unwrap();
+        writeln!(writer, "YES").unwrap();
     } else {
-        write!(writer, "NO").unwrap();
+        writeln!(writer, "NO").unwrap();
     }
 }
 
@@ -75,7 +75,7 @@ fn test_solve28074() {
         let mut writer = vec![];
         solve28074(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

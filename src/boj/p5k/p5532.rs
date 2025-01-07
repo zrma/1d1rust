@@ -16,7 +16,7 @@ fn solve5532(reader: &mut impl BufRead, writer: &mut impl Write) {
     let max_required_days = required_math_days.max(required_korean_days);
     let vacation_remaining = total_days - max_required_days;
 
-    write!(writer, "{}", vacation_remaining).expect("Failed to write");
+    writeln!(writer, "{}", vacation_remaining).unwrap();
 }
 
 // https://www.acmicpc.net/problem/5532
@@ -55,7 +55,7 @@ fn test_solve5532() {
         let mut writer = vec![];
         solve5532(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -11,7 +11,7 @@ fn solve28432(reader: &mut impl BufRead, writer: &mut impl Write) {
     let mut nominees: HashSet<String> = (0..m).map(|_| read_line(reader)).collect();
 
     if n == 1 {
-        write!(writer, "{}", nominees.iter().next().unwrap()).unwrap();
+        writeln!(writer, "{}", nominees.iter().next().unwrap()).unwrap();
         return;
     }
 
@@ -26,7 +26,7 @@ fn solve28432(reader: &mut impl BufRead, writer: &mut impl Write) {
         .into_iter()
         .find(|nominee| matches_nominee(nominee, prev_char, next_char))
     {
-        write!(writer, "{}", nominee).unwrap();
+        writeln!(writer, "{}", nominee).unwrap();
     }
 }
 
@@ -142,7 +142,7 @@ abc"
         let mut writer = vec![];
         solve28432(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

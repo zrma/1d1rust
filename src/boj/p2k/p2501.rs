@@ -11,12 +11,12 @@ fn solve2501(reader: &mut impl BufRead, writer: &mut impl Write) {
         if n % i == 0 {
             cnt += 1;
             if cnt == k {
-                write!(writer, "{}", i).expect("write! should work");
+                writeln!(writer, "{}", i).unwrap();
                 return;
             }
         }
     }
-    write!(writer, "0").unwrap();
+    writeln!(writer, "0").unwrap();
 }
 
 // https://www.acmicpc.net/problem/2501
@@ -47,7 +47,14 @@ fn test_solve2501() {
         let mut reader = data.s.as_bytes();
         let mut writer = vec![];
         solve2501(&mut reader, &mut writer);
-        let output = String::from_utf8(writer).expect("writer should be a valid string");
-        assert_eq!(output, data.want, "failed at {}th", i);
+
+        let got = String::from_utf8(writer).unwrap();
+        assert_eq!(
+            got.trim(),
+            data.want.trim(),
+            "failed at {} with {}",
+            i,
+            data.s
+        );
     }
 }

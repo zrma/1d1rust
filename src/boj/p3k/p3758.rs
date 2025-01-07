@@ -52,9 +52,9 @@ fn solve3758(reader: &mut impl BufRead, writer: &mut impl Write) {
             .iter()
             .position(|&(_, _, _, tid)| tid == my_team)
             .map(|idx| idx + 1)
-            .expect("my_team not found");
+            .unwrap();
 
-        writeln!(writer, "{}", rank).expect("failed to write rank");
+        writeln!(writer, "{}", rank).unwrap();
     }
 }
 
@@ -160,7 +160,7 @@ fn test_solve3758() {
         let mut writer = vec![];
         solve3758(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("valid utf8 string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

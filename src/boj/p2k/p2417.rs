@@ -12,15 +12,11 @@ fn solve2417(reader: &mut impl BufRead, writer: &mut impl Write) {
     } else {
         sqrt_n + 1
     };
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn integer_sqrt(n: u64) -> u64 {
-    n.to_f64()
-        .expect("n should be convertible to f64")
-        .sqrt()
-        .to_u64()
-        .expect("the square root of n should be convertible to u64")
+    n.to_f64().unwrap().sqrt().to_u64().unwrap()
 }
 
 // https://www.acmicpc.net/problem/4158
@@ -53,7 +49,7 @@ fn test_solve4158() {
         let mut writer = vec![];
         solve2417(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

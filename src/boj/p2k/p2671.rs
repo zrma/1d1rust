@@ -8,7 +8,7 @@ fn solve2671(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let res = is_submarine(&line);
 
-    write!(writer, "{}", if res { "SUBMARINE" } else { "NOISE" }).expect("write! should work");
+    writeln!(writer, "{}", if res { "SUBMARINE" } else { "NOISE" }).unwrap();
 }
 
 fn build_state_machine() -> HashMap<&'static str, (&'static str, &'static str)> {
@@ -76,7 +76,7 @@ fn test_solve2671() {
         let mut writer = vec![];
         solve2671(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

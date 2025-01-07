@@ -18,7 +18,7 @@ fn solve4084(reader: &mut impl BufRead, writer: &mut impl Write) {
             count += 1;
         }
 
-        writeln!(writer, "{}", count).expect("writeln! should work");
+        writeln!(writer, "{}", count).unwrap();
     }
 }
 
@@ -60,7 +60,7 @@ fn test_solve4084() {
         let mut writer = vec![];
         solve4084(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

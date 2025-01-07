@@ -24,7 +24,7 @@ fn solve9063(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let res = (max_x - min_x) * (max_y - min_y);
-    write!(writer, "{}", res).unwrap();
+    writeln!(writer, "{}", res).unwrap();
 }
 
 // https://www.acmicpc.net/problem/9063
@@ -67,7 +67,7 @@ fn test_solve9063() {
         let mut writer = vec![];
         solve9063(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

@@ -6,7 +6,7 @@ fn solve2437(reader: &mut impl BufRead, writer: &mut impl Write) {
     read_line(reader);
     let arr: Vec<i32> = read_values(reader);
     let res = get_unavailable_sum(arr);
-    write!(writer, "{}", res).unwrap();
+    writeln!(writer, "{}", res).unwrap();
 }
 
 fn get_unavailable_sum(mut arr: Vec<i32>) -> i32 {
@@ -111,7 +111,7 @@ fn test_solve2437() {
         let mut writer = vec![];
         solve2437(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

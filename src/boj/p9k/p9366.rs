@@ -9,7 +9,7 @@ fn solve9366(reader: &mut impl BufRead, writer: &mut impl Write) {
         let (a, b, c) = read_values_as!(read_line(reader), i32, i32, i32);
 
         let res = triangle_type(a, b, c);
-        writeln!(writer, "Case #{}: {}", i + 1, res).expect("Failed to write");
+        writeln!(writer, "Case #{}: {}", i + 1, res).unwrap();
     }
 }
 
@@ -72,7 +72,7 @@ Case #3: scalene
         let mut writer = vec![];
         solve9366(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

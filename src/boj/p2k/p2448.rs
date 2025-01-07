@@ -14,7 +14,7 @@ fn solve2448(reader: &mut impl BufRead, writer: &mut impl Write) {
         .collect::<Vec<_>>()
         .join("\n");
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn draw_star(board: &mut Vec<Vec<char>>, y: usize, x: usize, n: usize) {
@@ -110,7 +110,7 @@ fn test_solve2448() {
         let mut writer = vec![];
         solve2448(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

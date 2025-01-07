@@ -36,9 +36,9 @@ fn solve8892(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
 
         if ans.is_empty() {
-            writeln!(writer, "0").expect("Failed to write");
+            writeln!(writer, "0").unwrap();
         } else {
-            writeln!(writer, "{}", ans).expect("Failed to write");
+            writeln!(writer, "{}", ans).unwrap();
         }
     }
 }
@@ -112,7 +112,7 @@ cde"
         let mut writer = vec![];
         solve8892(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

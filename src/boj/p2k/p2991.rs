@@ -26,7 +26,7 @@ fn solve2991(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     writeln!(writer, "{}", num_dogs_attacking(p, a, b, c, d)).unwrap();
     writeln!(writer, "{}", num_dogs_attacking(m, a, b, c, d)).unwrap();
-    write!(writer, "{}", num_dogs_attacking(n, a, b, c, d)).unwrap();
+    writeln!(writer, "{}", num_dogs_attacking(n, a, b, c, d)).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2991
@@ -64,7 +64,7 @@ fn test_solve2991() {
         let mut writer = vec![];
         solve2991(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

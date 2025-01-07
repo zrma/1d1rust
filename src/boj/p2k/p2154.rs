@@ -6,7 +6,7 @@ fn solve2154(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n = read_value(read_line(reader));
     let sequence = generate_sequence(n);
     let ans = find_position(&sequence, n);
-    write!(writer, "{}", ans).unwrap();
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn generate_sequence(n: usize) -> String {
@@ -50,7 +50,7 @@ fn test_solve2154() {
         let mut writer = vec![];
         solve2154(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

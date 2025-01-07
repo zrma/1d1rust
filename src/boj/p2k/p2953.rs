@@ -9,9 +9,9 @@ fn solve2953(reader: &mut impl BufRead, writer: &mut impl Write) {
             (i, scores.iter().sum())
         })
         .max_by_key(|&(_, score)| score)
-        .expect("Should have at least one score");
+        .unwrap();
 
-    write!(writer, "{} {}", ans.0, ans.1).expect("write! should work");
+    writeln!(writer, "{} {}", ans.0, ans.1).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2953
@@ -49,7 +49,7 @@ fn test_solve2953() {
         let mut writer = vec![];
         solve2953(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

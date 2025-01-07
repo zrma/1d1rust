@@ -8,12 +8,9 @@ fn solve30501(reader: &mut impl BufRead, writer: &mut impl Write) {
         .map(|_| read_line(reader))
         .collect::<Vec<_>>();
 
-    let killer = names
-        .iter()
-        .find(|name| name.contains('S'))
-        .expect("No killer found");
+    let killer = names.iter().find(|name| name.contains('S')).unwrap();
 
-    write!(writer, "{}", killer).expect("Failed to write");
+    writeln!(writer, "{}", killer).unwrap();
 }
 
 // https://www.acmicpc.net/problem/30501
@@ -48,7 +45,7 @@ SUSEMI"
         let mut writer = vec![];
         solve30501(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

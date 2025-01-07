@@ -39,7 +39,7 @@ fn solve2800(reader: &mut impl BufRead, writer: &mut impl Write) {
     ans.dedup();
 
     for a in ans {
-        writeln!(writer, "{}", a).expect("writeln! should work");
+        writeln!(writer, "{}", a).unwrap();
     }
 }
 
@@ -100,7 +100,7 @@ fn test_solve2800() {
         let mut writer = vec![];
         solve2800(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

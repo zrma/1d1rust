@@ -3,14 +3,14 @@ use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve5363(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n: usize = read_line(reader).parse().expect("should be a number");
+    let n: usize = read_line(reader).parse().unwrap();
 
     for _ in 0..n {
         let mut words = read_values(reader);
 
         rotate_first_two_words(&mut words);
 
-        writeln!(writer, "{}", words.join(" ")).expect("writeln! should work");
+        writeln!(writer, "{}", words.join(" ")).unwrap();
     }
 }
 
@@ -58,7 +58,7 @@ I will go now to find the Wookiee"
         let mut writer = vec![];
         solve5363(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

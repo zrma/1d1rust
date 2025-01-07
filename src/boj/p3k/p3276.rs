@@ -11,7 +11,7 @@ fn solve3276(reader: &mut impl BufRead, writer: &mut impl Write) {
         .min_by_key(|&(r, c)| r + c)
         .unwrap_or((1, n));
 
-    write!(writer, "{} {}", r_ans, c_ans).expect("Failed to write output");
+    writeln!(writer, "{} {}", r_ans, c_ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/3276
@@ -59,7 +59,7 @@ fn test_solve3276() {
         let mut writer = vec![];
         solve3276(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

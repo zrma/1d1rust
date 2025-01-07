@@ -7,21 +7,21 @@ fn solve2444(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for i in 1..=n {
         for _ in 0..(n - i) {
-            write!(writer, " ").expect("write! should work");
+            write!(writer, " ").unwrap();
         }
         for _ in 0..(2 * i - 1) {
-            write!(writer, "*").expect("write! should work");
+            write!(writer, "*").unwrap();
         }
-        writeln!(writer).expect("writeln! should work");
+        writeln!(writer).unwrap();
     }
     for i in (1..n).rev() {
         for _ in 0..(n - i) {
-            write!(writer, " ").expect("write! should work");
+            write!(writer, " ").unwrap();
         }
         for _ in 0..(2 * i - 1) {
-            write!(writer, "*").expect("write! should work");
+            write!(writer, "*").unwrap();
         }
-        writeln!(writer).expect("writeln! should work");
+        writeln!(writer).unwrap();
     }
 }
 
@@ -54,7 +54,7 @@ fn test_solve2444() {
         let mut writer = vec![];
         solve2444(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

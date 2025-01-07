@@ -21,7 +21,7 @@ fn solve4378(reader: &mut impl BufRead, writer: &mut impl Write) {
             })
             .collect();
 
-        write!(writer, "{}", ans).expect("write! should work");
+        write!(writer, "{}", ans).unwrap();
     }
 }
 
@@ -55,7 +55,7 @@ HELLO, WORLD."
         let mut writer = vec![];
         solve4378(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

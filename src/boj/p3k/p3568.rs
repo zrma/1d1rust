@@ -20,12 +20,12 @@ fn solve3568(reader: &mut impl BufRead, writer: &mut impl Write) {
 
         let others: String = var.chars().skip(var_name.len()).collect();
         if others.is_empty() {
-            writeln!(writer, "{} {};", default_type, var_name).expect("Failed to write");
+            writeln!(writer, "{} {};", default_type, var_name).unwrap();
             continue;
         }
 
         let others: String = others.replace("[]", "][").chars().rev().collect();
-        writeln!(writer, "{}{} {};", default_type, others, var_name).expect("Failed to write");
+        writeln!(writer, "{}{} {};", default_type, others, var_name).unwrap();
     }
 }
 
@@ -52,7 +52,7 @@ int&* c;
         let mut writer = vec![];
         solve3568(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

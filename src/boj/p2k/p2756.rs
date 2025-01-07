@@ -15,7 +15,7 @@ fn solve2756(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(ans);
     }
 
-    writeln!(writer, "{}", answers.join("\n")).expect("writeln! should work");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 fn read_points(s: String) -> Vec<Point> {
@@ -90,7 +90,7 @@ SCORE: 200 to 140, PLAYER 1 WINS.
         let mut writer = vec![];
         solve2756(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

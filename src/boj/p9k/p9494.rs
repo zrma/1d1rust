@@ -23,7 +23,7 @@ fn solve9494(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
         ans.push((cursor + 1).to_string());
     }
-    write!(writer, "{}", ans.join("\n")).unwrap();
+    writeln!(writer, "{}", ans.join("\n")).unwrap();
 }
 
 fn count_leading_spaces(s: &str) -> usize {
@@ -105,7 +105,7 @@ The quick brown fox
         let mut writer = vec![];
         solve9494(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

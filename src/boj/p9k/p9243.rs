@@ -13,7 +13,7 @@ fn solve9243(reader: &mut impl BufRead, writer: &mut impl Write) {
         .zip(t.chars())
         .all(|(c1, c2)| (c1 == c2) ^ (div != 0));
 
-    write!(
+    writeln!(
         writer,
         "{}",
         if ans {
@@ -77,7 +77,7 @@ fn test_solve9243() {
         let mut writer = vec![];
         solve9243(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

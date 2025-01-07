@@ -12,7 +12,7 @@ fn solve9085(reader: &mut impl BufRead, writer: &mut impl Write) {
         res.push(sum.to_string());
     }
 
-    write!(writer, "{}", res.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", res.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/9085
@@ -50,7 +50,7 @@ fn test_solve9085() {
         let mut writer = vec![];
         solve9085(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

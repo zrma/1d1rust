@@ -8,18 +8,18 @@ fn solve2547(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for _ in 0..num_cases {
         let n = read_next_non_empty_line(&mut lines)
-            .expect("next line should exist")
+            .unwrap()
             .parse::<u64>()
-            .expect("n should be parseable as u64");
+            .unwrap();
 
         let n_u128 = n as u128;
         let mut total_mod_n = 0u128;
 
         for _ in 0..n {
             let candies = read_next_non_empty_line(&mut lines)
-                .expect("next line should exist")
+                .unwrap()
                 .parse::<u128>()
-                .expect("candies should be parseable as u128");
+                .unwrap();
 
             total_mod_n = (total_mod_n + candies % n_u128) % n_u128;
         }
@@ -86,7 +86,7 @@ NO
         let mut writer = vec![];
         solve2547(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

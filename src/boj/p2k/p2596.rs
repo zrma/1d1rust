@@ -18,7 +18,7 @@ fn solve2596(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn decode(s: &str) -> Result<&str, &str> {
@@ -70,7 +70,7 @@ fn test_solve2596() {
         let mut writer = vec![];
         solve2596(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

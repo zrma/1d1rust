@@ -12,7 +12,7 @@ fn solve3004(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = (row + 1) * (col + 1);
 
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/3004
@@ -56,7 +56,7 @@ fn test_solve3004() {
         let mut writer = vec![];
         solve3004(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

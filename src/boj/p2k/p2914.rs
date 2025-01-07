@@ -10,7 +10,7 @@ fn solve2914(reader: &mut impl BufRead, writer: &mut impl Write) {
     // avg * cnt - cnt + 1 = x
     // x = cnt * (avg - 1) + 1
     let ans = cnt * (avg - 1) + 1;
-    write!(writer, "{}", ans).unwrap();
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/2914
@@ -42,7 +42,7 @@ fn test_solve2914() {
         let mut writer = vec![];
         solve2914(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

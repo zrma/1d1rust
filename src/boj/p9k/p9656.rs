@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve9656(reader: &mut impl BufRead, writer: &mut impl Write) {
     let n: usize = read_value(read_line(reader));
     let ans = if n % 2 == 0 { "SK" } else { "CY" };
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 #[allow(dead_code)]
@@ -22,7 +22,7 @@ fn solve9656_dp(reader: &mut impl BufRead, writer: &mut impl Write) {
     }
 
     let ans = if dp[n] { "SK" } else { "CY" };
-    write!(writer, "{}", ans).expect("write! should work");
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 // https://www.acmicpc.net/problem/9656
@@ -75,7 +75,7 @@ fn test_solve9656() {
             let mut writer = Vec::new();
             solve9656(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),
@@ -90,7 +90,7 @@ fn test_solve9656() {
             let mut writer = Vec::new();
             solve9656_dp(&mut reader, &mut writer);
 
-            let got = String::from_utf8(writer).expect("writer should be a valid string");
+            let got = String::from_utf8(writer).unwrap();
             assert_eq!(
                 got.trim(),
                 data.want.trim(),

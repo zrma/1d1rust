@@ -9,7 +9,7 @@ fn solve5893(reader: &mut impl BufRead, writer: &mut impl Write) {
     let shifted_n = format!("{}0000", n); // n << 4
     let ans = add_binary_iter(&shifted_n, &n);
 
-    write!(writer, "{}", vec_to_string(ans)).expect("write! should work");
+    writeln!(writer, "{}", vec_to_string(ans)).unwrap();
 }
 
 fn add_binary_iter(a: &str, b: &str) -> impl DoubleEndedIterator<Item = u8> {
@@ -65,7 +65,7 @@ fn test_solve5893() {
         let mut writer = vec![];
         solve5893(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

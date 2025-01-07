@@ -6,7 +6,7 @@ fn solve9713(reader: &mut impl BufRead, writer: &mut impl Write) {
     let t = read_value(read_line(reader));
     for _ in 0..t {
         let n: i32 = read_value(read_line(reader));
-        writeln!(writer, "{}", sum_of_odds(n)).expect("Failed to write");
+        writeln!(writer, "{}", sum_of_odds(n)).unwrap();
     }
 }
 
@@ -64,7 +64,7 @@ fn test_solve9713() {
         let mut writer = vec![];
         solve9713(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

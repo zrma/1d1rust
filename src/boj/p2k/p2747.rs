@@ -7,7 +7,7 @@ fn solve2747(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     let ans = fibonacci(n);
 
-    write!(writer, "{}", ans).unwrap();
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 pub fn fibonacci(n: u128) -> u128 {
@@ -46,7 +46,7 @@ fn test_solve2747() {
         let mut writer = vec![];
         solve2747(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

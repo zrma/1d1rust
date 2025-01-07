@@ -22,7 +22,7 @@ fn solve4447(reader: &mut impl BufRead, writer: &mut impl Write) {
             Less => " is A BADDY",
             Equal => " is NEUTRAL",
         };
-        writeln!(writer, "{}{}", s, ans).expect("Failed to write");
+        writeln!(writer, "{}{}", s, ans).unwrap();
     }
 }
 
@@ -74,7 +74,7 @@ Algorithm Crunching Man"
         let mut writer = vec![];
         solve4447(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

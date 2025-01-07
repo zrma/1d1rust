@@ -35,9 +35,9 @@ fn solve3613(reader: &mut impl BufRead, writer: &mut impl Write) {
         }
     }
     if is_error || is_java && arr[0].is_ascii_uppercase() {
-        write!(writer, "Error!").unwrap();
+        writeln!(writer, "Error!").unwrap();
     } else {
-        write!(writer, "{}", ans).unwrap();
+        writeln!(writer, "{}", ans).unwrap();
     }
 }
 
@@ -90,7 +90,7 @@ fn test_solve3613() {
         let mut writer = vec![];
         solve3613(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

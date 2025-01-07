@@ -20,7 +20,7 @@ fn solve4613(reader: &mut impl BufRead, writer: &mut impl Write) {
         answers.push(sum.to_string());
     }
 
-    write!(writer, "{}", answers.join("\n")).expect("Failed to write");
+    writeln!(writer, "{}", answers.join("\n")).unwrap();
 }
 
 // https://www.acmicpc.net/problem/4613
@@ -82,7 +82,7 @@ AAA
         let mut writer = vec![];
         solve4613(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),

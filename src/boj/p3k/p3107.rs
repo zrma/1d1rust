@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 fn solve3107(reader: &mut impl BufRead, writer: &mut impl Write) {
     let ip = read_line(reader);
     let ans = expand_ipv6(&ip);
-    write!(writer, "{}", ans).unwrap();
+    writeln!(writer, "{}", ans).unwrap();
 }
 
 fn expand_ipv6(ip: &str) -> String {
@@ -91,7 +91,7 @@ fn test_solve3107() {
         let mut writer = vec![];
         solve3107(&mut reader, &mut writer);
 
-        let got = String::from_utf8(writer).expect("writer should be a valid string");
+        let got = String::from_utf8(writer).unwrap();
         assert_eq!(
             got.trim(),
             data.want.trim(),
