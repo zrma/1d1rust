@@ -27,6 +27,7 @@ mod p2446;
 mod p2448;
 mod p2455;
 mod p2460;
+mod p2467;
 mod p2468;
 mod p2476;
 mod p2485;
