@@ -30,7 +30,7 @@ fn can_form(sentences: &mut [Vec<String>], target_sentence: &str) -> bool {
         for sentence in sentences.iter_mut() {
             if sentence
                 .first()
-                .map_or(false, |first_word| first_word == word)
+                .is_some_and(|first_word| first_word == word)
             {
                 sentence.remove(0);
                 found = true;
