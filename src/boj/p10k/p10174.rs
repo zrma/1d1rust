@@ -1,23 +1,20 @@
-use crate::utils::io::{read_line, read_value};
+use crate::utils::io::read_line;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]
 fn solve10174(reader: &mut impl BufRead, writer: &mut impl Write) {
-    let n = read_value(read_line(reader));
-
+    let n: i32 = read_line(reader).parse().unwrap();
     for _ in 0..n {
         let s = read_line(reader);
-        let arr = s.as_bytes();
-
-        let mut ans = true;
+        let arr: Vec<char> = s.chars().collect();
+        let mut is_palindrome = true;
         for i in 0..s.len() / 2 {
-            if arr[i].to_ascii_lowercase() != arr[s.len() - 1 - i].to_ascii_lowercase() {
-                ans = false;
+            if !arr[i].eq_ignore_ascii_case(&arr[s.len() - 1 - i]) {
+                is_palindrome = false;
                 break;
             }
         }
-
-        writeln!(writer, "{}", if ans { "Yes" } else { "No" }).unwrap();
+        writeln!(writer, "{}", if is_palindrome { "Yes" } else { "No" }).unwrap();
     }
 }
 
