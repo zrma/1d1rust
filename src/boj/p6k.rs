@@ -8,4 +8,5 @@ mod p6550;
 mod p6600;
 mod p6603;
 mod p6768;
+mod p6840;
 mod p6841;
