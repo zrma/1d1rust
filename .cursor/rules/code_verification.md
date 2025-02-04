@@ -1,0 +1,11 @@
+# Code Verification Steps
+Before committing changes or submitting code, always run these commands in order:
+
+1. `cargo fmt` - Format the code according to Rust style guidelines
+2. `cargo clippy` - Check for common mistakes and verify code quality
+3. `cargo test` - Run the test cases to verify functionality
+
+This ensures that the code is:
+- Properly formatted
+- Free of common programming errors
+- Functionally correct according to test cases
