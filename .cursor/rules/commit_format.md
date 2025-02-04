@@ -1,0 +1,25 @@
+# Commit Message Format
+When solving problems from Baekjoon Online Judge, use the following commit message format:
+
+```
+boj: solve {problem_number} {problem_title}
+
+- https://www.acmicpc.net/problem/{problem_number}
+```
+
+Example:
+```
+boj: solve 1000 A+B
+
+- https://www.acmicpc.net/problem/1000
+```
+
+To handle multi-line commit messages, use printf with git commit -F:
+```
+printf "boj: solve {problem_number} {problem_title}\n\n- https://www.acmicpc.net/problem/{problem_number}" | git commit -F -
+```
+
+Example:
+```
+printf "boj: solve 1000 A+B\n\n- https://www.acmicpc.net/problem/1000" | git commit -F -
+```

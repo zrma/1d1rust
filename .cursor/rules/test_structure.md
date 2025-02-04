@@ -1,0 +1,31 @@
+# Test Code Structure Guide
+When writing test functions:
+
+1. Test case struct should be defined as:
+   ```rust
+   struct TestCase {
+       s: String,      // input string
+       want: String,   // expected output string
+   }
+   ```
+
+2. Test cases iteration should follow:
+   ```rust
+   for (i, data) in vec![
+       TestCase {
+           s: "input".to_string(),
+           want: "expected".to_string(),
+       },
+   ].iter().enumerate()
+   ```
+
+3. Assertion format:
+   ```rust
+   assert_eq!(
+       got.trim(),
+       data.want.trim(),
+       "failed at {} with {}",
+       i,
+       data.s
+   );
+   ```

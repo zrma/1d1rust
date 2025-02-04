@@ -1,0 +1,32 @@
+# Code Style Guide
+When writing solution code:
+
+1. Solution function should:
+   - Be named solve#### where #### is the problem number
+   - NOT be public (no pub keyword)
+   - Have #[allow(dead_code)] attribute
+   Example:
+   ```rust
+   #[allow(dead_code)]
+   fn solve1000(reader: &mut impl BufRead, writer: &mut impl Write)
+   ```
+
+2. Test function should:
+   - Include problem URL and title as comments above the #[test] attribute
+   Example:
+   ```rust
+   // https://www.acmicpc.net/problem/1000
+   // A+B
+   #[test]
+   fn test_solve1000()
+   ```
+
+3. Import statements should:
+   - Import read_values_as! macro directly from crate root: `use crate::read_values_as;`
+   - Import other io utilities from utils::io: `use crate::utils::io::{read_line, read_n_values};`
+   Example:
+   ```rust
+   use crate::read_values_as;
+   use crate::utils::io::{read_line, read_n_values};
+   use std::io::{BufRead, Write};
+   ```

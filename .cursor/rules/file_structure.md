@@ -1,0 +1,13 @@
+# File Structure
+When adding a new BOJ problem solution:
+
+1. Create a new file in the appropriate directory:
+   - File should be named `p{number}.rs`
+   - Place it in `src/boj/p{n}k/` where n is the first digits of the problem number
+   - Reference nearby files in the same directory for consistent formatting and structure
+   Example: For problem 1000, create `src/boj/p1k/p1000.rs` and check other files in `p1k/`
+
+2. Register the module in the corresponding module file:
+   - Add `mod p{number};` to the appropriate `p{n}k.rs` file
+   - Check the existing module declarations for correct ordering
+   Example: Add `mod p1000;` to `src/boj/p1k.rs`
