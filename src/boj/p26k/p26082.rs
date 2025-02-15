@@ -5,7 +5,7 @@ use std::io::{BufRead, Write};
 #[allow(dead_code)]
 fn solve26082(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (a, b, c): (i32, i32, i32) = read_values_as!(read_line(reader), i32, i32, i32);
-    let result = b * 3 * c / a;
+    let result = 3 * b * c / a;
     writeln!(writer, "{}", result).unwrap();
 }
 
