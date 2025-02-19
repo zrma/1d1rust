@@ -2,6 +2,7 @@ mod p12756;
 mod p12780;
 mod p12790;
 mod p12813;
+mod p12833;
 mod p12840;
 mod p12851;
 mod p12871;
