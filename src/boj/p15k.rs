@@ -8,6 +8,7 @@ mod p15610;
 mod p15633;
 mod p15666;
 mod p15686;
+mod p15727;
 mod p15734;
 mod p15751;
 mod p15803;
