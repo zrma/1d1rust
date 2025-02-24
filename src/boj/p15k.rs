@@ -10,6 +10,7 @@ mod p15666;
 mod p15686;
 mod p15727;
 mod p15734;
+mod p15740;
 mod p15751;
 mod p15803;
 mod p15813;
