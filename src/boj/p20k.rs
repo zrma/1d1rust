@@ -4,6 +4,7 @@ mod p20125;
 mod p20154;
 mod p20206;
 mod p20215;
+mod p20254;
 mod p20310;
 mod p20352;
 mod p20353;
