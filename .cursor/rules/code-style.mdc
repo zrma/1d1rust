@@ -1,3 +1,8 @@
+---
+description: Guide about writing solution code
+globs:
+alwaysApply: false
+---
 # Code Style Guide
 When writing solution code:
 

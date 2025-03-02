@@ -1,3 +1,8 @@
+---
+description: Before committing changes or submitting code, always run these commands in order
+globs:
+alwaysApply: false
+---
 # Code Verification Steps
 Before committing changes or submitting code, always run these commands in order:
 

@@ -1,3 +1,8 @@
+---
+description: Guide when writing test functions
+globs:
+alwaysApply: false
+---
 # Test Code Structure Guide
 When writing test functions:
 
