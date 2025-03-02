@@ -23,6 +23,18 @@ pub fn read_line(reader: &mut impl BufRead) -> String {
     line.trim().to_string()
 }
 
+pub fn read_line_strict(reader: &mut impl BufRead) -> String {
+    let mut line = String::new();
+    reader.read_line(&mut line).unwrap();
+    if line.ends_with('\n') {
+        line.pop(); // '\n'
+        if line.ends_with('\r') {
+            line.pop(); // '\r'
+        }
+    }
+    line
+}
+
 #[macro_export]
 macro_rules! read_values_as {
     ($line:expr, $( $t:ty ),+ ) => {{
