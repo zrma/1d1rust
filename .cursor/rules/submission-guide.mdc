@@ -1,7 +1,12 @@
+---
+description: Guide When preparing code for submission
+globs:
+alwaysApply: false
+---
 # Code Submission Guide
 When preparing code for submission:
 
-1. Use @submit_template.rs as the base template
+1. Use submit_template.rs as the base template
 2. Make sure to name the solution function as solve#### where #### is the problem number
    - Example: For problem 1000, use solve1000 instead of just solve
 3. When the code is ready, paste the complete submission code in the chat

@@ -1,3 +1,8 @@
+---
+description: solving problems from Baekjoon Online Judge, use this commit message format
+globs:
+alwaysApply: false
+---
 # Commit Message Format
 When solving problems from Baekjoon Online Judge, use the following commit message format:
 

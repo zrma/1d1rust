@@ -1,3 +1,8 @@
+---
+description: Guide when reading input values
+globs:
+alwaysApply: false
+---
 # Input Function Usage Guide
 When reading input values:
 

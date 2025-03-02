@@ -1,3 +1,8 @@
+---
+description: Guide when adding a new boj problem solution
+globs:
+alwaysApply: false
+---
 # File Structure
 When adding a new BOJ problem solution:
 
