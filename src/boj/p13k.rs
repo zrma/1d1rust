@@ -5,7 +5,7 @@ mod p13222;
 mod p13223;
 mod p13235;
 mod p13241;
-mod p13277;
+pub(crate) mod p13277;
 mod p13311;
 mod p13322;
 mod p13334;
