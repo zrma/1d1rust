@@ -12,7 +12,7 @@ fn solve14175(reader: &mut impl BufRead, writer: &mut impl Write) {
         let s: String = s
             .chars()
             .take(m)
-            .flat_map(|c| std::iter::repeat(c).take(k))
+            .flat_map(|c| std::iter::repeat_n(c, k))
             .collect::<_>();
         for _ in 0..k {
             board.push(s.clone());
