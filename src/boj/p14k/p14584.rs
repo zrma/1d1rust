@@ -12,7 +12,7 @@ fn solve14584(reader: &mut impl BufRead, writer: &mut impl Write) {
     'outer: for shift in 0..26 {
         let decoded: String = password
             .chars()
-            .map(|c| (((c as u8 - b'a' + shift) % 26 + b'a') as char))
+            .map(|c| ((c as u8 - b'a' + shift) % 26 + b'a') as char)
             .collect::<_>();
 
         if words.iter().any(|word| decoded.contains(word)) {
