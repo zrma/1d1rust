@@ -15,11 +15,11 @@ fn solve2075(reader: &mut impl BufRead, writer: &mut impl Write) {
         for x in nums {
             if min_heap.len() < n {
                 min_heap.push(Reverse(x));
-            } else if let Some(&Reverse(top)) = min_heap.peek() {
-                if x > top {
-                    min_heap.pop();
-                    min_heap.push(Reverse(x));
-                }
+            } else if let Some(&Reverse(top)) = min_heap.peek()
+                && x > top
+            {
+                min_heap.pop();
+                min_heap.push(Reverse(x));
             }
         }
     }

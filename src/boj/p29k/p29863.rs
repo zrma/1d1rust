@@ -6,7 +6,7 @@ fn solve29863(reader: &mut impl BufRead, writer: &mut impl Write) {
     let sleep_time: i32 = read_value(read_line(reader));
     let wake_time: i32 = read_value(read_line(reader));
 
-    let sleep_hours = if sleep_time >= 20 && sleep_time <= 23 {
+    let sleep_hours = if (20..=23).contains(&sleep_time) {
         24 - sleep_time + wake_time
     } else {
         wake_time - sleep_time

@@ -42,7 +42,7 @@ fn solve14938(reader: &mut impl BufRead, writer: &mut impl Write) {
             .iter()
             .enumerate()
             .take(n)
-            .filter(|(_, &d)| d <= m)
+            .filter(|&(_, &d)| d <= m)
             .map(|(i, _)| items[i])
             .sum();
         answer = answer.max(sum_items);

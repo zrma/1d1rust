@@ -58,11 +58,7 @@ fn dfs(
 }
 
 fn normalize_coordinates(p1: Point, p2: Point) -> (Point, Point) {
-    if p1 < p2 {
-        (p1, p2)
-    } else {
-        (p2, p1)
-    }
+    if p1 < p2 { (p1, p2) } else { (p2, p1) }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]

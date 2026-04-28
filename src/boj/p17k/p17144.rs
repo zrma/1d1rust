@@ -148,11 +148,13 @@ fn spread_dust(y: usize, x: usize, room: &[Vec<i32>], new_room: &mut [Vec<i32>])
     let c = room[0].len();
 
     for &(dy, dx) in &directions {
-        if let (Some(ny), Some(nx)) = (y.checked_add_signed(dy), x.checked_add_signed(dx)) {
-            if ny < r && nx < c && room[ny][nx] != -1 {
-                new_room[ny][nx] += amount;
-                spread_count += 1;
-            }
+        if let (Some(ny), Some(nx)) = (y.checked_add_signed(dy), x.checked_add_signed(dx))
+            && ny < r
+            && nx < c
+            && room[ny][nx] != -1
+        {
+            new_room[ny][nx] += amount;
+            spread_count += 1;
         }
     }
 

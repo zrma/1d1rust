@@ -83,11 +83,7 @@ impl TwoSat {
     fn to_index(x: i32) -> usize {
         let absx = x.unsigned_abs() as usize;
         let base = 2 * (absx - 1);
-        if x > 0 {
-            base
-        } else {
-            base + 1
-        }
+        if x > 0 { base } else { base + 1 }
     }
 
     fn build_scc(&mut self) {
@@ -172,7 +168,7 @@ fn test_solve11281() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestCase {
             s: "3 4
 -1 2

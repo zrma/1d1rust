@@ -1,4 +1,5 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use criterion::{Criterion, criterion_group, criterion_main};
+use std::hint::black_box;
 
 fn sum_for(vec: &[u64]) -> u64 {
     let mut acc = 0;
@@ -13,7 +14,7 @@ fn sum_map(vec: &[u64]) -> u64 {
 }
 
 fn sum_fold(vec: &[u64]) -> u64 {
-    vec.iter().fold(0, |acc, &x| acc + x)
+    vec.iter().sum::<u64>()
 }
 
 fn compare_bench(c: &mut Criterion) {

@@ -21,7 +21,7 @@ fn solve25904_cycle(reader: &mut impl BufRead, writer: &mut impl Write) {
     let (n, mut curr) = read_values_as!(read_line(reader), usize, usize);
     let limits: Vec<usize> = read_n_values(reader, n);
 
-    let res = limits.iter().cycle().enumerate().find(|(_, &limit)| {
+    let res = limits.iter().cycle().enumerate().find(|&(_, &limit)| {
         if limit < curr {
             true
         } else {

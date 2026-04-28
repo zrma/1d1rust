@@ -20,7 +20,7 @@ fn test_solve7891() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestCase {
             s: "4
 1 1

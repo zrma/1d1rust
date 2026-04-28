@@ -204,7 +204,7 @@ fn test_solve19585() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestCase {
             s: "4 3
 red

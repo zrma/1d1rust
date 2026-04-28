@@ -76,13 +76,17 @@ impl Node {
 
 impl Ord for Node {
     fn cmp(&self, other: &Self) -> Ordering {
-        other.value.cmp(&self.value)
+        other
+            .value
+            .cmp(&self.value)
+            .then_with(|| other.from.cmp(&self.from))
+            .then_with(|| other.to.cmp(&self.to))
     }
 }
 
 impl PartialOrd for Node {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        Some(other.value.cmp(&self.value))
+        Some(self.cmp(other))
     }
 }
 

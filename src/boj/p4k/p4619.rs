@@ -1,7 +1,7 @@
 use crate::read_values_as;
 use crate::utils::io::read_line;
-use num::pow::Pow;
 use num::ToPrimitive;
+use num::pow::Pow;
 use std::io::{BufRead, Write};
 
 #[allow(dead_code)]

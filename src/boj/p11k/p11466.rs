@@ -20,11 +20,7 @@ fn solve11466(reader: &mut impl BufRead, writer: &mut impl Write) {
 }
 
 fn min(a: f64, b: f64) -> f64 {
-    if a < b {
-        a
-    } else {
-        b
-    }
+    if a < b { a } else { b }
 }
 
 // https://www.acmicpc.net/problem/11466

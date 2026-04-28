@@ -15,16 +15,16 @@ fn find_expression(a: i32, b: i32, c: i32) -> Option<String> {
     let ops = ['+', '-', '*', '/'];
 
     for &op in &ops {
-        if let Some(result) = apply_op(op, a, b) {
-            if result == c {
-                return Some(format!("{}{}{}={}", a, op, b, c));
-            }
+        if let Some(result) = apply_op(op, a, b)
+            && result == c
+        {
+            return Some(format!("{}{}{}={}", a, op, b, c));
         }
 
-        if let Some(result) = apply_op(op, b, c) {
-            if result == a {
-                return Some(format!("{}={}{}{}", a, b, op, c));
-            }
+        if let Some(result) = apply_op(op, b, c)
+            && result == a
+        {
+            return Some(format!("{}={}{}{}", a, b, op, c));
         }
     }
 

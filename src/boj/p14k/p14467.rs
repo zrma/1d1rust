@@ -11,10 +11,10 @@ fn solve14467(reader: &mut impl BufRead, writer: &mut impl Write) {
 
     for _ in 0..num_observations {
         let (cow_id, position) = read_values_as!(read_line(reader), String, usize);
-        if let Some(&previous_position) = cow_positions.get(&cow_id) {
-            if previous_position != position {
-                crossings += 1;
-            }
+        if let Some(&previous_position) = cow_positions.get(&cow_id)
+            && previous_position != position
+        {
+            crossings += 1;
         }
         cow_positions.insert(cow_id, position);
     }

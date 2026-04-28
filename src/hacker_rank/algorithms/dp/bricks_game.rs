@@ -142,7 +142,7 @@ fn test_bricks_game_bench() {
         l: usize,
         e: i64,
     }
-    let expected = vec![
+    let expected = [
         TestData { l: 1000, e: 249147 },
         TestData { l: 1000, e: 251633 },
         TestData { l: 1000, e: 249302 },

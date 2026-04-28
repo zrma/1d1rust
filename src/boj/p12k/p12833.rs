@@ -17,7 +17,7 @@ fn test_solve12833() {
         s: String,
         want: String,
     }
-    for (i, data) in vec![
+    for (i, data) in [
         TestCase {
             s: "13 3 1".to_string(),
             want: "14".to_string(),

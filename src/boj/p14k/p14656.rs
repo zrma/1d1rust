@@ -7,7 +7,7 @@ fn solve14656(reader: &mut impl BufRead, writer: &mut impl Write) {
     let ans = read_n_values::<usize>(reader, num_students)
         .iter()
         .enumerate()
-        .filter(|(i, &v)| (i + 1) != v)
+        .filter(|&(i, &v)| (i + 1) != v)
         .count();
 
     writeln!(writer, "{}", ans).unwrap();

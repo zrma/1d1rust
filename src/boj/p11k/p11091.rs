@@ -23,7 +23,7 @@ fn solve11091(reader: &mut impl BufRead, writer: &mut impl Write) {
                     + &arr
                         .iter()
                         .enumerate()
-                        .filter(|(_, &b)| !b)
+                        .filter(|&(_, &b)| !b)
                         .map(|(i, _)| (b'a' + i as u8) as char)
                         .collect::<String>()
             }
