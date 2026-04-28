@@ -1,3 +1,11 @@
+#![allow(
+    clippy::collapsible_match,
+    clippy::manual_is_multiple_of,
+    clippy::needless_range_loop,
+    clippy::unnecessary_sort_by,
+    clippy::useless_vec
+)]
+
 mod boj;
 mod hacker_rank;
 mod practice;
