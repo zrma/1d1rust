@@ -111,7 +111,7 @@ jobs:
         uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}  # 공용 저장소인 경우 필요없음
-          file: lcov.info
+          files: lcov.info
 
   build:
     needs: test
