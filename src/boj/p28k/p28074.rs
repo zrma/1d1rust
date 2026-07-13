@@ -6,7 +6,7 @@ fn solve28074(reader: &mut impl BufRead, writer: &mut impl Write) {
     let s = read_line(reader);
 
     let mut arr = [true; 26];
-    for &x in [b'M', b'O', b'B', b'I', b'S'].iter() {
+    for &x in b"MOBIS" {
         if let Some(idx) = byte_to_index(x) {
             arr[idx] = false;
         }

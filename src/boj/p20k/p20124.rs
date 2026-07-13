@@ -38,19 +38,19 @@ fn test_solve20124() {
     for (i, data) in [
         TestData {
             s: "3
-inseop 10
-gukryeol 1
+candidate_a 10
+candidate_b 1
 candidate_c 11"
                 .to_string(),
             want: "candidate_c".to_string(),
         },
         TestData {
             s: "3
-inseop 10
-gukryeol 10
+candidate_a 10
+candidate_b 10
 candidate_c 10"
                 .to_string(),
-            want: "gukryeol".to_string(),
+            want: "candidate_a".to_string(),
         },
     ]
     .iter()
