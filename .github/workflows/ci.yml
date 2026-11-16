@@ -76,7 +76,9 @@ jobs:
       - name: Setup Rust Toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1.17.0
         with:
-          toolchain: stable
+          # 커버리지 기준선과 같은 도구 버전으로 계측한다.
+          toolchain: 1.97.1
+          components: llvm-tools-preview
           rustflags: ""
 
       - name: Cache Cargo Registry and Git Data
@@ -96,7 +98,9 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libevent-dev
 
       - name: Install cargo-llvm-cov
-        uses: taiki-e/install-action@cargo-llvm-cov
+        uses: taiki-e/install-action@ab49d3c64680143e184118bed66a46419fc15519 # v2.90.5
+        with:
+          tool: cargo-llvm-cov@0.8.7
 
       - name: Generate Code Coverage Report (LCOV)
         run: cargo llvm-cov --all-features --workspace --lcov --output-path lcov.info
